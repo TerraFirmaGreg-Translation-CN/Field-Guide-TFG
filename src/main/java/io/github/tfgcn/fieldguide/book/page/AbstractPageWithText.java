@@ -1,0 +1,14 @@
+package io.github.tfgcn.fieldguide.book.page;
+
+import io.github.tfgcn.fieldguide.book.BookPage;
+import lombok.Data;
+
+@Data
+public abstract class AbstractPageWithText extends BookPage {
+
+     /**
+      * The text to display on this page.
+      * This text can be <a href="https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/text-formatting">formatted</a>.
+      */
+     protected String text;
+}
