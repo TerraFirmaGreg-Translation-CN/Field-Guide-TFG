@@ -38,8 +38,8 @@ public class Context {
     // 实例字段
     private final AssetLoader assetLoader;
     private final HtmlRenderer htmlRenderer;
-    private final String outputRootDir;
-    private final String rootDir;
+    private final String outputRootDir;// The output directory
+    private final String rootDir;// The root directory to fetch static assets from
     private final boolean debugI18n;
     
     private String outputDir;
