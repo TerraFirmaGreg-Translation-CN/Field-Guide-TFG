@@ -1,6 +1,7 @@
 package io.github.tfgcn.fieldguide;
 
 import com.google.gson.reflect.TypeToken;
+import com.madgag.gif.fmsware.AnimatedGifEncoder;
 import io.github.tfgcn.fieldguide.asset.Asset;
 import io.github.tfgcn.fieldguide.asset.AssetLoader;
 import io.github.tfgcn.fieldguide.book.BookCategory;
@@ -8,6 +9,7 @@ import io.github.tfgcn.fieldguide.book.BookEntry;
 import io.github.tfgcn.fieldguide.item.ItemImageResult;
 import io.github.tfgcn.fieldguide.mc.BlockModel;
 import io.github.tfgcn.fieldguide.render.BlockTextureRenderer;
+import io.github.tfgcn.fieldguide.render.HtmlRenderer;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
@@ -18,6 +20,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
@@ -34,6 +37,7 @@ public class Context {
     
     // 实例字段
     private final AssetLoader assetLoader;
+    private final HtmlRenderer htmlRenderer;
     private final String outputRootDir;
     private final String rootDir;
     private final boolean debugI18n;
@@ -69,12 +73,14 @@ public class Context {
     // 搜索树
     private List<Map<String, Object>> searchTree = new ArrayList<>();
     
-    public Context(AssetLoader assetLoader, String outputRootDir, String rootDir, boolean debugI18n) {
+    public Context(AssetLoader assetLoader, String outputRootDir, String rootDir, boolean debugI18n) throws IOException {
         this.assetLoader = assetLoader;
         this.outputRootDir = outputRootDir;
         this.outputDir = outputRootDir;
         this.rootDir = rootDir;
         this.debugI18n = debugI18n;
+
+        this.htmlRenderer = new HtmlRenderer("assets/templates", outputRootDir);
 
         // 初始化计数器
         lastUid.put("content", 0);
@@ -371,8 +377,9 @@ public class Context {
                 img = resizeImage(img, 400, 400);
             }
 
-            ProjectUtil.require(width == height && width % 256 == 0,
-                    "Image size must be square and multiple of 256: " + image);
+            if (width != height || width % 256 != 0) {
+                log.warn("Image size is not square or multiple of 256. Need to resize. ({} x {}): {}", width, height, image);
+            }
 
             int size = width * 200 / 256;
             BufferedImage cropped = img.getSubimage(0, 0, size, size);
@@ -473,6 +480,46 @@ public class Context {
     }
 
     /**
+     * Saves multiple images to a .gif based on an identifier. Returns the relative path to that location.
+     */
+    public String saveGif(String path, List<BufferedImage> images) throws IOException {
+        if (images == null || images.isEmpty()) {
+            throw new IllegalArgumentException("Images list cannot be empty");
+        }
+
+        // Process path similar to the Python version
+        String processedPath = processPath(path);
+
+        // Create output directory if it doesn't exist
+        File outputFile = new File(outputDir, processedPath);
+        outputFile.getParentFile().mkdirs();
+
+        // Save as GIF
+        try (FileOutputStream fos = new FileOutputStream(outputFile)) {
+            AnimatedGifEncoder encoder = new AnimatedGifEncoder();
+            encoder.start(fos);
+            encoder.setDelay(1000);
+            encoder.setRepeat(0);
+
+            // 添加每一帧图像
+            for (BufferedImage image : images) {
+                encoder.addFrame(image);
+            }
+            encoder.finish();
+        }
+
+        return "../../" + processedPath;
+    }
+
+    private String processPath(String path) {
+        // Remove .png suffix and add .gif
+        String processed = path.replace(".png", "") + ".gif";
+        // Replace slashes with underscores and add to _images directory
+        processed = "_images/" + processed.replace("/", "_");
+        return processed;
+    }
+
+    /**
      * Loads an item image, based on a specific keyed representation of an item.
      * The key may be an item ID ('foo:bar'), a tag ('#foo:bar'), or a csv list of item IDs ('foo:bar,foo:baz')
      * Using a global cache, the image will be generated, and saved to the _images/ directory.
@@ -487,7 +534,7 @@ public class Context {
 
         if (item.endsWith(".png")) {
             // This is not an item image, it must be a image directly
-            return new ItemImageResult(convertIcon(item), null);
+            return new ItemImageResult(convertIcon(item), null, null);
         }
 
         if (item.startsWith("tag:")) {
@@ -525,19 +572,42 @@ public class Context {
             // Create image for each item.
             List<BufferedImage> images = items.stream().map(this::createItemImage).toList();
 
+            String path;
+            if (images.size() == 1) {
+                images.get(0);
+                path = saveImage(nextId("item"), images.get(0));
+            } else {
+                // # If any images are 64x64, then we need to resize them all to be 64x64 if we're saving a .gif
+                boolean flag = false;
+                for (BufferedImage image : images) {
+                    if (image.getWidth() == 64 && image.getHeight() == 64) {
+                        flag = true;
+                        break;
+                    }
+                }
+                if (flag) {
+                    images = images.stream().map(image -> {
+                        if (image.getWidth() != 64 || image.getHeight() != 64) {
+                            image = resizeImage(image, 64, 64);
+                        }
+                        return image;
+                    }).toList();
+                }
 
+                path = saveGif(nextId("item"), images);
+            }
+
+            ItemImageResult result = new ItemImageResult(path, name, key);
+            // CACHE item -> (path, name, key)
+            return result;
         } catch (Exception e) {
             log.warn("Failed to create item image: {}", item, e);
             if (placeholder) {
                 // # Fallback to using the placeholder image
-                return new ItemImageResult("_images/item_placeholder.png", name);
-            } else {
-                throw e;
+                return new ItemImageResult("_images/item_placeholder.png", name, null);
             }
+            throw new InternalError("Failed to create item image: " + item);
         }
-
-        ItemImageResult result = new ItemImageResult(null, null);
-        return result;
     }
 
     public List<String> loadItemTag(String tag) {
@@ -558,33 +628,15 @@ public class Context {
             if ("tfc:contained_fluid".equals(loader)) {
                 // Assume it's empty, and use a single layer item
                 String layer = model.getTextures().get("base");
-                return assetLoader.loadTexture(layer, "textures");
+                return assetLoader.loadTexture(layer);
             } else {
                 log.error("Unknown loader: {} @ {}, model: {}", loader, itemId, model);
             }
         }
 
         String parent = model.getParent();
-        /**
-         *     if parent in (
-         *         'minecraft:item/generated',
-         *         'minecraft:item/handheld',
-         *         'minecraft:item/handheld_rod',
-         *         'tfc:item/handheld_flipped',
-         *     ):
-         *         # Simple single-layer item model
-         *         layer0 = model['textures']['layer0']
-         *         img = context.loader.load_texture(layer0)
-         *         return img
-         *     elif parent.startswith('tfc:block/') or parent.startswith('minecraft:block/'):
-         *         # Block model
-         *         block_model = context.loader.load_model(parent)
-         *         img = block_loader.create_block_model_image(context, item, block_model)
-         *         img = img.resize((64, 64), resample=Image.NEAREST)
-         *         return img
-         *     else:
-         *         util.error('Item Model : Unknown Parent \'%s\' : at \'%s\'' % (parent, item), True)
-         */
+        // FIXME 使用更通用的方式来判断模型是 item 还是 model
+        // FIXME 甚至干脆修改渲染方法，实现真正的继承层次 3D 渲染。
         if ("minecraft:item/generated".equals(parent) ||
                 "minecraft:item/handheld".equals(parent) ||
                 "minecraft:item/handheld_rod".equals(parent) ||
@@ -593,9 +645,10 @@ public class Context {
         ) {
             // single-layer item model
             String layer0 = model.getTextures().get("layer0");
-            return assetLoader.loadTexture(layer0, "textures");
-        } else if (parent.startsWith("tfc:block/") || parent.startsWith("minecraft:block/")) {
+            return assetLoader.loadTexture(layer0);
+        } else if (parent.startsWith("tfc:block/") || parent.startsWith("minecraft:block/") || parent.startsWith("beneath:block/")) {
             // Block model
+            // TODO remove the try-catch
             try {
                 Asset modelAsset = assetLoader.loadResource(parent, "models", "assets", ".json");
                 BlockModel blockModel = JsonUtils.readFile(modelAsset.getInputStream(), BlockModel.class);
@@ -605,14 +658,12 @@ public class Context {
                 return img;
             } catch (Exception e) {
                 log.error("Failed load model {} @ {}, model: {}", parent, itemId, model, e);
+                throw new InternalError("Failed load model " + parent + " @ " + itemId);
             }
-
-
-            // TODO
         } else {
             log.error("Unknown Parent {} @ {}, model: {}", parent, itemId, model);
+            throw new InternalError("Unknown Parent " + parent + " @ " + itemId);
         }
-        return null;
     }
 
     private BlockModel loadItemModel(String itemId) {
@@ -778,11 +829,10 @@ public class Context {
 
         String path;
         if (images.size() == 1) {
-            path = saveImage(context.nextId("block"), images.get(0));
+            path = saveImage(nextId("block"), images.get(0));
         } else {
             // FIXME
-            // path = saveGif(context.nextId("block"), images);
-            path = null;
+            path = saveGif(nextId("block"), images);
         }
 
         CACHE.put(key, path);
@@ -910,31 +960,44 @@ public class Context {
         }
 
         String parent = model.getParent();
+        if (parent.indexOf(':') < 0) {
+            parent = "minecraft:" + parent;
+            log.info("add missing domain:{}", parent);
+        }
         Map<String, String> textures = model.getTextures();
 
         switch (parent) {
             case "minecraft:block/cube_all":
-                BufferedImage textureAll = assetLoader.loadTexture(textures.get("all"), "textures");
+                BufferedImage textureAll = assetLoader.loadTexture(textures.get("all"));
                 return createBlockModelProjection(textureAll, textureAll, textureAll, false);
 
             case "minecraft:block/cube_column":
-                BufferedImage side = assetLoader.loadTexture(textures.get("side"), "textures");
-                BufferedImage end = assetLoader.loadTexture(textures.get("end"), "textures");
+                BufferedImage side = assetLoader.loadTexture(textures.get("side"));
+                BufferedImage end = assetLoader.loadTexture(textures.get("end"));
                 return createBlockModelProjection(side, side, end, false);
 
             case "minecraft:block/cube_column_horizontal":
-                BufferedImage sideH = assetLoader.loadTexture(textures.get("side"), "textures");
-                BufferedImage endH = assetLoader.loadTexture(textures.get("end"), "textures");
+                BufferedImage sideH = assetLoader.loadTexture(textures.get("side"));
+                BufferedImage endH = assetLoader.loadTexture(textures.get("end"));
                 return createBlockModelProjection(endH, sideH, sideH, true);
 
             case "minecraft:block/template_farmland":
-                BufferedImage dirt = assetLoader.loadTexture(textures.get("dirt"), "textures");
-                BufferedImage top = assetLoader.loadTexture(textures.get("top"), "textures");
+                BufferedImage dirt = assetLoader.loadTexture(textures.get("dirt"));
+                BufferedImage top = assetLoader.loadTexture(textures.get("top"));
                 return createBlockModelProjection(dirt, dirt, top, false);
 
+            case "minecraft:block/slab":
+                BufferedImage topSlab = assetLoader.loadTexture(textures.get("top"));
+                BufferedImage sideSlab = assetLoader.loadTexture(textures.get("side"));
+                return createSlabBlockModelProjection(sideSlab, sideSlab, topSlab);
+
+            case "minecraft:block/crop":
+                BufferedImage crop = assetLoader.loadTexture(textures.get("crop"));
+                return createCropModelProjection(crop);
+
             case "tfc:block/ore":
-                BufferedImage oreAll = assetLoader.loadTexture(textures.get("all"), "textures");
-                BufferedImage overlay = assetLoader.loadTexture(textures.get("overlay"), "textures");
+                BufferedImage oreAll = assetLoader.loadTexture(textures.get("all"));
+                BufferedImage overlay = assetLoader.loadTexture(textures.get("overlay"));
                 // 在Java中实现图像叠加
                 BufferedImage combined = new BufferedImage(oreAll.getWidth(), oreAll.getHeight(), BufferedImage.TYPE_INT_ARGB);
                 Graphics2D g = combined.createGraphics();
@@ -943,16 +1006,8 @@ public class Context {
                 g.dispose();
                 return createBlockModelProjection(combined, combined, combined, false);
 
-            case "minecraft:block/slab":
-                BufferedImage topSlab = assetLoader.loadTexture(textures.get("top"), "textures");
-                BufferedImage sideSlab = assetLoader.loadTexture(textures.get("side"), "textures");
-                return createSlabBlockModelProjection(sideSlab, sideSlab, topSlab);
-
-            case "minecraft:block/crop":
-                BufferedImage crop = assetLoader.loadTexture(textures.get("crop"), "textures");
-                return createCropModelProjection(crop);
-
             default:
+                log.warn("Block Model: Unknown parent: {} @ {}, model: {}", parent, block);
                 throw new RuntimeException("Block Model : Unknown Parent '" + parent + "' : at '" + block + "'");
         }
     }

@@ -6,28 +6,16 @@ import lombok.Data;
 public class ItemImageResult {
     private final String path;
     private final String name;
+    private final String key;// translation key
     
-    public ItemImageResult(String path, String name) {
+    public ItemImageResult(String path, String name, String key) {
         this.path = path;
         this.name = name;
+        this.key = key;
     }
-    
-    /**
-     * 获取路径（用于向后兼容）
-     */
-    public String getPath() {
-        return path;
-    }
-    
-    /**
-     * 获取名称（用于向后兼容）
-     */
-    public String getName() {
-        return name;
-    }
-    
+
     @Override
     public String toString() {
-        return String.format("ItemImage[path=%s, name=%s]", path, name);
+        return String.format("ItemImage[path=%s, name=%s, key=%s]", path, name, key);
     }
 }

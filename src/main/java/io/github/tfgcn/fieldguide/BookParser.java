@@ -13,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.IOException;
 import java.util.*;
 
+import static io.github.tfgcn.fieldguide.render.HtmlRenderer.*;
+
 @Slf4j
 public class BookParser {
     
@@ -21,7 +23,11 @@ public class BookParser {
             log.info("Language: {}", lang);
             parseBook(context.withLang(lang));
             context.sort();
-            // buildBookHtml(context); // 暂时不生成HTML
+            try {
+                buildBookHtml(context);
+            } catch (Exception e) {
+                log.error("Failed to build book html", e);
+            }
         }
         
         log.info("Done");
@@ -451,5 +457,34 @@ public class BookParser {
         } catch (InternalError e) {
             e.warning(true);
         }
+    }
+
+    public void buildBookHtml(Context context) throws Exception {
+        Map<String, Object> data = new HashMap<>();
+        data.put("title", context.translate(I18n.TITLE));
+        data.put("long_title", context.translate(I18n.TITLE) + " | " + Versions.MC_VERSION);
+        data.put("short_description", context.translate(I18n.HOME));
+        data.put("preview_image", "splash.png");
+        data.put("text_index", context.translate(I18n.INDEX));
+        data.put("text_contents", context.translate(I18n.CONTENTS));
+        data.put("text_version", context.translate(I18n.VERSION));
+        data.put("text_api_docs", context.translate(I18n.API_DOCS));
+        data.put("text_github", context.translate(I18n.GITHUB));
+        data.put("text_discord", context.translate(I18n.DISCORD));
+        data.put("current_lang_key", context.getLang());
+        data.put("current_lang", context.translate(String.format(I18n.LANGUAGE_NAME, context.getLang())));
+        data.put("langs", generateLanguageDropdown(Versions.LANGUAGES, context));
+        data.put("index", "#");
+        data.put("root", context.getRootDir());
+        data.put("tfc_version", Versions.TFC_VERSION);
+        data.put("location", indexBreadcrumbModern(null));
+        data.put("contents", generateTableOfContents(context.getSortedCategories()));
+        data.put("page_content", generateHomePageContent(context, context.getSortedCategories()));
+
+
+        // 生成页面
+        context.getHtmlRenderer().generatePage("index.ftl", context.getOutputDir(), "index.html", data);
+
+        System.out.println("Static site generated successfully!");
     }
 }

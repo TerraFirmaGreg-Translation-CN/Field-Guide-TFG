@@ -61,8 +61,10 @@ public class LexiconPageAdapter implements JsonDeserializer<BookPage> {
 
 		JsonObject obj = json.getAsJsonObject();
 		String type = obj.get("type").getAsString();
+		boolean flag = false;
 		if (type.indexOf(':') < 0) {
 			type = "patchouli:" + type;
+			flag = true;
 		}
 		Class<? extends BookPage> clazz = pageTypes.get(type);
 		if (clazz == null) {
@@ -70,6 +72,9 @@ public class LexiconPageAdapter implements JsonDeserializer<BookPage> {
 		}
 
 		BookPage page = JsonUtils.RAW_GSON.fromJson(json, clazz);
+		if (flag) {
+			page.setType(type);// Add default domain to the type
+		}
 
 		page.setJsonObject(obj);
 		return page;

@@ -101,15 +101,4 @@ public class ProjectUtil {
             throw new InternalError(reason, quiet);
         }
     }
-    
-    /**
-     * 抛出内部错误
-     */
-    public static void error(String reason) {
-        error(reason, false);
-    }
-    
-    public static void error(String reason, boolean quiet) {
-        throw new InternalError(reason, quiet);
-    }
 }

@@ -159,21 +159,12 @@ public class AssetLoader {
     }
 
     public BufferedImage loadTexture(String path) {
-        Asset asset = loadResource(path, "assets", ".png");
-        if (asset == null) {
-            log.error("Texture not found: {}", path);
-            return null;
+        Asset asset;
+        if (path.endsWith(".png")) {
+            asset = loadResource(path, null, "assets", ".png");
+        } else {
+            asset = loadResource(path, "textures", "assets", ".png");
         }
-
-        try {
-            return ImageIO.read(asset.getInputStream());
-        } catch (IOException e) {
-            log.error("Error loading texture: {}", path, e);
-        }
-        return null;
-    }
-    public BufferedImage loadTexture(String path, String resourceType) {
-        Asset asset = loadResource(path, resourceType, "assets", ".png");
         if (asset == null) {
             log.error("Texture not found: {}", path);
             return null;
@@ -191,19 +182,18 @@ public class AssetLoader {
         return loadResource(path, null, resourceRoot, resourceSuffix);
     }
 
-
-    public Asset loadResource(String path, String resourceType, String resourceRoot, String resourceSuffix) {
+    public Asset loadResource(String resourceLocation, String resourceType, String resourceRoot, String resourceSuffix) {
         String domain;
         String res;
 
-        int index = path.indexOf(':');
+        int index = resourceLocation.indexOf(':');
         if (index <= 0) {
             domain = "minecraft";// 默认为minecraft命名空间
-            res = path;
-            log.info("Assuming resource path: {}", path);
+            res = resourceLocation;
+            log.info("Assuming resource resourceLocation: {}", resourceLocation);
         } else {
-            domain = path.substring(0, index);
-            res = path.substring(index + 1);
+            domain = resourceLocation.substring(0, index);
+            res = resourceLocation.substring(index + 1);
         }
 
         StringBuilder sb = new StringBuilder();
@@ -219,8 +209,18 @@ public class AssetLoader {
         String resourcePath = sb.toString();
         Asset asset = getAsset(resourcePath);
         if (asset == null) {
-            log.error("Resource not found: {}, in {}", path, resourcePath);
+            log.error("Resource not found: {}, in {}", resourceLocation, resourcePath);
         }
         return asset;
+    }
+
+    public void loadModel(String path) {
+
+        // Block States
+        // assets/{namespace}/blockstates/{res}.json
+        // Block Model
+        // assets/{namespace}/models/block/{res}.json
+        // Item Model
+        // assets/{namespace}/models/item/{res}.json
     }
 }

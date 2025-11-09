@@ -5,6 +5,7 @@ import io.github.tfgcn.fieldguide.Context;
 import io.github.tfgcn.fieldguide.MCMeta;
 import io.github.tfgcn.fieldguide.Versions;
 
+import java.io.IOException;
 import java.nio.file.Paths;
 
 /**
@@ -14,9 +15,9 @@ import java.nio.file.Paths;
  */
 public class BookParserTest {
 
-    public static void main(String[] args) {
-        //String root = "/Users/yanmaoyuan/HMCL/.minecraft/versions/TerraFirmaGreg-Modern-0.11.7";
-        String root = "E:\\HMCL-3.6.12\\.minecraft\\versions\\TerraFirmaGreg-Modern-0.11.7";
+    public static void main(String[] args) throws IOException {
+        String root = "/Users/yanmaoyuan/HMCL/.minecraft/versions/TerraFirmaGreg-Modern-0.11.7";
+        //String root = "E:\\HMCL-3.6.12\\.minecraft\\versions\\TerraFirmaGreg-Modern-0.11.7";
 
         root = root.replace("\\", "/");
 
@@ -25,7 +26,7 @@ public class BookParserTest {
         AssetLoader assetLoader = new AssetLoader(Paths.get(root));
         assetLoader.addMcClientSource();// Add minecraft client jar manually
 
-        Context context = new Context(assetLoader, "output", root, true);
+        Context context = new Context(assetLoader, "output", root, false);
 
         BookParser bookParser = new BookParser();
         bookParser.processAllLanguages(context);
