@@ -6,10 +6,11 @@ import io.github.tfgcn.fieldguide.asset.Asset;
 import io.github.tfgcn.fieldguide.asset.AssetLoader;
 import io.github.tfgcn.fieldguide.book.BookCategory;
 import io.github.tfgcn.fieldguide.book.BookEntry;
+import io.github.tfgcn.fieldguide.book.page.AbstractPageWithText;
 import io.github.tfgcn.fieldguide.item.ItemImageResult;
 import io.github.tfgcn.fieldguide.mc.BlockModel;
-import io.github.tfgcn.fieldguide.render.BlockTextureRenderer;
-import io.github.tfgcn.fieldguide.render.HtmlRenderer;
+import io.github.tfgcn.fieldguide.renderer.TextureRenderer;
+import io.github.tfgcn.fieldguide.renderer.HtmlRenderer;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
@@ -27,7 +28,7 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.List;
 
-import static io.github.tfgcn.fieldguide.render.BlockTextureRenderer.adjustBrightness;
+import static io.github.tfgcn.fieldguide.renderer.TextureRenderer.adjustBrightness;
 
 @Slf4j
 @Data
@@ -164,10 +165,11 @@ public class Context {
     public String nextId() {
         return nextId("content");
     }
-    
-    /**
-     * 添加条目到分类
-     */
+
+    public boolean hasEntry(String entryId) {
+        return this.entries.containsKey(entryId);
+    }
+
     public void addEntry(String categoryId, String entryId, BookEntry entry, Map<String, Object> search) {
         try {
             this.entries.put(entryId, entry);
@@ -246,8 +248,8 @@ public class Context {
         }
     }
 
-    public void formatText(List<String> buffer, Map<String, Object> data) {
-        formatText(buffer, data, "text", null);
+    public void formatText(List<String> buffer, AbstractPageWithText page) {
+        formatText(buffer, page.getText(), null);
     }
     
     /**
@@ -325,14 +327,10 @@ public class Context {
     /**
      * 居中对齐文本
      */
-    public void formatCenteredText(List<String> buffer, Map<String, Object> data, String key) {
+    public void formatCenteredText(List<String> buffer, String text) {
         buffer.add("<div style=\"text-align: center;\">");
-        formatText(buffer, data, key, null);
+        formatText(buffer, text, null);
         buffer.add("</div>");
-    }
-    
-    public void formatCenteredText(List<String> buffer, Map<String, Object> data) {
-        formatCenteredText(buffer, data, "text");
     }
     
     /**
@@ -350,16 +348,11 @@ public class Context {
     /**
      * 格式化配方
      */
-    public void formatRecipe(List<String> buffer, Map<String, Object> data, String key) {
-        if (data.containsKey(key)) {
-            String recipeId = (String) data.get(key);
+    public void formatRecipe(List<String> buffer, String recipeId) {
+        if (recipeId != null && !recipeId.isEmpty()) {
             String text = String.format("%s: <code>%s</code>", translate(I18n.RECIPE), recipeId);
             formatWithTooltip(buffer, text, translate(I18n.RECIPE_ONLY_IN_GAME));
         }
-    }
-    
-    public void formatRecipe(List<String> buffer, Map<String, Object> data) {
-        formatRecipe(buffer, data, "recipe");
     }
     
     /**
@@ -627,7 +620,7 @@ public class Context {
             }
 
             ItemImageResult result = new ItemImageResult(path, name, key);
-            // CACHE item -> (path, name, key)
+            // TODO CACHE item -> (path, name, key)
             return result;
         } catch (Exception e) {
             log.warn("Failed to create item image: {}", item, e);
@@ -860,7 +853,6 @@ public class Context {
         if (images.size() == 1) {
             path = saveImage(nextId("block"), images.get(0));
         } else {
-            // FIXME
             path = saveGif(nextId("block"), images);
         }
 
@@ -1047,7 +1039,7 @@ public class Context {
             top = rotateImage(top, 90);
         }
 
-        BufferedImage result = BlockTextureRenderer.createBlockImage(left, right, top);
+        BufferedImage result = TextureRenderer.createBlockImage(left, right, top);
         return result;
     }
 
@@ -1057,7 +1049,7 @@ public class Context {
         right = cropRetainingPosition(right, 0, 8, 16, 16);
 
         // 合并图像
-        BufferedImage result = BlockTextureRenderer.createBlockImage(left, right, top);
+        BufferedImage result = TextureRenderer.createBlockImage(left, right, top);
         return result;
     }
 

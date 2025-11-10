@@ -9,7 +9,8 @@ public class PageMultiblock extends AbstractPageWithText {
 
     private String name;
 
-    private String multiblock_id;
+    @SerializedName("multiblock_id")
+    private String multiblockId;
 
     /**
      * @see <a href="https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/multiblocks">Defining Multiblocks</a>

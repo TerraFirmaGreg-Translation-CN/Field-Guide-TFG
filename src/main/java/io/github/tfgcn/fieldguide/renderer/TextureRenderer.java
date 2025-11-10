@@ -1,4 +1,4 @@
-package io.github.tfgcn.fieldguide.render;
+package io.github.tfgcn.fieldguide.renderer;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.IndexColorModel;
 import java.awt.image.RescaleOp;
 
-public class BlockTextureRenderer {
+public class TextureRenderer {
     
     // 透视变换的目标坐标（优化后的坐标）
     private static final Point[] LEFT_FACE_POINTS = {

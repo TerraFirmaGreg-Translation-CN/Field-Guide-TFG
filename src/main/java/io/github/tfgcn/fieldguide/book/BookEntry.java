@@ -105,6 +105,7 @@ public class BookEntry {
     @SerializedName("entry_color")
     private String entryColor;
 
+    private String iconPath = "";
     private String iconName = "";
 
     // Equivalent to Python's push method

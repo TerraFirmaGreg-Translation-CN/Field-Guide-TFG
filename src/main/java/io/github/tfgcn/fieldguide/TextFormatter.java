@@ -136,6 +136,9 @@ public class TextFormatter {
             }
             link = link.contains("#") ? link.replace("#", ".html#") : link + ".html";
             matchingTags("<a href=\"../" + link + "\">", "</a>");
+        } else if (key.equals("/l")) {
+            // End Link, ends the current link but maintains formatting ($() also ends links)
+            flushStack();
         } else if (key.equals("thing")) {
             colorTags("#3E8A00");  // Patchy uses #490, we darken it due to accessibility/contrast reasons
         } else if (key.equals("item")) {
@@ -154,6 +157,8 @@ public class TextFormatter {
             buffer.add(keybindings.get(key.substring(2)));
         } else if (key.startsWith("t")) {
             // Discard tooltips
+        } else if (key.equals("/t")) {
+            // End Link, ends the current tooltip but maintains formatting ($() also ends tooltips)
         } else {
             log.warn("Unrecognized Formatting Code $({})", key);
         }

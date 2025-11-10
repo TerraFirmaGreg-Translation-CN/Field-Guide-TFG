@@ -1,4 +1,4 @@
-package io.github.tfgcn.fieldguide.render;
+package io.github.tfgcn.fieldguide.renderer;
 
 import freemarker.template.*;
 import io.github.tfgcn.fieldguide.Context;
