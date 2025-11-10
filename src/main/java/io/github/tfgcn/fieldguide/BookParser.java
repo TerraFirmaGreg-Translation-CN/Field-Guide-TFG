@@ -232,7 +232,7 @@ public class BookParser {
                         Map.Entry<String, String> imageEntry = processedImages.get(i);
                         String active = i == 0 ? "active" : "";
                         parts.append(String.format(ImageTemplates.IMAGE_MULTIPLE_PART,
-                                imageEntry.getValue(), imageEntry.getKey(), active));
+                                active, imageEntry.getValue(), imageEntry.getKey()));
 
                         if (i > 0) {
                             seq.append(String.format(ImageTemplates.IMAGE_MULTIPLE_SEQ,
