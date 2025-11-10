@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Índice de Minérios da Terra | Guia de Campo TFC" />
+    <meta name="description" content="Índice de Minérios da Terra" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Índice de Minérios da Terra | Guia de Campo TFC" />
+    <meta property="og:description" content="Índice de Minérios da Terra" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/tfc:ore/normal_native_copper" />
+
+    <title>Índice de Minérios da Terra | Guia de Campo TFC</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">Guia de Campo TerraFirmaCraft</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Versão 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> Português (Brasil)
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/tfg_ores/earth_ore_index.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/tfg_ores/earth_ore_index.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/tfg_ores/earth_ore_index.html" class="dropdown-item">Português (Brasil)</a>
+
+<a href="../../ko_kr/tfg_ores/earth_ore_index.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/tfg_ores/earth_ore_index.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/tfg_ores/earth_ore_index.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/tfg_ores/earth_ore_index.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/tfg_ores/earth_ore_index.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/tfg_ores/earth_ore_index.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Conteúdo</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Índice</a></li>
+            <li><a href="../the_world/">O mundo</a></li>
+
+<li><a href="../getting_started/">Começando</a></li>
+
+<li><a href="../mechanics/">Mecânica avançada</a></li>
+
+<li><a href="../waterflasks/">Cantis de Água</a></li>
+
+<li><a href="../beneath/">O Nether...?</a></li>
+
+<li><a href="../tfg_ores/">Minérios no TFG</a>
+    <ul>
+    <li><a href="./earth_ore_index.html" class="active">Índice de Minérios da Terra</a></li>
+
+<li><a href="./ore_basics.html">Mineração no TFG</a></li>
+
+<li><a href="./earth_vein_index.html">Índice de Veios da Terra</a></li>
+
+<li><a href="./hazards.html">Materiais Perigosos</a></li>
+
+<li><a href="./nether_ore_index.html">Índice de Minérios das Profundezas</a></li>
+
+<li><a href="./nether_vein_index.html">Índice de Veios das Profundezas</a></li>
+
+<li><a href="./moon_ore_index.html">Índice de Minérios da Lua</a></li>
+
+<li><a href="./moon_vein_index.html">Índice de Veios da Lua</a></li>
+
+<li><a href="./mars_ore_index.html">Mars Ore Index</a></li>
+
+<li><a href="./mars_vein_index.html">Mars Vein Index</a></li>
+
+    </ul>
+</li>
+
+<li><a href="../tfg_tips/">Informações e Dicas do TFG</a></li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">Minérios no TFG</a></li>
+<li class="breadcrumb-item active" aria-current="page">Índice de Minérios da Terra</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4"><img src="../../_images/item140.png" alt="{item.tfc.ore.normal_native_copper}" class="me-2" style="height: 1.5em;">Índice de Minérios da Terra
+</h1>
+<h5>Índice de Minérios da Terra</h5>
+<p>Este é o <span style="color:#3E8A00;">Índice de Minérios</span> para <span style="color:#3E8A00;">Terra</span>. Todos os minérios estão ordenados alfabeticamente e do veio mais rico para o mais pobre. Você pode clicar neles para saber mais sobre cada veio.</p>
+<p></p>
+<ul>
+	<li>Almandina: <a href="../tfg_ores/earth_vein_index.html#deep_sapphire">38%</a></li>
+	<li>Alunita: <a href="../tfg_ores/earth_vein_index.html#normal_saltpeter">15%</a></li>
+	<li>Ametista: <a href="../tfg_ores/earth_vein_index.html#deep_garnet_amethyst">65%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_garnet_opal">25%</a></li>
+	<li>Amianto: <a href="../tfg_ores/earth_vein_index.html#normal_garnet_tin">25%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_quartz">18%</a></li>
+	<li>Apatita: <a href="../tfg_ores/earth_vein_index.html#normal_apatite">50%</a></li>
+	<li>Areia Cassiterita: <a href="../tfg_ores/earth_vein_index.html#normal_garnet_tin">35%</a></li>
+	<li>Areia Glauconita: <a href="../tfg_ores/earth_vein_index.html#normal_lubricant">25%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_olivine">15%</a></li>
+	<li>Areia Granada: <a href="../tfg_ores/earth_vein_index.html#normal_garnet_tin">25%</a></li>
+	<li>Areia Mineral Basáltica: <a href="../tfg_ores/earth_vein_index.html#normal_basaltic_sands">35%</a></li>
+	<li>Areia Mineral Granítica: <a href="../tfg_ores/earth_vein_index.html#normal_basaltic_sands">25%</a></li>
+	<li>Areias Petrolíferas: <a href="../tfg_ores/earth_vein_index.html#normal_oilsands">100%</a></li>
+	<li>Barita: <a href="../tfg_ores/earth_vein_index.html#normal_quartz">37%</a></li>
+	<li>Bastnasita: <a href="../tfg_ores/earth_vein_index.html#normal_monazite">62%</a></li>
+	<li>Bauxita: <a href="../tfg_ores/earth_vein_index.html#normal_mica">25%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Bentonita: <a href="../tfg_ores/earth_vein_index.html#normal_olivine">35%</a></li>
+	<li>Berílio: <a href="../tfg_ores/earth_vein_index.html#normal_beryllium">35%</a></li>
+	<li>Bismuto: <a href="../tfg_ores/earth_vein_index.html#surface_bismuthinite">85%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_bismuthinite">72%</a></li>
+	<li>Bórax: <a href="../tfg_ores/earth_vein_index.html#normal_gypsum">20%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_salt">15%</a></li>
+	<li>Bornita: <a href="../tfg_ores/earth_vein_index.html#deep_sheldonite">53%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_topaz">15%</a></li>
+	<li>Calcita: <a href="../tfg_ores/earth_vein_index.html#normal_gypsum">30%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_lapis">15%</a></li>
+	<li>Calcocita: <a href="../tfg_ores/earth_vein_index.html#deep_topaz">25%</a></li>
+	<li>Calcopirita: <a href="../tfg_ores/earth_vein_index.html#surface_copper">61%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_copper">20%</a></li>
+	<li>Carvão: <a href="../tfg_ores/earth_vein_index.html#normal_coal">100%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_graphite">30%</a></li>
+	<li>Cassiterita: <a href="../tfg_ores/earth_vein_index.html#surface_cassiterite">60%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_cassiterite">40%</a>, <a href="../tfg_ores/earth_vein_index.html#surface_copper">5%</a></li>
+	<li>Chumbo: <a href="../tfg_ores/earth_vein_index.html#normal_silver">55%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_bismuthinite">10%</a>, <a href="../tfg_ores/earth_vein_index.html#surface_bismuthinite">7%</a></li>
+	<li>Cianita: <a href="../tfg_ores/earth_vein_index.html#normal_mica">35%</a></li>
+	<li>Cinábrio: <a href="../tfg_ores/earth_vein_index.html#normal_redstone">20%</a></li>
+	<li>Cobaltita: <a href="../tfg_ores/earth_vein_index.html#normal_garnierite">20%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Cobalto: <a href="../tfg_ores/earth_vein_index.html#normal_garnierite">15%</a></li>
+	<li>Cobre Nativo: <a href="../tfg_ores/earth_vein_index.html#normal_copper">65%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_tetrahedrite">30%</a>, <a href="../tfg_ores/earth_vein_index.html#surface_tetrahedrite">20%</a></li>
+	<li>Cooperita: <a href="../tfg_ores/earth_vein_index.html#deep_sheldonite">38%</a></li>
+	<li>Cromita: <a href="../tfg_ores/earth_vein_index.html#deep_magnetite">33%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_magnetite">4%</a></li>
+	<li>Diamante: <a href="../tfg_ores/earth_vein_index.html#normal_graphite">25%</a></li>
+	<li>Diatomita: <a href="../tfg_ores/earth_vein_index.html#normal_saltpeter">25%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_garnet_tin">15%</a></li>
+	<li>Eletrotina: <a href="../tfg_ores/earth_vein_index.html#normal_saltpeter">25%</a></li>
+	<li>Enxofre: <a href="../tfg_ores/earth_vein_index.html#surface_sphalerite">55%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_sulfur">50%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_sphalerite">35%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_bismuthinite">8%</a>, <a href="../tfg_ores/earth_vein_index.html#surface_bismuthinite">3%</a></li>
+	<li>Esfalerita: <a href="../tfg_ores/earth_vein_index.html#normal_sphalerite">40%</a>, <a href="../tfg_ores/earth_vein_index.html#surface_sphalerite">40%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_sulfur">15%</a></li>
+	<li>Esmeralda: <a href="../tfg_ores/earth_vein_index.html#normal_beryllium">50%</a></li>
+	<li>Espessartita: <a href="../tfg_ores/earth_vein_index.html#normal_manganese">25%</a></li>
+	<li>Espodumena: <a href="../tfg_ores/earth_vein_index.html#normal_spodumene">35%</a></li>
+	<li>Estanho: <a href="../tfg_ores/earth_vein_index.html#normal_cassiterite">60%</a>, <a href="../tfg_ores/earth_vein_index.html#surface_cassiterite">40%</a></li>
+	<li>Estibnita: <a href="../tfg_ores/earth_vein_index.html#normal_tetrahedrite">20%</a>, <a href="../tfg_ores/earth_vein_index.html#surface_tetrahedrite">20%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Fosfato Tricálcico: <a href="../tfg_ores/earth_vein_index.html#normal_apatite">35%</a></li>
+	<li>Galena: <a href="../tfg_ores/earth_vein_index.html#normal_silver">30%</a></li>
+	<li>Garnierita: <a href="../tfg_ores/earth_vein_index.html#normal_garnierite">30%</a></li>
+	<li>Gipsita: <a href="../tfg_ores/earth_vein_index.html#normal_gypsum">35%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_basaltic_sands">15%</a></li>
+	<li>Glossulária: <a href="../tfg_ores/earth_vein_index.html#normal_manganese">37%</a></li>
+	<li>Goethita: <a href="../tfg_ores/earth_vein_index.html#deep_limonite">50%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_hematite">25%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_hematite">15%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_limonite">15%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_gold">5%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_gold">5%</a></li>
+	<li>Grafite: <a href="../tfg_ores/earth_vein_index.html#normal_graphite">45%</a></li>
+	<li>Granada Amarela: <a href="../tfg_ores/earth_vein_index.html#deep_garnet_amethyst">15%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_garnet_opal">15%</a></li>
+	<li>Granada Vermelha: <a href="../tfg_ores/earth_vein_index.html#deep_garnet_amethyst">5%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_garnet_opal">5%</a></li>
+	<li>Hematita: <a href="../tfg_ores/earth_vein_index.html#normal_hematite">50%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_hematite">35%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_gold">20%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_limonite">20%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_gold">15%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_limonite">15%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_copper">5%</a></li>
+	<li>Lápis-lazúri: <a href="../tfg_ores/earth_vein_index.html#normal_lapis">25%</a></li>
+	<li>Lazurita: <a href="../tfg_ores/earth_vein_index.html#normal_lapis">35%</a></li>
+	<li>Lepidorita: <a href="../tfg_ores/earth_vein_index.html#normal_salt">15%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_spodumene">15%</a></li>
+	<li>Limonita Amarela: <a href="../tfg_ores/earth_vein_index.html#normal_limonite">50%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_hematite">30%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_gold">20%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_hematite">15%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_limonite">15%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_gold">5%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Lítio: <a href="../tfg_ores/earth_vein_index.html#deep_scheelite">20%</a></li>
+	<li>Magnesita: <a href="../tfg_ores/earth_vein_index.html#normal_olivine">25%</a></li>
+	<li>Magnetita: <a href="../tfg_ores/earth_vein_index.html#normal_magnetite">63%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_magnetite">8%</a></li>
+	<li>Magnetita de Vanádio: <a href="../tfg_ores/earth_vein_index.html#normal_magnetite">22%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_magnetite">25%</a></li>
+	<li>Malaquita: <a href="../tfg_ores/earth_vein_index.html#deep_limonite">20%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_limonite">15%</a></li>
+	<li>Mica: <a href="../tfg_ores/earth_vein_index.html#normal_mica">25%</a></li>
+	<li>Molibdenita: <a href="../tfg_ores/earth_vein_index.html#deep_molybdenum">35%</a></li>
+	<li>Monazita: <a href="../tfg_ores/earth_vein_index.html#normal_monazite">31%</a></li>
+	<li>Neodímio: <a href="../tfg_ores/earth_vein_index.html#normal_monazite">6%</a></li>
+	<li>Níquel: <a href="../tfg_ores/earth_vein_index.html#normal_garnierite">10%</a></li>
+	<li>Olivina: <a href="../tfg_ores/earth_vein_index.html#normal_olivine">25%</a></li>
+	<li>Opala: <a href="../tfg_ores/earth_vein_index.html#deep_garnet_opal">55%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_garnet_amethyst">15%</a></li>
+	<li>Ouro Nativo: <a href="../tfg_ores/earth_vein_index.html#deep_gold">75%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_gold">55%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_magnetite">25%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_magnetite">9%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_hematite">5%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_hematite">5%</a></li>
+	<li>Pechblenda: <a href="../tfg_ores/earth_vein_index.html#deep_pitchblende">62%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Pedra-sabão: <a href="../tfg_ores/earth_vein_index.html#normal_lubricant">30%</a></li>
+	<li>Pentlandita: <a href="../tfg_ores/earth_vein_index.html#normal_garnierite">25%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_lubricant">15%</a></li>
+	<li>Pirita: <a href="../tfg_ores/earth_vein_index.html#normal_sulfur">35%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_sphalerite">25%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_copper">10%</a>, <a href="../tfg_ores/earth_vein_index.html#surface_sphalerite">5%</a></li>
+	<li>Pirocloro: <a href="../tfg_ores/earth_vein_index.html#normal_apatite">15%</a></li>
+	<li>Pirolusita: <a href="../tfg_ores/earth_vein_index.html#normal_manganese">25%</a></li>
+	<li>Piropo: <a href="../tfg_ores/earth_vein_index.html#deep_sapphire">27%</a></li>
+	<li>Platina: <a href="../tfg_ores/earth_vein_index.html#deep_sheldonite">7%</a></li>
+	<li>Polucita: <a href="../tfg_ores/earth_vein_index.html#normal_mica">15%</a></li>
+	<li>Powellita: <a href="../tfg_ores/earth_vein_index.html#deep_molybdenum">17%</a></li>
+	<li>Prata Nativa: <a href="../tfg_ores/earth_vein_index.html#normal_silver">15%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_bismuthinite">9%</a>, <a href="../tfg_ores/earth_vein_index.html#surface_bismuthinite">5%</a></li>
+	<li>Quartzito: <a href="../tfg_ores/earth_vein_index.html#normal_quartz">43%</a></li>
+	<li>Realgar: <a href="../tfg_ores/earth_vein_index.html#surface_copper">16%</a></li>
+	<li>Redstone: <a href="../tfg_ores/earth_vein_index.html#normal_redstone">45%</a></li>
+	<li>Rubi: <a href="../tfg_ores/earth_vein_index.html#normal_redstone">35%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_hematite">20%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Safira: <a href="../tfg_ores/earth_vein_index.html#deep_sapphire">16%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_magnetite">8%</a></li>
+	<li>Safira Verde: <a href="../tfg_ores/earth_vein_index.html#deep_sapphire">16%</a></li>
+	<li>Sal: <a href="../tfg_ores/earth_vein_index.html#normal_salt">30%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_spodumene">30%</a></li>
+	<li>Sal-gema: <a href="../tfg_ores/earth_vein_index.html#normal_salt">40%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_spodumene">20%</a></li>
+	<li>Salitre: <a href="../tfg_ores/earth_vein_index.html#normal_saltpeter">35%</a></li>
+	<li>Sheelita: <a href="../tfg_ores/earth_vein_index.html#deep_scheelite">45%</a></li>
+	<li>Sodalita: <a href="../tfg_ores/earth_vein_index.html#normal_lapis">25%</a></li>
+	<li>Talco: <a href="../tfg_ores/earth_vein_index.html#normal_lubricant">20%</a></li>
+	<li>Tantalita: <a href="../tfg_ores/earth_vein_index.html#normal_manganese">12%</a></li>
+	<li>Terra de Fuller: <a href="../tfg_ores/earth_vein_index.html#normal_basaltic_sands">25%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_gypsum">15%</a></li>
+	<li>Tetraedrita: <a href="../tfg_ores/earth_vein_index.html#surface_tetrahedrite">60%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_tetrahedrite">50%</a></li>
+	<li>Topázio: <a href="../tfg_ores/earth_vein_index.html#deep_topaz">25%</a></li>
+	<li>Topázio Azul: <a href="../tfg_ores/earth_vein_index.html#deep_topaz">35%</a></li>
+	<li>Tório: <a href="../tfg_ores/earth_vein_index.html#normal_beryllium">15%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Trona: <a href="../tfg_ores/earth_vein_index.html#normal_lubricant">10%</a></li>
+	<li>Tungstato: <a href="../tfg_ores/earth_vein_index.html#deep_scheelite">35%</a></li>
+	<li>Uraninita: <a href="../tfg_ores/earth_vein_index.html#deep_pitchblende">25%</a></li>
+	<li>Wulfenita: <a href="../tfg_ores/earth_vein_index.html#deep_molybdenum">47%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_pitchblende">12%</a></li>
+	<li>Zeólita: <a href="../tfg_ores/earth_vein_index.html#surface_copper">16%</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> Documentação da API
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'pt_br';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

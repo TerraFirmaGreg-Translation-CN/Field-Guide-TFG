@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Tapping Index | TFC Field Guide" />
+    <meta name="description" content="Tapping Index" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Tapping Index | TFC Field Guide" />
+    <meta property="og:description" content="Tapping Index" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/afc:wood/sapling/weeping_maple" />
+
+    <title>Tapping Index | TFC Field Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">TerraFirmaCraft Field Guide</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Version 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> English
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/arborfirmacraft/tapping_index.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/arborfirmacraft/tapping_index.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/arborfirmacraft/tapping_index.html" class="dropdown-item">Portuguese (Brazil)</a>
+
+<a href="../../ko_kr/arborfirmacraft/tapping_index.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/arborfirmacraft/tapping_index.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/arborfirmacraft/tapping_index.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/arborfirmacraft/tapping_index.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/arborfirmacraft/tapping_index.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/arborfirmacraft/tapping_index.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Contents</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Index</a></li>
+            <li><a href="../the_world/">The World</a></li>
+
+<li><a href="../getting_started/">Getting Started</a></li>
+
+<li><a href="../mechanics/">Advanced Mechanics</a></li>
+
+<li><a href="../sacks_n_such/">Sacks 'N Such</a></li>
+
+<li><a href="../waterflasks/">Water Flasks</a></li>
+
+<li><a href="../beneath/">Beneath</a></li>
+
+<li><a href="../firmalife/">Firmalife</a></li>
+
+<li><a href="../roadsandroofs/">Roads and Roofs</a></li>
+
+<li><a href="../arborfirmacraft/">ArborFirmaCraft</a>
+    <ul>
+    <li><a href="./tapping_index.html" class="active">Tapping Index</a></li>
+
+<li><a href="./tree_tapping.html">Tapping Trees</a></li>
+
+<li><a href="./making_syrups.html">Making Syrups</a></li>
+
+<li><a href="./making_rubber.html">Processing Latex</a></li>
+
+    </ul>
+</li>
+
+<li><a href="../firmaciv/">Firma: Civilization</a></li>
+
+<li><a href="../tfcchannelcasting/">TFC Casting with Channels</a></li>
+
+<li><a href="../tfg_ores/">Ores in TFG</a></li>
+
+<li><a href="../tfg_tips/">TFG Info & Tips</a></li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">ArborFirmaCraft</a></li>
+<li class="breadcrumb-item active" aria-current="page">Tapping Index</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4"><img src="../../_images/item8.png" alt="{item.afc.wood.sapling.weeping_maple}" class="me-2" style="height: 1.5em;">Tapping Index
+</h1>
+<p>This is a list of every tappable tree in the world, sorted alphabetically.<br/>
+<span style="color:#3E8A00;">Climate Data</span> will tell you what Temperature and Rainfall the tree can appear in, while <span style="color:#3E8A00;">Tapping Data</span> will tell you details regarding production, flowrate, and whether the tree produces only in Spring.</p>
+<p><a href="../arborfirmacraft/tapping_index.html#maple"></p>
+<ul>
+	<li>Maple</a><a href="../arborfirmacraft/tapping_index.html#birch"></li>
+	<li>Birch</a><a href="../arborfirmacraft/tapping_index.html#hevea"></li>
+	<li>Hevea</a><a href="../arborfirmacraft/tapping_index.html#rubber_fig"></li>
+	<li>Rubber Fig</a><a href="../arborfirmacraft/tapping_index.html#kapok"></li>
+	<li>Kapok</a><a href="../arborfirmacraft/tapping_index.html#aspen"></li>
+	<li>Aspen</a><a href="../arborfirmacraft/tapping_index.html#spruce"></li>
+	<li>Spruce</a><a href="../arborfirmacraft/tapping_index.html#white_cedar"></li>
+	<li>White Cedar</a><a href="../arborfirmacraft/tapping_index.html#douglas_fir"></li>
+	<li>Douglas Fir</a></li>
+</ul>
+<a class="anchor" id="maple"></a><p><strong>Climate Data</strong><br/>
+<span style="color:#3E8A00;">Minimum Temperature</span>: -8.4°C<br/>
+<span style="color:#3E8A00;">Maximum Temperature</span>: 8°C<br/>
+<span style="color:#3E8A00;">Minimum Rainfall</span>: 240<br/>
+<span style="color:#3E8A00;">Maximum Rainfall</span>: 470<br/>
+<br/>
+<strong>Tapping Data</strong><br/>
+<span style="color:#3E8A00;">Min Temp for Production</span>: -15°C<br/>
+<span style="color:#3E8A00;">Max Temp for Production</span>: 5°C<br/>
+<span style="color:#3E8A00;">Spring Exclusive</span>: No<br/>
+<span style="color:#3E8A00;">Flow Rate</span>: 5mb</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image8.png" alt="tfg:textures/gui/field_guide/tapping_index/maple_tree.png"><div style="text-align: center;"><p><span style="color:#3E8A00;">Produces</span>: Maple Sap<br/>
+<span style="color:#3E8A00;">Processes Into</span>: Maple Sugar</p>
+</div><a class="anchor" id="birch"></a><p><strong>Climate Data</strong><br/>
+<span style="color:#3E8A00;">Minimum Temperature</span>: -12.1°C<br/>
+<span style="color:#3E8A00;">Maximum Temperature</span>: 6.1°C<br/>
+<span style="color:#3E8A00;">Minimum Rainfall</span>: 125<br/>
+<span style="color:#3E8A00;">Maximum Rainfall</span>: 310<br/>
+<br/>
+<strong>Tapping Data</strong><br/>
+<span style="color:#3E8A00;">Min Temp for Production</span>: -15°C<br/>
+<span style="color:#3E8A00;">Max Temp for Production</span>: 5°C<br/>
+<span style="color:#3E8A00;">Spring Exclusive</span>: No<br/>
+<span style="color:#3E8A00;">Flow Rate</span>: 5mb</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image9.png" alt="tfg:textures/gui/field_guide/tapping_index/birch_tree.png"><div style="text-align: center;"><p><span style="color:#3E8A00;">Produces</span>: Birch Sap<br/>
+<span style="color:#3E8A00;">Processes Into</span>: Birch Sugar</p>
+</div><a class="anchor" id="hevea"></a><p><strong>Climate Data</strong><br/>
+<span style="color:#3E8A00;">Minimum Temperature</span>: 17.1°C<br/>
+<span style="color:#3E8A00;">Maximum Temperature</span>: 26.2°C<br/>
+<span style="color:#3E8A00;">Minimum Rainfall</span>: 390<br/>
+<span style="color:#3E8A00;">Maximum Rainfall</span>: 500<br/>
+<br/>
+<strong>Tapping Data</strong><br/>
+<span style="color:#3E8A00;">Min Temp for Production</span>: 8°C<br/>
+<span style="color:#3E8A00;">Max Temp for Production</span>: N/A<br/>
+<span style="color:#3E8A00;">Spring Exclusive</span>: No<br/>
+<span style="color:#3E8A00;">Flow Rate</span>: 3mb</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image10.png" alt="tfg:textures/gui/field_guide/tapping_index/hevea_tree.png"><div style="text-align: center;"><p><span style="color:#3E8A00;">Produces</span>: Latex<br/>
+<span style="color:#3E8A00;">Processes Into</span>: Sticky Resin & Rubber</p>
+</div><a class="anchor" id="rubber_fig"></a><p><strong>Climate Data</strong><br/>
+<span style="color:#3E8A00;">Minimum Temperature</span>: 9.8°C<br/>
+<span style="color:#3E8A00;">Maximum Temperature</span>: 20.7°C<br/>
+<span style="color:#3E8A00;">Minimum Rainfall</span>: 290<br/>
+<span style="color:#3E8A00;">Maximum Rainfall</span>: 400<br/>
+<br/>
+<strong>Tapping Data</strong><br/>
+<span style="color:#3E8A00;">Min Temp for Production</span>: 4°C<br/>
+<span style="color:#3E8A00;">Max Temp for Production</span>: N/A<br/>
+<span style="color:#3E8A00;">Spring Exclusive</span>: No<br/>
+<span style="color:#3E8A00;">Flow Rate</span>: 2mb</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image11.png" alt="tfg:textures/gui/field_guide/tapping_index/rubber_fig_tree.png"><div style="text-align: center;"><p><span style="color:#3E8A00;">Produces</span>: Latex<br/>
+<span style="color:#3E8A00;">Processes Into</span>: Sticky Resin & Rubber</p>
+</div><a class="anchor" id="kapok"></a><p><strong>Climate Data</strong><br/>
+<span style="color:#3E8A00;">Minimum Temperature</span>: 17.1°C<br/>
+<span style="color:#3E8A00;">Maximum Temperature</span>: 38°C<br/>
+<span style="color:#3E8A00;">Minimum Rainfall</span>: 320<br/>
+<span style="color:#3E8A00;">Maximum Rainfall</span>: 500<br/>
+<br/>
+<strong>Tapping Data</strong><br/>
+<span style="color:#3E8A00;">Min Temp for Production</span>: 12°C<br/>
+<span style="color:#3E8A00;">Max Temp for Production</span>: N/A<br/>
+<span style="color:#3E8A00;">Spring Exclusive</span>: No<br/>
+<span style="color:#3E8A00;">Flow Rate</span>: 4mb</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image12.png" alt="tfg:textures/gui/field_guide/tapping_index/kapok_tree.png"><div style="text-align: center;"><p><span style="color:#3E8A00;">Produces</span>: Latex<br/>
+<span style="color:#3E8A00;">Processes Into</span>: Sticky Resin & Rubber</p>
+</div><a class="anchor" id="aspen"></a><p><strong>Climate Data</strong><br/>
+<span style="color:#3E8A00;">Minimum Temperature</span>: -15.7°C<br/>
+<span style="color:#3E8A00;">Maximum Temperature</span>: -1.1°C<br/>
+<span style="color:#3E8A00;">Minimum Rainfall</span>: 350<br/>
+<span style="color:#3E8A00;">Maximum Rainfall</span>: 500<br/>
+<br/>
+<strong>Tapping Data</strong><br/>
+<span style="color:#3E8A00;">Min Temp for Production</span>: -10°C<br/>
+<span style="color:#3E8A00;">Max Temp for Production</span>: N/A<br/>
+<span style="color:#3E8A00;">Spring Exclusive</span>: No<br/>
+<span style="color:#3E8A00;">Flow Rate</span>: 2mb</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image13.png" alt="tfg:textures/gui/field_guide/tapping_index/aspen_tree.png"><div style="text-align: center;"><p><span style="color:#3E8A00;">Produces</span>: Conifer Pitch<br/>
+<span style="color:#3E8A00;">Processes Into</span>: Sticky Resin & Conifer Rosin</p>
+</div><a class="anchor" id="spruce"></a><p><strong>Climate Data</strong><br/>
+<span style="color:#3E8A00;">Minimum Temperature</span>: -17.5°C<br/>
+<span style="color:#3E8A00;">Maximum Temperature</span>: -6.6°C<br/>
+<span style="color:#3E8A00;">Minimum Rainfall</span>: 220<br/>
+<span style="color:#3E8A00;">Maximum Rainfall</span>: 470<br/>
+<br/>
+<strong>Tapping Data</strong><br/>
+<span style="color:#3E8A00;">Min Temp for Production</span>: -10°C<br/>
+<span style="color:#3E8A00;">Max Temp for Production</span>: N/A<br/>
+<span style="color:#3E8A00;">Spring Exclusive</span>: No<br/>
+<span style="color:#3E8A00;">Flow Rate</span>: 4mb</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image14.png" alt="tfg:textures/gui/field_guide/tapping_index/spruce_tree.png"><div style="text-align: center;"><p><span style="color:#3E8A00;">Produces</span>: Conifer Pitch<br/>
+<span style="color:#3E8A00;">Processes Into</span>: Sticky Resin & Conifer Rosin</p>
+</div><a class="anchor" id="white_cedar"></a><p><strong>Climate Data</strong><br/>
+<span style="color:#3E8A00;">Minimum Temperature</span>: -15.7°C<br/>
+<span style="color:#3E8A00;">Maximum Temperature</span>: 0.7°C<br/>
+<span style="color:#3E8A00;">Minimum Rainfall</span>: 100<br/>
+<span style="color:#3E8A00;">Maximum Rainfall</span>: 285<br/>
+<br/>
+<strong>Tapping Data</strong><br/>
+<span style="color:#3E8A00;">Min Temp for Production</span>: -8°C<br/>
+<span style="color:#3E8A00;">Max Temp for Production</span>: N/A<br/>
+<span style="color:#3E8A00;">Spring Exclusive</span>: No<br/>
+<span style="color:#3E8A00;">Flow Rate</span>: 3mb</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image15.png" alt="tfg:textures/gui/field_guide/tapping_index/white_cedar_tree.png"><div style="text-align: center;"><p><span style="color:#3E8A00;">Produces</span>: Conifer Pitch<br/>
+<span style="color:#3E8A00;">Processes Into</span>: Sticky Resin & Conifer Rosin</p>
+</div><a class="anchor" id="douglas_fir"></a><p><strong>Climate Data</strong><br/>
+<span style="color:#3E8A00;">Minimum Temperature</span>: -15.7°C<br/>
+<span style="color:#3E8A00;">Maximum Temperature</span>: 6.1°C<br/>
+<span style="color:#3E8A00;">Minimum Rainfall</span>: 305<br/>
+<span style="color:#3E8A00;">Maximum Rainfall</span>: 500<br/>
+<br/>
+<strong>Tapping Data</strong><br/>
+<span style="color:#3E8A00;">Min Temp for Production</span>: -8°C<br/>
+<span style="color:#3E8A00;">Max Temp for Production</span>: N/A<br/>
+<span style="color:#3E8A00;">Spring Exclusive</span>: No<br/>
+<span style="color:#3E8A00;">Flow Rate</span>: 2mb</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image16.png" alt="tfg:textures/gui/field_guide/tapping_index/douglas_fir_tree.png"><div style="text-align: center;"><p><span style="color:#3E8A00;">Produces</span>: Conifer Pitch<br/>
+<span style="color:#3E8A00;">Processes Into</span>: Sticky Resin & Conifer Rosin</p>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> API Docs
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'en_us';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

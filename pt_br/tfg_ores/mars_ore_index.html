@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Mars Ore Index | Guia de Campo TFC" />
+    <meta name="description" content="Mars Ore Index" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Mars Ore Index | Guia de Campo TFC" />
+    <meta property="og:description" content="Mars Ore Index" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/tfc:ore/normal_hematite" />
+
+    <title>Mars Ore Index | Guia de Campo TFC</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">Guia de Campo TerraFirmaCraft</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Versão 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> Português (Brasil)
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/tfg_ores/mars_ore_index.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/tfg_ores/mars_ore_index.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/tfg_ores/mars_ore_index.html" class="dropdown-item">Português (Brasil)</a>
+
+<a href="../../ko_kr/tfg_ores/mars_ore_index.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/tfg_ores/mars_ore_index.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/tfg_ores/mars_ore_index.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/tfg_ores/mars_ore_index.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/tfg_ores/mars_ore_index.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/tfg_ores/mars_ore_index.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Conteúdo</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Índice</a></li>
+            <li><a href="../the_world/">O mundo</a></li>
+
+<li><a href="../getting_started/">Começando</a></li>
+
+<li><a href="../mechanics/">Mecânica avançada</a></li>
+
+<li><a href="../waterflasks/">Cantis de Água</a></li>
+
+<li><a href="../beneath/">O Nether...?</a></li>
+
+<li><a href="../tfg_ores/">Minérios no TFG</a>
+    <ul>
+    <li><a href="./earth_ore_index.html">Índice de Minérios da Terra</a></li>
+
+<li><a href="./ore_basics.html">Mineração no TFG</a></li>
+
+<li><a href="./earth_vein_index.html">Índice de Veios da Terra</a></li>
+
+<li><a href="./hazards.html">Materiais Perigosos</a></li>
+
+<li><a href="./nether_ore_index.html">Índice de Minérios das Profundezas</a></li>
+
+<li><a href="./nether_vein_index.html">Índice de Veios das Profundezas</a></li>
+
+<li><a href="./moon_ore_index.html">Índice de Minérios da Lua</a></li>
+
+<li><a href="./moon_vein_index.html">Índice de Veios da Lua</a></li>
+
+<li><a href="./mars_ore_index.html" class="active">Mars Ore Index</a></li>
+
+<li><a href="./mars_vein_index.html">Mars Vein Index</a></li>
+
+    </ul>
+</li>
+
+<li><a href="../tfg_tips/">Informações e Dicas do TFG</a></li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">Minérios no TFG</a></li>
+<li class="breadcrumb-item active" aria-current="page">Mars Ore Index</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4"><img src="../../_images/item142.png" alt="{item.tfc.ore.normal_hematite}" class="me-2" style="height: 1.5em;">Mars Ore Index
+</h1>
+<h5>Mars Ore Index</h5>
+<p>Este é o <span style="color:#3E8A00;">Índice de Minérios</span> para <span style="color:#3E8A00;">Mars</span>. Todos os minérios estão ordenados alfabeticamente e do veio mais rico para o mais pobre. Você pode clicar neles para saber mais sobre cada veio.</p>
+<p></p>
+<ul>
+	<li>Almandina: <a href="../tfg_ores/mars_vein_index.html#mars_almandine">36%</a></li>
+	<li>Amianto: <a href="../tfg_ores/mars_vein_index.html#mars_quartzite">17%</a></li>
+	<li>Apatita: <a href="../tfg_ores/mars_vein_index.html#mars_apatite">47%</a></li>
+	<li>Areia Glauconita: <a href="../tfg_ores/mars_vein_index.html#mars_lubricant">7%</a></li>
+	<li>Barita: <a href="../tfg_ores/mars_vein_index.html#mars_quartzite">35%</a></li>
+	<li>Bastnasita: <a href="../tfg_ores/mars_vein_index.html#mars_neodynium">58%</a></li>
+	<li>Bauxita: <a href="../tfg_ores/mars_vein_index.html#mars_sapphire">20%</a></li>
+	<li>Berílio: <a href="../tfg_ores/mars_vein_index.html#mars_beryllium">35%</a></li>
+	<li>Bismuto: <a href="../tfg_ores/mars_vein_index.html#mars_surface_bismuthinite">40%</a></li>
+	<li>Bornita: <a href="../tfg_ores/mars_vein_index.html#deep_mars_sheldonite">35%</a></li>
+	<li>Calcita: <a href="../tfg_ores/mars_vein_index.html#mars_surface_hematite">5%</a></li>
+	<li>Calcopirita: <a href="../tfg_ores/mars_vein_index.html#mars_copper">65%</a></li>
+	<li>Carvão: <a href="../tfg_ores/mars_vein_index.html#mars_coal">70%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_graphite">25%</a></li>
+	<li>Cassiterita: <a href="../tfg_ores/mars_vein_index.html#mars_surface_cassiterite">55%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Chumbo: <a href="../tfg_ores/mars_vein_index.html#mars_galena">33%</a></li>
+	<li>Cobaltita: <a href="../tfg_ores/mars_vein_index.html#mars_nickel">28%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_surface_nickel_galena">11%</a></li>
+	<li>Cobre Nativo: <a href="../tfg_ores/mars_vein_index.html#mars_stibnite">28%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_copper">20%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_surface_tetrahedrite">19%</a></li>
+	<li>Cooperita: <a href="../tfg_ores/mars_vein_index.html#deep_mars_sheldonite">25%</a></li>
+	<li>Cromita: <a href="../tfg_ores/mars_vein_index.html#deep_mars_chromite">20%</a></li>
+	<li>Diamante: <a href="../tfg_ores/mars_vein_index.html#mars_graphite">20%</a></li>
+	<li>Eletrotina: <a href="../tfg_ores/mars_vein_index.html#mars_sapphire">20%</a></li>
+	<li>Enxofre: <a href="../tfg_ores/mars_vein_index.html#mars_sulfur">14%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_surface_bismuthinite">20%</a></li>
+	<li>Esfalerita: <a href="../tfg_ores/mars_vein_index.html#mars_sulfur">23%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_surface_nickel_galena">17%</a></li>
+	<li>Esmeralda: <a href="../tfg_ores/mars_vein_index.html#mars_beryllium">50%</a></li>
+	<li>Espessartita: <a href="../tfg_ores/mars_vein_index.html#mars_tantalite">10%</a></li>
+	<li>Espodumena: <a href="../tfg_ores/mars_vein_index.html#mars_salt">35%</a></li>
+	<li>Estanho: <a href="../tfg_ores/mars_vein_index.html#mars_surface_cassiterite">35%</a></li>
+	<li>Estibnita: <a href="../tfg_ores/mars_vein_index.html#mars_stibnite">19%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_surface_tetrahedrite">19%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Fosfato Tricálcico: <a href="../tfg_ores/mars_vein_index.html#mars_apatite">33%</a></li>
+	<li>Galena: <a href="../tfg_ores/mars_vein_index.html#mars_galena">40%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_surface_nickel_galena">35%</a></li>
+	<li>Garnierita: <a href="../tfg_ores/mars_vein_index.html#mars_nickel">35%</a></li>
+	<li>Gipsita: <a href="../tfg_ores/mars_vein_index.html#mars_surface_bismuthinite">20%</a></li>
+	<li>Glossulária: <a href="../tfg_ores/mars_vein_index.html#mars_tantalite">10%</a></li>
+	<li>Goethita: <a href="../tfg_ores/mars_vein_index.html#mars_hematite">15%</a></li>
+	<li>Grafite: <a href="../tfg_ores/mars_vein_index.html#mars_graphite">45%</a></li>
+	<li>Hematita: <a href="../tfg_ores/mars_vein_index.html#mars_hematite">50%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_surface_hematite">55%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_coal">30%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_pitchblende">29%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_sulfur">19%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_graphite">10%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_surface_bismuthinite">20%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_almandine">5%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_apatite">4%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_copper">5%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_galena">6%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_lubricant">7%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_neodynium">5%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_nickel">7%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_quartzite">5%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_stibnite">4%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_tungsten">4%</a></li>
+	<li>Lepidorita: <a href="../tfg_ores/mars_vein_index.html#mars_salt">15%</a></li>
+	<li>Limonita Amarela: <a href="../tfg_ores/mars_vein_index.html#mars_hematite">30%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_surface_hematite">33%</a></li>
+	<li>Lítio: <a href="../tfg_ores/mars_vein_index.html#mars_tungsten">19%</a></li>
+	<li>Monazita: <a href="../tfg_ores/mars_vein_index.html#mars_neodynium">29%</a></li>
+	<li>Neodímio: <a href="../tfg_ores/mars_vein_index.html#mars_neodynium">5%</a></li>
+	<li>Níquel: <a href="../tfg_ores/mars_vein_index.html#deep_mars_sheldonite">25%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_nickel">28%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_surface_nickel_galena">23%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Ouro Nativo: <a href="../tfg_ores/mars_vein_index.html#mars_sapphire">55%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_hematite">5%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_surface_hematite">5%</a></li>
+	<li>Pechblenda: <a href="../tfg_ores/mars_vein_index.html#deep_mars_pitchblende">52%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_pitchblende">41%</a></li>
+	<li>Pedra-sabão: <a href="../tfg_ores/mars_vein_index.html#mars_lubricant">21%</a></li>
+	<li>Pentlandita: <a href="../tfg_ores/mars_vein_index.html#mars_lubricant">7%</a></li>
+	<li>Pirita: <a href="../tfg_ores/mars_vein_index.html#mars_sulfur">42%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_copper">10%</a></li>
+	<li>Pirocloro: <a href="../tfg_ores/mars_vein_index.html#mars_apatite">14%</a></li>
+	<li>Pirolusita: <a href="../tfg_ores/mars_vein_index.html#mars_tantalite">42%</a></li>
+	<li>Piropo: <a href="../tfg_ores/mars_vein_index.html#mars_almandine">26%</a></li>
+	<li>Platina: <a href="../tfg_ores/mars_vein_index.html#deep_mars_sheldonite">15%</a></li>
+	<li>Prata Nativa: <a href="../tfg_ores/mars_vein_index.html#mars_galena">20%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_surface_nickel_galena">11%</a></li>
+	<li>Quartzito: <a href="../tfg_ores/mars_vein_index.html#mars_quartzite">41%</a></li>
+	<li>Realgar: <a href="../tfg_ores/mars_vein_index.html#mars_beryllium">15%</a></li>
+	<li>Redstone: <a href="../tfg_ores/mars_vein_index.html#deep_mars_chromite">45%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_surface_tetrahedrite">4%</a></li>
+	<li>Rubi: <a href="../tfg_ores/mars_vein_index.html#deep_mars_chromite">35%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Safira: <a href="../tfg_ores/mars_vein_index.html#mars_almandine">15%</a></li>
+	<li>Safira Verde: <a href="../tfg_ores/mars_vein_index.html#mars_almandine">15%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_sapphire">5%</a></li>
+	<li>Sal: <a href="../tfg_ores/mars_vein_index.html#mars_salt">30%</a></li>
+	<li>Sal-gema: <a href="../tfg_ores/mars_vein_index.html#mars_salt">20%</a></li>
+	<li>Salitre: <a href="../tfg_ores/mars_vein_index.html#mars_surface_cassiterite">10%</a></li>
+	<li>Sheelita: <a href="../tfg_ores/mars_vein_index.html#mars_tungsten">42%</a></li>
+	<li>Talco: <a href="../tfg_ores/mars_vein_index.html#mars_lubricant">21%</a></li>
+	<li>Tantalita: <a href="../tfg_ores/mars_vein_index.html#mars_tantalite">36%</a></li>
+	<li>Tetraedrita: <a href="../tfg_ores/mars_vein_index.html#mars_surface_tetrahedrite">57%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_stibnite">47%</a></li>
+	<li>Tório: <a href="../tfg_ores/mars_vein_index.html#deep_mars_pitchblende">26%</a>, <a href="../tfg_ores/mars_vein_index.html#mars_pitchblende">29%</a></li>
+	<li>Trona: <a href="../tfg_ores/mars_vein_index.html#mars_lubricant">35%</a></li>
+	<li>Tungstato: <a href="../tfg_ores/mars_vein_index.html#mars_tungsten">33%</a></li>
+	<li>Uraninita: <a href="../tfg_ores/mars_vein_index.html#deep_mars_pitchblende">21%</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> Documentação da API
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'pt_br';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

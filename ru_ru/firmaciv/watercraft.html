@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Начало пути: Лодки | TFC Field Guide" />
+    <meta name="description" content="Начало пути: Лодки" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Начало пути: Лодки | TFC Field Guide" />
+    <meta property="og:description" content="Начало пути: Лодки" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/firmaciv:anchor" />
+
+    <title>Начало пути: Лодки | TFC Field Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">Справочник TerraFirmaCraft</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Версия 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> Русский
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/firmaciv/watercraft.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/firmaciv/watercraft.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/firmaciv/watercraft.html" class="dropdown-item">Portuguese (Brazil)</a>
+
+<a href="../../ko_kr/firmaciv/watercraft.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/firmaciv/watercraft.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/firmaciv/watercraft.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/firmaciv/watercraft.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/firmaciv/watercraft.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/firmaciv/watercraft.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Содержание</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Главная</a></li>
+            <li><a href="../the_world/">Мир</a></li>
+
+<li><a href="../getting_started/">Начало работы</a></li>
+
+<li><a href="../mechanics/">Продвинутая механика</a></li>
+
+<li><a href="../waterflasks/">Фляги</a></li>
+
+<li><a href="../beneath/">Ад...?</a></li>
+
+<li><a href="../firmalife/">Firmalife</a></li>
+
+<li><a href="../firmaciv/">Firma: Civilization</a>
+    <ul>
+    <li><a href="./watercraft.html" class="active">Начало пути: Лодки</a></li>
+
+<li><a href="./canoe.html">Долбленые каноэ</a></li>
+
+<li><a href="./kayak.html">Каяки</a></li>
+
+<li><a href="./rowboat.html">Гребные лодки</a></li>
+
+<li><a href="./sloop.html">Шлюпы</a></li>
+
+<li><a href="./cannon.html">Пушки</a></li>
+
+<li><a href="./navigation.html">Навигация</a></li>
+
+<li><a href="./arborfirmacraft.html">ArborFirmaCraft</a></li>
+
+<li><a href="./beneath.html">Beneath</a></li>
+
+    </ul>
+</li>
+
+<li><a href="../tfg_ores/">Руды в TFG</a></li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">Firma: Civilization</a></li>
+<li class="breadcrumb-item active" aria-current="page">Начало пути: Лодки</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4">Начало пути: Лодки</h1>
+<p>Создание и использование лодки может оказаться сложнее, чем вы привыкли, но нет ничего лучше, чем построить идеальное судно и отправиться в открытые моря. Внимательно прочитайте это руководство и узнайте все тонкости резьбы, крафта, сооружения, гребли, управления и кастомизации лодки по своему усмотрению.</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image55.png" alt="firmaciv:textures/gui/book/boats.png"><div style="text-align: center;"><p>Путешествовать по миру или просто по своей местности часто лучше всего осуществлять по судоходным водным путям.</p>
+</div><h5>Кастомизация</h5>
+<p>На лодки можно устанавливать блоки! Как и при размещении блока на суше, нажмите <span style="color:#b0b;">ПКМ</span>, удерживая сундук, наковальню или верстак, чтобы добавить его на лодку. Нажмите <span style="color:#b0b;">ПКМ</span>, чтобы получить к нему доступ. Если вы не можете разместить блок в определенном месте, вероятно, это место пилота! Вы не сможете управлять лодкой, если на пути стоит блок! Вы можете убрать блоки, разбив их, как обычно.</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image56.png" alt="firmaciv:textures/gui/book/customization.png"><div style="text-align: center;"></div><h5>Лодки как предметы</h5>
+<p>Они больше не существуют, за исключением каяка! Если вы сломаете лодку, то она уронит только некоторые свои компоненты! Это означает, что вам понадобится каяк, если вы хотите переносить лодку через сушу, а также то, что вам может понадобиться построить доки для более крупных судов.</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image57.png" alt="firmaciv:textures/gui/book/items.png"><div style="text-align: center;"></div><h5>Перевозка животных</h5>
+<p>Как и всегда, вы можете перемещать животных с помощью лодок! Однако имейте в виду, что более крупные животные, такие как лошади, поместятся только в достаточно большие лодки. Если животное находится в лодке и мешает вам, вам достаточно присесть и нажать <span style="color:#b0b;">ПКМ</span>, чтобы выбросить его из лодки. Животные становятся беспокойными через 2 дня в лодке и покидают ее самостоятельно через 3 дня.</p>
+<h5>Управление</h5>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image58.png" alt="firmaciv:textures/gui/book/piloting.png"><div style="text-align: center;"><p>Каждая лодка имеет специальное сиденье, на котором нужно сидеть, чтобы управлять лодкой.</p>
+</div><h5>Весла</h5>
+<p>Если вам кажется, что ваша лодка движется медленно, проверьте, держите ли вы в руках подходящее весло или установлены ли весла в держателях для весел. В некоторых лодках несколько игроков могут грести, чтобы лодка двигалась быстрее.</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image59.png" alt="firmaciv:textures/gui/book/paddles.png"><div style="text-align: center;"></div><h5>Шварт-ые утки и поводки</h5>
+<p>Большинство лодок имеют хотя бы одну швартовую утку. Вы можете прикрепить поводок к швартовой утке и использовать его, чтобы тянуть лодку, а также подтягивать небольшие лодки к берегу или тоскать по плитам. Поводки также можно использовать для прикрепления лодок к заборам, а прикрепление двух швартовых уток к забору позволит вам легко швартовать большие лодки. Как вы поняли, вам придется активно использовать поводки, чтобы ваши лодки не уплыли!</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image60.png" alt="firmaciv:textures/gui/book/leads.png"><div style="text-align: center;"></div><h5>Якори</h5>
+<p>Большие лодки имеют якоря, которые можно использовать для полной остановки лодки, при условии, что якорь закреплен на дне и паруса не развернуты. Лодка все равно будет поворачиваться под воздействием ветра, пока она стоит на якоре. Найдите значок якоря, расположенный на лебедке (якорной лебедке), и нажмите <span style="color:#b0b;">ПКМ</span>, чтобы опустить и поднять якорь.</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image61.png" alt="firmaciv:textures/gui/book/anchor.png"><div style="text-align: center;"><p>Якорь с лебедкой на шлюпе.</p>
+</div><h5>Паруса</h5>
+<p>Парусные суда, конечно же, имеют паруса. Вам нужно будет развернуть их, чтобы правильно управлять лодкой. Найдите треугольную иконку паруса и нажмите <span style="color:#b0b;">ПКМ</span>, чтобы развернуть каждый парус. Поскольку большинство лодок имеют несколько парусов, вы можете комбинировать их для контроля скорости.</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image62.png" alt="firmaciv:textures/gui/book/sails.png"><div style="text-align: center;"><p>На этом шлюпе развернуты как стаксель (слева), так и грот (справа).</p>
+</div><h5>Плавание под парусами</h5>
+<p>В отличие от кораблей, к которым вы, возможно, привыкли, плавание под парусами — это навык в Firma: Civilization. Когда вы управляете парусным судном, появится новый элемент интерфейса, отображающий скорость и направление ветра, а также скорость лодки. Цвет стрелки ветра будет указывать на сложность плавания в данном направлении. Используйте клавиши движения вперед и назад, чтобы установить угол парусов, и экспериментируйте, чтобы найти наилучший угол ветра.</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image63.png" alt="firmaciv:textures/gui/book/sailing.png"><div style="text-align: center;"><p>Интерфейс парусов поможет вам контролировать судно.</p>
+</div><h5>Покраска</h5>
+<p>Любая лодка, построенная с помощью корабельной обшивки, может быть окрашена, а любой парус может быть окрашен индивидуально. Просто держите краситель в руке и нажмите <span style="color:#b0b;">ПКМ</span>, когда увидите значок кисти, чтобы покрасить корпус или окрасить парус. Более крупные лодки имеют уникальные узоры для каждого цвета краски.</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image64.png" alt="firmaciv:textures/gui/book/painting.png"><div style="text-align: center;"><p>Покрашенные паруса и корпус.</p>
+</div><h5>Повреждения и ремонт</h5>
+<p>Поврежденная лодка начнет покрываться трещинами. Для любой лодки, построенной из корабельной обшивки, используйте соответствующие доски для ремонта. При 90% повреждении лодка начнет набирать воду, а при 100% — утонет! Это не относится к каякам.</p>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> Документация API
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'ru_ru';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Inventory Management | TFC Field Guide" />
+    <meta name="description" content="Inventory Management" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Inventory Management | TFC Field Guide" />
+    <meta property="og:description" content="Inventory Management" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/minecraft:chest" />
+
+    <title>Inventory Management | TFC Field Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">TerraFirmaCraft Field Guide</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Version 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> English
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/tfg_tips/inventory_management.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/tfg_tips/inventory_management.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/tfg_tips/inventory_management.html" class="dropdown-item">Portuguese (Brazil)</a>
+
+<a href="../../ko_kr/tfg_tips/inventory_management.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/tfg_tips/inventory_management.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/tfg_tips/inventory_management.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/tfg_tips/inventory_management.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/tfg_tips/inventory_management.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/tfg_tips/inventory_management.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Contents</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Index</a></li>
+            <li><a href="../the_world/">The World</a></li>
+
+<li><a href="../getting_started/">Getting Started</a></li>
+
+<li><a href="../mechanics/">Advanced Mechanics</a></li>
+
+<li><a href="../sacks_n_such/">Sacks 'N Such</a></li>
+
+<li><a href="../waterflasks/">Water Flasks</a></li>
+
+<li><a href="../beneath/">Beneath</a></li>
+
+<li><a href="../firmalife/">Firmalife</a></li>
+
+<li><a href="../roadsandroofs/">Roads and Roofs</a></li>
+
+<li><a href="../arborfirmacraft/">ArborFirmaCraft</a></li>
+
+<li><a href="../firmaciv/">Firma: Civilization</a></li>
+
+<li><a href="../tfcchannelcasting/">TFC Casting with Channels</a></li>
+
+<li><a href="../tfg_ores/">Ores in TFG</a></li>
+
+<li><a href="../tfg_tips/">TFG Info & Tips</a>
+    <ul>
+    <li><a href="./anvil_working_guide.html">Anvil Working Guide</a></li>
+
+<li><a href="./blast_furnace_tips.html">Blast Furnace Tips</a></li>
+
+<li><a href="./faqs.html">Frequently Asked Questions</a></li>
+
+<li><a href="./inventory_management.html" class="active">Inventory Management</a></li>
+
+<li><a href="./space_crops.html">Extraterrestrial Crops</a></li>
+
+<li><a href="./space_fauna.html">Extraterrestrial Fauna</a></li>
+
+    </ul>
+</li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">TFG Info & Tips</a></li>
+<li class="breadcrumb-item active" aria-current="page">Inventory Management</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4">Inventory Management</h1>
+<h5>Inventory Management</h5>
+<p>So you've got a few <a href="../getting_started/pottery.html#vessel">Vessels</a> and you've made a few <span style="color:#b0b;">Wooden Chests</span>, but you still have more items than you know what to do with. What's next?<br/>
+<br/>
+A <span style="color:#3E8A00;">Backpack</span> can double your on-person inventory at base level, and further backpack upgrades increase it even more!</p>
+<p>Backpacks can carry multiple heavy items without encumbering you, as well as big items like stacks of logs.<br/>
+<br/>
+You can even upgrade it with a <span style="color:#3E8A00;">Crafting Upgrade</span> to have a Crafting Table with you everywhere.</p>
+<a class="anchor" id="crates"></a><h5>Crates</h5>
+<p>For storage, GregTech has <span style="color:#b0b;">Crates</span> which can hold all the bigger items a backpack can, and different tiers can hold more and more items.<br/>
+<br/>
+Crates can also have <span style="color:#3E8A00;">Item Filters</span> and <span style="color:#3E8A00;">Item Tag Filters</span> put on them if you'd like to make a basic sorting system.<br/>
+<br/>
+<span style="color:#3E8A00;">Item Pipes</span> don't pull by themselves though, so you'll need a <span style="color:#3E8A00;">Chute</span> or <span style="color:#3E8A00;">Hopper</span> to push into them.</p>
+<a class="anchor" id="drums"></a><h5>Drums</h5>
+<p>For storing fluids, GregTech has <span style="color:#b0b;">Drums</span>. These can hold a large amount of a single fluid type, and different tiers hold more, just like with crates.<br/>
+<br/>
+Unlike crates, drums will retain their fluid when broken, making them ideal for moving fluids around.<br/>
+<br/>
+Drums can automatically push their fluid out of their bottom face by right-clicking them with a <span style="color:#3E8A00;">Soft Mallet</span>.</p>
+<p>Place the drum in a crafting grid to clear its contents.</p>
+<p>Are you producing an item on an industrial scale? GregTech's <span style="color:#3E8A00;">Super Chests</span> and <span style="color:#3E8A00;">Super Tanks</span> can hold a silly amount of a single item type, and can even void any overflow.</p>
+<p>Available at the end of <span style="color:#3E8A00;">HV</span>, AE2 can provide everything you'd ever want for storage and logistics.</p>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> API Docs
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'en_us';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

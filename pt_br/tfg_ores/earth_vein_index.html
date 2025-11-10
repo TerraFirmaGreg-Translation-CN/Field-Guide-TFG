@@ -1,0 +1,1931 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Índice de Veios da Terra | Guia de Campo TFC" />
+    <meta name="description" content="Índice de Veios da Terra" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Índice de Veios da Terra | Guia de Campo TFC" />
+    <meta property="og:description" content="Índice de Veios da Terra" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/tfc:ore/normal_native_copper/chalk" />
+
+    <title>Índice de Veios da Terra | Guia de Campo TFC</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">Guia de Campo TerraFirmaCraft</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Versão 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> Português (Brasil)
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/tfg_ores/earth_vein_index.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/tfg_ores/earth_vein_index.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/tfg_ores/earth_vein_index.html" class="dropdown-item">Português (Brasil)</a>
+
+<a href="../../ko_kr/tfg_ores/earth_vein_index.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/tfg_ores/earth_vein_index.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/tfg_ores/earth_vein_index.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/tfg_ores/earth_vein_index.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/tfg_ores/earth_vein_index.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/tfg_ores/earth_vein_index.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Conteúdo</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Índice</a></li>
+            <li><a href="../the_world/">O mundo</a></li>
+
+<li><a href="../getting_started/">Começando</a></li>
+
+<li><a href="../mechanics/">Mecânica avançada</a></li>
+
+<li><a href="../waterflasks/">Cantis de Água</a></li>
+
+<li><a href="../beneath/">O Nether...?</a></li>
+
+<li><a href="../tfg_ores/">Minérios no TFG</a>
+    <ul>
+    <li><a href="./earth_ore_index.html">Índice de Minérios da Terra</a></li>
+
+<li><a href="./ore_basics.html">Mineração no TFG</a></li>
+
+<li><a href="./earth_vein_index.html" class="active">Índice de Veios da Terra</a></li>
+
+<li><a href="./hazards.html">Materiais Perigosos</a></li>
+
+<li><a href="./nether_ore_index.html">Índice de Minérios das Profundezas</a></li>
+
+<li><a href="./nether_vein_index.html">Índice de Veios das Profundezas</a></li>
+
+<li><a href="./moon_ore_index.html">Índice de Minérios da Lua</a></li>
+
+<li><a href="./moon_vein_index.html">Índice de Veios da Lua</a></li>
+
+<li><a href="./mars_ore_index.html">Mars Ore Index</a></li>
+
+<li><a href="./mars_vein_index.html">Mars Vein Index</a></li>
+
+    </ul>
+</li>
+
+<li><a href="../tfg_tips/">Informações e Dicas do TFG</a></li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">Minérios no TFG</a></li>
+<li class="breadcrumb-item active" aria-current="page">Índice de Veios da Terra</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4"><img src="../../_images/item139.png" alt="{item.tfc.ore.normal_native_copper.chalk}" class="me-2" style="height: 1.5em;">Índice de Veios da Terra
+</h1>
+<h5>Índice de Veios da Terra</h5>
+<p>Este é o <span style="color:#3E8A00;">Índice de Veios</span> para <span style="color:#b0b;">Terra</span>. Cada veio contém detalhes sobre sua raridade, densidade, tipo de veio, altura onde é encontrado, tamanhos, tipos de rocha em que aparece e mais.</p>
+<p></p>
+<ul>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_garnet_amethyst">Ametista e Granada</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_apatite">Apatita e Pirocloro</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_basaltic_sands">Areias Minerais</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_oilsands">Areias Petrolíferas</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_monazite">Bastnasita e Monazita</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_olivine">Bentonita e Olivina</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_bismuthinite">Bismuto (Normal)</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#surface_bismuthinite">Bismuto (Superfície)</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#surface_copper">Calcopirita e Realgar</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_coal">Carvão</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_cassiterite">Cassiterita (Normal)</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#surface_cassiterite">Cassiterita (Superfície)</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_mica">Cianita, Mica e Bauxita</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_copper">Cobre e Calcopirita</a></li>
+</ul>
+<p></p>
+<ul>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_sheldonite">Cooperita e Bornita</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_magnetite">Cromita e Magnetita</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_sulfur">Enxofre e Pirita</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#surface_sphalerite">Esfalerita e Enxofre</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_sphalerite">Esfalerita e Pirita</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_beryllium">Esmeralda e Berílio</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_spodumene">Espodumena e Lepidolita</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_garnierite">Garnierita e Cobaltita</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_gypsum">Gipsita e Calcita</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_limonite">Goethita e Malaquita</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_graphite">Grafite e Diamante</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_garnet_tin">Granada e Areia Cassiterita</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_hematite">Hematita e Limonita</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_hematite">Hematita, Goethita e Rubi</a></li>
+</ul>
+<p></p>
+<ul>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_lapis">Lápis-lazúri, Lazurita e Sodalita</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_limonite">Limonita</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_magnetite">Magnetita e Vanádio</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_manganese">Manganês e Tântalo</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_garnet_opal">Opala e Granada</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_gold">Ouro (Profundo)</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_gold">Ouro, Limonita e Hematita</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_lubricant">Pedra-sabão, Talco e Trona</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_silver">Prata, Galena e Chumbo</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_quartz">Quartzos</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_redstone">Redstone, Cinábrio e Rubi</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_sapphire">Safira e Almandina</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_salt">Sais e Bórax</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_saltpeter">Salitre e Eletrotina</a></li>
+</ul>
+<p></p>
+<ul>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_scheelite">Sheelita e Tungstato</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_tetrahedrite">Tetraedrita (Normal)</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#surface_tetrahedrite">Tetraedrita (Superfície)</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_topaz">Topázio e Calcocita</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_pitchblende">Uraninita e Pechblenda</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_molybdenum">Wulfenita e Molibdenita</a></li>
+</ul>
+<hr><a class="anchor" id="deep_garnet_amethyst"></a><h5>Ametista e Granada</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 230<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.25<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio em Disco<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 26<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 40<br/>
+<span style="color:#3E8A00;">Altura</span>: 8<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Ardósia, Argilito, Calcário, Cherte, Conglomerado, Dolomito, Filito, Folhelho, Giz, Gnaisse, Mármore, Quartzito, Xisto</p>
+<h5>Ametista</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 65%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Ferro<br/>
+<span style="color:#3E8A00;">Fórmula</span>: (SiO₂)₄Fe</p>
+<h5>Granada Amarela</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Andradita, Glossulária, Uvarovita</p>
+<h5>Opala</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Silício, Oxigênio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: (SiO₂)</p>
+<h5>Granada Vermelha</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 5%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Piropo, Almandina, Espessartita</p>
+<hr><a class="anchor" id="normal_apatite"></a><h5>Apatita e Pirocloro</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 220<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.25<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 60<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 34<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Ardósia, Diorito, Filito, Gabro, Gnaisse, Granito, Mármore, Quartzito, Xisto</p>
+<h5>Apatita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 50%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Cálcio, Fósforo, TEPT Florestal<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Ca₅(PO₄)₃Cl</p>
+<h5>Fosfato Tricálcico</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 35%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Cálcio, Fósforo<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Ca₃(PO₄)₂</p>
+<h5>Pirocloro</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Nióbio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Ca₂Nb₂O₇</p>
+<a class="anchor" id="normal_basaltic_sands"></a><h5>Areias Minerais</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 160<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.3<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio em Disco<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 60<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 48<br/>
+<span style="color:#3E8A00;">Altura</span>: 9<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Basalto, Granito</p>
+<h5>Areia Mineral Basáltica</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 35%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: (Fe₃O₄)((Mg₂Fe(SiO₂)₂)(CaCo₃)₃(SiO₂)₈C₄)</p>
+<h5>Areia Mineral Granítica</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: (Fe₃O₄)((SiO₂)₄(KMg₃Al₃F₂Si₃O₁₀))</p>
+<h5>Terra de Fuller</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Magnésio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: MgSi₄H(H₂O)₄O₁₁</p>
+<h5>Gipsita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Usado para</span>: Tijolos de Alabastro (tingíveis)<br/>
+<span style="color:#3E8A00;">Fórmula</span>: CaS(H₂O)₂O₄</p>
+<hr><a class="anchor" id="normal_oilsands"></a><h5>Areias Petrolíferas</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 185<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.2<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 55<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Argilito, Calcário, Cherte, Conglomerado, Dolomito, Folhelho, Giz</p>
+<h5>Areias Petrolíferas</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 100%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Liberdade 🛢🦅🗽</p>
+<a class="anchor" id="normal_monazite"></a><h5>Bastnasita e Monazita</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 205<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.25<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 50<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 35<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Diorito, Gabro, Granito</p>
+<h5>Bastnasita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 62%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Cério, Flúor<br/>
+<span style="color:#3E8A00;">Fórmula</span>: CeCFO₃</p>
+<h5>Monazita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 31%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Fósforo, Terra Rara<br/>
+<span style="color:#3E8A00;">Fórmula</span>: ?(PO₄)</p>
+<h5>Neodímio</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 6%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Neodímio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Nd</p>
+<a class="anchor" id="normal_olivine"></a><h5>Bentonita e Olivina</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 180<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.25<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -40 — 30<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 26<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Andesito, Basalto, Dacito, Diorito, Gabro, Granito, Riolito</p>
+<h5>Bentonita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 35%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Sódio, Magnésio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: NaMg₆Si₁₂H₄(H₂O)₅O₃₆</p>
+<h5>Magnesita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Magnésio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: MgCO₃</p>
+<h5>Olivina</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Magnésio, Ferro<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Mg₂Fe(SiO₂)₂</p>
+<h5>Areia Glauconita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Magnésio, Alumínio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: KMg₂Al₄H₂O₁₂</p>
+<hr><a class="anchor" id="normal_bismuthinite"></a><h5>Bismuto (Normal)</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 170<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.4<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 75<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 40<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Argilito, Calcário, Cherte, Conglomerado, Diorito, Dolomito, Folhelho, Gabro, Giz, Granito</p>
+<h5>Bismuto</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 72%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Bismuto<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Bi</p>
+<h5>Chumbo</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 10%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Chumbo<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Pb<br/>
+<span style="color:#3E8A00;">Perigo</span>: <span style="color:#FF5555;">Pouco Venenoso (Inalação)</span></p>
+<h5>Prata Nativa</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 9%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Prata<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Ag</p>
+<h5>Enxofre</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 8%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Enxofre<br/>
+<span style="color:#3E8A00;">Fórmula</span>: S</p>
+<hr><a class="anchor" id="surface_bismuthinite"></a><h5>Bismuto (Superfície)</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 140<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.25<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: 60 — 210<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 50<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Argilito, Calcário, Cherte, Conglomerado, Diorito, Dolomito, Folhelho, Gabro, Giz, Granito</p>
+<h5>Bismuto</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 85%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Bismuto<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Bi</p>
+<h5>Chumbo</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 7%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Chumbo<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Pb<br/>
+<span style="color:#3E8A00;">Perigo</span>: <span style="color:#FF5555;">Pouco Venenoso (Inalação)</span></p>
+<h5>Prata Nativa</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 5%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Prata<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Ag</p>
+<h5>Enxofre</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 3%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Enxofre<br/>
+<span style="color:#3E8A00;">Fórmula</span>: S</p>
+<hr><a class="anchor" id="surface_copper"></a><h5>Calcopirita e Realgar</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 200<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.25<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: 20 — 217<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 50<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Andesito, Basalto, Dacito, Riolito</p>
+<h5>Calcopirita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 61%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Cobre<br/>
+<span style="color:#3E8A00;">Fórmula</span>: CuFeS₂</p>
+<h5>Zeólita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 16%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Alumínio, Oxigênio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: NaCa₄Si₂₇Al₉(H₂O)₂₈O₇₂</p>
+<h5>Realgar</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 16%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Arsênico<br/>
+<span style="color:#3E8A00;">Fórmula</span>: As₄S₄<br/>
+<span style="color:#3E8A00;">Perigo</span>: <span style="color:#FF5555;">Arsenicose (Inalação)</span></p>
+<h5>Cassiterita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 5%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Estanho<br/>
+<span style="color:#3E8A00;">Fórmula</span>: SnO₂</p>
+<hr><a class="anchor" id="normal_coal"></a><h5>Carvão</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 215<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.55<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 210<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 60<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Argilito, Calcário, Cherte, Conglomerado, Dolomito, Folhelho, Giz</p>
+<h5>Carvão</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 100%<br/>
+<span style="color:#3E8A00;">Usado para</span>: Combustível, Destilação<br/>
+<span style="color:#3E8A00;">Fórmula</span>: C</p>
+<a class="anchor" id="normal_cassiterite"></a><h5>Cassiterita (Normal)</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 170<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.4<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 75<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 40<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Diorito, Gabro, Granito</p>
+<h5>Estanho</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 60%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Estanho<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Sn</p>
+<h5>Cassiterita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 40%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Estanho<br/>
+<span style="color:#3E8A00;">Fórmula</span>: SnO₂</p>
+<hr><a class="anchor" id="surface_cassiterite"></a><h5>Cassiterita (Superfície)</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 135<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.25<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: 60 — 210<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 50<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Diorito, Gabro, Granito</p>
+<h5>Cassiterita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 60%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Estanho<br/>
+<span style="color:#3E8A00;">Fórmula</span>: SnO₂</p>
+<h5>Estanho</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 40%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Estanho<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Sn</p>
+<hr><a class="anchor" id="normal_mica"></a><h5>Cianita, Mica e Bauxita</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 190<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.25<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 210<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 36<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Ardósia, Diorito, Filito, Gabro, Gnaisse, Granito, Mármore, Quartzito, Xisto</p>
+<h5>Cianita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 35%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Alumínio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Al₂SiO₅</p>
+<h5>Mica</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Potássio, Alumínio, Flúor<br/>
+<span style="color:#3E8A00;">Fórmula</span>: KAl₃Si₃F₂O₁₀</p>
+<h5>Bauxita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Alumínio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Al₂O₃</p>
+<h5>Polucita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Césio, Alumínio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Cs₂Al₂Si₄(H₂O)₂O₁₂</p>
+<hr><a class="anchor" id="normal_copper"></a><h5>Cobre e Calcopirita</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 170<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.4<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 75<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 40<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 85<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Andesito, Basalto, Dacito, Riolito</p>
+<h5>Cobre Nativo</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 65%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Cobre<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Cu</p>
+<h5>Calcopirita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 20%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Cobre<br/>
+<span style="color:#3E8A00;">Fórmula</span>: CuFeS₂</p>
+<h5>Pirita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 10%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: FeS₂</p>
+<h5>Hematita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 5%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Fe₂O₃</p>
+<hr><a class="anchor" id="deep_sheldonite"></a><h5>Cooperita e Bornita</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 320<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.3<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 0<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 30<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Ardósia, Filito, Gnaisse, Mármore, Quartzito, Xisto</p>
+<h5>Bornita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 53%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Cobre<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Cu₅FeS₄</p>
+<h5>Cooperita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 38%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Platina, Níquel, Paládio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Pt₃NiSPd</p>
+<h5>Platina</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 7%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Platina<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Pt</p>
+<a class="anchor" id="deep_magnetite"></a><h5>Cromita e Magnetita</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 225<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.3<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 30<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 20<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Argilito, Calcário, Cherte, Conglomerado, Dolomito, Folhelho, Giz</p>
+<h5>Cromita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 33%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Cromo<br/>
+<span style="color:#3E8A00;">Fórmula</span>: FeCr₂O₄<br/>
+<span style="color:#3E8A00;">Perigo</span>: <span style="color:#FF5555;">Irritante (Contato com a Pele)</span></p>
+<h5>Magnetita de Vanádio</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Ferro, Vanádio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: (Fe₃O₄)V</p>
+<h5>Ouro Nativo</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ouro<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Au</p>
+<h5>Magnetita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 8%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Fe₃O₄</p>
+<h5>Safira</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 8%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Alimínio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Al₂O₃</p>
+<a class="anchor" id="normal_sulfur"></a><h5>Enxofre e Pirita</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 165<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.2<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 210<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 45<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Andesito, Basalto, Dacito, Riolito</p>
+<h5>Enxofre</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 50%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Enxofre<br/>
+<span style="color:#3E8A00;">Fórmula</span>: S</p>
+<h5>Pirita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 35%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: FeS₂</p>
+<h5>Esfalerita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Zinco<br/>
+<span style="color:#3E8A00;">Fórmula</span>: ZnS</p>
+<a class="anchor" id="surface_sphalerite"></a><h5>Esfalerita e Enxofre</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 145<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.25<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: 60 — 210<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 50<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Andesito, Ardósia, Basalto, Dacito, Filito, Gnaisse, Mármore, Quartzito, Riolito, Xisto</p>
+<h5>Enxofre</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 55%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Enxofre<br/>
+<span style="color:#3E8A00;">Fórmula</span>: S</p>
+<h5>Esfalerita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 40%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Zinco<br/>
+<span style="color:#3E8A00;">Fórmula</span>: ZnS</p>
+<h5>Pirita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 5%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: FeS₂</p>
+<a class="anchor" id="normal_sphalerite"></a><h5>Esfalerita e Pirita</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 170<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.4<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 75<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 40<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Andesito, Ardósia, Basalto, Dacito, Filito, Gnaisse, Mármore, Quartzito, Riolito, Xisto</p>
+<h5>Esfalerita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 40%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Zinco<br/>
+<span style="color:#3E8A00;">Fórmula</span>: ZnS</p>
+<h5>Enxofre</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 35%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Enxofre<br/>
+<span style="color:#3E8A00;">Fórmula</span>: S</p>
+<h5>Pirita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: FeS₂</p>
+<a class="anchor" id="normal_beryllium"></a><h5>Esmeralda e Berílio</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 250<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.35<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Tubular<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 50<br/>
+<span style="color:#3E8A00;">Altura</span>: 60<br/>
+<span style="color:#3E8A00;">Raio</span>: 10<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Andesito, Basalto, Dacito, Riolito</p>
+<h5>Esmeralda</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 50%<br/>
+<span style="color:#3E8A00;">Usado para</span>: Components MV, Filtros de Tag de Item<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Be₃Al₂Si₆O₁₈</p>
+<h5>Berílio</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 35%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Berílio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Be<br/>
+<span style="color:#3E8A00;">Perigo</span>: <span style="color:#FF5555;">Beriliose (Contato com a Pele)</span></p>
+<h5>Tório</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Tório<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Th</p>
+<a class="anchor" id="normal_spodumene"></a><h5>Espodumena e Lepidolita</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 180<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.375<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio em Disco<br/>
+<span style="color:#3E8A00;">Y</span>: 20 — 60<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 35<br/>
+<span style="color:#3E8A00;">Altura</span>: 6<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Ardósia, Diorito, Filito, Gabro, Gnaisse, Granito, Mármore, Quartzito, Xisto</p>
+<h5>Espodumena</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 35%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Lítio, Alumínio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: LiAlSi₂O₆</p>
+<h5>Sal</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 30%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Sódio, Cloro<br/>
+<span style="color:#3E8A00;">Fórmula</span>: NaCl</p>
+<h5>Sal-gema</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 20%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Potássio, Cloro<br/>
+<span style="color:#3E8A00;">Fórmula</span>: KCl</p>
+<h5>Lepidorita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Potássio, Lítio, Alumínio, Flúor<br/>
+<span style="color:#3E8A00;">Fórmula</span>: KLi₃Al₄F₂O₁₀</p>
+<hr><a class="anchor" id="normal_garnierite"></a><h5>Garnierita e Cobaltita</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 160<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.4<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 60<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 40<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 70<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Diorito, Gabro<br/>
+<br/>
+Não consegue encontrar? O Gabro sempre gera abaixo do <span style="color:#3E8A00;">Basalto</span>, e diques de Gabro nos oceanos também podem ser úteis!</p>
+<h5>Garnierita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 30%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Níquel<br/>
+<span style="color:#3E8A00;">Fórmula</span>: NiO</p>
+<h5>Pentlandita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Níquel<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Ni₉S₈</p>
+<h5>Cobaltita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 20%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Cobalto, Arsênico<br/>
+<span style="color:#3E8A00;">Fórmula</span>: CoAsS<br/>
+<span style="color:#3E8A00;">Perigo</span>: <span style="color:#FF5555;">Arsenicose (Inalação)</span></p>
+<h5>Cobalto</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Cobalto<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Co</p>
+<h5>Níquel</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 10%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Níquel<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Ni</p>
+<a class="anchor" id="normal_gypsum"></a><h5>Gipsita e Calcita</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 180<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.3<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio em Disco<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 60<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 40<br/>
+<span style="color:#3E8A00;">Altura</span>: 9<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Argilito, Calcário, Cherte, Conglomerado, Dolomito, Folhelho, Giz</p>
+<h5>Gipsita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 35%<br/>
+<span style="color:#3E8A00;">Usado para</span>: Tijolos de Alabastro (tingíveis)<br/>
+<span style="color:#3E8A00;">Fórmula</span>: CaS(H₂O)₂O₄</p>
+<h5>Calcita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 30%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Cálcio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: CaCO₃</p>
+<h5>Bórax</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 20%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Sódio, Boro<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Na₂B₄(H₂O)₁₀O₇</p>
+<h5>Terra de Fuller</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Magnésio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: MgSi₄H(H₂O)₄O₁₁</p>
+<hr><a class="anchor" id="deep_limonite"></a><h5>Goethita e Malaquita</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 240<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.35<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 30<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 32<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Calcário, Mármore</p>
+<h5>Goethita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 50%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: FeHO₂</p>
+<h5>Malaquita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 20%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Cobre<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Cu₂CH₂O₅</p>
+<h5>Limonita Amarela</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: FeHO₂</p>
+<h5>Hematita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Fe₂O₃</p>
+<hr><a class="anchor" id="normal_graphite"></a><h5>Grafite e Diamante</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 80<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.4<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio em Disco<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — -16<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 16<br/>
+<span style="color:#3E8A00;">Altura</span>: 6<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Andesito, Ardósia, Argilito, Basalto, Calcário, Cherte, Conglomerado, Dacito, Diorito, Dolomito, Filito, Folhelho, Gabro, Giz, Gnaisse, Granito, Mármore, Quartzito, Riolito, Xisto</p>
+<h5>Grafite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 45%<br/>
+<span style="color:#3E8A00;">Usado para</span>: <a href="../mechanics/fire_clay.html">Argila Refratária</a>, Grafeno<br/>
+<span style="color:#3E8A00;">Fórmula</span>: C</p>
+<h5>Carvão</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 30%<br/>
+<span style="color:#3E8A00;">Usado para</span>: Combustível, Destilação<br/>
+<span style="color:#3E8A00;">Fórmula</span>: C</p>
+<h5>Diamante</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Usado para</span>: Maceradores, AE2<br/>
+<span style="color:#3E8A00;">Fórmula</span>: C</p>
+<a class="anchor" id="normal_garnet_tin"></a><h5>Granada e Areia Cassiterita</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 270<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.25<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -40 — 64<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 40<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Andesito, Ardósia, Argilito, Basalto, Calcário, Cherte, Conglomerado, Dacito, Diorito, Dolomito, Filito, Folhelho, Gabro, Giz, Gnaisse, Granito, Mármore, Quartzito, Riolito, Xisto</p>
+<h5>Areia Cassiterita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 35%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Estanho<br/>
+<span style="color:#3E8A00;">Fórmula</span>: SnO₂</p>
+<h5>Areia Granada</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Almandina, Andradita, Glossulária, Piropo, Espessartita, Uvarovita</p>
+<h5>Amianto</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Magnésio, Câncer de pulmão<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Mg₃Si₂H₄O₉<br/>
+<span style="color:#3E8A00;">Perigo</span>: <span style="color:#FF5555;">Asbestose (Inalação)</span></p>
+<h5>Diatomita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Ferro, Alumínio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: (SiO₂)₈(Fe₂O₃)(Al₂O₃)</p>
+<hr><a class="anchor" id="normal_hematite"></a><h5>Hematita e Limonita</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 210<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.4<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 75<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 40<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Andesito, Basalto, Dacito, Riolito</p>
+<h5>Hematita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 50%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Fe₂O₃</p>
+<h5>Limonita Amarela</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 30%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: FeHO₂</p>
+<h5>Goethita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: FeHO₂</p>
+<h5>Ouro Nativo</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 5%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ouro<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Au</p>
+<hr><a class="anchor" id="deep_hematite"></a><h5>Hematita, Goethita e Rubi</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 220<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.35<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 30<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 30<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Andesito, Basalto, Dacito, Riolito</p>
+<h5>Hematita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 35%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Fe₂O₃</p>
+<h5>Goethita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: FeHO₂</p>
+<h5>Rubi</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 20%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Cromo, Alumínio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: CrAl₂O₃</p>
+<h5>Limonita Amarela</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: FeHO₂</p>
+<h5>Ouro Nativo</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 5%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ouro<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Au</p>
+<a class="anchor" id="normal_lapis"></a><h5>Lápis-lazúri, Lazurita e Sodalita</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 170<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.25<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -60 — 10<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 40<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Ardósia, Filito, Gnaisse, Mármore, Quartzito, Xisto</p>
+<h5>Lazurita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 35%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Alumínio, Cálcio, Sódio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Al₆Si₆Ca₈Na₈</p>
+<h5>Sodalita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Alumínio, Sódio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Al₃Si₃Na₄Cl</p>
+<h5>Lápis-lazúri</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Lazurita, Sodalita, Pirita, Calcita</p>
+<h5>Calcita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Cálcio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: CaCO₃</p>
+<hr><a class="anchor" id="normal_limonite"></a><h5>Limonita</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 190<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.4<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 75<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 40<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Calcário, Mármore</p>
+<h5>Limonita Amarela</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 50%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: FeHO₂</p>
+<h5>Hematita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 20%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Fe₂O₃</p>
+<h5>Goethita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: FeHO₂</p>
+<h5>Malaquita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Cobre<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Cu₂CH₂O₅</p>
+<hr><a class="anchor" id="normal_magnetite"></a><h5>Magnetita e Vanádio</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 200<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.3<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 75<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 30<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Argilito, Calcário, Cherte, Conglomerado, Dolomito, Folhelho, Giz</p>
+<h5>Magnetita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 63%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Fe₃O₄</p>
+<h5>Magnetita de Vanádio</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 22%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Ferro, Vanádio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: (Fe₃O₄)V</p>
+<h5>Ouro Nativo</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 9%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ouro<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Au</p>
+<h5>Cromita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 4%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Cromo<br/>
+<span style="color:#3E8A00;">Fórmula</span>: FeCr₂O₄<br/>
+<span style="color:#3E8A00;">Perigo</span>: <span style="color:#FF5555;">Irritante (Contato com a Pele)</span></p>
+<hr><a class="anchor" id="normal_manganese"></a><h5>Manganês e Tântalo</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 195<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.3<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 60<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 30<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Andesito, Argilito, Basalto, Calcário, Cherte, Conglomerado, Dacito, Dolomito, Folhelho, Giz, Riolito</p>
+<h5>Glossulária</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 37%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Cálcio, Alumínio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Ca₃Al₂Si₃O₁₂</p>
+<h5>Espessartita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Manganês, Alumínio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Al₂Mn₃Si₃O₁₂</p>
+<h5>Pirolusita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Manganês<br/>
+<span style="color:#3E8A00;">Fórmula</span>: MnO₂</p>
+<h5>Tantalita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 12%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Manganês, Tântalo<br/>
+<span style="color:#3E8A00;">Fórmula</span>: MnTa₂O₆</p>
+<hr><a class="anchor" id="deep_garnet_opal"></a><h5>Opala e Granada</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 220<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.35<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio em Disco<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 62<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 26<br/>
+<span style="color:#3E8A00;">Altura</span>: 6<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Andesito, Basalto, Dacito, Diorito, Gabro, Granito, Riolito</p>
+<h5>Opala</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 55%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Silício, Oxigênio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: (SiO₂)</p>
+<h5>Ametista</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Ferro<br/>
+<span style="color:#3E8A00;">Fórmula</span>: (SiO₂)₄Fe</p>
+<h5>Granada Amarela</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Andradita, Glossulária, Uvarovita</p>
+<h5>Granada Vermelha</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 5%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Piropo, Almandina, Espessartita</p>
+<hr><a class="anchor" id="deep_gold"></a><h5>Ouro (Profundo)</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 260<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.45<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 30<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 32<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Andesito, Basalto, Dacito, Diorito, Gabro, Granito, Riolito</p>
+<h5>Ouro Nativo</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 75%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ouro<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Au</p>
+<h5>Hematita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Fe₂O₃</p>
+<h5>Goethita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 5%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: FeHO₂</p>
+<h5>Limonita Amarela</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 5%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: FeHO₂</p>
+<hr><a class="anchor" id="normal_gold"></a><h5>Ouro, Limonita e Hematita</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 170<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.4<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio em Disco<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 60<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 40<br/>
+<span style="color:#3E8A00;">Altura</span>: 12<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Andesito, Basalto, Dacito, Diorito, Gabro, Granito, Riolito</p>
+<h5>Ouro Nativo</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 55%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ouro<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Au</p>
+<h5>Limonita Amarela</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 20%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: FeHO₂</p>
+<h5>Hematita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 20%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Fe₂O₃</p>
+<h5>Goethita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 5%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Ferro Fundido<br/>
+<span style="color:#3E8A00;">Fórmula</span>: FeHO₂</p>
+<hr><a class="anchor" id="normal_lubricant"></a><h5>Pedra-sabão, Talco e Trona</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 190<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.25<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -40 — 56<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 36<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Diorito, Gabro, Granito</p>
+<h5>Pedra-sabão</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 30%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Magnésio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Mg₃Si₄H₂O₁₂</p>
+<h5>Areia Glauconita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Magnésio, Alumínio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: KMg₂Al₄H₂O₁₂</p>
+<h5>Talco</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 20%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Magnésio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Mg₃Si₄H₂O₁₂</p>
+<h5>Pentlandita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Níquel<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Ni₉S₈</p>
+<h5>Trona</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 10%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Sódio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Na₃C₂H(H₂O)₂O₆</p>
+<a class="anchor" id="normal_silver"></a><h5>Prata, Galena e Chumbo</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 160<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.4<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 75<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 40<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Gnaisse, Granito</p>
+<h5>Chumbo</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 55%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Chumbo<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Pb<br/>
+<span style="color:#3E8A00;">Perigo</span>: <span style="color:#FF5555;">Pouco Venenoso (Inalação)</span></p>
+<h5>Galena</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 30%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Chumbo<br/>
+<span style="color:#3E8A00;">Fórmula</span>: PbS<br/>
+<span style="color:#3E8A00;">Perigo</span>: <span style="color:#FF5555;">Pouco Venenoso (Inalação)</span></p>
+<h5>Prata Nativa</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Prata<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Ag</p>
+<a class="anchor" id="normal_quartz"></a><h5>Quartzos</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 190<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.3<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 100<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 40<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Folhelho, Gnaisse, Quartzito, Xisto</p>
+<h5>Quartzito</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 43%<br/>
+<span style="color:#3E8A00;">Usado para</span>: Componentes LV<br/>
+<span style="color:#3E8A00;">Fórmula</span>: SiO₂</p>
+<h5>Barita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 37%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Bário<br/>
+<span style="color:#3E8A00;">Fórmula</span>: BaSO₂</p>
+<h5>Amianto</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 18%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Magnésio, Câncer de pulmão<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Mg₃Si₂H₄O₉<br/>
+<span style="color:#3E8A00;">Perigo</span>: <span style="color:#FF5555;">Asbestose (Inalação)</span></p>
+<a class="anchor" id="normal_redstone"></a><h5>Redstone, Cinábrio e Rubi</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 160<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.4<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 100<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 40<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Granito<br/>
+<br/>
+Não consegue encontrar? O Granito sempre aparece abaixo de <span style="color:#3E8A00;">Riolito</span>, e procurar nos oceanos também pode ser útil!</p>
+<h5>Redstone</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 45%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Redstone<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Si(FeS₂)₅(CrAl₂O₃)Hg₃</p>
+<h5>Rubi</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 35%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Cromo, Alumínio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: CrAl₂O₃</p>
+<h5>Cinábrio</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 20%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Mercúrio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: HgS</p>
+<a class="anchor" id="deep_sapphire"></a><h5>Safira e Almandina</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 180<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.35<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio em Disco<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 26<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 28<br/>
+<span style="color:#3E8A00;">Altura</span>: 8<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Andesito, Basalto, Dacito, Riolito</p>
+<h5>Almandina</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 38%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Alumínio, Ferro<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Al₂Fe₃Si₃O₁₂</p>
+<h5>Piropo</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 27%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Alumínio, Magnésio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Al₂Mg₃Si₃O₁₂</p>
+<h5>Safira</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 16%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Alimínio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Al₂O₃</p>
+<h5>Safira Verde</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 16%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Aluminium<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Al₂O₃</p>
+<hr><a class="anchor" id="normal_salt"></a><h5>Sais e Bórax</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 175<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.4<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio em Disco<br/>
+<span style="color:#3E8A00;">Y</span>: 30 — 70<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 40<br/>
+<span style="color:#3E8A00;">Altura</span>: 4<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Argilito, Calcário, Folhelho</p>
+<h5>Sal-gema</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 40%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Potássio, Cloro<br/>
+<span style="color:#3E8A00;">Fórmula</span>: KCl</p>
+<h5>Sal</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 30%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Sódio, Cloro<br/>
+<span style="color:#3E8A00;">Fórmula</span>: NaCl</p>
+<h5>Lepidorita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Potássio, Lítio, Alumínio, Flúor<br/>
+<span style="color:#3E8A00;">Fórmula</span>: KLi₃Al₄F₂O₁₀</p>
+<h5>Bórax</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Sódio, Boro<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Na₂B₄(H₂O)₁₀O₇</p>
+<hr><a class="anchor" id="normal_saltpeter"></a><h5>Salitre e Eletrotina</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 210<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.3<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 60<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 40<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Ardósia, Diorito, Filito, Gabro, Gnaisse, Granito, Mármore, Quartzito, Xisto</p>
+<h5>Salitre</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 35%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Potássio, Nitrogênio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: KNO₃</p>
+<h5>Diatomita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Ferro, Alumínio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: (SiO₂)₈(Fe₂O₃)(Al₂O₃)</p>
+<h5>Eletrotina</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Ouro, Prata, Redstone<br/>
+<span style="color:#3E8A00;">Fórmula</span>: (Si(FeS₂)₅(CrAl₂O₃)Hg₃)(AgAu)</p>
+<h5>Alunita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Potássio, Alumínio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: KAl₃Si₂H₆O₁₄</p>
+<hr><a class="anchor" id="deep_scheelite"></a><h5>Sheelita e Tungstato</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 240<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.35<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 0<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 20<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Diorito, Gabro, Granito</p>
+<h5>Sheelita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 45%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Tungstênio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Ca(WO₃)O</p>
+<h5>Tungstato</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 35%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Tungstênio, Lítio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Li₂(WO₃)O</p>
+<h5>Lítio</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 20%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Lítio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Li</p>
+<a class="anchor" id="normal_tetrahedrite"></a><h5>Tetraedrita (Normal)</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 170<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.4<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 75<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 40<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Ardósia, Filito, Gnaisse, Mármore, Quartzito, Xisto</p>
+<h5>Tetraedrita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 50%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Cobre<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Cu₃SbS₃Fe</p>
+<h5>Cobre Nativo</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 30%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Cobre<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Cu</p>
+<h5>Estibnita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 20%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Antimônio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Sb₂S₃</p>
+<a class="anchor" id="surface_tetrahedrite"></a><h5>Tetraedrita (Superfície)</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 140<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.25<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: 60 — 210<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 50<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Ardósia, Filito, Gnaisse, Mármore, Quartzito, Xisto</p>
+<h5>Tetraedrita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 60%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Cobre<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Cu₃SbS₃Fe</p>
+<h5>Cobre Nativo</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 20%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Cobre<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Cu</p>
+<h5>Estibnita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 20%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Antimônio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Sb₂S₃</p>
+<a class="anchor" id="deep_topaz"></a><h5>Topázio e Calcocita</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 260<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.3<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio em Disco<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 26<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 28<br/>
+<span style="color:#3E8A00;">Altura</span>: 7<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Ardósia, Filito, Gnaisse, Mármore, Quartzito, Xisto</p>
+<h5>Topázio Azul</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 35%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Alumínio, Flúor<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Al₂SiF₂H₂O₆</p>
+<h5>Topázio</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Alumínio, Flúor<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Al₂SiFH₂</p>
+<h5>Calcocita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Cobre<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Cu₂S</p>
+<h5>Bornita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 15%<br/>
+<span style="color:#3E8A00;">Derrete em</span>: Cobre<br/>
+<span style="color:#3E8A00;">Fórmula</span>: Cu₅FeS₄</p>
+<hr><a class="anchor" id="deep_pitchblende"></a><h5>Uraninita e Pechblenda</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 240<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.45<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — -20<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 19<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Ardósia, Diorito, Filito, Gabro, Gnaisse, Granito, Mármore, Quartzito, Xisto</p>
+<h5>Pechblenda</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 62%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Urânio, Tório, Chumbo<br/>
+<span style="color:#3E8A00;">Fórmula</span>: (UO₂)₃ThPb<br/>
+<span style="color:#3E8A00;">Perigo</span>: <span style="color:#FF5555;">Carcinogênico (Qualquer Contato)</span></p>
+<h5>Uraninita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 25%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Urânio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: UO₂<br/>
+<span style="color:#3E8A00;">Perigo</span>: <span style="color:#FF5555;">Carcinogênico (Qualquer Contato)</span></p>
+<h5>Wulfenita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 12%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Chumbo, Molibdênio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: PbMoO₄</p>
+<a class="anchor" id="deep_molybdenum"></a><h5>Wulfenita e Molibdenita</h5>
+<p><span style="color:#3E8A00;">Raridade</span>: 245<br/>
+<span style="color:#3E8A00;">Densidade</span>: 0.45<br/>
+<span style="color:#3E8A00;">Tipo</span>: Veio Aglomerado<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 10<br/>
+<span style="color:#3E8A00;">Tamanho</span>: 26<br/>
+<span style="color:#3E8A00;">Profundidade Máxima do Indicador</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Tipos de Pedra</span>: Andesito, Basalto, Dacito, Diorito, Gabro, Granito, Riolito</p>
+<h5>Wulfenita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 47%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Chumbo, Molibdênio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: PbMoO₄</p>
+<h5>Molibdenita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 35%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Molibdênio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: MoS₂</p>
+<h5>Powellita</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Veja o guia de campo no Minecraft para ver este multibloco.">Multibloco</span></p>
+</div>
+<p><span style="color:#3E8A00;">Porcentagem</span>: 17%<br/>
+<span style="color:#3E8A00;">Fonte de</span>: Molibdênio<br/>
+<span style="color:#3E8A00;">Fórmula</span>: CaMoO₄</p>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> Documentação da API
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'pt_br';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

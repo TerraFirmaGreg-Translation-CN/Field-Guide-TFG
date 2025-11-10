@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Anvil Working Guide | TFC Field Guide" />
+    <meta name="description" content="Anvil Working Guide" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Anvil Working Guide | TFC Field Guide" />
+    <meta property="og:description" content="Anvil Working Guide" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/gtceu:red_steel_hammer" />
+
+    <title>Anvil Working Guide | TFC Field Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">TerraFirmaCraft Field Guide</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Version 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> English
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/tfg_tips/anvil_working_guide.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/tfg_tips/anvil_working_guide.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/tfg_tips/anvil_working_guide.html" class="dropdown-item">Portuguese (Brazil)</a>
+
+<a href="../../ko_kr/tfg_tips/anvil_working_guide.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/tfg_tips/anvil_working_guide.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/tfg_tips/anvil_working_guide.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/tfg_tips/anvil_working_guide.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/tfg_tips/anvil_working_guide.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/tfg_tips/anvil_working_guide.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Contents</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Index</a></li>
+            <li><a href="../the_world/">The World</a></li>
+
+<li><a href="../getting_started/">Getting Started</a></li>
+
+<li><a href="../mechanics/">Advanced Mechanics</a></li>
+
+<li><a href="../sacks_n_such/">Sacks 'N Such</a></li>
+
+<li><a href="../waterflasks/">Water Flasks</a></li>
+
+<li><a href="../beneath/">Beneath</a></li>
+
+<li><a href="../firmalife/">Firmalife</a></li>
+
+<li><a href="../roadsandroofs/">Roads and Roofs</a></li>
+
+<li><a href="../arborfirmacraft/">ArborFirmaCraft</a></li>
+
+<li><a href="../firmaciv/">Firma: Civilization</a></li>
+
+<li><a href="../tfcchannelcasting/">TFC Casting with Channels</a></li>
+
+<li><a href="../tfg_ores/">Ores in TFG</a></li>
+
+<li><a href="../tfg_tips/">TFG Info & Tips</a>
+    <ul>
+    <li><a href="./anvil_working_guide.html" class="active">Anvil Working Guide</a></li>
+
+<li><a href="./blast_furnace_tips.html">Blast Furnace Tips</a></li>
+
+<li><a href="./faqs.html">Frequently Asked Questions</a></li>
+
+<li><a href="./inventory_management.html">Inventory Management</a></li>
+
+<li><a href="./space_crops.html">Extraterrestrial Crops</a></li>
+
+<li><a href="./space_fauna.html">Extraterrestrial Fauna</a></li>
+
+    </ul>
+</li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">TFG Info & Tips</a></li>
+<li class="breadcrumb-item active" aria-current="page">Anvil Working Guide</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4">Anvil Working Guide</h1>
+<h5>Working with Anvils</h5>
+<p><a href="../mechanics/anvils.html#working">Working</a> in <a href="../mechanics/anvils.html">Anvils</a> is a key process inside <span style="color:#3E8A00;">TerraFirmaGreg</span>, as most of your work towards the <span style="color:#3E8A00;">Steam and Mechanical ages</span> will require the usage of an Anvil.<br/>
+This guide is broken down into two parts, <a href="../tfg_tips/anvil_working_guide.html#ui_explained">Understanding the UI</a> and <a href="../tfg_tips/anvil_working_guide.html#how_to_perfectly_forge">How to Perfectly Forge</a>.<br/>
+<br/>
+The Modpack has a custom <span style="color:#3E8A00;">Resource Pack</span> called <a href="https://www.curseforge.com/minecraft/texture-packs/tfc-anvil-helper">TFC Anvil Helper</a> that you need to enable for this guide to make sense.</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image34.png" alt="tfg:textures/gui/field_guide/anvil_working_guide/anvil_ui.png"><div style="text-align: center;"><p>The UI for the Anvil with TFC Anvil Helper Enabled</p>
+</div><a class="anchor" id="ui_explained"></a><img class="d-block w-200 mx-auto img-fluid" src="../../_images/image35.png" alt="tfg:textures/gui/field_guide/anvil_working_guide/anvil_ui_marked.png"><div style="text-align: center;"><p>The UI for the Anvil with TFC Anvil Helper Enabled, Color Coded.</p>
+</div><p><span style="color:#ff0000;">1.</span> The item you've selected to Create in the Anvil. Each item has a specific set of required <span style="color:#be00ff;">Steps</span> and <span style="color:#ff6b00;">Work Amount</span> <br/>
+<span style="color:#ff00c6;">2.</span> The Input item you're currently working. <br/>
+<span style="color:#be00ff;">3.</span> The required Steps in Order that must be completed before the Item is considered complete. There are a total of 4 different Orders (See next Page):</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image35.png" alt="tfg:textures/gui/field_guide/anvil_working_guide/anvil_ui_marked.png"><div style="text-align: center;"></div><p>(Note: X is a wild-card for any kind of Step)<br/>
+</p>
+<ul>
+	<li>x_Any: Step can occurr in any of the last 3 actions.</li>
+	<li>x_Last: Must be the last step performed.</li>
+	<li>x_Not Last: The Step cannot be the Last Step performed.</li>
+	<li>x_Second Last: Must be the Second to Last step performed.</li>
+	<li>x_Third Last: Must be the Third to Last step performed</li>
+</ul>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image35.png" alt="tfg:textures/gui/field_guide/anvil_working_guide/anvil_ui_marked.png"><div style="text-align: center;"></div><p><span style="color:#2e00ff;">4.</span> The types of Steps. Each type of step Subtracts or Adds to the current Work value. These are, in order from Left to Right, Top to Bottom:</p>
+<ul>
+	<li>Light Hit: -3</li>
+	<li>Medium Hit: -6</li>
+	<li>Punch: +2</li>
+	<li>Bend: +7</li>
+	<li>Hard Hit: -9</li>
+	<li>Draw: -15</li>
+	<li>Upset: +13</li>
+	<li>Shrink: +16</li>
+</ul>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image35.png" alt="tfg:textures/gui/field_guide/anvil_working_guide/anvil_ui_marked.png"><div style="text-align: center;"></div><p><span style="color:#00a7ff;">5.</span> The Slots where your Hammer goes, and Flux if youre Welding.<br/>
+<span style="color:#00ff26;">6. </span>The current Work amount the item has, Doing different Steps either Increases or Decreases the amount of Work the item has.<br/>
+<span style="color:#fff400;">7. </span>The Target Work value, the <span style="color:#00ff26;">Work</span> value must be aligned EXACTLY with the Target Work, AND the <span style="color:#ff00c6;">Required Steps</span> must be fulfilled for the Item to be considered complete.<br/>
+<span style="color:#ff6b00;">8. </span>The Work Bar, used for Aligning the Work value with the Target Work value.</p>
+<a class="anchor" id="how_to_perfectly_forge"></a><h5>How to Perfectly Forge</h5>
+<p><span style="color:#3E8A00;">Perfectly Forging</span> an Item which can break, such as <span style="color:#3E8A00;">Tool Heads</span>, <span style="color:#3E8A00;">Weapons</span>, and <span style="color:#3E8A00;">Armor</span> causes the Item to gain bonuses to it's durability and general efficiency with the less total steps you take to forge the Item. Completing the Work on an Item with very few steps causes it to be Perfectly Forged, not only giving your finished item bonuses, but also reducing the overall wear and tear to the Hammer.</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image36.png" alt="tfg:textures/gui/field_guide/anvil_working_guide/perfectly_forged_item.png"><div style="text-align: center;"><p>A Perfectly Forged Wrought Iron Pickaxe Head</p>
+</div><p>This part of the guide will cover how to Perfectly Forge anything, starting with a Wrought Iron Pickaxe Head.<br/>
+<br/>
+<strong><em>DISCLAIMER:</em></strong><br/>
+While the Required Steps and Orders for an Item are universal within all worlds in TerraFirmaGreg, the Target Work value differs because its derived from your world's Seed, as such, this Guide ASSUMES the Target Work value for the Wrought Iron Pickaxe Head is <strong>83</strong></p>
+<hr><h5>Step 1</h5>
+<p>The first Step in your Forging Journey is to get the Value taken by Adding all of the Required Step's values together. For a Pickaxe Head, you need the following Steps:</p>
+<ul>
+	<li><strong>Punch</strong> Last</li>
+	<li><strong>Bend</strong> Not Last</li>
+	<li><strong>Draw</strong> Not Last.</li>
+</ul><p>By adding the Values on the Bottom of each Step, We get the Value we're looking for. Lets call this value "requiredWork".<br/>
+<strong>2 + 7 + (-15) = -6</strong></p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image37.png" alt="tfg:textures/gui/field_guide/anvil_working_guide/steps.png"><div style="text-align: center;"><p>The steps required for a Pickaxe</p>
+</div><h5>Step 2</h5>
+<p>While our main goal for the Work Amount is to align it with the Target Work, we need to make sure both that requirement AND the Steps requirements are fulfilled, as such, directly aligning the Work Amount with the Target Work will not yield desirable results. Instead, we can calculate the a value derived from Target Work and "requiredWork"</p>
+<p>This value can be obtained depending on the Sign of "requiredWork" (IE: if the value is Negative or Positive).</p>
+<ul>
+	<li>If "requiredWork" is PositiveSubtract "requiredWork"'s Absolute Value from "Target Work"83 - 6 == <strong>77</strong></li>
+	<li>If "requiredWork" is NegativeAdd "requiredWork"'s Absolute Value to "Target Work"83 + 6 = <strong>89</strong></li>
+</ul>
+<p>Since the "requiredWork" for our item is -6, the value we're looking for is <strong>89</strong>.<br/>
+You may be wondering, how can you get exact numerical values for your Target Work? Well, the Anvil UI shows us with the Work Bar. It only shows the multiples of 20, but we can know the other numbers easily via the colored lines:</p>
+<ul>
+	<li>Light Gray: Represents a multiple of 5</li>
+	<li>Gray: Represents an Odd Number</li>
+	<li>Dark Gray: Represents an Even Number</li>
+</ul>
+<div id="content1" class="carousel slide" data-bs-ride="carousel">    <div class="carousel-indicators">        <button type="button" data-bs-target="#content1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>        <button type="button" data-bs-target="#content1" data-bs-slide-to="1" aria-label="Slide 2"></button>    </div>    <div class="carousel-inner">        <div class="carousel-item ../../_images/image38.png">    <img class="d-block w-200 mx-auto img-fluid" src="tfg:textures/gui/field_guide/anvil_working_guide/work_bar_numbers.png" alt="active"></div><div class="carousel-item ../../_images/image39.png">    <img class="d-block w-200 mx-auto img-fluid" src="tfg:textures/gui/field_guide/anvil_working_guide/target_work_for_wrought_iron_pickaxe_head.png" alt=""></div>    </div>    <button type="button" class="carousel-control-prev" data-bs-target="#content1" data-bs-slide="prev">        <span class="carousel-control-prev-icon" aria-hidden="true"></span>        <span class="visually-hidden">Previous</span>    </button>    <button type="button" class="carousel-control-next" data-bs-target="#content1" data-bs-slide="next">        <span class="carousel-control-next-icon" aria-hidden="true"></span>        <span class="visually-hidden">Next</span>    </button></div><div style="text-align: center;"></div><h5>Step 3</h5>
+<p>With the value derived from "Target Work" and "requiredWork", we now need to reach said Work value, this can be done either manually by adding the numbers attached for each step, or by using the cheat sheet in the UI bar. Each color represents the Step Type in the UI. <br/>
+IE: Red == Shrink (+16)</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image40.png" alt="tfg:textures/gui/field_guide/anvil_working_guide/work_bar_cheat_sheet.png"><div style="text-align: center;"><p>16 + 16 + 16 + 16 + 16 + 7 + 2 = 89</p>
+</div><h5>Step 4</h5>
+<p>Now that we know the required steps, its time to reach the Value derived from "Target Work" and "requiredWork". For a pickaxe head where it's TotalWork value is 83, we need to reach 89. As such, we do: (Shrink x 5) -> Bend -> Punch.<br/>
+<br/>
+Once our Work value is at our desired value, just follow the Required Steps, which for a pickaxe head its: Draw -> Bend -> Punch. And Voila! We've obtained a Perfectly Forged Item!</p>
+<div id="content2" class="carousel slide" data-bs-ride="carousel">    <div class="carousel-indicators">        <button type="button" data-bs-target="#content2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>        <button type="button" data-bs-target="#content2" data-bs-slide-to="1" aria-label="Slide 2"></button><button type="button" data-bs-target="#content2" data-bs-slide-to="2" aria-label="Slide 3"></button>    </div>    <div class="carousel-inner">        <div class="carousel-item ../../_images/image41.png">    <img class="d-block w-200 mx-auto img-fluid" src="tfg:textures/gui/field_guide/anvil_working_guide/wrought_iron_pickaxe_head_no_work.png" alt="active"></div><div class="carousel-item ../../_images/image42.png">    <img class="d-block w-200 mx-auto img-fluid" src="tfg:textures/gui/field_guide/anvil_working_guide/wrought_iron_pickaxe_head_some_work.png" alt=""></div><div class="carousel-item ../../_images/image43.png">    <img class="d-block w-200 mx-auto img-fluid" src="tfg:textures/gui/field_guide/anvil_working_guide/wrought_iron_pickaxe_head_complete.png" alt=""></div>    </div>    <button type="button" class="carousel-control-prev" data-bs-target="#content2" data-bs-slide="prev">        <span class="carousel-control-prev-icon" aria-hidden="true"></span>        <span class="visually-hidden">Previous</span>    </button>    <button type="button" class="carousel-control-next" data-bs-target="#content2" data-bs-slide="next">        <span class="carousel-control-next-icon" aria-hidden="true"></span>        <span class="visually-hidden">Next</span>    </button></div><div style="text-align: center;"><p>An Ingot with No Work->Desired Work Value Reached->Doing the Required Steps for our Item.</p>
+</div><h5>Examples</h5>
+<p>Lets see this process with other items, such as a Plate, or a Rod. Again, the Target Work differs by the world seed, so their values will be different on your world.<br/>
+Plate Target Value: <strong>111</strong><br/>
+Required Steps: Hit x 3, Any Order.<br/>
+"requiredWork": -3 x 3 = -9<br/>
+Derived Value: 111 + 9 = 120.<br/>
+Reaching the Value: (Shrink x 5)->(Upset x 2)->(Punch x 2)<br/>
+Getting the Item: 120 - (Light Hit x 3) == <strong>111</strong>. Both requirements met.</p>
+<p>Rod Target Value: <strong>78</strong><br/>
+Required Steps: Draw->Draw->Bend<br/>
+"requiredWork": (-15 x 2) + 7 = -23<br/>
+Derived Value: 78 + 23 = 101.<br/>
+Reaching the Value: (Shrink x 5)->(Bend x 3)<br/>
+Getting the Item: 101 - 15 - 15 + 7 = 101.</p>
+<h5>Other Tidbits</h5>
+<p>If one of the Required Steps is Empty, it means it's a Wild Card, any Step can be used.<br/>
+<br/>
+If you fail your calculations, you can always melt and cast your item back into an ingot, this will remove the "worked" tag for the item, letting you try again to perfectly forge it.</p>
+<hr><hr><p>Congratulations on Reaching the End, if youre a contributor looking to re-take the pictures in this guide, the seed used during it's writing is <strong>-7291708953208913102</strong>, You could also create a creative world to test the algorithm yourself!<br/>
+<br/>
+<br/>
+Also... since you're here, if you cant be bothered to do all the calculations yourself, you can always use the <a href="https://adrianmiller99.github.io/tfg-anvil-calculator/src/index.html">TFC Anvil Calculator</a>...</p>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> API Docs
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'en_us';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Індекс Місячних Жил | TFC Field Guide" />
+    <meta name="description" content="Індекс Місячних Жил" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Індекс Місячних Жил | TFC Field Guide" />
+    <meta property="og:description" content="Індекс Місячних Жил" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/gtceu:moon_stone_certus_quartz_ore" />
+
+    <title>Індекс Місячних Жил | TFC Field Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">Польовий посібник TerraFirmaCraft</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Версія 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> Українська мова
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/tfg_ores/moon_vein_index.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/tfg_ores/moon_vein_index.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/tfg_ores/moon_vein_index.html" class="dropdown-item">Portuguese (Brazil)</a>
+
+<a href="../../ko_kr/tfg_ores/moon_vein_index.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/tfg_ores/moon_vein_index.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/tfg_ores/moon_vein_index.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/tfg_ores/moon_vein_index.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/tfg_ores/moon_vein_index.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/tfg_ores/moon_vein_index.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Зміст</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Зміст</a></li>
+            <li><a href="../the_world/">Світ</a></li>
+
+<li><a href="../getting_started/">Починаємо</a></li>
+
+<li><a href="../mechanics/">Розширена механіка</a></li>
+
+<li><a href="../tfg_ores/">Руди в TFG</a>
+    <ul>
+    <li><a href="./earth_ore_index.html">Індекс Земних Руд</a></li>
+
+<li><a href="./ore_basics.html">Видобуток у TFG</a></li>
+
+<li><a href="./earth_vein_index.html">Індекс Земних Жил</a></li>
+
+<li><a href="./hazards.html">Робота з Небезпеками</a></li>
+
+<li><a href="./nether_ore_index.html">Індекс Руд Безодні</a></li>
+
+<li><a href="./nether_vein_index.html">Індекс Жил безодні</a></li>
+
+<li><a href="./moon_ore_index.html">Індекс Місячних Руд</a></li>
+
+<li><a href="./moon_vein_index.html" class="active">Індекс Місячних Жил</a></li>
+
+<li><a href="./mars_ore_index.html">Mars Ore Index</a></li>
+
+<li><a href="./mars_vein_index.html">Mars Vein Index</a></li>
+
+    </ul>
+</li>
+
+<li><a href="../tfg/">Зміни в TFG</a></li>
+
+<li><a href="../tfg_tips/">Інформація та поради TFG</a></li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">Руди в TFG</a></li>
+<li class="breadcrumb-item active" aria-current="page">Індекс Місячних Жил</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4">Індекс Місячних Жил</h1>
+<h5>Індекс Місячних Жил</h5>
+<p>Це <span style="color:#3E8A00;">Індекс жил</span> для <span style="color:#3E8A00;">Місяць</span>. Кожна жила містить інформацію про її рідкісність, щільність, тип, висоту залягання, розміри, породи, в яких вона з’являється, та інше.</p>
+<p></p>
+<ul>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_garnet">Аметист, Опал і Гранат</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_apatite">Апатит і Пірохлор</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_monazite">Бастнезит і Монацит</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_bauxite">Боксит і Ільменіт</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_molybdenum">Вульфеніт і Молібденіт</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_garnierite">Гарнієрит і Кобальтит</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_gypsum">Гіпс і Кальцит</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_graphite">Графіт і Діамант</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_desh">Деш і Ільменіт</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_gold">Золото і Магнетит</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_quartz">Істинний Кварц</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_cassiterite">Каситерит і Халькопірит</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_mica">Кіаніт, Слюда та Боксити</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_manganese">Марганець і Тантал</a></li>
+</ul>
+<p></p>
+<ul>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_pyrolusite">Піролюзит і Кобальт</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_redstone">Редстоун, Кіновар і Рубін</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_sapphire">Сапфір і Альмадін</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_saltpeter">Селітра та Електротин</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_beryllium">Смарагд і Берилій</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_silver">Срібло, Гален і Свинець</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_lubricant">Стеатит, Тальк і Трона</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_sphalerite">Сфалерит і Пірит</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_tetrahedrite">Тетраедрит і Халькоцит</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_topaz">Топаз і Халькоцит</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_magnetite">Хроміт і Магнетит</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_scheelite">Шеєліт та Вольфрам</a></li>
+	<li><a href="../tfg_ores/moon_vein_index.html#moon_sheldonite">Шелдоніт і Борніт</a></li>
+</ul>
+<hr><a class="anchor" id="moon_garnet"></a><h5>Аметист, Опал і Гранат</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 230<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.35<br/>
+<span style="color:#3E8A00;">Тип</span>: Дискова вена<br/>
+<span style="color:#3E8A00;">Y</span>: 10 — 128<br/>
+<span style="color:#3E8A00;">Розмір</span>: 35<br/>
+<span style="color:#3E8A00;">Висота</span>: 7<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Андезит, Базальт, Ріоліт</p>
+<h5>Аметист</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 38%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Залізо<br/>
+<span style="color:#3E8A00;">Формула</span>: (SiO₂)₄Fe</p>
+<h5>Опал</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 38%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Кремнію, Кисню<br/>
+<span style="color:#3E8A00;">Формула</span>: (SiO₂)</p>
+<h5>Жовтий гранат</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 14%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Андрадиту, Гросулару, Уваровіту</p>
+<h5>Червоний гранат</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 9%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Піроп, Алмадін, Спесартін</p>
+<hr><a class="anchor" id="moon_apatite"></a><h5>Апатит і Пірохлор</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 250<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.3<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 100<br/>
+<span style="color:#3E8A00;">Розмір</span>: 35<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Анортозит, Діорит, Норит</p>
+<h5>Пірохлор</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 38%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Ніобій<br/>
+<span style="color:#3E8A00;">Формула</span>: Ca₂Nb₂O₇</p>
+<h5>Трикальційфосфат</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 33%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Кальцію, Фосфору<br/>
+<span style="color:#3E8A00;">Формула</span>: Ca₃(PO₄)₂</p>
+<h5>Апатит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 23%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Кальцію, Фосфору, Лісовий ПТСР<br/>
+<span style="color:#3E8A00;">Формула</span>: Ca₅(PO₄)₃Cl</p>
+<h5>Оливін</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 4%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнію, Залізо<br/>
+<span style="color:#3E8A00;">Формула</span>: Mg₂Fe(SiO₂)₂</p>
+<hr><a class="anchor" id="moon_monazite"></a><h5>Бастнезит і Монацит</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 310<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.2<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Розмір</span>: 40<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Андезит, Дацит, Ріоліт, Фоноліт</p>
+<h5>Бастнезит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 61%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Церію, Фтору<br/>
+<span style="color:#3E8A00;">Формула</span>: CeCFO₃</p>
+<h5>Монацит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 30%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Фосфору, Рідкоземельні<br/>
+<span style="color:#3E8A00;">Формула</span>: ?(PO₄)</p>
+<h5>Неодим</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 6%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Неодиму<br/>
+<span style="color:#3E8A00;">Формула</span>: Nd</p>
+<h5>Оливін</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 1%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнію, Залізо<br/>
+<span style="color:#3E8A00;">Формула</span>: Mg₂Fe(SiO₂)₂</p>
+<hr><a class="anchor" id="moon_bauxite"></a><h5>Боксит і Ільменіт</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 200<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.35<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 80<br/>
+<span style="color:#3E8A00;">Розмір</span>: 40<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Анортозит, Базальт, Діорит, Норит, Ріоліт, Фоноліт</p>
+<h5>Ільменіт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 42%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Залізо, Титану<br/>
+<span style="color:#3E8A00;">Формула</span>: FeTiO₃</p>
+<h5>Боксит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 36%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Алюмінію<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂O₃</p>
+<h5>Армолколіт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 21%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнію, Рутилу, Титану<br/>
+<span style="color:#3E8A00;">Формула</span>: (Mg,Fe)Ti₂O₅</p>
+<a class="anchor" id="moon_molybdenum"></a><h5>Вульфеніт і Молібденіт</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 245<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.35<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 50<br/>
+<span style="color:#3E8A00;">Розмір</span>: 35<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Базальт, Габро, Дацит, Норит</p>
+<h5>Вульфеніт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 44%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Свинцю, Молібденуму<br/>
+<span style="color:#3E8A00;">Формула</span>: PbMoO₄</p>
+<h5>Молібденіт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 33%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Молібденум<br/>
+<span style="color:#3E8A00;">Формула</span>: MoS₂</p>
+<h5>Повеліт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 16%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Молібденум<br/>
+<span style="color:#3E8A00;">Формула</span>: CaMoO₄</p>
+<h5>Оливін</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 5%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнію, Залізо<br/>
+<span style="color:#3E8A00;">Формула</span>: Mg₂Fe(SiO₂)₂</p>
+<hr><a class="anchor" id="moon_garnierite"></a><h5>Гарнієрит і Кобальтит</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 250<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.35<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 5 — 85<br/>
+<span style="color:#3E8A00;">Розмір</span>: 45<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Габро, Діорит, Ріоліт</p>
+<h5>Гарнієрит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 23%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Нікель<br/>
+<span style="color:#3E8A00;">Формула</span>: NiO</p>
+<h5>Пентландит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 23%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Нікель<br/>
+<span style="color:#3E8A00;">Формула</span>: Ni₉S₈</p>
+<h5>Нікель</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 19%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Нікелю<br/>
+<span style="color:#3E8A00;">Формула</span>: Ni</p>
+<h5>Кобальтит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 19%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Кобальту, Миш'яку<br/>
+<span style="color:#3E8A00;">Формула</span>: CoAsS<br/>
+<span style="color:#3E8A00;">Небезпечний</span>: <span style="color:#FF5555;">Арсенікоз (інгаляція)</span></p>
+<h5>Кобальт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 14%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Кобальту<br/>
+<span style="color:#3E8A00;">Формула</span>: Co</p>
+<a class="anchor" id="moon_gypsum"></a><h5>Гіпс і Кальцит</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 180<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.3<br/>
+<span style="color:#3E8A00;">Тип</span>: Дискова вена<br/>
+<span style="color:#3E8A00;">Y</span>: 10 — 100<br/>
+<span style="color:#3E8A00;">Розмір</span>: 30<br/>
+<span style="color:#3E8A00;">Висота</span>: 9<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Анортозит, Норит, Фоноліт</p>
+<h5>Гіпс</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 35%<br/>
+<span style="color:#3E8A00;">Використовується для</span>: Алебастрової (фарбованої) цегли<br/>
+<span style="color:#3E8A00;">Формула</span>: CaS(H₂O)₂O₄</p>
+<h5>Кальцит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 25%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Кальцію<br/>
+<span style="color:#3E8A00;">Формула</span>: CaCO₃</p>
+<h5>Бура</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 20%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Натрію, Бору<br/>
+<span style="color:#3E8A00;">Формула</span>: Na₂B₄(H₂O)₁₀O₇</p>
+<h5>Алуніт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 15%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Калію, Алюмінію<br/>
+<span style="color:#3E8A00;">Формула</span>: KAl₃Si₂H₆O₁₄</p>
+<h5>Оливін</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 5%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнію, Залізо<br/>
+<span style="color:#3E8A00;">Формула</span>: Mg₂Fe(SiO₂)₂</p>
+<a class="anchor" id="moon_graphite"></a><h5>Графіт і Діамант</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 260<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.4<br/>
+<span style="color:#3E8A00;">Тип</span>: Трубна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 120<br/>
+<span style="color:#3E8A00;">Висота</span>: 60<br/>
+<span style="color:#3E8A00;">Радіус</span>: 9<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Анортозит, Базальт, Базальт, Габро, Фоноліт</p>
+<h5>Графіт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 52%<br/>
+<span style="color:#3E8A00;">Використовується для</span>: <a href="../mechanics/fire_clay.html">Вогнетривкової глини</a>, Графену<br/>
+<span style="color:#3E8A00;">Формула</span>: C</p>
+<h5>Діамант</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 36%<br/>
+<span style="color:#3E8A00;">Використовується для</span>: Подрібнювачів, AE2<br/>
+<span style="color:#3E8A00;">Формула</span>: C</p>
+<h5>Оливін</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 10%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнію, Залізо<br/>
+<span style="color:#3E8A00;">Формула</span>: Mg₂Fe(SiO₂)₂</p>
+<a class="anchor" id="moon_desh"></a><h5>Деш і Ільменіт</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 230<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.35<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 10 — 80<br/>
+<span style="color:#3E8A00;">Розмір</span>: 30<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Андезит, Базальт, Габро, Дацит</p>
+<h5>Ільменіт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 30%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Залізо, Титану<br/>
+<span style="color:#3E8A00;">Формула</span>: FeTiO₃</p>
+<h5>Деш</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 25%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Заліза, Титану, Азоту<br/>
+<span style="color:#3E8A00;">Формула</span>: (Mg₂Fe(SiO₂)₂)₂(TiO₂)N₄</p>
+<h5>Алюмінію</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 25%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Алюмінію<br/>
+<span style="color:#3E8A00;">Формула</span>: Al</p>
+<h5>Армолколіт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 20%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнію, Рутилу, Титану<br/>
+<span style="color:#3E8A00;">Формула</span>: (Mg,Fe)Ti₂O₅</p>
+<hr><a class="anchor" id="moon_gold"></a><h5>Золото і Магнетит</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 170<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.35<br/>
+<span style="color:#3E8A00;">Тип</span>: Дискова вена<br/>
+<span style="color:#3E8A00;">Y</span>: 10 — 80<br/>
+<span style="color:#3E8A00;">Розмір</span>: 35<br/>
+<span style="color:#3E8A00;">Висота</span>: 10<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Базальт, Граніт, Діорит</p>
+<h5>Самородна Золото</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 55%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Золото<br/>
+<span style="color:#3E8A00;">Формула</span>: Au</p>
+<h5>Боксит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 20%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Алюмінію<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂O₃</p>
+<h5>Магнетит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 20%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Чавун<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₃O₄</p>
+<h5>Зелений сапфір</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 5%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Алюмінію<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂O₃</p>
+<hr><a class="anchor" id="moon_quartz"></a><h5>Істинний Кварц</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 230<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.3<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 10 — 100<br/>
+<span style="color:#3E8A00;">Розмір</span>: 45<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 80<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Андезит, Анортозит, Базальт, Габро, Дацит, Діорит, Норит, Ріоліт, Фоноліт</p>
+<h5>Поклади Істинного Кварцу</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 45%<br/>
+<span style="color:#3E8A00;">Використовується для</span>: Applied Energistics 2<br/>
+<span style="color:#3E8A00;">Формула</span>: SiO₂</p>
+<h5>Кварц Нижнього Світу</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 30%<br/>
+<span style="color:#3E8A00;">Використовується для</span>: Applied Energistics 2<br/>
+<span style="color:#3E8A00;">Формула</span>: SiO₂</p>
+<h5>Кварцит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 20%<br/>
+<span style="color:#3E8A00;">Використовується для</span>: LV компонентів<br/>
+<span style="color:#3E8A00;">Формула</span>: SiO₂</p>
+<h5>Барит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 5%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Барію<br/>
+<span style="color:#3E8A00;">Формула</span>: BaSO₂</p>
+<hr><a class="anchor" id="moon_cassiterite"></a><h5>Каситерит і Халькопірит</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 210<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.3<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 10 — 128<br/>
+<span style="color:#3E8A00;">Розмір</span>: 35<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Габро, Граніт, Діорит, Норит</p>
+<h5>Каситерит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 41%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Олово<br/>
+<span style="color:#3E8A00;">Формула</span>: SnO₂</p>
+<h5>Халькопирит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 35%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Мідь<br/>
+<span style="color:#3E8A00;">Формула</span>: CuFeS₂</p>
+<h5>Олово</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 17%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Олово<br/>
+<span style="color:#3E8A00;">Формула</span>: Sn</p>
+<h5>Цеоліт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 5%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Алюмінію, Кисню<br/>
+<span style="color:#3E8A00;">Формула</span>: NaCa₄Si₂₇Al₉(H₂O)₂₈O₇₂</p>
+<hr><a class="anchor" id="moon_mica"></a><h5>Кіаніт, Слюда та Боксити</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 250<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.25<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 120<br/>
+<span style="color:#3E8A00;">Розмір</span>: 35<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Анортозит, Габро, Діорит, Норит</p>
+<h5>Кіаніт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 33%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Алюмінію<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂SiO₅</p>
+<h5>Слюда</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 23%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Калію, Алюмінію, Фтору<br/>
+<span style="color:#3E8A00;">Формула</span>: KAl₃Si₃F₂O₁₀</p>
+<h5>Боксит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 23%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Алюмінію<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂O₃</p>
+<h5>Алюмінію</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 14%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Алюмінію<br/>
+<span style="color:#3E8A00;">Формула</span>: Al</p>
+<h5>Оливін</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 4%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнію, Залізо<br/>
+<span style="color:#3E8A00;">Формула</span>: Mg₂Fe(SiO₂)₂</p>
+<a class="anchor" id="moon_manganese"></a><h5>Марганець і Тантал</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 215<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.35<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 5 — 80<br/>
+<span style="color:#3E8A00;">Розмір</span>: 30<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Андезит, Базальт, Базальт, Габро, Дацит, Норит</p>
+<h5>Гроссуляр</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 37%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Кальцію, Алюмінію<br/>
+<span style="color:#3E8A00;">Формула</span>: Ca₃Al₂Si₃O₁₂</p>
+<h5>Спесартін</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 25%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнезії, Алюмінію<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂Mn₃Si₃O₁₂</p>
+<h5>Піролюзит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 25%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнезії<br/>
+<span style="color:#3E8A00;">Формула</span>: MnO₂</p>
+<h5>Танталіт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 12%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнезії, Танталу<br/>
+<span style="color:#3E8A00;">Формула</span>: MnTa₂O₆</p>
+<hr><a class="anchor" id="moon_pyrolusite"></a><h5>Піролюзит і Кобальт</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 210<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.25<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 20 — 80<br/>
+<span style="color:#3E8A00;">Розмір</span>: 35<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Андезит, Анортозит, Базальт, Габро, Норит</p>
+<h5>Піролюзит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 38%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнезії<br/>
+<span style="color:#3E8A00;">Формула</span>: MnO₂</p>
+<h5>Кобальтит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 23%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Кобальту, Миш'яку<br/>
+<span style="color:#3E8A00;">Формула</span>: CoAsS<br/>
+<span style="color:#3E8A00;">Небезпечний</span>: <span style="color:#FF5555;">Арсенікоз (інгаляція)</span></p>
+<h5>Кобальт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 23%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Кобальту<br/>
+<span style="color:#3E8A00;">Формула</span>: Co</p>
+<h5>Танталіт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 14%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнезії, Танталу<br/>
+<span style="color:#3E8A00;">Формула</span>: MnTa₂O₆</p>
+<hr><a class="anchor" id="moon_redstone"></a><h5>Редстоун, Кіновар і Рубін</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 250<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.2<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 20 — 100<br/>
+<span style="color:#3E8A00;">Розмір</span>: 35<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Андезит, Дацит, Фоноліт</p>
+<h5>Редстоун</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 42%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Редстоун<br/>
+<span style="color:#3E8A00;">Формула</span>: Si(FeS₂)₅(CrAl₂O₃)Hg₃</p>
+<h5>Рубін</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 33%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Хрому, Алюмінію<br/>
+<span style="color:#3E8A00;">Формула</span>: CrAl₂O₃</p>
+<h5>Кіновар</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 19%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Ртуті<br/>
+<span style="color:#3E8A00;">Формула</span>: HgS</p>
+<h5>Оливін</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 4%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнію, Залізо<br/>
+<span style="color:#3E8A00;">Формула</span>: Mg₂Fe(SiO₂)₂</p>
+<hr><a class="anchor" id="moon_sapphire"></a><h5>Сапфір і Альмадін</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 280<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.35<br/>
+<span style="color:#3E8A00;">Тип</span>: Дискова вена<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 100<br/>
+<span style="color:#3E8A00;">Розмір</span>: 28<br/>
+<span style="color:#3E8A00;">Висота</span>: 8<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Базальт, Норит</p>
+<h5>Алмандін</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 38%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Алюмінію, Залізо<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂Fe₃Si₃O₁₂</p>
+<h5>Піроп</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 27%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Алюмінію, Магнію<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂Mg₃Si₃O₁₂</p>
+<h5>Сапфір</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 16%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Алюмінію<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂O₃</p>
+<h5>Зелений сапфір</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 16%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Алюмінію<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂O₃</p>
+<h5>Оливін</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 2%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнію, Залізо<br/>
+<span style="color:#3E8A00;">Формула</span>: Mg₂Fe(SiO₂)₂</p>
+<a class="anchor" id="moon_saltpeter"></a><h5>Селітра та Електротин</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 210<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.3<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 90<br/>
+<span style="color:#3E8A00;">Розмір</span>: 30<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Андезит, Дацит, Норит, Ріоліт</p>
+<h5>Електротин</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 37%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Золотa, Срібла, Редстоуна<br/>
+<span style="color:#3E8A00;">Формула</span>: (Si(FeS₂)₅(CrAl₂O₃)Hg₃)(AgAu)</p>
+<h5>Нітрат калію</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 29%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Калію, Азот<br/>
+<span style="color:#3E8A00;">Формула</span>: KNO₃</p>
+<h5>Соапостон</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 20%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнію<br/>
+<span style="color:#3E8A00;">Формула</span>: Mg₃Si₄H₂O₁₂</p>
+<h5>Тальк</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 12%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнію<br/>
+<span style="color:#3E8A00;">Формула</span>: Mg₃Si₄H₂O₁₂</p>
+<hr><a class="anchor" id="moon_beryllium"></a><h5>Смарагд і Берилій</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 260<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.35<br/>
+<span style="color:#3E8A00;">Тип</span>: Трубна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 120<br/>
+<span style="color:#3E8A00;">Висота</span>: 70<br/>
+<span style="color:#3E8A00;">Радіус</span>: 8<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Анортозит, Базальт, Фоноліт</p>
+<h5>Смарагд</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 45%<br/>
+<span style="color:#3E8A00;">Використовується для</span>: MV компонентів, Фільтр тегів предметів<br/>
+<span style="color:#3E8A00;">Формула</span>: Be₃Al₂Si₆O₁₈</p>
+<h5>Берилій</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 31%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Берилію<br/>
+<span style="color:#3E8A00;">Формула</span>: Be<br/>
+<span style="color:#3E8A00;">Небезпечний</span>: <span style="color:#FF5555;">Бериліоз (контакт із шкірою)</span></p>
+<h5>Кам’яна сіль</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 18%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Калію, Хлору<br/>
+<span style="color:#3E8A00;">Формула</span>: KCl</p>
+<h5>Оливін</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 4%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнію, Залізо<br/>
+<span style="color:#3E8A00;">Формула</span>: Mg₂Fe(SiO₂)₂</p>
+<h5>Торій</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 0%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Торію<br/>
+<span style="color:#3E8A00;">Формула</span>: Th</p>
+<a class="anchor" id="moon_silver"></a><h5>Срібло, Гален і Свинець</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 210<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.35<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 20 — 75<br/>
+<span style="color:#3E8A00;">Розмір</span>: 30<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Анортозит, Дацит, Діорит, Норит, Ріоліт</p>
+<h5>Самородна Срібла</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 42%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Срібло<br/>
+<span style="color:#3E8A00;">Формула</span>: Ag</p>
+<h5>Галена</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 28%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Свинцю<br/>
+<span style="color:#3E8A00;">Формула</span>: PbS<br/>
+<span style="color:#3E8A00;">Небезпечний</span>: <span style="color:#FF5555;">Слабка отруйність (інгаляція)</span></p>
+<h5>Свинець</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 23%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Свинець<br/>
+<span style="color:#3E8A00;">Формула</span>: Pb<br/>
+<span style="color:#3E8A00;">Небезпечний</span>: <span style="color:#FF5555;">Слабка отруйність (інгаляція)</span></p>
+<h5>Оливін</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 4%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнію, Залізо<br/>
+<span style="color:#3E8A00;">Формула</span>: Mg₂Fe(SiO₂)₂</p>
+<hr><a class="anchor" id="moon_lubricant"></a><h5>Стеатит, Тальк і Трона</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 190<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.25<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 66<br/>
+<span style="color:#3E8A00;">Розмір</span>: 30<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Анортозит, Базальт, Габро, Діорит, Норит</p>
+<h5>Соапостон</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 30%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнію<br/>
+<span style="color:#3E8A00;">Формула</span>: Mg₃Si₄H₂O₁₂</p>
+<h5>Главконітний пісок</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 25%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнію, Алюмінію<br/>
+<span style="color:#3E8A00;">Формула</span>: KMg₂Al₄H₂O₁₂</p>
+<h5>Тальк</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 20%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Магнію<br/>
+<span style="color:#3E8A00;">Формула</span>: Mg₃Si₄H₂O₁₂</p>
+<h5>Пентландит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 15%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Нікель<br/>
+<span style="color:#3E8A00;">Формула</span>: Ni₉S₈</p>
+<h5>Трона</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 10%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Натрію<br/>
+<span style="color:#3E8A00;">Формула</span>: Na₃C₂H(H₂O)₂O₆</p>
+<a class="anchor" id="moon_sphalerite"></a><h5>Сфалерит і Пірит</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 205<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.35<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 2 — 75<br/>
+<span style="color:#3E8A00;">Розмір</span>: 35<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Андезит, Базальт, Габро, Дацит, Фоноліт</p>
+<h5>Сфалерит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 50%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Цинк<br/>
+<span style="color:#3E8A00;">Формула</span>: ZnS</p>
+<h5>Пірит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 40%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Чавун<br/>
+<span style="color:#3E8A00;">Формула</span>: FeS₂</p>
+<h5>Деш</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 10%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Заліза, Титану, Азоту<br/>
+<span style="color:#3E8A00;">Формула</span>: (Mg₂Fe(SiO₂)₂)₂(TiO₂)N₄</p>
+<a class="anchor" id="moon_tetrahedrite"></a><h5>Тетраедрит і Халькоцит</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 190<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.3<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 50 — 128<br/>
+<span style="color:#3E8A00;">Розмір</span>: 35<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Андезит, Дацит, Ріоліт, Фоноліт</p>
+<h5>Тетраедрит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 40%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Мідь<br/>
+<span style="color:#3E8A00;">Формула</span>: Cu₃SbS₃Fe</p>
+<h5>Халькоцит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 25%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Міді<br/>
+<span style="color:#3E8A00;">Формула</span>: Cu₂S</p>
+<h5>Стибніт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 20%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Сурму<br/>
+<span style="color:#3E8A00;">Формула</span>: Sb₂S₃</p>
+<h5>Самородна Мідь</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 15%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Мідь<br/>
+<span style="color:#3E8A00;">Формула</span>: Cu</p>
+<hr><a class="anchor" id="moon_topaz"></a><h5>Топаз і Халькоцит</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 210<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.35<br/>
+<span style="color:#3E8A00;">Тип</span>: Дискова вена<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 120<br/>
+<span style="color:#3E8A00;">Розмір</span>: 45<br/>
+<span style="color:#3E8A00;">Висота</span>: 16<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Андезит, Анортозит, Базальт, Габро, Дацит, Діорит, Норит, Ріоліт, Фоноліт</p>
+<h5>Блакитний топаз</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 35%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Алюмінію, Фтору<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂SiF₂H₂O₆</p>
+<h5>Топаз</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 25%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Алюмінію, Фтору<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂SiFH₂</p>
+<h5>Халькоцит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 25%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Міді<br/>
+<span style="color:#3E8A00;">Формула</span>: Cu₂S</p>
+<h5>Борніт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 15%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Мідь<br/>
+<span style="color:#3E8A00;">Формула</span>: Cu₅FeS₄</p>
+<hr><a class="anchor" id="moon_magnetite"></a><h5>Хроміт і Магнетит</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 280<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.25<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 90<br/>
+<span style="color:#3E8A00;">Розмір</span>: 50<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Анортозит, Габро, Діорит, Норит</p>
+<h5>Хроміт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 40%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Хрому<br/>
+<span style="color:#3E8A00;">Формула</span>: FeCr₂O₄<br/>
+<span style="color:#3E8A00;">Небезпечний</span>: <span style="color:#FF5555;">Подразник (контакт із шкірою)</span></p>
+<h5>Магнетит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 25%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Чавун<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₃O₄</p>
+<h5>Ванадієвий магнетит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 15%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Залізо, Ванадію<br/>
+<span style="color:#3E8A00;">Формула</span>: (Fe₃O₄)V</p>
+<h5>Самородна Золото</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 15%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Золото<br/>
+<span style="color:#3E8A00;">Формула</span>: Au</p>
+<h5>Сапфір</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 5%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Алюмінію<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂O₃</p>
+<a class="anchor" id="moon_scheelite"></a><h5>Шеєліт та Вольфрам</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 200<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.4<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Розмір</span>: 20<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Габро, Ріоліт, Фоноліт</p>
+<h5>Вольфрам</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 50%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Вольфраму, Літію<br/>
+<span style="color:#3E8A00;">Формула</span>: Li₂(WO₃)O</p>
+<h5>Шеєліт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 40%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Вольфраму<br/>
+<span style="color:#3E8A00;">Формула</span>: Ca(WO₃)O</p>
+<h5>Літій</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 10%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Літію<br/>
+<span style="color:#3E8A00;">Формула</span>: Li</p>
+<a class="anchor" id="moon_sheldonite"></a><h5>Шелдоніт і Борніт</h5>
+<p><span style="color:#3E8A00;">Рідкість</span>: 260<br/>
+<span style="color:#3E8A00;">Щільність</span>: 0.3<br/>
+<span style="color:#3E8A00;">Тип</span>: Кластерна вена<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Розмір</span>: 30<br/>
+<span style="color:#3E8A00;">Індикатор Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Типи каменю</span>: Андезит, Базальт, Фоноліт</p>
+<h5>Борніт</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 35%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Мідь<br/>
+<span style="color:#3E8A00;">Формула</span>: Cu₅FeS₄</p>
+<h5>Шелдонітн</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 25%<br/>
+<span style="color:#3E8A00;">Джерело</span>: Платини, Нікелю, Паладію<br/>
+<span style="color:#3E8A00;">Формула</span>: Pt₃NiSPd</p>
+<h5>Нікель</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 25%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Нікелю<br/>
+<span style="color:#3E8A00;">Формула</span>: Ni</p>
+<h5>Платина</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Відсоток</span>: 15%<br/>
+<span style="color:#3E8A00;">Розплавляється в</span>: Платину<br/>
+<span style="color:#3E8A00;">Формула</span>: Pt</p>
+<hr>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> API Документація
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'uk_ua';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

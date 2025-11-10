@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Позаземна фауна | TFC Field Guide" />
+    <meta name="description" content="Позаземна фауна" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Позаземна фауна | TFC Field Guide" />
+    <meta property="og:description" content="Позаземна фауна" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/minecraft:sniffer_egg" />
+
+    <title>Позаземна фауна | TFC Field Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">Польовий посібник TerraFirmaCraft</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Версія 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> Українська мова
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/tfg_tips/space_fauna.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/tfg_tips/space_fauna.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/tfg_tips/space_fauna.html" class="dropdown-item">Portuguese (Brazil)</a>
+
+<a href="../../ko_kr/tfg_tips/space_fauna.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/tfg_tips/space_fauna.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/tfg_tips/space_fauna.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/tfg_tips/space_fauna.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/tfg_tips/space_fauna.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/tfg_tips/space_fauna.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Зміст</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Зміст</a></li>
+            <li><a href="../the_world/">Світ</a></li>
+
+<li><a href="../getting_started/">Починаємо</a></li>
+
+<li><a href="../mechanics/">Розширена механіка</a></li>
+
+<li><a href="../tfg_ores/">Руди в TFG</a></li>
+
+<li><a href="../tfg/">Зміни в TFG</a></li>
+
+<li><a href="../tfg_tips/">Інформація та поради TFG</a>
+    <ul>
+    <li><a href="./anvil_working_guide.html">Посібник з роботи на ковадлі</a></li>
+
+<li><a href="./basic_automation.html">Базова автоматизація</a></li>
+
+<li><a href="./blast_furnace_tips.html">Поради щодо Доменної печі</a></li>
+
+<li><a href="./faqs.html">Поширені запитання</a></li>
+
+<li><a href="./inventory_management.html">Управління Інвентарем</a></li>
+
+<li><a href="./space_crops.html">Позаземні рослини</a></li>
+
+<li><a href="./space_fauna.html" class="active">Позаземна фауна</a></li>
+
+    </ul>
+</li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">Інформація та поради TFG</a></li>
+<li class="breadcrumb-item active" aria-current="page">Позаземна фауна</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4"><img src="../../_images/item245.png" alt="{item.minecraft.sniffer_egg}" class="me-2" style="height: 1.5em;">Позаземна фауна
+</h1>
+<h5>Позаземна фауна</h5>
+<p>Космос — це домівка для багатьох видів тварин, відмінних від тих, що мешкають на Землі. Деякі з них агресивні й атакують гравця, але більшість — пасивні. Лише небагато з них <a href="../mechanics/animal_husbandry.html">можна приручити</a>, як свійських тварин на Землі.<br/>
+Тварин, яких ви знайдете в інших світах, можна поділити на дві категорії: <span style="color:#b0b;">гарячі</span> та <span style="color:#b0b;">холодні</span>. Вони можуть вижити лише на планетах із подібним кліматом до їхнього рідного, або на <span style="color:#3E8A00;">помірних</span> планетах, як-от Земля.</p>
+<p>Космічні тварини не потребують кисневого середовища, але його наявність зробить територію «помірною» для їх виживання. Наприклад, якщо ви перенесете холодолюбну тварину (таку як Нюхач) на гарячу планету (наприклад, Венеру), вона загориться, якщо не буде в кисневому середовищі.<br/>
+Це робить Землю ідеальним місцем для створення зоопарку, якщо вам цікаво.<br/>
+Тварин можна транспортувати між планетами за допомогою системи AE2 Spatial Storage.</p>
+<a class="anchor" id="moon"></a><p><span style="color:#b0b;">Місяць</span> може бути досить пустельним, але там все ж є кілька тварин, які вважають його домом.<br/>
+<br/>
+Він вважається <span style="color:#3E8A00;">холодним</span> світом, незважаючи на досить екстремальні коливання температури.</p>
+<h5>Місячний кролик</h5>
+<p>Окрім забарвлення, <span style="color:#3E8A00;">місячні кролики</span> мають ідентичні характеристики до земних кроликів. Вони також їдять плід хору.</p>
+<h5>Лімпет</h5>
+<p><span style="color:#3E8A00;">Лімпети</span> — це різновид равликів, на панцирі яких є руда. Її можна добути будь-яким інструментом для копання. Вони пасивні та їстівні.</p>
+<h5>Зоряний повзун</h5>
+<p><span style="color:#3E8A00;">Зоряні повзуни</span> — це різновид морських зірок. Вони агресивні та їстівні.</p>
+<h5>Бірт</h5>
+<p><span style="color:#3E8A00;">Бірти</span> — це різновид птахів. Вони відкладають яйця у гніздах, пасивні, якщо їх не атакувати, і їстівні. Їхні яйця можна кидати, щоб оглушити цілі.</p>
+<hr><a class="anchor" id="mars"></a><p><span style="color:#b0b;">Марс</span> — це планета з середовищем, найбільш наближеним до земного, з великою різноманітністю тварин для взаємодії та рослин для їхнього (і вашого) харчування... за винятком величезної пустелі, де майже нічого не живе.<br/>
+<br/>
+Марс — це <span style="color:#3E8A00;">холодна</span> планета.</p>
+<h5>Піщаний хробак</h5>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image44.png" alt="tfg:textures/gui/field_guide/sandworm.png"><div style="text-align: center;"><p><span style="color:#3E8A00;">Піщані хробаки</span> реагують на кроки гравця. Саме через них у пустелі майже нічого не живе.<br/>
+</p>
+</div><a class="anchor" id="sniffer"></a><h5>Нюхачі</h5>
+<p><span style="color:#3E8A00;">Нюхачі</span> — це приручувані тварини, яких можна знайти при температурі від -30 до -102°C. Вони потребують Великого Гнізда для відкладання яєць і можуть бути остриженими для отримання <span style="color:#b0b;">пучків нюхача</span>. Їхні яйця можна приготувати або використати для добування вершків. Вони їдять будь-які марсіанські культури.</p>
+<h5> </h5>
+<p>Нюхач.</p>
+<a class="anchor" id="wraptor"></a><h5>Враптори</h5>
+<p><span style="color:#3E8A00;">Враптори</span> — це приручувані тварини, яких можна знайти при температурі від -15 до -100°C. Вони потребують Великого Гнізда для відкладання яєць і можуть бути остриженими для отримання <span style="color:#b0b;">пір’я враптора</span>. Їхні яйця можна приготувати або використати для добування врапторового цукру. Вони їдять будь-які марсіанські культури.</p>
+<h5> </h5>
+<p>Враптор.</p>
+<a class="anchor" id="glacian_sheep"></a><h5>Глаціанська вівця</h5>
+<p><span style="color:#3E8A00;">Гляціальні вівці</span> — це приручувані тварини, які надають перевагу надзвичайно холодному середовищу нижче -108°C. Їх можна стригти для отримання <span style="color:#b0b;">гляціальної вовни</span>, чудового ізоляційного матеріалу. Вони їдять будь-які марсіанські культури.</p>
+<h5> </h5>
+<p>Гляціальний баран/вівця.</p>
+<h5>Серфер</h5>
+<p><span style="color:#3E8A00;">Серфери</span> — це напівводні пасивні тварини. Їх можна приручити за допомогою <span style="color:#b0b;">сирої риби</span>, щоб кататися на них під водою. Вони також їстівні.</p>
+<h5>Пожирач</h5>
+<p><span style="color:#3E8A00;">Пожирачі</span> — це агресивні тварини та одні з найнебезпечніших хижаків, яких можна знайти при температурі вище -109°C. Якщо вам вдасться їх здолати, їх можна з’їсти.</p>
+<h5>Хрумкач</h5>
+<p><span style="color:#3E8A00;">Хрумкачі</span> — це територіальні хижаки та <span style="color:#b0b;">мінібоси</span>. Щоб зупинити їхню регенерацію, годуйте їх м’ясом. Їх також можна з’їсти.</p>
+<h5>Паритель</h5>
+<p><span style="color:#3E8A00;">Парителі</span> — це мирні тварини, яких можна зустріти вище -106 °C. Їх можна приручити за допомогою <span style="color:#b0b;">Сирої риби</span>, щоб використовувати як летючого скакуна. Їх також можна вживати в їжу.</p>
+<h5>Планер</h5>
+<p><span style="color:#3E8A00;">Планери</span> всупереч своїй назві не піддаються прирученню й не придатні для верхової їзди. Вони є мирними істотами та мешкають у зонах вище -105 °C. Планери полюбляють музику й можуть бути використані як їжа.</p>
+<h5>Руйнівник</h5>
+<p><span style="color:#3E8A00;">Руйнівники</span> — це напівворожі тварини, яких можна зустріти стадами в зонах вище -100 °C. Їх можна вбити заради м’яса та твердих шипів.</p>
+<h5>Спрінглінг</h5>
+<p><span style="color:#3E8A00;">Спрінглінги</span> — це дикі тварини, яких можна зустріти вище -108 °C. Якщо погодувати їх <span style="color:#b0b;">Саджанцями</span>, ви зможете осідлати їх і подовжити їхні надзвичайно довгі шиї. Їх також можна вживати в їжу.</p>
+<h5>Губер</h5>
+<p><span style="color:#3E8A00;">Губери</span> — це ліниві дикі тварини, яких можна зустріти вище -109 °C. Вони є мирними істотами й можуть бути використані як їжа.</p>
+<h5>Ходуни</h5>
+<p>Гіганські <span style="color:#3E8A00;">Ходуни</span> мешкають у зонах вище -97 °C. Вони є мирними істотами й можуть бути використані як їжа.</p>
+<h5>Токслакант</h5>
+<p><span style="color:#3E8A00;">Токслаканти</span> — це водні тварини-жертви. Рекомендується вбивати їх здалеку та готувати їхнє м’ясо перед вживанням.</p>
+<h5>Стакастік</h5>
+<p>Одні з небагатьох тварин, здатних вижити в марсіанській пустелі, <span style="color:#3E8A00;">Стакастіки</span> є мирними тваринами-жертвами. Їх також можна вживати в їжу.</p>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> API Документація
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'uk_ua';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

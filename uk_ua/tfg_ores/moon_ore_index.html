@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Індекс Місячних Руд | TFC Field Guide" />
+    <meta name="description" content="Індекс Місячних Руд" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Індекс Місячних Руд | TFC Field Guide" />
+    <meta property="og:description" content="Індекс Місячних Руд" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/ae2:certus_quartz_crystal" />
+
+    <title>Індекс Місячних Руд | TFC Field Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">Польовий посібник TerraFirmaCraft</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Версія 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> Українська мова
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/tfg_ores/moon_ore_index.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/tfg_ores/moon_ore_index.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/tfg_ores/moon_ore_index.html" class="dropdown-item">Portuguese (Brazil)</a>
+
+<a href="../../ko_kr/tfg_ores/moon_ore_index.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/tfg_ores/moon_ore_index.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/tfg_ores/moon_ore_index.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/tfg_ores/moon_ore_index.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/tfg_ores/moon_ore_index.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/tfg_ores/moon_ore_index.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Зміст</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Зміст</a></li>
+            <li><a href="../the_world/">Світ</a></li>
+
+<li><a href="../getting_started/">Починаємо</a></li>
+
+<li><a href="../mechanics/">Розширена механіка</a></li>
+
+<li><a href="../tfg_ores/">Руди в TFG</a>
+    <ul>
+    <li><a href="./earth_ore_index.html">Індекс Земних Руд</a></li>
+
+<li><a href="./ore_basics.html">Видобуток у TFG</a></li>
+
+<li><a href="./earth_vein_index.html">Індекс Земних Жил</a></li>
+
+<li><a href="./hazards.html">Робота з Небезпеками</a></li>
+
+<li><a href="./nether_ore_index.html">Індекс Руд Безодні</a></li>
+
+<li><a href="./nether_vein_index.html">Індекс Жил безодні</a></li>
+
+<li><a href="./moon_ore_index.html" class="active">Індекс Місячних Руд</a></li>
+
+<li><a href="./moon_vein_index.html">Індекс Місячних Жил</a></li>
+
+<li><a href="./mars_ore_index.html">Mars Ore Index</a></li>
+
+<li><a href="./mars_vein_index.html">Mars Vein Index</a></li>
+
+    </ul>
+</li>
+
+<li><a href="../tfg/">Зміни в TFG</a></li>
+
+<li><a href="../tfg_tips/">Інформація та поради TFG</a></li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">Руди в TFG</a></li>
+<li class="breadcrumb-item active" aria-current="page">Індекс Місячних Руд</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4">Індекс Місячних Руд</h1>
+<h5>Індекс Місячних Руд</h5>
+<p>Це <span style="color:#3E8A00;">Індекс руд</span> для <span style="color:#3E8A00;">Місяць</span>. Усі руди відсортовані в алфавітному порядку, а потім — від найбагатших до найбідніших жил. Ви можете натиснути на них, щоб дізнатися більше про кожну жилу.</p>
+<p></p>
+<ul>
+	<li>Алмандін: <a href="../tfg_ores/moon_vein_index.html#moon_sapphire">38%</a></li>
+	<li>Алуніт: <a href="../tfg_ores/moon_vein_index.html#moon_gypsum">15%</a></li>
+	<li>Алюмінію: <a href="../tfg_ores/moon_vein_index.html#moon_desh">25%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_mica">14%</a></li>
+	<li>Аметист: <a href="../tfg_ores/moon_vein_index.html#moon_garnet">38%</a></li>
+	<li>Апатит: <a href="../tfg_ores/moon_vein_index.html#moon_apatite">23%</a></li>
+	<li>Армолколіт: <a href="../tfg_ores/moon_vein_index.html#moon_bauxite">21%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_desh">20%</a></li>
+	<li>Барит: <a href="../tfg_ores/moon_vein_index.html#moon_quartz">5%</a></li>
+	<li>Бастнезит: <a href="../tfg_ores/moon_vein_index.html#moon_monazite">61%</a></li>
+	<li>Берилій: <a href="../tfg_ores/moon_vein_index.html#moon_beryllium">31%</a></li>
+	<li>Блакитний топаз: <a href="../tfg_ores/moon_vein_index.html#moon_topaz">35%</a></li>
+	<li>Боксит: <a href="../tfg_ores/moon_vein_index.html#moon_bauxite">36%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_mica">23%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_gold">20%</a></li>
+	<li>Борніт: <a href="../tfg_ores/moon_vein_index.html#moon_sheldonite">35%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_topaz">15%</a></li>
+	<li>Бура: <a href="../tfg_ores/moon_vein_index.html#moon_gypsum">20%</a></li>
+	<li>Ванадієвий магнетит: <a href="../tfg_ores/moon_vein_index.html#moon_magnetite">15%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Вольфрам: <a href="../tfg_ores/moon_vein_index.html#moon_scheelite">50%</a></li>
+	<li>Вульфеніт: <a href="../tfg_ores/moon_vein_index.html#moon_molybdenum">44%</a></li>
+	<li>Галена: <a href="../tfg_ores/moon_vein_index.html#moon_silver">28%</a></li>
+	<li>Гарнієрит: <a href="../tfg_ores/moon_vein_index.html#moon_garnierite">23%</a></li>
+	<li>Гіпс: <a href="../tfg_ores/moon_vein_index.html#moon_gypsum">35%</a></li>
+	<li>Главконітний пісок: <a href="../tfg_ores/moon_vein_index.html#moon_lubricant">25%</a></li>
+	<li>Графіт: <a href="../tfg_ores/moon_vein_index.html#moon_graphite">52%</a></li>
+	<li>Гроссуляр: <a href="../tfg_ores/moon_vein_index.html#moon_manganese">37%</a></li>
+	<li>Деш: <a href="../tfg_ores/moon_vein_index.html#moon_desh">25%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_sphalerite">10%</a></li>
+	<li>Діамант: <a href="../tfg_ores/moon_vein_index.html#moon_graphite">36%</a></li>
+	<li>Електротин: <a href="../tfg_ores/moon_vein_index.html#moon_saltpeter">37%</a></li>
+	<li>Жовтий гранат: <a href="../tfg_ores/moon_vein_index.html#moon_garnet">14%</a></li>
+	<li>Зелений сапфір: <a href="../tfg_ores/moon_vein_index.html#moon_sapphire">16%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_gold">5%</a></li>
+	<li>Ільменіт: <a href="../tfg_ores/moon_vein_index.html#moon_bauxite">42%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_desh">30%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Кальцит: <a href="../tfg_ores/moon_vein_index.html#moon_gypsum">25%</a></li>
+	<li>Кам’яна сіль: <a href="../tfg_ores/moon_vein_index.html#moon_beryllium">18%</a></li>
+	<li>Каситерит: <a href="../tfg_ores/moon_vein_index.html#moon_cassiterite">41%</a></li>
+	<li>Кварц Нижнього Світу: <a href="../tfg_ores/moon_vein_index.html#moon_quartz">30%</a></li>
+	<li>Кварцит: <a href="../tfg_ores/moon_vein_index.html#moon_quartz">20%</a></li>
+	<li>Кіаніт: <a href="../tfg_ores/moon_vein_index.html#moon_mica">33%</a></li>
+	<li>Кіновар: <a href="../tfg_ores/moon_vein_index.html#moon_redstone">19%</a></li>
+	<li>Кобальт: <a href="../tfg_ores/moon_vein_index.html#moon_pyrolusite">23%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_garnierite">14%</a></li>
+	<li>Кобальтит: <a href="../tfg_ores/moon_vein_index.html#moon_pyrolusite">23%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_garnierite">19%</a></li>
+	<li>Літій: <a href="../tfg_ores/moon_vein_index.html#moon_scheelite">10%</a></li>
+	<li>Магнетит: <a href="../tfg_ores/moon_vein_index.html#moon_magnetite">25%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_gold">20%</a></li>
+	<li>Молібденіт: <a href="../tfg_ores/moon_vein_index.html#moon_molybdenum">33%</a></li>
+	<li>Монацит: <a href="../tfg_ores/moon_vein_index.html#moon_monazite">30%</a></li>
+	<li>Неодим: <a href="../tfg_ores/moon_vein_index.html#moon_monazite">6%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Нікель: <a href="../tfg_ores/moon_vein_index.html#moon_sheldonite">25%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_garnierite">19%</a></li>
+	<li>Нітрат калію: <a href="../tfg_ores/moon_vein_index.html#moon_saltpeter">29%</a></li>
+	<li>Оливін: <a href="../tfg_ores/moon_vein_index.html#moon_graphite">10%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_apatite">4%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_beryllium">4%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_gypsum">5%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_mica">4%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_molybdenum">5%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_redstone">4%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_silver">4%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_sapphire">2%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_monazite">1%</a></li>
+	<li>Олово: <a href="../tfg_ores/moon_vein_index.html#moon_cassiterite">17%</a></li>
+	<li>Опал: <a href="../tfg_ores/moon_vein_index.html#moon_garnet">38%</a></li>
+	<li>Пентландит: <a href="../tfg_ores/moon_vein_index.html#moon_garnierite">23%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_lubricant">15%</a></li>
+	<li>Пірит: <a href="../tfg_ores/moon_vein_index.html#moon_sphalerite">40%</a></li>
+	<li>Піролюзит: <a href="../tfg_ores/moon_vein_index.html#moon_pyrolusite">38%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_manganese">25%</a></li>
+	<li>Піроп: <a href="../tfg_ores/moon_vein_index.html#moon_sapphire">27%</a></li>
+	<li>Пірохлор: <a href="../tfg_ores/moon_vein_index.html#moon_apatite">38%</a></li>
+	<li>Платина: <a href="../tfg_ores/moon_vein_index.html#moon_sheldonite">15%</a></li>
+	<li>Повеліт: <a href="../tfg_ores/moon_vein_index.html#moon_molybdenum">16%</a></li>
+	<li>Поклади Істинного Кварцу: <a href="../tfg_ores/moon_vein_index.html#moon_quartz">45%</a></li>
+	<li>Редстоун: <a href="../tfg_ores/moon_vein_index.html#moon_redstone">42%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Рубін: <a href="../tfg_ores/moon_vein_index.html#moon_redstone">33%</a></li>
+	<li>Самородна Золото: <a href="../tfg_ores/moon_vein_index.html#moon_gold">55%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_magnetite">15%</a></li>
+	<li>Самородна Мідь: <a href="../tfg_ores/moon_vein_index.html#moon_tetrahedrite">15%</a></li>
+	<li>Самородна Срібла: <a href="../tfg_ores/moon_vein_index.html#moon_silver">42%</a></li>
+	<li>Сапфір: <a href="../tfg_ores/moon_vein_index.html#moon_sapphire">16%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_magnetite">5%</a></li>
+	<li>Свинець: <a href="../tfg_ores/moon_vein_index.html#moon_silver">23%</a></li>
+	<li>Слюда: <a href="../tfg_ores/moon_vein_index.html#moon_mica">23%</a></li>
+	<li>Смарагд: <a href="../tfg_ores/moon_vein_index.html#moon_beryllium">45%</a></li>
+	<li>Соапостон: <a href="../tfg_ores/moon_vein_index.html#moon_lubricant">30%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_saltpeter">20%</a></li>
+	<li>Спесартін: <a href="../tfg_ores/moon_vein_index.html#moon_manganese">25%</a></li>
+	<li>Стибніт: <a href="../tfg_ores/moon_vein_index.html#moon_tetrahedrite">20%</a></li>
+	<li>Сфалерит: <a href="../tfg_ores/moon_vein_index.html#moon_sphalerite">50%</a></li>
+	<li>Тальк: <a href="../tfg_ores/moon_vein_index.html#moon_lubricant">20%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_saltpeter">12%</a></li>
+	<li>Танталіт: <a href="../tfg_ores/moon_vein_index.html#moon_pyrolusite">14%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_manganese">12%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Тетраедрит: <a href="../tfg_ores/moon_vein_index.html#moon_tetrahedrite">40%</a></li>
+	<li>Топаз: <a href="../tfg_ores/moon_vein_index.html#moon_topaz">25%</a></li>
+	<li>Торій: <a href="../tfg_ores/moon_vein_index.html#moon_beryllium">0%</a></li>
+	<li>Трикальційфосфат: <a href="../tfg_ores/moon_vein_index.html#moon_apatite">33%</a></li>
+	<li>Трона: <a href="../tfg_ores/moon_vein_index.html#moon_lubricant">10%</a></li>
+	<li>Халькопирит: <a href="../tfg_ores/moon_vein_index.html#moon_cassiterite">35%</a></li>
+	<li>Халькоцит: <a href="../tfg_ores/moon_vein_index.html#moon_tetrahedrite">25%</a>, <a href="../tfg_ores/moon_vein_index.html#moon_topaz">25%</a></li>
+	<li>Хроміт: <a href="../tfg_ores/moon_vein_index.html#moon_magnetite">40%</a></li>
+	<li>Цеоліт: <a href="../tfg_ores/moon_vein_index.html#moon_cassiterite">5%</a></li>
+	<li>Червоний гранат: <a href="../tfg_ores/moon_vein_index.html#moon_garnet">9%</a></li>
+	<li>Шеєліт: <a href="../tfg_ores/moon_vein_index.html#moon_scheelite">40%</a></li>
+	<li>Шелдонітн: <a href="../tfg_ores/moon_vein_index.html#moon_sheldonite">25%</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> API Документація
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'uk_ua';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

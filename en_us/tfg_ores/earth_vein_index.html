@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Earth Vein Index | TFC Field Guide" />
+    <meta name="description" content="Earth Vein Index" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Earth Vein Index | TFC Field Guide" />
+    <meta property="og:description" content="Earth Vein Index" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/tfc:ore/normal_native_copper/chalk" />
+
+    <title>Earth Vein Index | TFC Field Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">TerraFirmaCraft Field Guide</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Version 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> English
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/tfg_ores/earth_vein_index.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/tfg_ores/earth_vein_index.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/tfg_ores/earth_vein_index.html" class="dropdown-item">Portuguese (Brazil)</a>
+
+<a href="../../ko_kr/tfg_ores/earth_vein_index.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/tfg_ores/earth_vein_index.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/tfg_ores/earth_vein_index.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/tfg_ores/earth_vein_index.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/tfg_ores/earth_vein_index.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/tfg_ores/earth_vein_index.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Contents</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Index</a></li>
+            <li><a href="../the_world/">The World</a></li>
+
+<li><a href="../getting_started/">Getting Started</a></li>
+
+<li><a href="../mechanics/">Advanced Mechanics</a></li>
+
+<li><a href="../sacks_n_such/">Sacks 'N Such</a></li>
+
+<li><a href="../waterflasks/">Water Flasks</a></li>
+
+<li><a href="../beneath/">Beneath</a></li>
+
+<li><a href="../firmalife/">Firmalife</a></li>
+
+<li><a href="../roadsandroofs/">Roads and Roofs</a></li>
+
+<li><a href="../arborfirmacraft/">ArborFirmaCraft</a></li>
+
+<li><a href="../firmaciv/">Firma: Civilization</a></li>
+
+<li><a href="../tfcchannelcasting/">TFC Casting with Channels</a></li>
+
+<li><a href="../tfg_ores/">Ores in TFG</a>
+    <ul>
+    <li><a href="./earth_ore_index.html">Earth Ore Index</a></li>
+
+<li><a href="./ore_basics.html">Mining in TFG</a></li>
+
+<li><a href="./earth_vein_index.html" class="active">Earth Vein Index</a></li>
+
+<li><a href="./hazards.html">Hazardous Materials</a></li>
+
+<li><a href="./nether_ore_index.html">The Beneath Ore Index</a></li>
+
+<li><a href="./nether_vein_index.html">The Beneath Vein Index</a></li>
+
+<li><a href="./moon_ore_index.html">Moon Ore Index</a></li>
+
+<li><a href="./moon_vein_index.html">Moon Vein Index</a></li>
+
+<li><a href="./mars_ore_index.html">Mars Ore Index</a></li>
+
+<li><a href="./mars_vein_index.html">Mars Vein Index</a></li>
+
+    </ul>
+</li>
+
+<li><a href="../tfg_tips/">TFG Info & Tips</a></li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">Ores in TFG</a></li>
+<li class="breadcrumb-item active" aria-current="page">Earth Vein Index</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4"><img src="../../_images/item11.png" alt="{item.tfc.ore.normal_native_copper.chalk}" class="me-2" style="height: 1.5em;">Earth Vein Index
+</h1>
+<h5>Earth Vein Index</h5>
+<p>This is the <span style="color:#3E8A00;">Vein Index</span> for <span style="color:#b0b;">Earth</span>. Each Vein has details regarding its rarity, density, vein type, height found, sizes, what stones it spawns in, and more.</p>
+<p></p>
+<ul>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_garnet_amethyst">Amethyst & Garnet</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_apatite">Apatite & Pyrochlore</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_monazite">Bastnasite & Monazite</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_olivine">Bentonite & Olivine</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_bismuthinite">Bismuth (Normal)</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#surface_bismuthinite">Bismuth (Surface)</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_cassiterite">Cassiterite (Normal)</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#surface_cassiterite">Cassiterite (Surface)</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#surface_copper">Chalcopyrite & Realgar</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_magnetite">Chromite & Magnetite</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_coal">Coal</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_sheldonite">Cooperite & Bornite</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_copper">Copper & Chalcopyrite</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_beryllium">Emerald & Beryllium</a></li>
+</ul>
+<p></p>
+<ul>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_garnet_tin">Garnet & Cassiterite Sands</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_garnierite">Garnierite & Cobaltite</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_limonite">Goethite & Malachite</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_gold">Gold (Deep)</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_gold">Gold, Limonite, & Hematite</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_graphite">Graphite & Diamond</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_gypsum">Gypsum & Calcite</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_hematite">Hematite & Limonite</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_hematite">Hematite, Goethite, & Ruby</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_mica">Kyanite, Mica, & Bauxite</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_lapis">Lapis, Lazurite, & Sodalite</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_limonite">Limonite</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_magnetite">Magnetite & Vanadium</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_manganese">Manganese & Tantalum</a></li>
+</ul>
+<p></p>
+<ul>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_basaltic_sands">Mineral Sands</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_oilsands">Oilsands</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_garnet_opal">Opal & Garnet</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_quartz">Quartzes</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_redstone">Redstone, Cinnabar, & Ruby</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_saltpeter">Saltpeter & Electrotine</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_salt">Salts & Borax</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_sapphire">Sapphire & Almandine</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_scheelite">Scheelite & Tungstate</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_silver">Silver, Galena, & Lead</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_lubricant">Soapstone, Talc, & Trona</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_sphalerite">Sphalerite & Pyrite</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#surface_sphalerite">Sphalerite & Sulfur</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_spodumene">Spodumene & Lepidolite</a></li>
+</ul>
+<p></p>
+<ul>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_sulfur">Sulfur & Pyrite</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#normal_tetrahedrite">Tetrahedrite (Normal)</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#surface_tetrahedrite">Tetrahedrite (Surface)</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_topaz">Topaz & Chalcocite</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_pitchblende">Uraninite & Pitchblende</a></li>
+	<li><a href="../tfg_ores/earth_vein_index.html#deep_molybdenum">Wulfenite & Molybdenite</a></li>
+</ul>
+<hr><a class="anchor" id="deep_garnet_amethyst"></a><h5>Amethyst & Garnet</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 230<br/>
+<span style="color:#3E8A00;">Density</span>: 0.25<br/>
+<span style="color:#3E8A00;">Type</span>: Disc Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 26<br/>
+<span style="color:#3E8A00;">Size</span>: 40<br/>
+<span style="color:#3E8A00;">Height</span>: 8<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Chalk, Chert, Claystone, Conglomerate, Dolomite, Gneiss, Limestone, Marble, Phyllite, Quartzite, Schist, Shale, Slate</p>
+<h5>Amethyst</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 65%<br/>
+<span style="color:#3E8A00;">Source of</span>: Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: (SiO₂)₄Fe</p>
+<h5>Yellow Garnet</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Source of</span>: Andradite, Grossular, Uvarovite</p>
+<h5>Opal</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Source of</span>: Silicon, Oxygen<br/>
+<span style="color:#3E8A00;">Formula</span>: (SiO₂)</p>
+<h5>Red Garnet</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 5%<br/>
+<span style="color:#3E8A00;">Source of</span>: Pyrope, Almandine, Spessartine</p>
+<hr><a class="anchor" id="normal_apatite"></a><h5>Apatite & Pyrochlore</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 220<br/>
+<span style="color:#3E8A00;">Density</span>: 0.25<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 60<br/>
+<span style="color:#3E8A00;">Size</span>: 34<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Diorite, Gabbro, Gneiss, Granite, Marble, Phyllite, Quartzite, Schist, Slate</p>
+<h5>Apatite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 50%<br/>
+<span style="color:#3E8A00;">Source of</span>: Calcium, Phosphorus, Forestry PTSD<br/>
+<span style="color:#3E8A00;">Formula</span>: Ca₅(PO₄)₃Cl</p>
+<h5>Tricalcium Phosphate</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 35%<br/>
+<span style="color:#3E8A00;">Source of</span>: Calcium, Phosphorus<br/>
+<span style="color:#3E8A00;">Formula</span>: Ca₃(PO₄)₂</p>
+<h5>Pyrochlore</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Source of</span>: Niobium<br/>
+<span style="color:#3E8A00;">Formula</span>: Ca₂Nb₂O₇</p>
+<a class="anchor" id="normal_monazite"></a><h5>Bastnasite & Monazite</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 205<br/>
+<span style="color:#3E8A00;">Density</span>: 0.25<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 50<br/>
+<span style="color:#3E8A00;">Size</span>: 35<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Diorite, Gabbro, Granite</p>
+<h5>Bastnasite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 62%<br/>
+<span style="color:#3E8A00;">Source of</span>: Cerium, Fluorine<br/>
+<span style="color:#3E8A00;">Formula</span>: CeCFO₃</p>
+<h5>Monazite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 31%<br/>
+<span style="color:#3E8A00;">Source of</span>: Phosphorous, Rare Earth<br/>
+<span style="color:#3E8A00;">Formula</span>: ?(PO₄)</p>
+<h5>Neodymium</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 6%<br/>
+<span style="color:#3E8A00;">Source of</span>: Neodymium<br/>
+<span style="color:#3E8A00;">Formula</span>: Nd</p>
+<a class="anchor" id="normal_olivine"></a><h5>Bentonite & Olivine</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 180<br/>
+<span style="color:#3E8A00;">Density</span>: 0.25<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -40 — 30<br/>
+<span style="color:#3E8A00;">Size</span>: 26<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Andesite, Basalt, Dacite, Diorite, Gabbro, Granite, Rhyolite</p>
+<h5>Bentonite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 35%<br/>
+<span style="color:#3E8A00;">Source of</span>: Sodium, Magnesium<br/>
+<span style="color:#3E8A00;">Formula</span>: NaMg₆Si₁₂H₄(H₂O)₅O₃₆</p>
+<h5>Magnesite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Magnesium<br/>
+<span style="color:#3E8A00;">Formula</span>: MgCO₃</p>
+<h5>Olivine</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Magnesium, Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: Mg₂Fe(SiO₂)₂</p>
+<h5>Glauconite Sand</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Source of</span>: Magnesium, Aluminium<br/>
+<span style="color:#3E8A00;">Formula</span>: KMg₂Al₄H₂O₁₂</p>
+<hr><a class="anchor" id="normal_bismuthinite"></a><h5>Bismuth (Normal)</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 170<br/>
+<span style="color:#3E8A00;">Density</span>: 0.4<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 75<br/>
+<span style="color:#3E8A00;">Size</span>: 40<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Chalk, Chert, Claystone, Conglomerate, Diorite, Dolomite, Gabbro, Granite, Limestone, Shale</p>
+<h5>Bismuth</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 72%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Bismuth<br/>
+<span style="color:#3E8A00;">Formula</span>: Bi</p>
+<h5>Lead</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 10%<br/>
+<span style="color:#3E8A00;">Smelts into</span>: Lead<br/>
+<span style="color:#3E8A00;">Formula</span>: Pb<br/>
+<span style="color:#3E8A00;">Hazard</span>: <span style="color:#FF5555;">Weakly Poisonous (Inhalation)</span></p>
+<h5>Native Silver</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 9%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Silver<br/>
+<span style="color:#3E8A00;">Formula</span>: Ag</p>
+<h5>Sulfur</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 8%<br/>
+<span style="color:#3E8A00;">Source of</span>: Sulfur<br/>
+<span style="color:#3E8A00;">Formula</span>: S</p>
+<hr><a class="anchor" id="surface_bismuthinite"></a><h5>Bismuth (Surface)</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 140<br/>
+<span style="color:#3E8A00;">Density</span>: 0.25<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: 60 — 210<br/>
+<span style="color:#3E8A00;">Size</span>: 50<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Chalk, Chert, Claystone, Conglomerate, Diorite, Dolomite, Gabbro, Granite, Limestone, Shale</p>
+<h5>Bismuth</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 85%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Bismuth<br/>
+<span style="color:#3E8A00;">Formula</span>: Bi</p>
+<h5>Lead</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 7%<br/>
+<span style="color:#3E8A00;">Smelts into</span>: Lead<br/>
+<span style="color:#3E8A00;">Formula</span>: Pb<br/>
+<span style="color:#3E8A00;">Hazard</span>: <span style="color:#FF5555;">Weakly Poisonous (Inhalation)</span></p>
+<h5>Native Silver</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 5%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Silver<br/>
+<span style="color:#3E8A00;">Formula</span>: Ag</p>
+<h5>Sulfur</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 3%<br/>
+<span style="color:#3E8A00;">Source of</span>: Sulfur<br/>
+<span style="color:#3E8A00;">Formula</span>: S</p>
+<hr><a class="anchor" id="normal_cassiterite"></a><h5>Cassiterite (Normal)</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 170<br/>
+<span style="color:#3E8A00;">Density</span>: 0.4<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 75<br/>
+<span style="color:#3E8A00;">Size</span>: 40<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Diorite, Gabbro, Granite</p>
+<h5>Tin</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 60%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Tin<br/>
+<span style="color:#3E8A00;">Formula</span>: Sn</p>
+<h5>Cassiterite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 40%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Tin<br/>
+<span style="color:#3E8A00;">Formula</span>: SnO₂</p>
+<hr><a class="anchor" id="surface_cassiterite"></a><h5>Cassiterite (Surface)</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 135<br/>
+<span style="color:#3E8A00;">Density</span>: 0.25<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: 60 — 210<br/>
+<span style="color:#3E8A00;">Size</span>: 50<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Diorite, Gabbro, Granite</p>
+<h5>Cassiterite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 60%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Tin<br/>
+<span style="color:#3E8A00;">Formula</span>: SnO₂</p>
+<h5>Tin</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 40%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Tin<br/>
+<span style="color:#3E8A00;">Formula</span>: Sn</p>
+<hr><a class="anchor" id="surface_copper"></a><h5>Chalcopyrite & Realgar</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 200<br/>
+<span style="color:#3E8A00;">Density</span>: 0.25<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: 20 — 217<br/>
+<span style="color:#3E8A00;">Size</span>: 50<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Andesite, Basalt, Dacite, Rhyolite</p>
+<h5>Chalcopyrite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 61%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Copper<br/>
+<span style="color:#3E8A00;">Formula</span>: CuFeS₂</p>
+<h5>Zeolite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 16%<br/>
+<span style="color:#3E8A00;">Source of</span>: Aluminium, Oxygen<br/>
+<span style="color:#3E8A00;">Formula</span>: NaCa₄Si₂₇Al₉(H₂O)₂₈O₇₂</p>
+<h5>Realgar</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 16%<br/>
+<span style="color:#3E8A00;">Source of</span>: Arsenic<br/>
+<span style="color:#3E8A00;">Formula</span>: As₄S₄<br/>
+<span style="color:#3E8A00;">Hazard</span>: <span style="color:#FF5555;">Arsenicosis (Inhalation)</span></p>
+<h5>Cassiterite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 5%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Tin<br/>
+<span style="color:#3E8A00;">Formula</span>: SnO₂</p>
+<hr><a class="anchor" id="deep_magnetite"></a><h5>Chromite & Magnetite</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 225<br/>
+<span style="color:#3E8A00;">Density</span>: 0.3<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 30<br/>
+<span style="color:#3E8A00;">Size</span>: 20<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Chalk, Chert, Claystone, Conglomerate, Dolomite, Limestone, Shale</p>
+<h5>Chromite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 33%<br/>
+<span style="color:#3E8A00;">Source of</span>: Chromium<br/>
+<span style="color:#3E8A00;">Formula</span>: FeCr₂O₄<br/>
+<span style="color:#3E8A00;">Hazard</span>: <span style="color:#FF5555;">Irritant (Skin Contact)</span></p>
+<h5>Vanadium Magnetite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Iron, Vanadium<br/>
+<span style="color:#3E8A00;">Formula</span>: (Fe₃O₄)V</p>
+<h5>Native Gold</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Gold<br/>
+<span style="color:#3E8A00;">Formula</span>: Au</p>
+<h5>Magnetite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 8%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: Fe₃O₄</p>
+<h5>Sapphire</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 8%<br/>
+<span style="color:#3E8A00;">Source of</span>: Aluminium<br/>
+<span style="color:#3E8A00;">Formula</span>: Al₂O₃</p>
+<a class="anchor" id="normal_coal"></a><h5>Coal</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 215<br/>
+<span style="color:#3E8A00;">Density</span>: 0.55<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 210<br/>
+<span style="color:#3E8A00;">Size</span>: 60<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Chalk, Chert, Claystone, Conglomerate, Dolomite, Limestone, Shale</p>
+<h5>Coal</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 100%<br/>
+<span style="color:#3E8A00;">Used for</span>: Fuel, Distillation<br/>
+<span style="color:#3E8A00;">Formula</span>: C</p>
+<a class="anchor" id="deep_sheldonite"></a><h5>Cooperite & Bornite</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 320<br/>
+<span style="color:#3E8A00;">Density</span>: 0.3<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 0<br/>
+<span style="color:#3E8A00;">Size</span>: 30<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Gneiss, Marble, Phyllite, Quartzite, Schist, Slate</p>
+<h5>Bornite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 53%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Copper<br/>
+<span style="color:#3E8A00;">Formula</span>: Cu₅FeS₄</p>
+<h5>Cooperite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 38%<br/>
+<span style="color:#3E8A00;">Source of</span>: Platinum, Nickel, Palladium<br/>
+<span style="color:#3E8A00;">Formula</span>: Pt₃NiSPd</p>
+<h5>Platinum</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 7%<br/>
+<span style="color:#3E8A00;">Smelts into</span>: Platinum<br/>
+<span style="color:#3E8A00;">Formula</span>: Pt</p>
+<a class="anchor" id="normal_copper"></a><h5>Copper & Chalcopyrite</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 170<br/>
+<span style="color:#3E8A00;">Density</span>: 0.4<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 75<br/>
+<span style="color:#3E8A00;">Size</span>: 40<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 85<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Andesite, Basalt, Dacite, Rhyolite</p>
+<h5>Native Copper</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 65%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Copper<br/>
+<span style="color:#3E8A00;">Formula</span>: Cu</p>
+<h5>Chalcopyrite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 20%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Copper<br/>
+<span style="color:#3E8A00;">Formula</span>: CuFeS₂</p>
+<h5>Pyrite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 10%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: FeS₂</p>
+<h5>Hematite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 5%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: Fe₂O₃</p>
+<hr><a class="anchor" id="normal_beryllium"></a><h5>Emerald & Beryllium</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 250<br/>
+<span style="color:#3E8A00;">Density</span>: 0.35<br/>
+<span style="color:#3E8A00;">Type</span>: Pipe Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 50<br/>
+<span style="color:#3E8A00;">Height</span>: 60<br/>
+<span style="color:#3E8A00;">Radius</span>: 10<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Andesite, Basalt, Dacite, Rhyolite</p>
+<h5>Emerald</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 50%<br/>
+<span style="color:#3E8A00;">Used for</span>: MV components, Item tag filters<br/>
+<span style="color:#3E8A00;">Formula</span>: Be₃Al₂Si₆O₁₈</p>
+<h5>Beryllium</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 35%<br/>
+<span style="color:#3E8A00;">Source of</span>: Beryllium<br/>
+<span style="color:#3E8A00;">Formula</span>: Be<br/>
+<span style="color:#3E8A00;">Hazard</span>: <span style="color:#FF5555;">Berylliosis (Skin Contact)</span></p>
+<h5>Thorium</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Source of</span>: Thorium<br/>
+<span style="color:#3E8A00;">Formula</span>: Th</p>
+<a class="anchor" id="normal_garnet_tin"></a><h5>Garnet & Cassiterite Sands</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 270<br/>
+<span style="color:#3E8A00;">Density</span>: 0.25<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -40 — 64<br/>
+<span style="color:#3E8A00;">Size</span>: 40<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Andesite, Basalt, Chalk, Chert, Claystone, Conglomerate, Dacite, Diorite, Dolomite, Gabbro, Gneiss, Granite, Limestone, Marble, Phyllite, Quartzite, Rhyolite, Schist, Shale, Slate</p>
+<h5>Cassiterite Sand</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 35%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Tin<br/>
+<span style="color:#3E8A00;">Formula</span>: SnO₂</p>
+<h5>Garnet Sand</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Almandine, Andradite, Grossular, Pyrope, Spessartine, Uvarovite</p>
+<h5>Asbestos</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Magnesium, Lung cancer<br/>
+<span style="color:#3E8A00;">Formula</span>: Mg₃Si₂H₄O₉<br/>
+<span style="color:#3E8A00;">Hazard</span>: <span style="color:#FF5555;">Asbestosis (Inhalation)</span></p>
+<h5>Diatomite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Source of</span>: Iron, Aluminium<br/>
+<span style="color:#3E8A00;">Formula</span>: (SiO₂)₈(Fe₂O₃)(Al₂O₃)</p>
+<hr><a class="anchor" id="normal_garnierite"></a><h5>Garnierite & Cobaltite</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 160<br/>
+<span style="color:#3E8A00;">Density</span>: 0.4<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 60<br/>
+<span style="color:#3E8A00;">Size</span>: 40<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 70<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Diorite, Gabbro<br/>
+<br/>
+Can't find it? Gabbro always spawns below <span style="color:#3E8A00;">Basalt</span>, and Gabbro dikes in oceans can be useful too!</p>
+<h5>Garnierite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 30%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Nickel<br/>
+<span style="color:#3E8A00;">Formula</span>: NiO</p>
+<h5>Pentlandite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Nickel<br/>
+<span style="color:#3E8A00;">Formula</span>: Ni₉S₈</p>
+<h5>Cobaltite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 20%<br/>
+<span style="color:#3E8A00;">Source of</span>: Cobalt, Arsenic<br/>
+<span style="color:#3E8A00;">Formula</span>: CoAsS<br/>
+<span style="color:#3E8A00;">Hazard</span>: <span style="color:#FF5555;">Arsenicosis (Inhalation)</span></p>
+<h5>Cobalt</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Smelts into</span>: Cobalt<br/>
+<span style="color:#3E8A00;">Formula</span>: Co</p>
+<h5>Nickel</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 10%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Nickel<br/>
+<span style="color:#3E8A00;">Formula</span>: Ni</p>
+<a class="anchor" id="deep_limonite"></a><h5>Goethite & Malachite</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 240<br/>
+<span style="color:#3E8A00;">Density</span>: 0.35<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 30<br/>
+<span style="color:#3E8A00;">Size</span>: 32<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Limestone, Marble</p>
+<h5>Goethite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 50%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: FeHO₂</p>
+<h5>Malachite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 20%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Copper<br/>
+<span style="color:#3E8A00;">Formula</span>: Cu₂CH₂O₅</p>
+<h5>Yellow Limonite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: FeHO₂</p>
+<h5>Hematite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: Fe₂O₃</p>
+<hr><a class="anchor" id="deep_gold"></a><h5>Gold (Deep)</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 260<br/>
+<span style="color:#3E8A00;">Density</span>: 0.45<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 30<br/>
+<span style="color:#3E8A00;">Size</span>: 32<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Andesite, Basalt, Dacite, Diorite, Gabbro, Granite, Rhyolite</p>
+<h5>Native Gold</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 75%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Gold<br/>
+<span style="color:#3E8A00;">Formula</span>: Au</p>
+<h5>Hematite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: Fe₂O₃</p>
+<h5>Goethite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 5%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: FeHO₂</p>
+<h5>Yellow Limonite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 5%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: FeHO₂</p>
+<hr><a class="anchor" id="normal_gold"></a><h5>Gold, Limonite, & Hematite</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 170<br/>
+<span style="color:#3E8A00;">Density</span>: 0.4<br/>
+<span style="color:#3E8A00;">Type</span>: Disc Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 60<br/>
+<span style="color:#3E8A00;">Size</span>: 40<br/>
+<span style="color:#3E8A00;">Height</span>: 12<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Andesite, Basalt, Dacite, Diorite, Gabbro, Granite, Rhyolite</p>
+<h5>Native Gold</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 55%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Gold<br/>
+<span style="color:#3E8A00;">Formula</span>: Au</p>
+<h5>Yellow Limonite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 20%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: FeHO₂</p>
+<h5>Hematite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 20%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: Fe₂O₃</p>
+<h5>Goethite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 5%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: FeHO₂</p>
+<hr><a class="anchor" id="normal_graphite"></a><h5>Graphite & Diamond</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 80<br/>
+<span style="color:#3E8A00;">Density</span>: 0.4<br/>
+<span style="color:#3E8A00;">Type</span>: Disc Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — -16<br/>
+<span style="color:#3E8A00;">Size</span>: 16<br/>
+<span style="color:#3E8A00;">Height</span>: 6<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Andesite, Basalt, Chalk, Chert, Claystone, Conglomerate, Dacite, Diorite, Dolomite, Gabbro, Gneiss, Granite, Limestone, Marble, Phyllite, Quartzite, Rhyolite, Schist, Shale, Slate</p>
+<h5>Graphite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 45%<br/>
+<span style="color:#3E8A00;">Used for</span>: <a href="../mechanics/fire_clay.html">Fire Clay</a>, Graphene<br/>
+<span style="color:#3E8A00;">Formula</span>: C</p>
+<h5>Coal</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 30%<br/>
+<span style="color:#3E8A00;">Used for</span>: Fuel, Distillation<br/>
+<span style="color:#3E8A00;">Formula</span>: C</p>
+<h5>Diamond</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Used for</span>: Macerators, AE2<br/>
+<span style="color:#3E8A00;">Formula</span>: C</p>
+<a class="anchor" id="normal_gypsum"></a><h5>Gypsum & Calcite</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 180<br/>
+<span style="color:#3E8A00;">Density</span>: 0.3<br/>
+<span style="color:#3E8A00;">Type</span>: Disc Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 60<br/>
+<span style="color:#3E8A00;">Size</span>: 40<br/>
+<span style="color:#3E8A00;">Height</span>: 9<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Chalk, Chert, Claystone, Conglomerate, Dolomite, Limestone, Shale</p>
+<h5>Gypsum</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 35%<br/>
+<span style="color:#3E8A00;">Used for</span>: Alabaster (dyeable) bricks<br/>
+<span style="color:#3E8A00;">Formula</span>: CaS(H₂O)₂O₄</p>
+<h5>Calcite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 30%<br/>
+<span style="color:#3E8A00;">Source of</span>: Calcium<br/>
+<span style="color:#3E8A00;">Formula</span>: CaCO₃</p>
+<h5>Borax</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 20%<br/>
+<span style="color:#3E8A00;">Source of</span>: Sodium, Boron<br/>
+<span style="color:#3E8A00;">Formula</span>: Na₂B₄(H₂O)₁₀O₇</p>
+<h5>Fuller's Earth</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Source of</span>: Magnesium<br/>
+<span style="color:#3E8A00;">Formula</span>: MgSi₄H(H₂O)₄O₁₁</p>
+<hr><a class="anchor" id="normal_hematite"></a><h5>Hematite & Limonite</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 210<br/>
+<span style="color:#3E8A00;">Density</span>: 0.4<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 75<br/>
+<span style="color:#3E8A00;">Size</span>: 40<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Andesite, Basalt, Dacite, Rhyolite</p>
+<h5>Hematite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 50%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: Fe₂O₃</p>
+<h5>Yellow Limonite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 30%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: FeHO₂</p>
+<h5>Goethite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: FeHO₂</p>
+<h5>Native Gold</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 5%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Gold<br/>
+<span style="color:#3E8A00;">Formula</span>: Au</p>
+<hr><a class="anchor" id="deep_hematite"></a><h5>Hematite, Goethite, & Ruby</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 220<br/>
+<span style="color:#3E8A00;">Density</span>: 0.35<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 30<br/>
+<span style="color:#3E8A00;">Size</span>: 30<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Andesite, Basalt, Dacite, Rhyolite</p>
+<h5>Hematite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 35%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: Fe₂O₃</p>
+<h5>Goethite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: FeHO₂</p>
+<h5>Ruby</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 20%<br/>
+<span style="color:#3E8A00;">Source of</span>: Chromium, Aluminium<br/>
+<span style="color:#3E8A00;">Formula</span>: CrAl₂O₃</p>
+<h5>Yellow Limonite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: FeHO₂</p>
+<h5>Native Gold</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 5%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Gold<br/>
+<span style="color:#3E8A00;">Formula</span>: Au</p>
+<a class="anchor" id="normal_mica"></a><h5>Kyanite, Mica, & Bauxite</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 190<br/>
+<span style="color:#3E8A00;">Density</span>: 0.25<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 210<br/>
+<span style="color:#3E8A00;">Size</span>: 36<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Diorite, Gabbro, Gneiss, Granite, Marble, Phyllite, Quartzite, Schist, Slate</p>
+<h5>Kyanite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 35%<br/>
+<span style="color:#3E8A00;">Source of</span>: Aluminium<br/>
+<span style="color:#3E8A00;">Formula</span>: Al₂SiO₅</p>
+<h5>Mica</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Potassium, Aluminium, Fluorine<br/>
+<span style="color:#3E8A00;">Formula</span>: KAl₃Si₃F₂O₁₀</p>
+<h5>Bauxite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Aluminium<br/>
+<span style="color:#3E8A00;">Formula</span>: Al₂O₃</p>
+<h5>Pollucite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Source of</span>: Caesium, Aluminium<br/>
+<span style="color:#3E8A00;">Formula</span>: Cs₂Al₂Si₄(H₂O)₂O₁₂</p>
+<hr><a class="anchor" id="normal_lapis"></a><h5>Lapis, Lazurite, & Sodalite</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 170<br/>
+<span style="color:#3E8A00;">Density</span>: 0.25<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -60 — 10<br/>
+<span style="color:#3E8A00;">Size</span>: 40<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Gneiss, Marble, Phyllite, Quartzite, Schist, Slate</p>
+<h5>Lazurite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 35%<br/>
+<span style="color:#3E8A00;">Source of</span>: Aluminium, Calcium, Sodium<br/>
+<span style="color:#3E8A00;">Formula</span>: Al₆Si₆Ca₈Na₈</p>
+<h5>Sodalite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Aluminium, Sodium<br/>
+<span style="color:#3E8A00;">Formula</span>: Al₃Si₃Na₄Cl</p>
+<h5>Lapis</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Lazurite, Sodalite, Pyrite, Calcite</p>
+<h5>Calcite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Source of</span>: Calcium<br/>
+<span style="color:#3E8A00;">Formula</span>: CaCO₃</p>
+<hr><a class="anchor" id="normal_limonite"></a><h5>Limonite</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 190<br/>
+<span style="color:#3E8A00;">Density</span>: 0.4<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 75<br/>
+<span style="color:#3E8A00;">Size</span>: 40<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Limestone, Marble</p>
+<h5>Yellow Limonite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 50%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: FeHO₂</p>
+<h5>Hematite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 20%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: Fe₂O₃</p>
+<h5>Goethite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: FeHO₂</p>
+<h5>Malachite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Copper<br/>
+<span style="color:#3E8A00;">Formula</span>: Cu₂CH₂O₅</p>
+<hr><a class="anchor" id="normal_magnetite"></a><h5>Magnetite & Vanadium</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 200<br/>
+<span style="color:#3E8A00;">Density</span>: 0.3<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 75<br/>
+<span style="color:#3E8A00;">Size</span>: 30<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Chalk, Chert, Claystone, Conglomerate, Dolomite, Limestone, Shale</p>
+<h5>Magnetite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 63%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: Fe₃O₄</p>
+<h5>Vanadium Magnetite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 22%<br/>
+<span style="color:#3E8A00;">Source of</span>: Iron, Vanadium<br/>
+<span style="color:#3E8A00;">Formula</span>: (Fe₃O₄)V</p>
+<h5>Native Gold</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 9%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Gold<br/>
+<span style="color:#3E8A00;">Formula</span>: Au</p>
+<h5>Chromite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 4%<br/>
+<span style="color:#3E8A00;">Source of</span>: Chromium<br/>
+<span style="color:#3E8A00;">Formula</span>: FeCr₂O₄<br/>
+<span style="color:#3E8A00;">Hazard</span>: <span style="color:#FF5555;">Irritant (Skin Contact)</span></p>
+<hr><a class="anchor" id="normal_manganese"></a><h5>Manganese & Tantalum</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 195<br/>
+<span style="color:#3E8A00;">Density</span>: 0.3<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 60<br/>
+<span style="color:#3E8A00;">Size</span>: 30<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Andesite, Basalt, Chalk, Chert, Claystone, Conglomerate, Dacite, Dolomite, Limestone, Rhyolite, Shale</p>
+<h5>Grossular</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 37%<br/>
+<span style="color:#3E8A00;">Source of</span>: Calcium, Aluminium<br/>
+<span style="color:#3E8A00;">Formula</span>: Ca₃Al₂Si₃O₁₂</p>
+<h5>Spessartine</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Manganese, Aluminium<br/>
+<span style="color:#3E8A00;">Formula</span>: Al₂Mn₃Si₃O₁₂</p>
+<h5>Pyrolusite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Manganese<br/>
+<span style="color:#3E8A00;">Formula</span>: MnO₂</p>
+<h5>Tantalite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 12%<br/>
+<span style="color:#3E8A00;">Source of</span>: Manganese, Tantalum<br/>
+<span style="color:#3E8A00;">Formula</span>: MnTa₂O₆</p>
+<hr><a class="anchor" id="normal_basaltic_sands"></a><h5>Mineral Sands</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 160<br/>
+<span style="color:#3E8A00;">Density</span>: 0.3<br/>
+<span style="color:#3E8A00;">Type</span>: Disc Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 60<br/>
+<span style="color:#3E8A00;">Size</span>: 48<br/>
+<span style="color:#3E8A00;">Height</span>: 9<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Basalt, Granite</p>
+<h5>Basaltic Mineral Sands</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 35%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: (Fe₃O₄)((Mg₂Fe(SiO₂)₂)(CaCo₃)₃(SiO₂)₈C₄)</p>
+<h5>Granitic Mineral Sand</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: (Fe₃O₄)((SiO₂)₄(KMg₃Al₃F₂Si₃O₁₀))</p>
+<h5>Fuller's Earth</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Magnesium<br/>
+<span style="color:#3E8A00;">Formula</span>: MgSi₄H(H₂O)₄O₁₁</p>
+<h5>Gypsum</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Used for</span>: Alabaster (dyeable) bricks<br/>
+<span style="color:#3E8A00;">Formula</span>: CaS(H₂O)₂O₄</p>
+<hr><a class="anchor" id="normal_oilsands"></a><h5>Oilsands</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 185<br/>
+<span style="color:#3E8A00;">Density</span>: 0.2<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Size</span>: 55<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Chalk, Chert, Claystone, Conglomerate, Dolomite, Limestone, Shale</p>
+<h5>Oilsands</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 100%<br/>
+<span style="color:#3E8A00;">Source of</span>: Freedom 🛢🦅🗽</p>
+<a class="anchor" id="deep_garnet_opal"></a><h5>Opal & Garnet</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 220<br/>
+<span style="color:#3E8A00;">Density</span>: 0.35<br/>
+<span style="color:#3E8A00;">Type</span>: Disc Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 62<br/>
+<span style="color:#3E8A00;">Size</span>: 26<br/>
+<span style="color:#3E8A00;">Height</span>: 6<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Andesite, Basalt, Dacite, Diorite, Gabbro, Granite, Rhyolite</p>
+<h5>Opal</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 55%<br/>
+<span style="color:#3E8A00;">Source of</span>: Silicon, Oxygen<br/>
+<span style="color:#3E8A00;">Formula</span>: (SiO₂)</p>
+<h5>Amethyst</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: (SiO₂)₄Fe</p>
+<h5>Yellow Garnet</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Source of</span>: Andradite, Grossular, Uvarovite</p>
+<h5>Red Garnet</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 5%<br/>
+<span style="color:#3E8A00;">Source of</span>: Pyrope, Almandine, Spessartine</p>
+<hr><a class="anchor" id="normal_quartz"></a><h5>Quartzes</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 190<br/>
+<span style="color:#3E8A00;">Density</span>: 0.3<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 100<br/>
+<span style="color:#3E8A00;">Size</span>: 40<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Gneiss, Quartzite, Schist, Shale</p>
+<h5>Quartzite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 43%<br/>
+<span style="color:#3E8A00;">Used for</span>: LV components<br/>
+<span style="color:#3E8A00;">Formula</span>: SiO₂</p>
+<h5>Barite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 37%<br/>
+<span style="color:#3E8A00;">Source of</span>: Barium<br/>
+<span style="color:#3E8A00;">Formula</span>: BaSO₂</p>
+<h5>Asbestos</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 18%<br/>
+<span style="color:#3E8A00;">Source of</span>: Magnesium, Lung cancer<br/>
+<span style="color:#3E8A00;">Formula</span>: Mg₃Si₂H₄O₉<br/>
+<span style="color:#3E8A00;">Hazard</span>: <span style="color:#FF5555;">Asbestosis (Inhalation)</span></p>
+<a class="anchor" id="normal_redstone"></a><h5>Redstone, Cinnabar, & Ruby</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 160<br/>
+<span style="color:#3E8A00;">Density</span>: 0.4<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 100<br/>
+<span style="color:#3E8A00;">Size</span>: 40<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Granite<br/>
+<br/>
+Can't find it? Granite always spawns below <span style="color:#3E8A00;">Rhyolite</span>, and looking in oceans can be useful too!</p>
+<h5>Redstone</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 45%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Redstone<br/>
+<span style="color:#3E8A00;">Formula</span>: Si(FeS₂)₅(CrAl₂O₃)Hg₃</p>
+<h5>Ruby</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 35%<br/>
+<span style="color:#3E8A00;">Source of</span>: Chromium, Aluminium<br/>
+<span style="color:#3E8A00;">Formula</span>: CrAl₂O₃</p>
+<h5>Cinnabar</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 20%<br/>
+<span style="color:#3E8A00;">Source of</span>: Mercury<br/>
+<span style="color:#3E8A00;">Formula</span>: HgS</p>
+<a class="anchor" id="normal_saltpeter"></a><h5>Saltpeter & Electrotine</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 210<br/>
+<span style="color:#3E8A00;">Density</span>: 0.3<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 60<br/>
+<span style="color:#3E8A00;">Size</span>: 40<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Diorite, Gabbro, Gneiss, Granite, Marble, Phyllite, Quartzite, Schist, Slate</p>
+<h5>Saltpeter</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 35%<br/>
+<span style="color:#3E8A00;">Source of</span>: Potassium, Nitrogen<br/>
+<span style="color:#3E8A00;">Formula</span>: KNO₃</p>
+<h5>Diatomite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Iron, Aluminium<br/>
+<span style="color:#3E8A00;">Formula</span>: (SiO₂)₈(Fe₂O₃)(Al₂O₃)</p>
+<h5>Electrotine</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Gold, Silver, Redstone<br/>
+<span style="color:#3E8A00;">Formula</span>: (Si(FeS₂)₅(CrAl₂O₃)Hg₃)(AgAu)</p>
+<h5>Alunite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Source of</span>: Potassium, Aluminium<br/>
+<span style="color:#3E8A00;">Formula</span>: KAl₃Si₂H₆O₁₄</p>
+<hr><a class="anchor" id="normal_salt"></a><h5>Salts & Borax</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 175<br/>
+<span style="color:#3E8A00;">Density</span>: 0.4<br/>
+<span style="color:#3E8A00;">Type</span>: Disc Vein<br/>
+<span style="color:#3E8A00;">Y</span>: 30 — 70<br/>
+<span style="color:#3E8A00;">Size</span>: 40<br/>
+<span style="color:#3E8A00;">Height</span>: 4<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Claystone, Limestone, Shale</p>
+<h5>Rock Salt</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 40%<br/>
+<span style="color:#3E8A00;">Source of</span>: Potassium, Chlorine<br/>
+<span style="color:#3E8A00;">Formula</span>: KCl</p>
+<h5>Salt</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 30%<br/>
+<span style="color:#3E8A00;">Source of</span>: Sodium, Chlorine<br/>
+<span style="color:#3E8A00;">Formula</span>: NaCl</p>
+<h5>Lepidolite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Source of</span>: Potassium, Lithium, Aluminium, Fluorine<br/>
+<span style="color:#3E8A00;">Formula</span>: KLi₃Al₄F₂O₁₀</p>
+<h5>Borax</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Source of</span>: Sodium, Boron<br/>
+<span style="color:#3E8A00;">Formula</span>: Na₂B₄(H₂O)₁₀O₇</p>
+<hr><a class="anchor" id="deep_sapphire"></a><h5>Sapphire & Almandine</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 180<br/>
+<span style="color:#3E8A00;">Density</span>: 0.35<br/>
+<span style="color:#3E8A00;">Type</span>: Disc Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 26<br/>
+<span style="color:#3E8A00;">Size</span>: 28<br/>
+<span style="color:#3E8A00;">Height</span>: 8<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Andesite, Basalt, Dacite, Rhyolite</p>
+<h5>Almandine</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 38%<br/>
+<span style="color:#3E8A00;">Source of</span>: Aluminium, Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: Al₂Fe₃Si₃O₁₂</p>
+<h5>Pyrope</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 27%<br/>
+<span style="color:#3E8A00;">Source of</span>: Aluminium, Magnesium<br/>
+<span style="color:#3E8A00;">Formula</span>: Al₂Mg₃Si₃O₁₂</p>
+<h5>Sapphire</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 16%<br/>
+<span style="color:#3E8A00;">Source of</span>: Aluminium<br/>
+<span style="color:#3E8A00;">Formula</span>: Al₂O₃</p>
+<h5>Green Sapphire</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 16%<br/>
+<span style="color:#3E8A00;">Source of</span>: Aluminium<br/>
+<span style="color:#3E8A00;">Formula</span>: Al₂O₃</p>
+<hr><a class="anchor" id="deep_scheelite"></a><h5>Scheelite & Tungstate</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 240<br/>
+<span style="color:#3E8A00;">Density</span>: 0.35<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 0<br/>
+<span style="color:#3E8A00;">Size</span>: 20<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Diorite, Gabbro, Granite</p>
+<h5>Scheelite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 45%<br/>
+<span style="color:#3E8A00;">Source of</span>: Tungsten<br/>
+<span style="color:#3E8A00;">Formula</span>: Ca(WO₃)O</p>
+<h5>Tungstate</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 35%<br/>
+<span style="color:#3E8A00;">Source of</span>: Tungsten, Lithium<br/>
+<span style="color:#3E8A00;">Formula</span>: Li₂(WO₃)O</p>
+<h5>Lithium</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 20%<br/>
+<span style="color:#3E8A00;">Source of</span>: Lithium<br/>
+<span style="color:#3E8A00;">Formula</span>: Li</p>
+<a class="anchor" id="normal_silver"></a><h5>Silver, Galena, & Lead</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 160<br/>
+<span style="color:#3E8A00;">Density</span>: 0.4<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 75<br/>
+<span style="color:#3E8A00;">Size</span>: 40<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Gneiss, Granite</p>
+<h5>Lead</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 55%<br/>
+<span style="color:#3E8A00;">Smelts into</span>: Lead<br/>
+<span style="color:#3E8A00;">Formula</span>: Pb<br/>
+<span style="color:#3E8A00;">Hazard</span>: <span style="color:#FF5555;">Weakly Poisonous (Inhalation)</span></p>
+<h5>Galena</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 30%<br/>
+<span style="color:#3E8A00;">Smelts into</span>: Lead<br/>
+<span style="color:#3E8A00;">Formula</span>: PbS<br/>
+<span style="color:#3E8A00;">Hazard</span>: <span style="color:#FF5555;">Weakly Poisonous (Inhalation)</span></p>
+<h5>Native Silver</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Silver<br/>
+<span style="color:#3E8A00;">Formula</span>: Ag</p>
+<a class="anchor" id="normal_lubricant"></a><h5>Soapstone, Talc, & Trona</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 190<br/>
+<span style="color:#3E8A00;">Density</span>: 0.25<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -40 — 56<br/>
+<span style="color:#3E8A00;">Size</span>: 36<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Diorite, Gabbro, Granite</p>
+<h5>Soapstone</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 30%<br/>
+<span style="color:#3E8A00;">Source of</span>: Magnesium<br/>
+<span style="color:#3E8A00;">Formula</span>: Mg₃Si₄H₂O₁₂</p>
+<h5>Glauconite Sand</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Magnesium, Aluminium<br/>
+<span style="color:#3E8A00;">Formula</span>: KMg₂Al₄H₂O₁₂</p>
+<h5>Talc</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 20%<br/>
+<span style="color:#3E8A00;">Source of</span>: Magnesium<br/>
+<span style="color:#3E8A00;">Formula</span>: Mg₃Si₄H₂O₁₂</p>
+<h5>Pentlandite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Nickel<br/>
+<span style="color:#3E8A00;">Formula</span>: Ni₉S₈</p>
+<h5>Trona</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 10%<br/>
+<span style="color:#3E8A00;">Source of</span>: Sodium<br/>
+<span style="color:#3E8A00;">Formula</span>: Na₃C₂H(H₂O)₂O₆</p>
+<a class="anchor" id="normal_sphalerite"></a><h5>Sphalerite & Pyrite</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 170<br/>
+<span style="color:#3E8A00;">Density</span>: 0.4<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 75<br/>
+<span style="color:#3E8A00;">Size</span>: 40<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Andesite, Basalt, Dacite, Gneiss, Marble, Phyllite, Quartzite, Rhyolite, Schist, Slate</p>
+<h5>Sphalerite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 40%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Zinc<br/>
+<span style="color:#3E8A00;">Formula</span>: ZnS</p>
+<h5>Sulfur</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 35%<br/>
+<span style="color:#3E8A00;">Source of</span>: Sulfur<br/>
+<span style="color:#3E8A00;">Formula</span>: S</p>
+<h5>Pyrite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: FeS₂</p>
+<a class="anchor" id="surface_sphalerite"></a><h5>Sphalerite & Sulfur</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 145<br/>
+<span style="color:#3E8A00;">Density</span>: 0.25<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: 60 — 210<br/>
+<span style="color:#3E8A00;">Size</span>: 50<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Andesite, Basalt, Dacite, Gneiss, Marble, Phyllite, Quartzite, Rhyolite, Schist, Slate</p>
+<h5>Sulfur</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 55%<br/>
+<span style="color:#3E8A00;">Source of</span>: Sulfur<br/>
+<span style="color:#3E8A00;">Formula</span>: S</p>
+<h5>Sphalerite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 40%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Zinc<br/>
+<span style="color:#3E8A00;">Formula</span>: ZnS</p>
+<h5>Pyrite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 5%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: FeS₂</p>
+<a class="anchor" id="normal_spodumene"></a><h5>Spodumene & Lepidolite</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 180<br/>
+<span style="color:#3E8A00;">Density</span>: 0.375<br/>
+<span style="color:#3E8A00;">Type</span>: Disc Vein<br/>
+<span style="color:#3E8A00;">Y</span>: 20 — 60<br/>
+<span style="color:#3E8A00;">Size</span>: 35<br/>
+<span style="color:#3E8A00;">Height</span>: 6<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Diorite, Gabbro, Gneiss, Granite, Marble, Phyllite, Quartzite, Schist, Slate</p>
+<h5>Spodumene</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 35%<br/>
+<span style="color:#3E8A00;">Source of</span>: Lithium, Aluminium<br/>
+<span style="color:#3E8A00;">Formula</span>: LiAlSi₂O₆</p>
+<h5>Salt</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 30%<br/>
+<span style="color:#3E8A00;">Source of</span>: Sodium, Chlorine<br/>
+<span style="color:#3E8A00;">Formula</span>: NaCl</p>
+<h5>Rock Salt</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 20%<br/>
+<span style="color:#3E8A00;">Source of</span>: Potassium, Chlorine<br/>
+<span style="color:#3E8A00;">Formula</span>: KCl</p>
+<h5>Lepidolite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Source of</span>: Potassium, Lithium, Aluminium, Fluorine<br/>
+<span style="color:#3E8A00;">Formula</span>: KLi₃Al₄F₂O₁₀</p>
+<hr><a class="anchor" id="normal_sulfur"></a><h5>Sulfur & Pyrite</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 165<br/>
+<span style="color:#3E8A00;">Density</span>: 0.2<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: 0 — 210<br/>
+<span style="color:#3E8A00;">Size</span>: 45<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Andesite, Basalt, Dacite, Rhyolite</p>
+<h5>Sulfur</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 50%<br/>
+<span style="color:#3E8A00;">Source of</span>: Sulfur<br/>
+<span style="color:#3E8A00;">Formula</span>: S</p>
+<h5>Pyrite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 35%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Cast Iron<br/>
+<span style="color:#3E8A00;">Formula</span>: FeS₂</p>
+<h5>Sphalerite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Zinc<br/>
+<span style="color:#3E8A00;">Formula</span>: ZnS</p>
+<a class="anchor" id="normal_tetrahedrite"></a><h5>Tetrahedrite (Normal)</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 170<br/>
+<span style="color:#3E8A00;">Density</span>: 0.4<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -32 — 75<br/>
+<span style="color:#3E8A00;">Size</span>: 40<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Gneiss, Marble, Phyllite, Quartzite, Schist, Slate</p>
+<h5>Tetrahedrite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 50%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Copper<br/>
+<span style="color:#3E8A00;">Formula</span>: Cu₃SbS₃Fe</p>
+<h5>Native Copper</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 30%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Copper<br/>
+<span style="color:#3E8A00;">Formula</span>: Cu</p>
+<h5>Stibnite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 20%<br/>
+<span style="color:#3E8A00;">Smelts into</span>: Antimony<br/>
+<span style="color:#3E8A00;">Formula</span>: Sb₂S₃</p>
+<a class="anchor" id="surface_tetrahedrite"></a><h5>Tetrahedrite (Surface)</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 140<br/>
+<span style="color:#3E8A00;">Density</span>: 0.25<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: 60 — 210<br/>
+<span style="color:#3E8A00;">Size</span>: 50<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 60<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Gneiss, Marble, Phyllite, Quartzite, Schist, Slate</p>
+<h5>Tetrahedrite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 60%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Copper<br/>
+<span style="color:#3E8A00;">Formula</span>: Cu₃SbS₃Fe</p>
+<h5>Native Copper</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 20%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Copper<br/>
+<span style="color:#3E8A00;">Formula</span>: Cu</p>
+<h5>Stibnite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 20%<br/>
+<span style="color:#3E8A00;">Smelts into</span>: Antimony<br/>
+<span style="color:#3E8A00;">Formula</span>: Sb₂S₃</p>
+<a class="anchor" id="deep_topaz"></a><h5>Topaz & Chalcocite</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 260<br/>
+<span style="color:#3E8A00;">Density</span>: 0.3<br/>
+<span style="color:#3E8A00;">Type</span>: Disc Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 26<br/>
+<span style="color:#3E8A00;">Size</span>: 28<br/>
+<span style="color:#3E8A00;">Height</span>: 7<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Gneiss, Marble, Phyllite, Quartzite, Schist, Slate</p>
+<h5>Blue Topaz</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 35%<br/>
+<span style="color:#3E8A00;">Source of</span>: Aluminium, Fluorine<br/>
+<span style="color:#3E8A00;">Formula</span>: Al₂SiF₂H₂O₆</p>
+<h5>Topaz</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Aluminium, Fluorine<br/>
+<span style="color:#3E8A00;">Formula</span>: Al₂SiFH₂</p>
+<h5>Chalcocite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Copper<br/>
+<span style="color:#3E8A00;">Formula</span>: Cu₂S</p>
+<h5>Bornite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 15%<br/>
+<span style="color:#3E8A00;">Melts into</span>: Copper<br/>
+<span style="color:#3E8A00;">Formula</span>: Cu₅FeS₄</p>
+<hr><a class="anchor" id="deep_pitchblende"></a><h5>Uraninite & Pitchblende</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 240<br/>
+<span style="color:#3E8A00;">Density</span>: 0.45<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — -20<br/>
+<span style="color:#3E8A00;">Size</span>: 19<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Diorite, Gabbro, Gneiss, Granite, Marble, Phyllite, Quartzite, Schist, Slate</p>
+<h5>Pitchblende</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 62%<br/>
+<span style="color:#3E8A00;">Source of</span>: Uranium, Thorium, Lead<br/>
+<span style="color:#3E8A00;">Formula</span>: (UO₂)₃ThPb<br/>
+<span style="color:#3E8A00;">Hazard</span>: <span style="color:#FF5555;">Carcinogenic (Any Contact)</span></p>
+<h5>Uraninite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 25%<br/>
+<span style="color:#3E8A00;">Source of</span>: Uranium<br/>
+<span style="color:#3E8A00;">Formula</span>: UO₂<br/>
+<span style="color:#3E8A00;">Hazard</span>: <span style="color:#FF5555;">Carcinogenic (Any Contact)</span></p>
+<h5>Wulfenite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 12%<br/>
+<span style="color:#3E8A00;">Source of</span>: Lead, Molybdenum<br/>
+<span style="color:#3E8A00;">Formula</span>: PbMoO₄</p>
+<a class="anchor" id="deep_molybdenum"></a><h5>Wulfenite & Molybdenite</h5>
+<p><span style="color:#3E8A00;">Rarity</span>: 245<br/>
+<span style="color:#3E8A00;">Density</span>: 0.45<br/>
+<span style="color:#3E8A00;">Type</span>: Cluster Vein<br/>
+<span style="color:#3E8A00;">Y</span>: -64 — 10<br/>
+<span style="color:#3E8A00;">Size</span>: 26<br/>
+<span style="color:#3E8A00;">Indicator Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Stone Types</span>: Andesite, Basalt, Dacite, Diorite, Gabbro, Granite, Rhyolite</p>
+<h5>Wulfenite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 47%<br/>
+<span style="color:#3E8A00;">Source of</span>: Lead, Molybdenum<br/>
+<span style="color:#3E8A00;">Formula</span>: PbMoO₄</p>
+<h5>Molybdenite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 35%<br/>
+<span style="color:#3E8A00;">Source of</span>: Molybdenum<br/>
+<span style="color:#3E8A00;">Formula</span>: MoS₂</p>
+<h5>Powellite</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p><span style="color:#3E8A00;">Percentage</span>: 17%<br/>
+<span style="color:#3E8A00;">Source of</span>: Molybdenum<br/>
+<span style="color:#3E8A00;">Formula</span>: CaMoO₄</p>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> API Docs
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'en_us';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

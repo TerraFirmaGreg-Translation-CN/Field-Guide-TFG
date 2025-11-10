@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Посібник з роботи на ковадлі | TFC Field Guide" />
+    <meta name="description" content="Посібник з роботи на ковадлі" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Посібник з роботи на ковадлі | TFC Field Guide" />
+    <meta property="og:description" content="Посібник з роботи на ковадлі" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/gtceu:red_steel_hammer" />
+
+    <title>Посібник з роботи на ковадлі | TFC Field Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">Польовий посібник TerraFirmaCraft</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Версія 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> Українська мова
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/tfg_tips/anvil_working_guide.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/tfg_tips/anvil_working_guide.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/tfg_tips/anvil_working_guide.html" class="dropdown-item">Portuguese (Brazil)</a>
+
+<a href="../../ko_kr/tfg_tips/anvil_working_guide.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/tfg_tips/anvil_working_guide.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/tfg_tips/anvil_working_guide.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/tfg_tips/anvil_working_guide.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/tfg_tips/anvil_working_guide.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/tfg_tips/anvil_working_guide.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Зміст</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Зміст</a></li>
+            <li><a href="../the_world/">Світ</a></li>
+
+<li><a href="../getting_started/">Починаємо</a></li>
+
+<li><a href="../mechanics/">Розширена механіка</a></li>
+
+<li><a href="../tfg_ores/">Руди в TFG</a></li>
+
+<li><a href="../tfg/">Зміни в TFG</a></li>
+
+<li><a href="../tfg_tips/">Інформація та поради TFG</a>
+    <ul>
+    <li><a href="./anvil_working_guide.html" class="active">Посібник з роботи на ковадлі</a></li>
+
+<li><a href="./basic_automation.html">Базова автоматизація</a></li>
+
+<li><a href="./blast_furnace_tips.html">Поради щодо Доменної печі</a></li>
+
+<li><a href="./faqs.html">Поширені запитання</a></li>
+
+<li><a href="./inventory_management.html">Управління Інвентарем</a></li>
+
+<li><a href="./space_crops.html">Позаземні рослини</a></li>
+
+<li><a href="./space_fauna.html">Позаземна фауна</a></li>
+
+    </ul>
+</li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">Інформація та поради TFG</a></li>
+<li class="breadcrumb-item active" aria-current="page">Посібник з роботи на ковадлі</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4">Посібник з роботи на ковадлі</h1>
+<h5>Робота з ковадлами</h5>
+<p><a href="../mechanics/anvils.html#working">Робота</a> на <a href="../mechanics/anvils.html">ковадлах</a> є ключовим процесом у <span style="color:#3E8A00;">TerraFirmaGreg</span>, адже більшість вашої роботи на шляху до <span style="color:#3E8A00;">Епохи пари та механіки</span> вимагатиме використання ковадла.<br/>
+Цей посібник поділено на дві частини: <a href="../tfg_tips/anvil_working_guide.html#ui_explained">розуміння інтерфейсу</a> та <a href="../tfg_tips/anvil_working_guide.html#how_to_perfectly_forge">ідеальне кування</a>.<br/>
+<br/>
+Модпак має власний <span style="color:#3E8A00;">пакет ресурсів</span> під назвою <a href="https://www.curseforge.com/minecraft/texture-packs/tfc-anvil-helper">TFC Anvil Helper</a>, який потрібно ввімкнути, щоб цей посібник був зрозумілим.</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image34.png" alt="tfg:textures/gui/field_guide/anvil_working_guide/anvil_ui.png"><div style="text-align: center;"><p>Інтерфейс ковадла з увімкненим TFC Anvil Helper</p>
+</div><a class="anchor" id="ui_explained"></a><img class="d-block w-200 mx-auto img-fluid" src="../../_images/image35.png" alt="tfg:textures/gui/field_guide/anvil_working_guide/anvil_ui_marked.png"><div style="text-align: center;"><p>Інтерфейс ковадла з увімкненим TFC Anvil Helper, з кольоровим кодуванням.</p>
+</div><p><span style="color:#ff0000;">1.</span> Предмет, який ви обрали для створення на ковадлі. Кожен предмет має певний набір необхідних <span style="color:#be00ff;">кроків</span> та <span style="color:#ff6b00;">обсягу роботи</span>.<br/>
+
+<span style="color:#ff00c6;">2.</span> Вхідний предмет, над яким ви зараз працюєте.<br/>
+
+<span style="color:#be00ff;">3.</span> Необхідні кроки у правильному порядку, які потрібно виконати, перш ніж предмет буде вважатися завершеним. Існує всього 4 різні порядки (див. наступну сторінку):</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image35.png" alt="tfg:textures/gui/field_guide/anvil_working_guide/anvil_ui_marked.png"><div style="text-align: center;"></div><p>(Примітка: X — це шаблон для будь‑якого типу кроку)<br/>
+
+</p>
+<ul>
+	<li>x_Будь‑який: крок може виконуватися в будь‑якій з останніх 3 дій.
+</li>
+	<li>x_Останній: має бути останнім виконаним кроком.
+</li>
+	<li>x_Не останній: цей крок не може бути останнім виконаним.
+</li>
+	<li>x_Передостанній: має бути передостаннім виконаним кроком.
+</li>
+	<li>x_Третій з кінця: має бути третім з кінця виконаним кроком.</li>
+</ul>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image35.png" alt="tfg:textures/gui/field_guide/anvil_working_guide/anvil_ui_marked.png"><div style="text-align: center;"></div><p><span style="color:#2e00ff;">4.</span> Типи кроків. Кожен тип кроку віднімає або додає до поточного значення роботи. Вони розташовані зліва направо, зверху вниз: 
+</p>
+<ul>
+	<li>Легкий удар: -3 
+</li>
+	<li>Середній удар: -6 
+</li>
+	<li>Удар пробійником: +2 
+</li>
+	<li>Згинання: +7 
+</li>
+	<li>Сильний удар: -9 
+</li>
+	<li>Витягування: -15 
+</li>
+	<li>Осадження: +13 
+</li>
+	<li>Стискання: +16</li>
+</ul>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image35.png" alt="tfg:textures/gui/field_guide/anvil_working_guide/anvil_ui_marked.png"><div style="text-align: center;"></div><p><span style="color:#00a7ff;">5.</span> Слоти, куди розміщується ваш молот, а також флюс, якщо ви виконуєте зварювання.<br/>
+
+<span style="color:#00ff26;">6.</span> Поточна кількість роботи, яку має предмет. Виконання різних кроків або збільшує, або зменшує цю кількість.<br/>
+
+<span style="color:#fff400;">7.</span> Цільове значення роботи — значення <span style="color:#00ff26;">роботи</span> має бути вирівняне ТОЧНО з цільовим значенням, і при цьому мають бути виконані <span style="color:#ff00c6;">необхідні кроки</span>, щоб предмет вважався завершеним.<br/>
+
+<span style="color:#ff6b00;">8.</span> Шкала роботи, яка використовується для вирівнювання значення роботи з цільовим значенням.</p>
+<a class="anchor" id="how_to_perfectly_forge"></a><h5>Як досконало кувати</h5>
+<p><span style="color:#3E8A00;">Ідеальне кування</span> предмета, який може зламатися, наприклад <span style="color:#3E8A00;">наконечників інструментів</span>, <span style="color:#3E8A00;">зброї</span> та <span style="color:#3E8A00;">броні</span>, надає предмету бонуси до його міцності та загальної ефективності — чим менше кроків ви зробите під час кування, тим більші бонуси отримає предмет. Завершення роботи над предметом за дуже малу кількість кроків призводить до його ідеального кування, що не лише дає готовому предмету бонуси, але й зменшує загальний знос молота.</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image36.png" alt="tfg:textures/gui/field_guide/anvil_working_guide/perfectly_forged_item.png"><div style="text-align: center;"><p>Ідеально кований наконечник кайла з кованого заліза</p>
+</div><p>Ця частина посібника пояснить, як ідеально кувати будь‑що, починаючи з наконечника кайла з кованого заліза.<br/>
+<br/>
+<strong><em>ЗАСТЕРЕЖЕННЯ:</em></strong><br/>
+Хоча необхідні кроки та їх порядок для предмета є універсальними в усіх світах TerraFirmaGreg, цільове значення роботи відрізняється, оскільки воно залежить від сіду вашого світу. Тому в цьому посібнику ПРИПУСКАЄТЬСЯ, що цільове значення роботи для наконечника кайла з кованого заліза становить <strong>83</strong></p>
+<hr><h5>Крок 1</h5>
+<p>Перший крок у вашій подорожі кування — отримати значення, яке виходить шляхом додавання всіх значень необхідних кроків. Для наконечника кирки потрібні такі кроки: 
+</p>
+<ul>
+	<li><strong>Удар пробійником</strong> — останній 
+</li>
+	<li><strong>Згинання</strong> — не останній 
+</li>
+	<li><strong>Витягування</strong> — не останній.</li>
+</ul><p> 
+Додаючи значення, вказані під кожним кроком, ми отримуємо потрібне нам число. Назвемо його «requiredWork».<br/>
+ 
+<strong>2 + 7 + (-15) = -6</strong></p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image37.png" alt="tfg:textures/gui/field_guide/anvil_working_guide/steps.png"><div style="text-align: center;"><p>Кроки, необхідні для роботи з кайлом</p>
+</div><h5>Крок 2</h5>
+<p>Хоча наша головна мета для значення роботи — вирівняти його з цільовим значенням, потрібно переконатися, що виконані як ця вимога, так і вимоги до кроків. Тому просте вирівнювання значення роботи з цільовим значенням не дасть бажаного результату. Натомість ми можемо обчислити значення, отримане з поєднання цільового значення роботи та «requiredWork»</p>
+<p>Це значення можна отримати залежно від знака «requiredWork» (тобто, чи є значення від’ємним або додатним). 
+</p>
+<ul>
+	<li>Якщо «requiredWork» додатне 
+Відніміть модуль «requiredWork» від «Target Work» 
+83 - 6 == <strong>77</strong> 
+
+</li>
+	<li>Якщо «requiredWork» від’ємне 
+Додайте модуль «requiredWork» до «Target Work» 
+83 + 6 = <strong>89</strong></li>
+</ul>
+<p>Оскільки «requiredWork» для нашого предмета дорівнює -6, значення, яке нам потрібне, становить <strong>89</strong>.<br/>
+ 
+Можливо, ви замислюєтесь, як отримати точні числові значення для вашого цільового значення роботи? Інтерфейс ковадла показує їх за допомогою шкали роботи. Вона відображає лише кратні 20, але інші числа можна легко визначити за кольоровими лініями: 
+</p>
+<ul>
+	<li>Світло‑сірий: позначає кратне 5 
+</li>
+	<li>Сірий: позначає непарне число 
+</li>
+	<li>Темно‑сірий: позначає парне число</li>
+</ul>
+<div id="content25" class="carousel slide" data-bs-ride="carousel">    <div class="carousel-indicators">        <button type="button" data-bs-target="#content25" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>        <button type="button" data-bs-target="#content25" data-bs-slide-to="1" aria-label="Slide 2"></button>    </div>    <div class="carousel-inner">        <div class="carousel-item ../../_images/image38.png">    <img class="d-block w-200 mx-auto img-fluid" src="tfg:textures/gui/field_guide/anvil_working_guide/work_bar_numbers.png" alt="active"></div><div class="carousel-item ../../_images/image39.png">    <img class="d-block w-200 mx-auto img-fluid" src="tfg:textures/gui/field_guide/anvil_working_guide/target_work_for_wrought_iron_pickaxe_head.png" alt=""></div>    </div>    <button type="button" class="carousel-control-prev" data-bs-target="#content25" data-bs-slide="prev">        <span class="carousel-control-prev-icon" aria-hidden="true"></span>        <span class="visually-hidden">Previous</span>    </button>    <button type="button" class="carousel-control-next" data-bs-target="#content25" data-bs-slide="next">        <span class="carousel-control-next-icon" aria-hidden="true"></span>        <span class="visually-hidden">Next</span>    </button></div><div style="text-align: center;"></div><h5>Крок 3</h5>
+<p>Маючи значення, отримане з «Target Work» та «requiredWork», нам тепер потрібно досягти цього значення роботи. Це можна зробити або вручну, додаючи числа, що відповідають кожному кроку, або скориставшись підказкою на панелі інтерфейсу. Кожен колір у ній відповідає певному типу кроку. 
+<br/>
+Наприклад: червоний == Стискання (+16)</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image40.png" alt="tfg:textures/gui/field_guide/anvil_working_guide/work_bar_cheat_sheet.png"><div style="text-align: center;"><p>16 + 16 + 16 + 16 + 16 + 7 + 2 = 89</p>
+</div><h5>Крок 4</h5>
+<p>Тепер, коли ми знаємо необхідні кроки, настав час досягти значення, отриманого з «Target Work» та «requiredWork». Для наконечника кайла, де загальне значення роботи становить 83, нам потрібно досягти 89. Отже, робимо: (Стискання × 5) → Згинання → Удар пробійником.<br/>
+<br/>
+ 
+Коли наше значення роботи досягне потрібного, просто виконуємо необхідні кроки, які для наконечника кирки такі: Витягування → Згинання → Удар пробійником. І вуаля! Ми отримали ідеально кований предмет!</p>
+<div id="content26" class="carousel slide" data-bs-ride="carousel">    <div class="carousel-indicators">        <button type="button" data-bs-target="#content26" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>        <button type="button" data-bs-target="#content26" data-bs-slide-to="1" aria-label="Slide 2"></button><button type="button" data-bs-target="#content26" data-bs-slide-to="2" aria-label="Slide 3"></button>    </div>    <div class="carousel-inner">        <div class="carousel-item ../../_images/image41.png">    <img class="d-block w-200 mx-auto img-fluid" src="tfg:textures/gui/field_guide/anvil_working_guide/wrought_iron_pickaxe_head_no_work.png" alt="active"></div><div class="carousel-item ../../_images/image42.png">    <img class="d-block w-200 mx-auto img-fluid" src="tfg:textures/gui/field_guide/anvil_working_guide/wrought_iron_pickaxe_head_some_work.png" alt=""></div><div class="carousel-item ../../_images/image43.png">    <img class="d-block w-200 mx-auto img-fluid" src="tfg:textures/gui/field_guide/anvil_working_guide/wrought_iron_pickaxe_head_complete.png" alt=""></div>    </div>    <button type="button" class="carousel-control-prev" data-bs-target="#content26" data-bs-slide="prev">        <span class="carousel-control-prev-icon" aria-hidden="true"></span>        <span class="visually-hidden">Previous</span>    </button>    <button type="button" class="carousel-control-next" data-bs-target="#content26" data-bs-slide="next">        <span class="carousel-control-next-icon" aria-hidden="true"></span>        <span class="visually-hidden">Next</span>    </button></div><div style="text-align: center;"><p>Злиток без роботи → Досягнуто потрібного значення роботи → Виконання необхідних кроків для нашого предмета.</p>
+</div><h5>Приклади</h5>
+<p>Розгляньмо цей процес на прикладі інших предметів, таких як пластина або стрижень. Знову ж таки, цільове значення роботи залежить від сіду світу, тож у вашому світі воно може відрізнятися.<br/>
+
+Цільове значення для пластини: <strong>111</strong><br/>
+
+Необхідні кроки: удар × 3, у будь‑якому порядку.<br/>
+
+«requiredWork»: -3 × 3 = -9<br/>
+
+Отримане значення: 111 + 9 = 120.<br/>
+
+Досягнення значення: (Стискання × 5) → (Осадження × 2) → (Удар пробійником × 2)<br/>
+
+Отримання предмета: 120 – (Легкий удар × 3) == <strong>111</strong>. Обидві вимоги виконано.</p>
+<p>Цільове значення для стрижня: <strong>78</strong><br/>
+
+Необхідні кроки: Витягування → Витягування → Згинання<br/>
+
+«requiredWork»: (-15 × 2) + 7 = -23<br/>
+
+Отримане значення: 78 + 23 = 101.<br/>
+
+Досягнення значення: (Стискання × 5) → (Згинання × 3)<br/>
+
+Отримання предмета: 101 - 15 - 15 + 7 = 101.</p>
+<h5>Інші цікавинки</h5>
+<p>Якщо один із необхідних кроків порожній, це означає, що він є «джокером» — можна використати будь‑який крок.<br/>
+<br/>
+Якщо ви помилилися в розрахунках, завжди можна переплавити предмет і відлити його назад у злиток — це зніме з предмета тег «оброблений» і дозволить спробувати ідеально викувати його ще раз.</p>
+<hr><hr><p>Вітаємо з проходженням усього посібника! Якщо ви контриб’ютор і хочете перезняти зображення для цього гайда, сід, використаний під час його створення, — <strong>-7291708953208913102</strong>. Ви також можете створити світ у творчому режимі, щоб самостійно протестувати алгоритм!<br/>
+<br/>
+<br/>
+
+І… раз ви вже тут, якщо вам не хочеться виконувати всі розрахунки вручну, завжди можна скористатися <a href="https://adrianmiller99.github.io/tfg-anvil-calculator/src/index.html">калькулятором ковадла TFC</a>...</p>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> API Документація
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'uk_ua';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

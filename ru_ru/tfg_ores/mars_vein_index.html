@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Mars Vein Index | TFC Field Guide" />
+    <meta name="description" content="Mars Vein Index" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Mars Vein Index | TFC Field Guide" />
+    <meta property="og:description" content="Mars Vein Index" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/gtceu:mars_stone_hematite_ore" />
+
+    <title>Mars Vein Index | TFC Field Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">Справочник TerraFirmaCraft</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Версия 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> Русский
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/tfg_ores/mars_vein_index.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/tfg_ores/mars_vein_index.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/tfg_ores/mars_vein_index.html" class="dropdown-item">Portuguese (Brazil)</a>
+
+<a href="../../ko_kr/tfg_ores/mars_vein_index.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/tfg_ores/mars_vein_index.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/tfg_ores/mars_vein_index.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/tfg_ores/mars_vein_index.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/tfg_ores/mars_vein_index.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/tfg_ores/mars_vein_index.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Содержание</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Главная</a></li>
+            <li><a href="../the_world/">Мир</a></li>
+
+<li><a href="../getting_started/">Начало работы</a></li>
+
+<li><a href="../mechanics/">Продвинутая механика</a></li>
+
+<li><a href="../waterflasks/">Фляги</a></li>
+
+<li><a href="../beneath/">Ад...?</a></li>
+
+<li><a href="../firmalife/">Firmalife</a></li>
+
+<li><a href="../firmaciv/">Firma: Civilization</a></li>
+
+<li><a href="../tfg_ores/">Руды в TFG</a>
+    <ul>
+    <li><a href="./earth_ore_index.html">Earth Ore Index</a></li>
+
+<li><a href="./ore_basics.html">Добыча руды в TFG</a></li>
+
+<li><a href="./earth_vein_index.html">Earth Vein Index</a></li>
+
+<li><a href="./hazards.html">Противодействие ядовитым рудам</a></li>
+
+<li><a href="./nether_ore_index.html">The Beneath Ore Index</a></li>
+
+<li><a href="./nether_vein_index.html">The Beneath Vein Index</a></li>
+
+<li><a href="./moon_ore_index.html">Moon Ore Index</a></li>
+
+<li><a href="./moon_vein_index.html">Moon Vein Index</a></li>
+
+<li><a href="./mars_ore_index.html">Mars Ore Index</a></li>
+
+<li><a href="./mars_vein_index.html" class="active">Mars Vein Index</a></li>
+
+    </ul>
+</li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">Руды в TFG</a></li>
+<li class="breadcrumb-item active" aria-current="page">Mars Vein Index</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4">Mars Vein Index</h1>
+<h5>Mars Vein Index</h5>
+<p>This is the <span style="color:#3E8A00;">Vein Index</span> for <span style="color:#3E8A00;">Mars</span>. Each Vein has details regarding its rarity, density, vein type, height found, sizes, what stones it spawns on, and more.</p>
+<p></p>
+<ul>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_almandine">Almandine & Sapphire</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#deep_mars_sheldonite">Bornite & Cooperite</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_coal">Coal & Hematite</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_sapphire">Gold, Electrotine, & Bauxite</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_pitchblende">Pitchblende, Thorium, & Hematite</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#deep_mars_pitchblende">Pitchblende, Thorium, & Uraninite</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_quartzite">Quartzite, Asbestos, & Barite</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#deep_mars_chromite">Redstone & Chromite</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_salt">Salts & Spodumene</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_surface_nickel_galena">Sphalerite & Galena</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_lubricant">Trona, Talc, & Glauconite</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_apatite">Апатит и Пирохлор</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_neodynium">Бастнезит и Монацит</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_surface_bismuthinite">Висмут</a></li>
+</ul>
+<p></p>
+<ul>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_nickel">Гарниерит и Кобальтит</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_hematite">Гематит и Лимонит</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_surface_hematite">Гематит и Лимонит</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_graphite">Графит и Алмаз</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_beryllium">Изумруд и Бериллий</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_surface_cassiterite">Касситерит</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_tantalite">Марганец и Тантал</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_copper">Медь и Халькопирит</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_galena">Серебро, Галена и Свинец</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_sulfur">Сфалерит & Пирит</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_stibnite">Тетраэдрит (обычный)</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_surface_tetrahedrite">Тетраэдрит (Поверхностный)</a></li>
+	<li><a href="../tfg_ores/mars_vein_index.html#mars_tungsten">Шеелит и Вольфрамат</a></li>
+</ul>
+<hr><a class="anchor" id="mars_almandine"></a><h5>Almandine & Sapphire</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 280<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.35<br/>
+<span style="color:#3E8A00;">Вид</span>: дискообразная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Размер</span>: 65<br/>
+<span style="color:#3E8A00;">Высота</span>: 8<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 15<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Аргиллит, Габбро, Диорит, Доломит, Известняк, Кремнистый сланец, Сланец, Трахит</p>
+<h5>Альмандин</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 36%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Алюминий, Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂Fe₃Si₃O₁₂</p>
+<h5>Пироп</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 26%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Алюминий, Магний<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂Mg₃Si₃O₁₂</p>
+<h5>Сапфир</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 15%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Алюминий<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂O₃</p>
+<h5>Зелёный сапфир</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 15%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Алюминий<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂O₃</p>
+<h5>Гематит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 5%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₂O₃</p>
+<a class="anchor" id="deep_mars_sheldonite"></a><h5>Bornite & Cooperite</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 370<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.3<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: -20 — 0<br/>
+<span style="color:#3E8A00;">Размер</span>: 60<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Базальт, Дацит, Диорит, Конгломерат, Кремнистый сланец, Мел, Трахит</p>
+<h5>Борнит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 35%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Медь<br/>
+<span style="color:#3E8A00;">Формула</span>: Cu₅FeS₄</p>
+<h5>Шелдонит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 25%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Платина, Никель, Палладий<br/>
+<span style="color:#3E8A00;">Формула</span>: Pt₃NiSPd</p>
+<h5>Никель</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 25%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Никель<br/>
+<span style="color:#3E8A00;">Формула</span>: Ni</p>
+<h5>Платина</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 15%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Платина<br/>
+<span style="color:#3E8A00;">Формула</span>: Pt</p>
+<hr><a class="anchor" id="mars_coal"></a><h5>Coal & Hematite</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 215<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.6<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Размер</span>: 55<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 10<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Аргиллит, Базальт, Гранит, Дацит, Диорит, Доломит, Конгломерат, Мел, Трахит</p>
+<h5>Уголь</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 70%<br/>
+<span style="color:#3E8A00;">Используется для</span>: топливо, ректификация<br/>
+<span style="color:#3E8A00;">Формула</span>: C</p>
+<h5>Гематит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 30%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₂O₃</p>
+<hr><a class="anchor" id="mars_sapphire"></a><h5>Gold, Electrotine, & Bauxite</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 230<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.4<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Размер</span>: 40<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 15<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Аргиллит, Габбро, Гранит, Диорит, Кремнистый сланец, Мел, Сланец</p>
+<h5>Самородная Золото</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 55%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Золото<br/>
+<span style="color:#3E8A00;">Формула</span>: Au</p>
+<h5>Боксит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 20%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Алюминий<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂O₃</p>
+<h5>Электротин</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 20%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Золото, Серебро, Редстоун<br/>
+<span style="color:#3E8A00;">Формула</span>: (Si(FeS₂)₅(CrAl₂O₃)Hg₃)(AgAu)</p>
+<h5>Зелёный сапфир</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 5%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Алюминий<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂O₃</p>
+<hr><a class="anchor" id="mars_pitchblende"></a><h5>Pitchblende, Thorium, & Hematite</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 220<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.55<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Размер</span>: 20<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 15<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Габбро, Дацит, Диорит, Доломит, Конгломерат, Сланец, Трахит</p>
+<h5>Уранит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 41%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Уран, Торий, Свинец<br/>
+<span style="color:#3E8A00;">Формула</span>: (UO₂)₃ThPb<br/>
+<span style="color:#3E8A00;">Ядовит</span>: <span style="color:#FF5555;">Carcinogenic (Any Contact)</span></p>
+<h5>Торий</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 29%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Торий<br/>
+<span style="color:#3E8A00;">Формула</span>: Th</p>
+<h5>Гематит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 29%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₂O₃</p>
+<a class="anchor" id="deep_mars_pitchblende"></a><h5>Pitchblende, Thorium, & Uraninite</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 370<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.3<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: -20 — 0<br/>
+<span style="color:#3E8A00;">Размер</span>: 60<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Аргиллит, Аргиллит, Габбро, Дацит, Диорит, Сланец, Трахит</p>
+<h5>Уранит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 52%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Уран, Торий, Свинец<br/>
+<span style="color:#3E8A00;">Формула</span>: (UO₂)₃ThPb<br/>
+<span style="color:#3E8A00;">Ядовит</span>: <span style="color:#FF5555;">Carcinogenic (Any Contact)</span></p>
+<h5>Торий</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 26%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Торий<br/>
+<span style="color:#3E8A00;">Формула</span>: Th</p>
+<h5>Уранинит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 21%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Уран<br/>
+<span style="color:#3E8A00;">Формула</span>: UO₂<br/>
+<span style="color:#3E8A00;">Ядовит</span>: <span style="color:#FF5555;">Carcinogenic (Any Contact)</span></p>
+<a class="anchor" id="mars_quartzite"></a><h5>Quartzite, Asbestos, & Barite</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 210<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.3<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Размер</span>: 40<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 15<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Аргиллит, Гранит, Известняк, Кремнистый сланец, Мел, Сланец, Трахит</p>
+<h5>Кварцит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 41%<br/>
+<span style="color:#3E8A00;">Используется для</span>: компоненты уровня LV<br/>
+<span style="color:#3E8A00;">Формула</span>: SiO₂</p>
+<h5>Барит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 35%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Барий<br/>
+<span style="color:#3E8A00;">Формула</span>: BaSO₂</p>
+<h5>Асбест</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 17%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Магний<br/>
+<span style="color:#3E8A00;">Формула</span>: Mg₃Si₂H₄O₉<br/>
+<span style="color:#3E8A00;">Ядовит</span>: <span style="color:#FF5555;">Asbestosis (Inhalation)</span></p>
+<h5>Гематит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 5%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₂O₃</p>
+<hr><a class="anchor" id="deep_mars_chromite"></a><h5>Redstone & Chromite</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 370<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.3<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: -20 — 0<br/>
+<span style="color:#3E8A00;">Размер</span>: 60<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 20<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Аргиллит, Аргиллит, Базальт, Дацит, Известняк, Кремнистый сланец, Мел, Сланец</p>
+<h5>Редстоун</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 45%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Редстоун<br/>
+<span style="color:#3E8A00;">Формула</span>: Si(FeS₂)₅(CrAl₂O₃)Hg₃</p>
+<h5>Рубин</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 35%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Хром, Алюминий<br/>
+<span style="color:#3E8A00;">Формула</span>: CrAl₂O₃</p>
+<h5>Хромит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 20%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Хром<br/>
+<span style="color:#3E8A00;">Формула</span>: FeCr₂O₄<br/>
+<span style="color:#3E8A00;">Ядовит</span>: <span style="color:#FF5555;">Irritant (Skin Contact)</span></p>
+<a class="anchor" id="mars_salt"></a><h5>Salts & Spodumene</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 210<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.4<br/>
+<span style="color:#3E8A00;">Вид</span>: дискообразная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Размер</span>: 40<br/>
+<span style="color:#3E8A00;">Высота</span>: 6<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 15<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Аргиллит, Гранит, Диорит, Известняк, Кремнистый сланец, Мел, Трахит</p>
+<h5>Сподумен</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 35%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Литий, Алюминий<br/>
+<span style="color:#3E8A00;">Формула</span>: LiAlSi₂O₆</p>
+<h5>Соль</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 30%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Натрий, Хлор<br/>
+<span style="color:#3E8A00;">Формула</span>: NaCl</p>
+<h5>Каменная соль</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 20%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Калий, Хлор<br/>
+<span style="color:#3E8A00;">Формула</span>: KCl</p>
+<h5>Лепидолит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 15%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Калий, Литий, Алюминий, Фтор<br/>
+<span style="color:#3E8A00;">Формула</span>: KLi₃Al₄F₂O₁₀</p>
+<hr><a class="anchor" id="mars_surface_nickel_galena"></a><h5>Sphalerite & Galena</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 150<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.25<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 80 — 180<br/>
+<span style="color:#3E8A00;">Размер</span>: 45<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Аргиллит, Базальт, Габбро, Гранит, Дацит, Диорит, Доломит, Известняк, Конгломерат, Кремнистый сланец, Мел, Сланец, Трахит</p>
+<h5>Галена</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 35%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Свинец<br/>
+<span style="color:#3E8A00;">Формула</span>: PbS<br/>
+<span style="color:#3E8A00;">Ядовит</span>: <span style="color:#FF5555;">Weakly Poisonous (Inhalation)</span></p>
+<h5>Никель</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 23%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Никель<br/>
+<span style="color:#3E8A00;">Формула</span>: Ni</p>
+<h5>Сфалерит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 17%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Цинк<br/>
+<span style="color:#3E8A00;">Формула</span>: ZnS</p>
+<h5>Самородная Серебро</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 11%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Серебро<br/>
+<span style="color:#3E8A00;">Формула</span>: Ag</p>
+<h5>Кобальтит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 11%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Кобальт, Мышьяк<br/>
+<span style="color:#3E8A00;">Формула</span>: CoAsS<br/>
+<span style="color:#3E8A00;">Ядовит</span>: <span style="color:#FF5555;">Arsenicosis (Inhalation)</span></p>
+<a class="anchor" id="mars_lubricant"></a><h5>Trona, Talc, & Glauconite</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 220<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.25<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Размер</span>: 40<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 15<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Аргиллит, Гранит, Дацит, Диорит, Доломит, Известняк, Конгломерат, Сланец</p>
+<h5>Трона</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 35%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Натрий<br/>
+<span style="color:#3E8A00;">Формула</span>: Na₃C₂H(H₂O)₂O₆</p>
+<h5>Мыльный камень</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 21%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Магний<br/>
+<span style="color:#3E8A00;">Формула</span>: Mg₃Si₄H₂O₁₂</p>
+<h5>Тальк</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 21%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Магний<br/>
+<span style="color:#3E8A00;">Формула</span>: Mg₃Si₄H₂O₁₂</p>
+<h5>Глауконитовый песок</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 7%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Магний, Алюминий<br/>
+<span style="color:#3E8A00;">Формула</span>: KMg₂Al₄H₂O₁₂</p>
+<h5>Пентландит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 7%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Никель<br/>
+<span style="color:#3E8A00;">Формула</span>: Ni₉S₈</p>
+<h5>Гематит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 7%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₂O₃</p>
+<hr><a class="anchor" id="mars_apatite"></a><h5>Апатит и Пирохлор</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 220<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.25<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Размер</span>: 45<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 15<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Базальт, Дацит, Известняк, Конгломерат, Кремнистый сланец, Мел, Сланец, Трахит</p>
+<h5>Апатит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 47%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Кальций, Фосфор<br/>
+<span style="color:#3E8A00;">Формула</span>: Ca₅(PO₄)₃Cl</p>
+<h5>Трикальцийфосфат</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 33%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Кальций, Фосфор<br/>
+<span style="color:#3E8A00;">Формула</span>: Ca₃(PO₄)₂</p>
+<h5>Пирохлор</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 14%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Ниобий<br/>
+<span style="color:#3E8A00;">Формула</span>: Ca₂Nb₂O₇</p>
+<h5>Гематит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 4%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₂O₃</p>
+<hr><a class="anchor" id="mars_neodynium"></a><h5>Бастнезит и Монацит</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 215<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.4<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Размер</span>: 45<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 15<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Аргиллит, Базальт, Габбро, Диорит, Доломит, Кремнистый сланец, Мел, Трахит</p>
+<h5>Бастнезит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 58%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Церий, Фтор<br/>
+<span style="color:#3E8A00;">Формула</span>: CeCFO₃</p>
+<h5>Монацит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 29%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Фосфор, Редкая земля<br/>
+<span style="color:#3E8A00;">Формула</span>: ?(PO₄)</p>
+<h5>Неодим</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 5%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Неодим<br/>
+<span style="color:#3E8A00;">Формула</span>: Nd</p>
+<h5>Гематит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 5%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₂O₃</p>
+<hr><a class="anchor" id="mars_surface_bismuthinite"></a><h5>Висмут</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 140<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.25<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 80 — 180<br/>
+<span style="color:#3E8A00;">Размер</span>: 45<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Аргиллит, Базальт, Габбро, Гранит, Дацит, Диорит, Доломит, Известняк, Конгломерат, Кремнистый сланец, Мел, Сланец, Трахит</p>
+<h5>Висмут</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 40%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Висмут<br/>
+<span style="color:#3E8A00;">Формула</span>: Bi</p>
+<h5>Гематит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 20%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₂O₃</p>
+<h5>Сера</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 20%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Сера<br/>
+<span style="color:#3E8A00;">Формула</span>: S</p>
+<h5>Гипс</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 20%<br/>
+<span style="color:#3E8A00;">Используется для</span>: Алебастр (можно покрасить) и его кирпичи<br/>
+<span style="color:#3E8A00;">Формула</span>: CaS(H₂O)₂O₄</p>
+<hr><a class="anchor" id="mars_nickel"></a><h5>Гарниерит и Кобальтит</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 250<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.4<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Размер</span>: 55<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Аргиллит, Базальт, Гранит, Дацит, Известняк, Мел, Сланец</p>
+<h5>Гарниерит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 35%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Никель<br/>
+<span style="color:#3E8A00;">Формула</span>: NiO</p>
+<h5>Никель</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 28%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Никель<br/>
+<span style="color:#3E8A00;">Формула</span>: Ni</p>
+<h5>Кобальтит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 28%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Кобальт, Мышьяк<br/>
+<span style="color:#3E8A00;">Формула</span>: CoAsS<br/>
+<span style="color:#3E8A00;">Ядовит</span>: <span style="color:#FF5555;">Arsenicosis (Inhalation)</span></p>
+<h5>Гематит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 7%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₂O₃</p>
+<hr><a class="anchor" id="mars_hematite"></a><h5>Гематит и Лимонит</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 210<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.4<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Размер</span>: 40<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 30<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Аргиллит, Базальт, Дацит, Доломит, Известняк, Конгломерат</p>
+<h5>Гематит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 50%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₂O₃</p>
+<h5>Жёлтый лимонит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 30%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: FeHO₂</p>
+<h5>Гётит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 15%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: FeHO₂</p>
+<h5>Самородная Золото</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 5%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Золото<br/>
+<span style="color:#3E8A00;">Формула</span>: Au</p>
+<hr><a class="anchor" id="mars_surface_hematite"></a><h5>Гематит и Лимонит</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 140<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.25<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 80 — 180<br/>
+<span style="color:#3E8A00;">Размер</span>: 45<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Аргиллит, Базальт, Габбро, Гранит, Дацит, Диорит, Доломит, Известняк, Конгломерат, Кремнистый сланец, Мел, Сланец, Трахит</p>
+<h5>Гематит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 55%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₂O₃</p>
+<h5>Жёлтый лимонит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 33%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: FeHO₂</p>
+<h5>Самородная Золото</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 5%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Золото<br/>
+<span style="color:#3E8A00;">Формула</span>: Au</p>
+<h5>Кальцит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 5%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Кальций<br/>
+<span style="color:#3E8A00;">Формула</span>: CaCO₃</p>
+<hr><a class="anchor" id="mars_graphite"></a><h5>Графит и Алмаз</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 220<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.4<br/>
+<span style="color:#3E8A00;">Вид</span>: трубчатая жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 0 — 120<br/>
+<span style="color:#3E8A00;">Высота</span>: 60<br/>
+<span style="color:#3E8A00;">Радиус</span>: 9<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 50<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Габбро, Гранит, Дацит, Диорит, Трахит</p>
+<h5>Графит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 45%<br/>
+<span style="color:#3E8A00;">Используется для</span>: <a href="../mechanics/fire_clay.html">Огнеупорная глина</a>, Графен<br/>
+<span style="color:#3E8A00;">Формула</span>: C</p>
+<h5>Уголь</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 25%<br/>
+<span style="color:#3E8A00;">Используется для</span>: топливо, ректификация<br/>
+<span style="color:#3E8A00;">Формула</span>: C</p>
+<h5>Алмаз</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 20%<br/>
+<span style="color:#3E8A00;">Используется для</span>: Измельчители, предметы из AE2<br/>
+<span style="color:#3E8A00;">Формула</span>: C</p>
+<h5>Гематит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 10%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₂O₃</p>
+<hr><a class="anchor" id="mars_beryllium"></a><h5>Изумруд и Бериллий</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 350<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.35<br/>
+<span style="color:#3E8A00;">Вид</span>: трубчатая жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: -20 — 50<br/>
+<span style="color:#3E8A00;">Высота</span>: 40<br/>
+<span style="color:#3E8A00;">Радиус</span>: 8<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 15<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Андезит, Базальт, Дацит, Риолит</p>
+<h5>Изумруд</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 50%<br/>
+<span style="color:#3E8A00;">Используется для</span>: компоненты уровня MV, Предметные фильтры (Тэг)<br/>
+<span style="color:#3E8A00;">Формула</span>: Be₃Al₂Si₆O₁₈</p>
+<h5>Бериллий</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 35%<br/>
+<span style="color:#3E8A00;">Используется для</span>: Эндер-жемчуг<br/>
+<span style="color:#3E8A00;">Формула</span>: Be<br/>
+<span style="color:#3E8A00;">Ядовит</span>: <span style="color:#FF5555;">Berylliosis (Skin Contact)</span></p>
+<h5>Реальгар</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 15%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Мышьяк<br/>
+<span style="color:#3E8A00;">Формула</span>: As₄S₄<br/>
+<span style="color:#3E8A00;">Ядовит</span>: <span style="color:#FF5555;">Arsenicosis (Inhalation)</span></p>
+<a class="anchor" id="mars_surface_cassiterite"></a><h5>Касситерит</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 135<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.25<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 80 — 180<br/>
+<span style="color:#3E8A00;">Размер</span>: 45<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Аргиллит, Базальт, Габбро, Гранит, Дацит, Диорит, Доломит, Известняк, Конгломерат, Кремнистый сланец, Мел, Сланец, Трахит</p>
+<h5>Касситерит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 55%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Олово<br/>
+<span style="color:#3E8A00;">Формула</span>: SnO₂</p>
+<h5>Олово</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 35%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Олово<br/>
+<span style="color:#3E8A00;">Формула</span>: Sn</p>
+<h5>Селитра</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 10%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Калий, Азот<br/>
+<span style="color:#3E8A00;">Формула</span>: KNO₃</p>
+<a class="anchor" id="mars_tantalite"></a><h5>Марганец и Тантал</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 230<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.3<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Размер</span>: 42<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 15<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Аргиллит, Базальт, Габбро, Известняк, Кремнистый сланец, Мел, Сланец, Трахит</p>
+<h5>Пиролюзит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 42%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Марганец<br/>
+<span style="color:#3E8A00;">Формула</span>: MnO₂</p>
+<h5>Танталит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 36%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Марганец, Тантал<br/>
+<span style="color:#3E8A00;">Формула</span>: MnTa₂O₆</p>
+<h5>Гроссуляр</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 10%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Кальций, Алюминий<br/>
+<span style="color:#3E8A00;">Формула</span>: Ca₃Al₂Si₃O₁₂</p>
+<h5>Спасерит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 10%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Марганец, Алюминий<br/>
+<span style="color:#3E8A00;">Формула</span>: Al₂Mn₃Si₃O₁₂</p>
+<hr><a class="anchor" id="mars_copper"></a><h5>Медь и Халькопирит</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 220<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.4<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Размер</span>: 50<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Аргиллит, Аргиллит, Базальт, Дацит, Доломит, Известняк, Конгломерат, Сланец, Трахит</p>
+<h5>Халькопирит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 65%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Медь<br/>
+<span style="color:#3E8A00;">Формула</span>: CuFeS₂</p>
+<h5>Самородная Медь</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 20%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Медь<br/>
+<span style="color:#3E8A00;">Формула</span>: Cu</p>
+<h5>Пирит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 10%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: FeS₂</p>
+<h5>Гематит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 5%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₂O₃</p>
+<hr><a class="anchor" id="mars_galena"></a><h5>Серебро, Галена и Свинец</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 215<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.4<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Размер</span>: 50<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Аргиллит, Базальт, Габбро, Гранит, Дацит, Кремнистый сланец, Мел, Сланец</p>
+<h5>Галена</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 40%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Свинец<br/>
+<span style="color:#3E8A00;">Формула</span>: PbS<br/>
+<span style="color:#3E8A00;">Ядовит</span>: <span style="color:#FF5555;">Weakly Poisonous (Inhalation)</span></p>
+<h5>Свинец</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 33%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Свинец<br/>
+<span style="color:#3E8A00;">Формула</span>: Pb<br/>
+<span style="color:#3E8A00;">Ядовит</span>: <span style="color:#FF5555;">Weakly Poisonous (Inhalation)</span></p>
+<h5>Самородная Серебро</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 20%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Серебро<br/>
+<span style="color:#3E8A00;">Формула</span>: Ag</p>
+<h5>Гематит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 6%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₂O₃</p>
+<hr><a class="anchor" id="mars_sulfur"></a><h5>Сфалерит & Пирит</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 215<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.2<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Размер</span>: 45<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 30<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Аргиллит, Базальт, Габбро, Гранит, Дацит, Диорит, Кремнистый сланец, Мел, Трахит</p>
+<h5>Пирит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 42%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: FeS₂</p>
+<h5>Сфалерит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 23%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Цинк<br/>
+<span style="color:#3E8A00;">Формула</span>: ZnS</p>
+<h5>Гематит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 19%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₂O₃</p>
+<h5>Сера</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 14%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Сера<br/>
+<span style="color:#3E8A00;">Формула</span>: S</p>
+<hr><a class="anchor" id="mars_stibnite"></a><h5>Тетраэдрит (обычный)</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 210<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.4<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Размер</span>: 40<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Базальт, Габбро, Дацит, Диорит, Доломит, Кремнистый сланец, Мел, Сланец, Трахит</p>
+<h5>Тетраэдрит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 47%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Медь<br/>
+<span style="color:#3E8A00;">Формула</span>: Cu₃SbS₃Fe</p>
+<h5>Самородная Медь</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 28%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Медь<br/>
+<span style="color:#3E8A00;">Формула</span>: Cu</p>
+<h5>Стибнит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 19%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Сурьма<br/>
+<span style="color:#3E8A00;">Формула</span>: Sb₂S₃</p>
+<h5>Гематит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 4%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₂O₃</p>
+<hr><a class="anchor" id="mars_surface_tetrahedrite"></a><h5>Тетраэдрит (Поверхностный)</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 140<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.25<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 80 — 180<br/>
+<span style="color:#3E8A00;">Размер</span>: 45<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 40<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Аргиллит, Базальт, Габбро, Гранит, Дацит, Диорит, Доломит, Известняк, Конгломерат, Кремнистый сланец, Мел, Сланец, Трахит</p>
+<h5>Тетраэдрит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 57%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Медь<br/>
+<span style="color:#3E8A00;">Формула</span>: Cu₃SbS₃Fe</p>
+<h5>Самородная Медь</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 19%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Медь<br/>
+<span style="color:#3E8A00;">Формула</span>: Cu</p>
+<h5>Стибнит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 19%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Сурьма<br/>
+<span style="color:#3E8A00;">Формула</span>: Sb₂S₃</p>
+<h5>Редстоун</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 4%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Редстоун<br/>
+<span style="color:#3E8A00;">Формула</span>: Si(FeS₂)₅(CrAl₂O₃)Hg₃</p>
+<hr><a class="anchor" id="mars_tungsten"></a><h5>Шеелит и Вольфрамат</h5>
+<p><span style="color:#3E8A00;">Редкость</span>: 280<br/>
+<span style="color:#3E8A00;">Плотность</span>: 0.45<br/>
+<span style="color:#3E8A00;">Вид</span>: кластерная жила<br/>
+<span style="color:#3E8A00;">Y-уровень</span>: 0 — 70<br/>
+<span style="color:#3E8A00;">Размер</span>: 50<br/>
+<span style="color:#3E8A00;">Индикатор Max Depth</span>: 15<br/>
+<br/>
+<span style="color:#3E8A00;">Виды камней</span>: Red Granite, Аргиллит, Базальт, Доломит, Известняк, Кремнистый сланец, Мел, Сланец</p>
+<h5>Шеелит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 42%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Вольфрам<br/>
+<span style="color:#3E8A00;">Формула</span>: Ca(WO₃)O</p>
+<h5>Вольфрамат</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 33%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Вольфрам, Литий<br/>
+<span style="color:#3E8A00;">Формула</span>: Li₂(WO₃)O</p>
+<h5>Литий</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 19%<br/>
+<span style="color:#3E8A00;">Хромит</span>: Литий<br/>
+<span style="color:#3E8A00;">Формула</span>: Li</p>
+<h5>Гематит</h5>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Вам нужно открыть справочник в Minecraft, чтобы увидеть эту структуру.">Структура</span></p>
+</div>
+<p><span style="color:#3E8A00;">Процент руды</span>: 4%<br/>
+<span style="color:#3E8A00;">Плавится в</span>: Железо<br/>
+<span style="color:#3E8A00;">Формула</span>: Fe₂O₃</p>
+<hr>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> Документация API
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'ru_ru';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

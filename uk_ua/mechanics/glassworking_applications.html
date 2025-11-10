@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Вироби зі скла | TFC Field Guide" />
+    <meta name="description" content="Вироби зі скла" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Вироби зі скла | TFC Field Guide" />
+    <meta property="og:description" content="Вироби зі скла" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/minecraft:glass" />
+
+    <title>Вироби зі скла | TFC Field Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">Польовий посібник TerraFirmaCraft</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Версія 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> Українська мова
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/mechanics/glassworking_applications.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/mechanics/glassworking_applications.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/mechanics/glassworking_applications.html" class="dropdown-item">Portuguese (Brazil)</a>
+
+<a href="../../ko_kr/mechanics/glassworking_applications.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/mechanics/glassworking_applications.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/mechanics/glassworking_applications.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/mechanics/glassworking_applications.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/mechanics/glassworking_applications.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/mechanics/glassworking_applications.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Зміст</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Зміст</a></li>
+            <li><a href="../the_world/">Світ</a></li>
+
+<li><a href="../getting_started/">Починаємо</a></li>
+
+<li><a href="../mechanics/">Розширена механіка</a>
+    <ul>
+    <li><a href="./advanced_building_materials.html">Передові матеріали</a></li>
+
+<li><a href="./animal_husbandry.html">Тваринництво</a></li>
+
+<li><a href="./anvils.html">Ковадло</a></li>
+
+<li><a href="./aqueducts.html">Акведук</a></li>
+
+<li><a href="./armor.html">Броня (обладунки)</a></li>
+
+<li><a href="./armor_trims.html">Armor Trims</a></li>
+
+<li><a href="./barrels.html">Діжки</a></li>
+
+<li><a href="./bellows.html">Міхи</a></li>
+
+<li><a href="./blast_furnace.html">Доменна Піч</a></li>
+
+<li><a href="./bloomery.html">Горно</a></li>
+
+<li><a href="./bowls.html">Bowls</a></li>
+
+<li><a href="./bread.html">Хліб</a></li>
+
+<li><a href="./charcoal_forge.html">Ковальське горно</a></li>
+
+<li><a href="./charcoal_pit.html">Вуглярка</a></li>
+
+<li><a href="./chisel.html">Долото</a></li>
+
+<li><a href="./composter.html">Компостер</a></li>
+
+<li><a href="./crankshaft.html">Crankshafts</a></li>
+
+<li><a href="./crops.html">Рослини</a></li>
+
+<li><a href="./crucible.html">Тигель</a></li>
+
+<li><a href="./dairy.html">Молочні продукти</a></li>
+
+<li><a href="./damage_types.html">Види пошкоджень</a></li>
+
+<li><a href="./decay.html">Консервація</a></li>
+
+<li><a href="./dye.html">Dye</a></li>
+
+<li><a href="./fertilizers.html">Добрива</a></li>
+
+<li><a href="./fire_clay.html">Вогнетривка глина</a></li>
+
+<li><a href="./fishing.html">Рибальство</a></li>
+
+<li><a href="./fishing_nets.html">Рибальські сітки</a></li>
+
+<li><a href="./flux.html">Флюс</a></li>
+
+<li><a href="./gems.html">Дорогоцінне каміння</a></li>
+
+<li><a href="./glassworking.html">Склодувство</a></li>
+
+<li><a href="./glassworking_applications.html" class="active">Вироби зі скла</a></li>
+
+<li><a href="./grill.html">Багаття та гриль</a></li>
+
+<li><a href="./harvest_baskets.html">Кошики для врожаю</a></li>
+
+<li><a href="./heating.html">Нагрівання</a></li>
+
+<li><a href="./hydration.html">Зрошування</a></li>
+
+<li><a href="./jarring.html">Jarring</a></li>
+
+<li><a href="./lamps.html">Ліхтарі</a></li>
+
+<li><a href="./leather_making.html">Обробка шкіри</a></li>
+
+<li><a href="./lighting.html">Освітлення</a></li>
+
+<li><a href="./mechanical_power.html">Mechanical Power</a></li>
+
+<li><a href="./minecarts.html">Вагонетка</a></li>
+
+<li><a href="./panning.html">Промивання</a></li>
+
+<li><a href="./papermaking.html">Виготовлення паперу</a></li>
+
+<li><a href="./pets.html">Улюбленці</a></li>
+
+<li><a href="./pot.html">Багаття та казан</a></li>
+
+<li><a href="./powderkegs.html">Порохова бочка</a></li>
+
+<li><a href="./prospecting.html">Геологорозвідка</a></li>
+
+<li><a href="./pumps.html">Pumps</a></li>
+
+<li><a href="./quern.html">Жорна</a></li>
+
+<li><a href="./salad.html">Салати</a></li>
+
+<li><a href="./sandwiches.html">Бутерброди</a></li>
+
+<li><a href="./scribing_table.html">Стіл писаря</a></li>
+
+<li><a href="./sewing_table.html">Sewing Table</a></li>
+
+<li><a href="./sluices.html">Мийний жолоб</a></li>
+
+<li><a href="./steel.html">Сталь</a></li>
+
+<li><a href="./support_beams.html">Опорні балки та обвали</a></li>
+
+<li><a href="./surface_kaolin.html">Каолінова глина</a></li>
+
+<li><a href="./trowel.html">Кельма</a></li>
+
+<li><a href="./weaving.html">Ткацтво</a></li>
+
+<li><a href="./wooden_buckets.html">Дерев'яні відра</a></li>
+
+    </ul>
+</li>
+
+<li><a href="../tfg_ores/">Руди в TFG</a></li>
+
+<li><a href="../tfg/">Зміни в TFG</a></li>
+
+<li><a href="../tfg_tips/">Інформація та поради TFG</a></li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">Розширена механіка</a></li>
+<li class="breadcrumb-item active" aria-current="page">Вироби зі скла</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4"><img src="../../_images/item239.png" alt="{item.minecraft.glass}" class="me-2" style="height: 1.5em;">Вироби зі скла
+</h1>
+<p>Найпростіші скляні вироби — це <span style="color:#3E8A00;">Скляні Панелі</span> та <span style="color:#3E8A00;">Скляні Блоки</span>. Щоб виготовити їх, потрібно почати з <a href="../mechanics/glassworking.html#blowpipe">Паяльної Трубки</a> з <span style="color:#3E8A00;">Порцією Скла</span>, а потім виконати <span style="color:#3E8A00;">Заливання</span>.<br/>
+</p>
+<ul>
+	<li><strong>Заливання на Столі</strong> використовують для створення <span style="color:#3E8A00;">Скляних Панелей</span></li>
+	<li><strong>Заливання в Басейн</strong> використовують для створення <span style="color:#3E8A00;">Скляних Блоків</span></li>
+</ul>
+<p>Скло також можна <span style="color:#3E8A00;">забарвити</span> перед заливанням, щоб отримати кольорове скло. Колір залежить від типу порції скла та будь‑яких доданих порошків.<br/>
+<br/>
+Кожен тип <span style="color:#3E8A00;">Порції Скла</span> має свій природний колір скла, який він створює. <span style="color:#3E8A00;">Силікатне</span> скло можна виготовити в багатьох кольорах, тоді як <span style="color:#3E8A00;">Олівінове</span> та <span style="color:#3E8A00;">Вулканічне</span> скло можна зробити лише у відносно небагатьох кольорах.</p>
+<h5>Заливання на Столі</h5>
+<p><span style="color:#3E8A00;">Скляні Панелі</span> виготовляються за допомогою <span style="color:#3E8A00;">Заливання на Столі</span>. Стіл для заливання створюється шляхом розміщення до шістнадцяти <span style="color:#3E8A00;">Блоків Каолінової Глини</span> або <span style="color:#3E8A00;">Латунно-Обшитих Блоків</span> у суцільній області.<br/>
+<br/>
+ 1. Додайте <a href="../mechanics/glassworking.html">Порцію Скла</a> до <span style="color:#3E8A00;">Паяльної Трубки</span>.<br/>
+ 2. Нагрійте трубку до стану <span style="color:#AA0000;"><strong>Тьмяно-Червоного</strong></span>.<br/>
+ 3. Використайте <span style="color:#b0b;">ПКМ</span> на <span style="color:#3E8A00;">Паяльній Трубці</span>, стоячи над столом.<br/>
+ 4. Нарешті натисніть <span style="color:#b0b;">ПКМ</span> з <a href="../mechanics/glassworking.html#paddle">Лопаткою</a>, щоб сплющити скло.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p>Після охолодження скло можна розбити за допомогою <a href="../mechanics/glassworking.html#saw">Пилки для Каменів</a>, щоб отримати його.</p>
+<h5>Заливання в Басейн</h5>
+<p><span style="color:#3E8A00;">Скляні Блоки</span> виготовляються за допомогою <span style="color:#3E8A00;">Заливання в Басейн</span>. Басейн створюється оточенням повітряного блоку з усіх боків, крім верху, <span style="color:#3E8A00;">Блоками Каолінової Глини</span> або <span style="color:#3E8A00;">Латунно-Обшитими Блоками</span>.<br/>
+<br/>
+ 1. Додайте <a href="../mechanics/glassworking.html">Порцію Скла</a> до <span style="color:#3E8A00;">Паяльної Трубки</span>.<br/>
+ 2. Нагрійте паяльну трубку до стану <span style="color:#AA0000;"><strong>Тьмяно-Червоного</strong></span>.<br/>
+ 3. Використайте <span style="color:#b0b;">ПКМ</span> на <span style="color:#3E8A00;">Паяльній Трубці</span>, стоячи над басейном.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p>Після охолодження скло можна розбити за допомогою <a href="../mechanics/glassworking.html#saw">Пилки для Каменів</a>, щоб отримати його.</p>
+<h5>Блоки для роботи зі склом</h5>
+<p><span style="color:#3E8A00;">Латунно-Обшиті Блоки</span> можна створити, тримаючи <span style="color:#3E8A00;">Латунну Пластину</span> та використавши <span style="color:#b0b;">ПКМ</span> на будь‑якому <span style="color:#3E8A00;">Кам’яному Цегляному Блоці</span>.</p>
+<a class="anchor" id="coloring"></a><h5>Фарбування Скла</h5>
+<p>Скло має природний колір залежно від типу <a href="../mechanics/glassworking.html">Порції Скла</a>, яка була використана. Інші кольори можна отримати за допомогою <a href="../mechanics/bowls.html">Миски</a>.<br/>
+<br/>
+Щоб використати, поставте <a href="../mechanics/bowls.html">Миску</a> на землю, потім <span style="color:#b0b;">ПКМ</span> потрібний <span style="color:#3E8A00;">Порошок</span>. Перед <span style="color:#3E8A00;">Заливанням</span> використайте <span style="color:#3E8A00;">Паяльну Трубку</span> на мисці, щоб додати порошок до порції скла.</p>
+<h5>Кольори барвників</h5>
+<p></p>
+<ul>
+	<li><strong><span style="color:#AAAAAA;">Білий</span></strong>: Силікатне або Гематитове скло + <span style="color:#3E8A00;">Сода</span></li>
+	<li><strong><span style="color:#000000;">Чорний</span></strong>: Будь‑яке скло + <span style="color:#3E8A00;">Графіт</span></li>
+	<li><strong><span style="color:#555555;">Сірий</span></strong>: Будь‑яке скло + <span style="color:#3E8A00;">Графіт</span> + <span style="color:#3E8A00;">Сода</span></li>
+	<li><strong><span style="color:#AAAAAA;">Світло‑сірий</span></strong>: Будь‑яке скло + <span style="color:#3E8A00;">Графіт</span> + 2× <span style="color:#3E8A00;">Сода</span></li>
+	<li><strong><span style="color:#AA00AA;">Пурпуровий</span></strong>: Будь‑яке скло + <span style="color:#3E8A00;">Залізо</span> + <span style="color:#3E8A00;">Мідь</span></li>
+	<li><strong><span style="color:#964b00;">Коричневий</span></strong>: Будь‑яке скло + <span style="color:#3E8A00;">Нікель</span></li>
+	<li><strong><span style="color:#00AAAA;">Бірюзовий</span></strong>: Невулканічне скло + <span style="color:#3E8A00;">Мідь</span> + <span style="color:#3E8A00;">Сапфір</span></li>
+	<li><strong><span style="color:#00AA00;">Зелений</span></strong>: Силікатне або Гематитове скло + <span style="color:#3E8A00;">Залізо</span></li>
+</ul>
+<p></p>
+<ul>
+	<li><strong><span style="color:#55FF55;">Lаймовий</span></strong>: Силікатне або Гематитове скло + <span style="color:#3E8A00;">Залізо</span> + <span style="color:#3E8A00;">Сода</span></li>
+	<li><strong><span style="color:#55FFFF;">Світло‑блакитний</span></strong>: Силікатне скло + <span style="color:#3E8A00;">Лазурит</span></li>
+	<li><strong><span style="color:#0000AA;">Синій</span></strong>: Силікатне скло + <span style="color:#3E8A00;">Мідь</span></li>
+	<li><strong><span style="color:#AA0000;">Червоний</span></strong>: Силікатне або Гематитове скло + <span style="color:#3E8A00;">Олово</span></li>
+	<li><strong><span style="color:#FFAA00;">Жовтий</span></strong>: Силікатне або Гематитове скло + <span style="color:#3E8A00;">Срібло</span></li>
+	<li><strong><span style="color:#ef8e38;">Помаранчевий</span></strong>: Силікатне скло + <span style="color:#3E8A00;">Пірит</span></li>
+	<li><strong><span style="color:#AA00AA;">Пурпурно‑рожевий</span></strong>: Силікатне або Гематитове скло + <span style="color:#3E8A00;">Рубін</span></li>
+	<li><strong>Рожевий</strong>: Силікатне скло + <span style="color:#3E8A00;">Золото</span></li>
+	<li><strong><span style="color:#000000;">Тоноване</span></strong>: Несилікатне скло + <span style="color:#3E8A00;">Аметист</span></li>
+</ul>
+<hr><a class="anchor" id="lamp_glass"></a><p><span style="color:#3E8A00;">Скло для ламп</span> є необхідним компонентом для створення <a href="../mechanics/lamps.html">Ламп</a>.</p>
+<a class="anchor" id="jar"></a><p><a href="../mechanics/jarring.html">Банки</a> також виготовляються з видувного скла, але лише з силікатного або гематитового скла.</p>
+<a class="anchor" id="glass_bottle"></a><p><span style="color:#3E8A00;">Скляні пляшки</span> також можна виготовляти. Якість скляної пляшки залежить від типу скла, з якого вона зроблена.</p>
+<p><span style="color:#3E8A00;">Лінза</span> використовується для створення <span style="color:#3E8A00;">підзорної труби</span>, <span style="color:#3E8A00;">компаса</span> та інших предметів.</p>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> API Документація
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'uk_ua';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

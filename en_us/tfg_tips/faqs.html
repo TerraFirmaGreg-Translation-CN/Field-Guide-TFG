@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Frequently Asked Questions | TFC Field Guide" />
+    <meta name="description" content="Frequently Asked Questions" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Frequently Asked Questions | TFC Field Guide" />
+    <meta property="og:description" content="Frequently Asked Questions" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/minecraft:spyglass" />
+
+    <title>Frequently Asked Questions | TFC Field Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">TerraFirmaCraft Field Guide</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Version 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> English
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/tfg_tips/faqs.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/tfg_tips/faqs.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/tfg_tips/faqs.html" class="dropdown-item">Portuguese (Brazil)</a>
+
+<a href="../../ko_kr/tfg_tips/faqs.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/tfg_tips/faqs.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/tfg_tips/faqs.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/tfg_tips/faqs.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/tfg_tips/faqs.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/tfg_tips/faqs.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Contents</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Index</a></li>
+            <li><a href="../the_world/">The World</a></li>
+
+<li><a href="../getting_started/">Getting Started</a></li>
+
+<li><a href="../mechanics/">Advanced Mechanics</a></li>
+
+<li><a href="../sacks_n_such/">Sacks 'N Such</a></li>
+
+<li><a href="../waterflasks/">Water Flasks</a></li>
+
+<li><a href="../beneath/">Beneath</a></li>
+
+<li><a href="../firmalife/">Firmalife</a></li>
+
+<li><a href="../roadsandroofs/">Roads and Roofs</a></li>
+
+<li><a href="../arborfirmacraft/">ArborFirmaCraft</a></li>
+
+<li><a href="../firmaciv/">Firma: Civilization</a></li>
+
+<li><a href="../tfcchannelcasting/">TFC Casting with Channels</a></li>
+
+<li><a href="../tfg_ores/">Ores in TFG</a></li>
+
+<li><a href="../tfg_tips/">TFG Info & Tips</a>
+    <ul>
+    <li><a href="./anvil_working_guide.html">Anvil Working Guide</a></li>
+
+<li><a href="./blast_furnace_tips.html">Blast Furnace Tips</a></li>
+
+<li><a href="./faqs.html" class="active">Frequently Asked Questions</a></li>
+
+<li><a href="./inventory_management.html">Inventory Management</a></li>
+
+<li><a href="./space_crops.html">Extraterrestrial Crops</a></li>
+
+<li><a href="./space_fauna.html">Extraterrestrial Fauna</a></li>
+
+    </ul>
+</li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">TFG Info & Tips</a></li>
+<li class="breadcrumb-item active" aria-current="page">Frequently Asked Questions</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4"><img src="../../_images/item26.png" alt="{item.minecraft.spyglass}" class="me-2" style="height: 1.5em;">Frequently Asked Questions
+</h1>
+<h5>FAQs</h5>
+<p>Stuck on something? Try looking through this book first and in the quests, but if you're still stumped, you can ask on our <a href="https://discord.com/invite/AEaCzCTUwQ">Discord</a> or <a href="https://www.reddit.com/r/TerraFirmaGreg">Subreddit</a>!</p>
+<p></p>
+<ul>
+	<li><a href="../tfg_tips/faqs.html#boats">Why did my boat sink?</a></li>
+	<li><a href="../tfg_tips/faqs.html#dried_fruit">How do I make yeast starter?</a></li>
+	<li><a href="../tfg_tips/faqs.html#dried_fruit">How do I make pineapple fiber?</a></li>
+	<li><a href="../tfg_tips/faqs.html#jam">How do I make jam?</a></li>
+	<li><a href="../tfg_tips/faqs.html#resin">How do I make Rubber?</a></li>
+	<li><a href="../tfg_tips/faqs.html#chunks">How do I force-load a chunk or increase my limit?</a></li>
+</ul>
+<a class="anchor" id="boats"></a><p><em>Why did my boat sink?</em><br/>
+<br/>
+Build your boat on land, then push it or use a <span style="color:#b0b;">Lead</span> to launch it. If it's already sunk, too bad, make another one.</p>
+<a class="anchor" id="dried_fruit"></a><p><em>How do I make yeast starter or pineapple fiber?</em><br/>
+<br/>
+Make sure you dry the fruit first using a <span style="color:#b0b;">Drying Mat</span>. Then follow the rest of the steps for <a href="../firmalife/bread.html">bread</a> or <a href="../firmalife/berry_bushes.html">pineapple leather</a>.</p>
+<a class="anchor" id="jam"></a><p><em>How do I make jam?</em><br/>
+<br/>
+It's easiest with a <a href="../firmalife/oven_appliances.html#vat">Vat</a>. Follow the steps in that section, but you don't need to make a <span style="color:#3E8A00;">Jarring Station</span> or <span style="color:#3E8A00;">Lids</span> unless you want to automate it. Just right-click the Vat of <span style="color:#3E8A00;">Fruity Fluid</span> with an empty jar, then right-click it again to take it out, and it should be full of jam and sealed.<br/>
+<br/>
+Make sure you <strong>close the lid</strong> on the Vat with <span style="color:#b0b;"></span> + <span style="color:#b0b;"></span>!</p>
+<a class="anchor" id="chunks"></a><p><em>How do I force-load a chunk?</em><br/>
+<br/>
+Open your map with <span style="color:#b0b;"></span>, then shift-left-click the chunk. Shift-right-click to unclaim.<br/>
+<br/>
+To increase the number of forceloaded chunks, use <span style="color:#b0b;">/ftbchunks admin extra_force_load_chunks @p set X</span>, where X is the new limit.</p>
+<a class="anchor" id="resin"></a><p><em>How do I make rubber?</em><br/>
+<br/>
+Sticky Resin is no longer what you are looking for! First, grow some <span style="color:#3E8A00;">Latex</span>-producing trees and make some <span style="color:#3E8A00;">Tree Taps</span>. Place a tree tap on the trunk of each tree (more taps on a tree just splits the output). You can collect the Latex that comes out with a Barrel.</p>
+<p>It's quickest to cook your latex in a <a href="../firmalife/oven_appliances.html#vat">Vat</a>. Combine your latex with <span style="color:#b0b;">Sulfur</span> powder in the vat (put the GregTech dust in a Quern to get the powder), add heat, and <strong>close the lid</strong> on the Vat with <span style="color:#b0b;"></span> + <span style="color:#b0b;"></span>. You will get <span style="color:#3E8A00;">Vulcanized Latex</span> which you can vacuumize in a <span style="color:#3E8A00;">Vacuum Chamber</span> for that long-awaited Rubber!<br/>
+<br/>
+Later on, the <span style="color:#3E8A00;">LV Centrifuge</span> lets you get <span style="color:#3E8A00;">Raw Rubber Pulp</span> directly from the logs of latex-producing trees.</p>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> API Docs
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'en_us';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

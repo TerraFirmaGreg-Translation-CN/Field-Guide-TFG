@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="鉱石と鉱物 | TFC Field Guide" />
+    <meta name="description" content="鉱石と鉱物" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="鉱石と鉱物 | TFC Field Guide" />
+    <meta property="og:description" content="鉱石と鉱物" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/tfc:ore/normal_hematite" />
+
+    <title>鉱石と鉱物 | TFC Field Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">TerraFirmaCraft Field Guide</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Version 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> 日本語
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/the_world/ores_and_minerals.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/the_world/ores_and_minerals.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/the_world/ores_and_minerals.html" class="dropdown-item">Portuguese (Brazil)</a>
+
+<a href="../../ko_kr/the_world/ores_and_minerals.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/the_world/ores_and_minerals.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/the_world/ores_and_minerals.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/the_world/ores_and_minerals.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/the_world/ores_and_minerals.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/the_world/ores_and_minerals.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Contents</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Index</a></li>
+            <li><a href="../the_world/">世界</a>
+    <ul>
+    <li><a href="./geology.html">地質</a></li>
+
+<li><a href="./ores_and_minerals.html" class="active">鉱石と鉱物</a></li>
+
+<li><a href="./climate.html">暦と気候</a></li>
+
+<li><a href="./flora.html">植物</a></li>
+
+<li><a href="./wild_crops.html">野生の作物</a></li>
+
+<li><a href="./wild_fruits.html">野生の果物</a></li>
+
+<li><a href="./wild_animals.html">野生の動物</a></li>
+
+    </ul>
+</li>
+
+<li><a href="../getting_started/">はじめに</a></li>
+
+<li><a href="../mechanics/">高度な加工</a></li>
+
+<li><a href="../sacks_n_such/">Sacks 'N Such</a></li>
+
+<li><a href="../waterflasks/">水筒</a></li>
+
+<li><a href="../firmalife/">Firmalife</a></li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">世界</a></li>
+<li class="breadcrumb-item active" aria-current="page">鉱石と鉱物</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4"><img src="../../_images/item135.png" alt="{item.tfc.ore.normal_hematite}" class="me-2" style="height: 1.5em;">鉱石と鉱物
+</h1>
+<p>TFCの鉱石と鉱物はバニラとは違い、鉱脈で生成されます。一つの鉱脈で鉱石が大量に採掘できますが、鉱脈は珍しいものであり、見つけるには<a href="../mechanics/prospecting.html">探鉱</a>が必要です。鉱石は、特定の種類の岩石や特定の標高に生成されます。つまり、適切な高度で適切な種類の岩石を見つけることが、鉱石を探す鍵となります。</p>
+<p>さらに、鉱石には<span style="color:#3E8A00;">含有量</span>が存在します。鉱石ブロックは低純度、中純度、高純度と区別され、鉱脈によって各ブロックの量が異なります。<span style="color:#3E8A00;">高純度</span>な鉱脈はより収益性が高くなります。<br/>
+<br/>
+次のページからは、さまざまな種類の鉱石、その外観、および鉱石の場所についての解説です。</p>
+<a class="anchor" id="native_copper"></a><h5>自然銅</h5>
+<p>自然銅は<span style="color:#3E8A00;">銅</span>の鉱石です。標高y=40以上の<a href="../the_world/geology.html#igneous_extrusive">火成噴出岩</a>で見つかります。<br/>
+<br/>
+また、<span style="color:#3E8A00;">川</span>の堆積物の中にも存在し、<a href="../mechanics/panning.html">ふるい</a>で採取できます。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>デイサイト岩に含まれている自然銅鉱石。</p>
+<a class="anchor" id="native_gold"></a><h5>自然金</h5>
+<p>自然金は<span style="color:#3E8A00;">金</span>の鉱石です。標高y=70未満で見つかりますが、より地下深くにある鉱脈の方が大きく、純度も高くなります。<a href="../the_world/geology.html#igneous_extrusive">火成噴出岩</a>および<a href="../the_world/geology.html#igneous_intrusive">火成貫入岩</a>で見つかります。<br/>
+<br/>
+また、<span style="color:#3E8A00;">川</span>の堆積物の中にも存在し、<a href="../mechanics/panning.html">ふるい</a>で採取できます。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>閃緑岩に含まれている自然金鉱石。</p>
+<a class="anchor" id="native_silver"></a><h5>自然銀</h5>
+<p>自然銀は<span style="color:#3E8A00;">銀</span>の鉱石です。標高y=90以上で隆起地域の<span style="color:#3E8A00;">花崗岩</span>や<span style="color:#3E8A00;">閃緑岩</span>に小さな鉱脈が見つかります。より大きな鉱脈は、標高y=20以下の地下深くにある<span style="color:#3E8A00;">花崗岩</span>、<span style="color:#3E8A00;">閃緑岩</span>、<span style="color:#3E8A00;">片岩</span>、および<span style="color:#3E8A00;">片麻岩</span>で見つかります。<br/>
+<br/>
+また、<span style="color:#3E8A00;">川</span>の堆積物の中にも存在し、<a href="../mechanics/panning.html">ふるい</a>で採取できます。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>花崗岩に含まれる自然銀鉱石。</p>
+<a class="anchor" id="tetrahedrite"></a><h5>四面銅鉱</h5>
+<p>四面銅鉱は<span style="color:#3E8A00;">銅</span>の鉱石です。どの標高でも見つけることができますが、より地下深くにある鉱脈のほうが純度が高くなることが多いです。<a href="../the_world/geology.html#metamorphic">変成岩</a>で見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>片岩に含まれる四面銅鉱石。</p>
+<a class="anchor" id="malachite"></a><h5>孔雀石</h5>
+<p>孔雀石は<span style="color:#3E8A00;">銅</span>の鉱石です。主に<span style="color:#3E8A00;">大理石</span>や<span style="color:#3E8A00;">石灰岩</span>、<span style="color:#3E8A00;">白亜</span>、および<span style="color:#3E8A00;">苦灰石</span>で見つかります。ほとんどの標高で見かりますが、より地下深くにある鉱脈の方が大きく、純度も高くなる事が多いです。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>大理石に含まれる孔雀石。</p>
+<a class="anchor" id="cassiterite"></a><h5>錫石</h5>
+<p>錫石は<span style="color:#3E8A00;">錫</span>の鉱石です。標高y=80以上の隆起地域または岩脈にある<a href="../the_world/geology.html#igneous_intrusive">火成貫入岩</a>で見つかります。<br/>
+<br/>
+また、<span style="color:#3E8A00;">川</span>の堆積物の中にも見つかり、<a href="../mechanics/panning.html">ふるい</a>で採取できます。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>閃緑岩に含まれる錫鉱石。</p>
+<a class="anchor" id="bismuthinite"></a><h5>輝蒼鉛鉱</h5>
+<p>輝蒼鉛鉱は<span style="color:#3E8A00;">蒼鉛</span>の鉱石です。表面近くの<a href="../the_world/geology.html#sedimentary">堆積岩</a>や、地下深くの<a href="../the_world/geology.html#igneous_intrusive">火成貫入岩</a>により大きくて純度の高い鉱脈が見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>頁岩に含まれる輝蒼鉛鉱石。</p>
+<a class="anchor" id="garnierite"></a><h5>珪ニッケル鉱</h5>
+<p>珪ニッケル鉱は<span style="color:#3E8A00;">ニッケル</span>の鉱石です。標高y=0以下で見つかります。主に地下深くの<span style="color:#3E8A00;">斑れい岩</span>で見つかります。より小さくて珍しい鉱脈は、どの<a href="../the_world/geology.html#igneous_intrusive">火成貫入岩</a>でも見つかることがあります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>斑れい岩に含まれる珪ニッケル鉱石。</p>
+<a class="anchor" id="hematite"></a><h5>赤鉄鉱</h5>
+<p>赤鉄鉱は<span style="color:#3E8A00;">鉄</span>の鉱石です。地表近くの<a href="../the_world/geology.html#igneous_extrusive">火成噴出岩</a>で大きな鉱脈として見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>安山岩に含まれる赤鉄鉱石。</p>
+<a class="anchor" id="magnetite"></a><h5>磁鉄鉱</h5>
+<p>磁鉄鉱は<span style="color:#3E8A00;">鉄</span>の鉱石です。地表近くの<a href="../the_world/geology.html#sedimentary">堆積岩</a>で大きな鉱脈として見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>石灰岩に含まれる磁鉄鉱石。</p>
+<a class="anchor" id="limonite"></a><h5>褐鉄鉱</h5>
+<p>褐鉄鉱は<span style="color:#3E8A00;">鉄</span>の鉱石です。地表近くの<a href="../the_world/geology.html#sedimentary">堆積岩</a>で大きな鉱脈として見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>白亜に含まれる褐鉄鉱石。</p>
+<a class="anchor" id="sphalerite"></a><h5>閃亜鉛鉱</h5>
+<p>閃亜鉛鉱は<span style="color:#3E8A00;">亜鉛</span>の鉱石です。地表近くの<a href="../the_world/geology.html#igneous_extrusive">火成噴出岩</a>で小さく純度も低い鉱脈が見つかり、地下深くの<a href="../the_world/geology.html#igneous_intrusive">火成貫入岩</a>で大きく純度も高い鉱脈が見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>珪岩に含まれる閃亜鉛鉱石。</p>
+<a class="anchor" id="lignite"></a><p>褐炭は低品位の<span style="color:#3E8A00;">石炭</span>鉱石です。地表近くの<a href="../the_world/geology.html#sedimentary">堆積岩</a>で非常に大きく平らに堆積物として見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>苦灰岩に含まれる褐炭。</p>
+<a class="anchor" id="bituminous_coal"></a><p>瀝青炭は中品位の<span style="color:#3E8A00;">石炭</span>鉱石です。地表近くの<a href="../the_world/geology.html#sedimentary">堆積岩</a>で非常に大きく平らに堆積物として見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>角岩に含まれる瀝青炭。</p>
+<a class="anchor" id="kaolinite"></a><p>カオリナイトは、<a href="../mechanics/fire_clay.html">耐火粘土</a>に使用される柔らかい<span style="color:#3E8A00;">鉱物</span>です。高原、古代の山岳地帯、高地の高い標高で生成され、<a href="../the_world/climate.html#temperature">気温</a>が18°C以上、<a href="../the_world/climate.html#rainfall">降水量</a>が300mm以上の場所で見つかります。<span style="color:#3E8A00;">ハエマンサス</span>の花はカオリン粘土の上に育ちます。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>カオリン粘土の様々な種類</p>
+<a class="anchor" id="graphite"></a><p>黒鉛は、<a href="../mechanics/fire_clay.html">耐火粘土</a>に使用される<span style="color:#3E8A00;">鉱物</span>です。標高y=60未満の<span style="color:#3E8A00;">片麻岩</span>、<span style="color:#3E8A00;">大理石</span>、<span style="color:#3E8A00;">珪岩</span>、および<span style="color:#3E8A00;">片岩</span>の岩石で見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>片麻岩に含まれる黒鉛。</p>
+<a class="anchor" id="cinnabar"></a><p>辰砂は、<a href="../mechanics/quern.html">石臼</a>で挽くことによって<span style="color:#3E8A00;">レッドストーンダスト</span>を得ることができる<span style="color:#3E8A00;">鉱物</span>です。地下深くの<span style="color:#3E8A00;">珪岩</span>、<span style="color:#3E8A00;">片麻岩</span>、<span style="color:#3E8A00;">千枚岩</span>、および<span style="color:#3E8A00;">片岩</span>の岩石で見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>珪岩に含まれる辰砂。</p>
+<a class="anchor" id="cryolite"></a><p>氷晶石は、<a href="../mechanics/quern.html">石臼</a>で挽くことによって<span style="color:#3E8A00;">レッドストーンダスト</span>を得ることができる<span style="color:#3E8A00;">鉱物</span>です。地下深くの<span style="color:#3E8A00;">花崗岩</span>および<span style="color:#3E8A00;">閃緑岩</span>の鉱脈で見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>花崗岩に含まれる氷晶石。</p>
+<a class="anchor" id="saltpeter"></a><p>硝石は、<a href="../mechanics/quern.html">石臼</a>で挽くことによって<span style="color:#3E8A00;">火薬</span>の製作に使用できる<span style="color:#3E8A00;">鉱物</span>です。地表近くの<a href="../the_world/geology.html#sedimentary">堆積岩</a>で非常に大きく平らに堆積物として見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>頁岩に含まれる硝石。</p>
+<a class="anchor" id="sulfur"></a><p>硫黄は、<a href="../mechanics/quern.html">石臼</a>で挽くことによって<span style="color:#3E8A00;">火薬</span>の製作に使用できる<span style="color:#3E8A00;">鉱物</span>です。地下深くの<a href="../the_world/geology.html#metamorphic">変成岩</a>や<a href="../the_world/geology.html#igneous_intrusive">火成貫入岩</a>の溶岩近くで、まばらではあるものの大きくて豊富な鉱脈で見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>斑れい岩に含まれる硫黄。</p>
+<a class="anchor" id="sylvite"></a><p>カリ岩塩は、<a href="../mechanics/quern.html">石臼</a>で挽くことによって<a href="../mechanics/fertilizers.html">肥料</a>として使用できる<span style="color:#3E8A00;">鉱物</span>です。地表面近くの<span style="color:#3E8A00;">頁岩</span>、<span style="color:#3E8A00;">泥岩</span>、および<span style="color:#3E8A00;">角岩</span>に非常に大きく平らな堆積物として見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>角岩に含まれるカリ岩塩。</p>
+<a class="anchor" id="borax"></a><p>ホウ砂は、<a href="../mechanics/quern.html">石臼</a>で挽くことによって<a href="../mechanics/flux.html">融剤</a>として使用できる<span style="color:#3E8A00;">鉱物</span>です。地表近くの<span style="color:#3E8A00;">泥岩</span>、<span style="color:#3E8A00;">石灰岩</span>、および<span style="color:#3E8A00;">頁岩</span>で非常に大きく平らな堆積物として見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>頁岩に含まれるホウ砂</p>
+<a class="anchor" id="gypsum"></a><p>石膏は装飾用の<span style="color:#3E8A00;">鉱物</span>であり、<a href="../mechanics/advanced_building_materials.html#alabaster">雪花石膏</a>の製作に使用されます。地表近くの<a href="../the_world/geology.html#sedimentary">堆積岩</a>で非常に大きく平らな堆積物として見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>白亜に含まれる石膏</p>
+<a class="anchor" id="halite"></a><p>岩塩は<a href="../mechanics/quern.html">石臼</a>で挽くことによって<span style="color:#3E8A00;">塩</span>になる<span style="color:#3E8A00;">鉱物</span>です。これは重要な<a href="../mechanics/decay.html#salting">保存料</a>です。地表近くの<a href="../the_world/geology.html#sedimentary">堆積岩</a>で非常に大きく平らな堆積物として見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>白亜に含まれる岩塩。</p>
+<a class="anchor" id="emerald"></a><p>エメラルドは装飾用の<a href="../mechanics/gems.html">宝石</a>です。それはとても美しく、この信じられないほど孤独な世界で他の誰かを見つけることができれば、彼らと取引することもできるかもしれません...<br/>
+<br/>
+それは最大で100ブロックの高さまでの細い垂直の鉱脈で見つかります。<a href="../the_world/geology.html#igneous_intrusive">火成貫入岩</a>で見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>閃緑岩に含まれるエメラルド</p>
+<a class="anchor" id="diamond"></a><p>キンバーライトは、装飾用であり非常に価値のある<a href="../mechanics/gems.html">宝石</a>です。それは<a href="https://en.wikipedia.org/wiki/Volcanic_pipe">キンバーライトパイプ</a>と呼ばれる細い垂直の鉱脈で見つかり、最大で100ブロックの高さに達することがあります。<span style="color:#3E8A00;">斑れい岩</span>でのみ見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>斑れい岩に含まれるキンバーライト。</p>
+<a class="anchor" id="lapis_lazuli"></a><p>ラピスラズリは、装飾用の<span style="color:#3E8A00;">鉱物</span>であり、<a href="../mechanics/dye.html">青色の染料</a>の製作に使用されます。標高y=-20からy=80の間の<span style="color:#3E8A00;">石灰岩</span>と<span style="color:#3E8A00;">大理石</span>の中で、大きいけれどもまばらな鉱脈として見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>大理石に含まれるラピスラズリ</p>
+<a class="anchor" id="amethyst"></a><p>アメジストは、<a href="../mechanics/glassworking.html">ガラス</a>の製作に使用できる装飾用の<span style="color:#3E8A00;">鉱物</span>です。標高y=40以上の川の下の<span style="color:#3E8A00;">堆積岩</span>および<span style="color:#3E8A00;">変成岩</span>の中で見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>大理石に含まれるアメジスト</p>
+<a class="anchor" id="opal"></a><p>オパールは、装飾用の<span style="color:#3E8A00;">鉱物</span>です。標高y=40以上の川の下にある<span style="color:#3E8A00;">堆積岩</span>および<span style="color:#3E8A00;">火成噴出岩</span>の中で見つかります。</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="View the field guide in Minecraft to see this multiblock.">Multiblock</span></p>
+</div>
+<p>玄武岩に含まれるオパール</p>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> API Docs
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'ja_jp';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

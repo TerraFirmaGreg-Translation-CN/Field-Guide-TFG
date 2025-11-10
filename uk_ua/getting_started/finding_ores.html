@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Руди, Метали та Лиття | TFC Field Guide" />
+    <meta name="description" content="Руди, Метали та Лиття" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Руди, Метали та Лиття | TFC Field Guide" />
+    <meta property="og:description" content="Руди, Метали та Лиття" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/tfc:ore/normal_native_copper" />
+
+    <title>Руди, Метали та Лиття | TFC Field Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">Польовий посібник TerraFirmaCraft</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Версія 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> Українська мова
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/getting_started/finding_ores.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/getting_started/finding_ores.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/getting_started/finding_ores.html" class="dropdown-item">Portuguese (Brazil)</a>
+
+<a href="../../ko_kr/getting_started/finding_ores.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/getting_started/finding_ores.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/getting_started/finding_ores.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/getting_started/finding_ores.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/getting_started/finding_ores.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/getting_started/finding_ores.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Зміст</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Зміст</a></li>
+            <li><a href="../the_world/">Світ</a></li>
+
+<li><a href="../getting_started/">Починаємо</a>
+    <ul>
+    <li><a href="./introduction.html">Вступ</a></li>
+
+<li><a href="./firepit.html">Вогонь та багаття</a></li>
+
+<li><a href="./pottery.html">Гончарство</a></li>
+
+<li><a href="./pit_kiln.html">Ямна піч</a></li>
+
+<li><a href="./finding_ores.html" class="active">Руди, Метали та Лиття</a></li>
+
+<li><a href="./primitive_alloys.html">Примітивні сплави</a></li>
+
+<li><a href="./primitive_anvils.html">Примітивне ковадло</a></li>
+
+<li><a href="./building_materials.html">Будівельні матеріали</a></li>
+
+<li><a href="./a_place_to_sleep.html">Місце для відпочинку</a></li>
+
+<li><a href="./size_and_weight.html">Розмір та вага</a></li>
+
+<li><a href="./food_and_water.html">Їжа та вода</a></li>
+
+    </ul>
+</li>
+
+<li><a href="../mechanics/">Розширена механіка</a></li>
+
+<li><a href="../tfg_ores/">Руди в TFG</a></li>
+
+<li><a href="../tfg/">Зміни в TFG</a></li>
+
+<li><a href="../tfg_tips/">Інформація та поради TFG</a></li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">Починаємо</a></li>
+<li class="breadcrumb-item active" aria-current="page">Руди, Метали та Лиття</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4"><img src="../../_images/item249.png" alt="{item.tfc.ore.normal_native_copper}" class="me-2" style="height: 1.5em;">Руди, Метали та Лиття
+</h1>
+<p>Окрім паличок, гілочок і каміння на землі, під час подорожей ви можете зустріти маленькі шматки руди, розкидані навколо. Вони дуже важливі, адже є одним з небагатьох джерел руди та металу до отримання кайла.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p>Усі малі шматки руди</p>
+<p>Ці маленькі шматки руди можуть виконувати дві функції: вони можуть слугувати джерелом металу, а ще важливіше — вказують на наявність більшої жилки руди десь поруч, ймовірно, під землею та близько до поверхні. Обов’язково відзначайте місця, де знаходите дрібні руди, оскільки розташування рудних жил буде корисним пізніше під час <a href="../mechanics/prospecting.html">Розвідки</a>.<br/>
+<br/>
+Дванадцять типів дрібних руд і метал, у який вони можуть бути переплавлені, перелічені на наступній сторінці.</p>
+<h5>Маленькі Руди</h5>
+<p></p>
+<ul>
+	<li>Самородна Мідь (<span style="color:#3E8A00;">Мідь</span>)</li>
+	<li>Самородне Золото (<span style="color:#3E8A00;">Золото</span>)</li>
+	<li>Гематит (<span style="color:#3E8A00;">Чавун</span>)</li>
+	<li>Самородне Срібло (<span style="color:#3E8A00;">Срібло</span>)</li>
+	<li>Каситерит (<span style="color:#3E8A00;">Олово</span>)</li>
+	<li>Вісмутиніт (<span style="color:#3E8A00;">Вісмут</span>)</li>
+	<li>Гарнієрит (<span style="color:#3E8A00;">Нікель</span>)</li>
+	<li>Малахіт (<span style="color:#3E8A00;">Мідь</span>)</li>
+	<li>Магнетит (<span style="color:#3E8A00;">Чавун</span>)</li>
+	<li>Лімоніт (<span style="color:#3E8A00;">Чавун</span>)</li>
+	<li>Сфалерит (<span style="color:#3E8A00;">Цинк</span>)</li>
+	<li>Тетраедрит (<span style="color:#3E8A00;">Мідь</span>)</li>
+</ul>
+<a class="anchor" id="casting"></a><h5>Виливка</h5>
+<p>У TerraFirmaCraft кожна руда містить певну кількість <span style="color:#3E8A00;">одиниць</span> або <span style="color:#3E8A00;">mB (мілібаків)</span> фактичного металу, який можна витягти. Маленькі руди, знайдені на поверхні, мають найнижчу якість і дають лише <span style="color:#3E8A00;">16 mB</span> металу. Щоб витягти цей метал, його потрібно <span style="color:#3E8A00;">розплавити</span>, а потім створити з нього інструменти за допомогою процесу <span style="color:#3E8A00;">лиття</span>.</p>
+<p>Вам знадобиться:<br/>
+</p>
+<ul>
+	<li><a href="../getting_started/pottery.html#vessel">Маленька Посудина</a></li>
+	<li>Достатньо матеріалів для <a href="../getting_started/pit_kiln.html">Ямної Печі</a>.</li>
+	<li>Одна або більше <a href="../getting_started/pottery.html#mold">Форм</a> для лиття розплавленого металу.</li>
+	<li>І нарешті, щонайменше 144 mB металу, який підходить для лиття: <span style="color:#3E8A00;">Мідь</span>, в одній або більше з її трьох рудних форм.</li>
+</ul><p><br/>
+<br/>
+<em>Примітка: Лиття також можна виконувати з деякими <a href="../getting_started/primitive_alloys.html">Сплавами</a></em></p>
+<p>Спершу відкрийте <span style="color:#3E8A00;">Маленьку Посудину</span> і покладіть усередину руди. Уважно підрахуйте загальну кількість металу в рудах! Посудина може вмістити лише до 3024 мБ розплавленого металу, надлишок буде втрачено. Потім потрібно збудувати <a href="../getting_started/pit_kiln.html">Ямну Піч</a> із заповненою маленькою посудиною всередині. Під час нагрівання посудини руди всередині розплавляться, і ви отримаєте посудину з розплавленим металом.</p>
+<p>Обережно, посудина буде гарячою! Зробіть <span style="color:#3E8A00;">Дерев’яні Щипці</span> з двох палиць і ножа та тримайте їх у другій руці, щоб безпечно брати гарячу посудину.</p>
+<img class="d-block w-200 mx-auto img-fluid" src="../../_images/image47.png" alt="tfc:textures/gui/book/gui/casting.png"><div style="text-align: center;"><p>Тримайте посудину та натисніть <span style="color:#b0b;">ПКМ</span>, щоб відкрити інтерфейс <span style="color:#3E8A00;">Виливання</span>.</p>
+</div><p>Відкривши інтерфейс лиття, помісти порожню випалену форму в центральний слот. Він буде наповнюватися доти, поки метал залишається рідким. (Якщо метал ствердне, його можна розігріти в іншій печі). Коли форма заповниться, її можна вийняти з горщика та залишити охолоджуватися. Після охолодження форми, її вміст можна вийняти за допомогою інтерфейсу крафта.</p>
+<p>Тепер ви можете створити своє перше кайло! Знайдіть достатньо міді, щоб зробити наконечник кирки, обпаліть форму для кирки та розплавте руду в ямній печі, потім відлийте наконечник. Прикріпіть його до палиці — і вуаля! Тепер ви можете копати <a href="../tfg_ores/index.html">руду</a>.</p>
+<p>Ще кілька важливих металевих інструментів також доступні для подальшого розвитку. <a href="../mechanics/chisel.html">Зубило</a> корисне для роботи з кам’яними блоками під час будівництва та в інших рецептах.</p>
+<p>Пила дозволяє перетворювати деревні колоди на <a href="../mechanics/support_beams.html">опорні балки</a> та <span style="color:#3E8A00;">пиломатеріали</span>, з яких далі можна виготовити дошки, верстак, бочки, скрині та інші речі. Вона також корисна для створення <a href="../firmaciv/canoe.html">каное</a>.</p>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> API Документація
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'uk_ua';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

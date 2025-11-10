@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Поширені запитання | TFC Field Guide" />
+    <meta name="description" content="Поширені запитання" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Поширені запитання | TFC Field Guide" />
+    <meta property="og:description" content="Поширені запитання" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/minecraft:spyglass" />
+
+    <title>Поширені запитання | TFC Field Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">Польовий посібник TerraFirmaCraft</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Версія 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> Українська мова
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/tfg_tips/faqs.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/tfg_tips/faqs.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/tfg_tips/faqs.html" class="dropdown-item">Portuguese (Brazil)</a>
+
+<a href="../../ko_kr/tfg_tips/faqs.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/tfg_tips/faqs.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/tfg_tips/faqs.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/tfg_tips/faqs.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/tfg_tips/faqs.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/tfg_tips/faqs.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Зміст</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Зміст</a></li>
+            <li><a href="../the_world/">Світ</a></li>
+
+<li><a href="../getting_started/">Починаємо</a></li>
+
+<li><a href="../mechanics/">Розширена механіка</a></li>
+
+<li><a href="../tfg_ores/">Руди в TFG</a></li>
+
+<li><a href="../tfg/">Зміни в TFG</a></li>
+
+<li><a href="../tfg_tips/">Інформація та поради TFG</a>
+    <ul>
+    <li><a href="./anvil_working_guide.html">Посібник з роботи на ковадлі</a></li>
+
+<li><a href="./basic_automation.html">Базова автоматизація</a></li>
+
+<li><a href="./blast_furnace_tips.html">Поради щодо Доменної печі</a></li>
+
+<li><a href="./faqs.html" class="active">Поширені запитання</a></li>
+
+<li><a href="./inventory_management.html">Управління Інвентарем</a></li>
+
+<li><a href="./space_crops.html">Позаземні рослини</a></li>
+
+<li><a href="./space_fauna.html">Позаземна фауна</a></li>
+
+    </ul>
+</li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">Інформація та поради TFG</a></li>
+<li class="breadcrumb-item active" aria-current="page">Поширені запитання</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4"><img src="../../_images/item247.png" alt="{item.minecraft.spyglass}" class="me-2" style="height: 1.5em;">Поширені запитання
+</h1>
+<h5>FAQs</h5>
+<p>Застрягли на чомусь? Спробуй спочатку переглянути цю книгу та квести, але якщо все одно не зрозумієш, можеш запитати на нашій сторінці <a href="https://discord.com/invite/AEaCzCTUwQ">Discord</a> або <a href="https://www.reddit.com/r/TerraFirmaGreg">Subreddit</a>!</p>
+<p></p>
+<ul>
+	<li><a href="../tfg_tips/faqs.html#boats">Чому мій човен потонув?</a>
+</li>
+	<li><a href="../tfg_tips/faqs.html#dried_fruit">Як зробити закваску?</a>
+</li>
+	<li><a href="../tfg_tips/faqs.html#dried_fruit">Як зробити волокно з ананаса?</a>
+</li>
+	<li><a href="../tfg_tips/faqs.html#jam">Як приготувати джем?</a>
+</li>
+	<li><a href="../tfg_tips/faqs.html#resin">Як зробити гуму?</a>
+</li>
+	<li><a href="../tfg_tips/faqs.html#chunks">Як примусово завантажити чанк або збільшити ліміт?</a></li>
+</ul>
+<a class="anchor" id="boats"></a><p><em>Чому мій човен потонув?</em><br/>
+<br/>
+Побудуйте свій човен на суші, а потім штовхніть його або використовуйте <span style="color:#b0b;">Весло</span> щоб запустити його. Якщо вона вже потонула, дуже шкода, зробіть ще одну.</p>
+<a class="anchor" id="dried_fruit"></a><p><em>Як приготувати дріжджову закваску або ананасову клітковину?</em><br/>
+<br/>
+Обов'язково спочатку висушіть фрукти, використовуючи <span style="color:#b0b;">Сушильний килимок</span>. Потім виконайте решту кроків для <a href="../firmalife/bread.html">хлібу</a> або <a href="../firmalife/berry_bushes.html">ананасової шкіри</a>.</p>
+<a class="anchor" id="jam"></a><p><em>Як зробити джем?</em><br/>
+<br/>
+
+Найпростіше — за допомогою <a href="../firmalife/oven_appliances.html#vat">чану</a>. Дотримуйтесь кроків із цього розділу, але вам не обов’язково робити <span style="color:#3E8A00;">станцію для консервування</span> чи <span style="color:#3E8A00;">кришки</span>, якщо не хочете автоматизувати процес. Просто клацніть правою кнопкою миші по чану з <span style="color:#3E8A00;">фруктовою рідиною</span>, тримаючи порожню банку, потім клацніть ще раз, щоб дістати її — і вона буде повною джему та запечатаною.<br/>
+<br/>
+
+Обов’язково <strong>закрийте кришку</strong> на чані, використавши <span style="color:#b0b;"></span> + <span style="color:#b0b;"></span>!</p>
+<a class="anchor" id="chunks"></a><p><em>Як примусово завантажити чанк?</em><br/>
+<br/>
+Відкрий карту за допомогою <span style="color:#b0b;"></span>, потім затисни Shift і клацни лівою кнопкою миші по чанку. Shift + Пкм — щоб скасувати захоплення.<br/>
+<br/>
+Щоб збільшити кількість примусово завантажених чанків, використай <span style="color:#b0b;">/ftbchunks admin extra_force_load_chunks @p set X</span>, де X — новий ліміт.</p>
+<a class="anchor" id="resin"></a><p><em>Як зробити гуму?</em><br/>
+<br/>
+Клейка смола більше не те, що тобі потрібно! Спочатку вирости кілька дерев, що виробляють <span style="color:#3E8A00;">латекс</span>, і зроби кілька <span style="color:#3E8A00;">Cокозбірників</span>. Встанови сокозбірник на стовбур кожного дерева (більше сокозбірників на одному дереві лише розподіляють вихід). Зібраний латекс можна збирати за допомогою Діжки.</p>
+<p>Найшвидший спосіб приготувати латекс — у <a href="../firmalife/oven_appliances.html#vat">Чані</a>. З’єднай латекс із порошком <span style="color:#b0b;">Сірки</span> в чані (подрібни пил GregTech у Жернові, щоб отримати порошок), додай тепло та <strong>Закрий кришку</strong> чана, натиснувши <span style="color:#b0b;"></span> + <span style="color:#b0b;"></span>. Ти отримаєш <span style="color:#3E8A00;">Вулканізований Латекс</span>, який можна завакуумувати в <span style="color:#3E8A00;">Вакуумній Камері</span>, щоб отримати довгоочікувану Гуму!<br/>
+<br/>
+
+Згодом <span style="color:#3E8A00;">Центрифуга LV</span> дозволяє добувати <span style="color:#3E8A00;">Сиру Латексну Масу</span> безпосередньо з деревини латексових дерев.</p>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> API Документація
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'uk_ua';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Індекс Земних Руд | TFC Field Guide" />
+    <meta name="description" content="Індекс Земних Руд" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Індекс Земних Руд | TFC Field Guide" />
+    <meta property="og:description" content="Індекс Земних Руд" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/tfc:ore/normal_native_copper" />
+
+    <title>Індекс Земних Руд | TFC Field Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">Польовий посібник TerraFirmaCraft</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Версія 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> Українська мова
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/tfg_ores/earth_ore_index.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/tfg_ores/earth_ore_index.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/tfg_ores/earth_ore_index.html" class="dropdown-item">Portuguese (Brazil)</a>
+
+<a href="../../ko_kr/tfg_ores/earth_ore_index.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/tfg_ores/earth_ore_index.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/tfg_ores/earth_ore_index.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/tfg_ores/earth_ore_index.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/tfg_ores/earth_ore_index.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/tfg_ores/earth_ore_index.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Зміст</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Зміст</a></li>
+            <li><a href="../the_world/">Світ</a></li>
+
+<li><a href="../getting_started/">Починаємо</a></li>
+
+<li><a href="../mechanics/">Розширена механіка</a></li>
+
+<li><a href="../tfg_ores/">Руди в TFG</a>
+    <ul>
+    <li><a href="./earth_ore_index.html" class="active">Індекс Земних Руд</a></li>
+
+<li><a href="./ore_basics.html">Видобуток у TFG</a></li>
+
+<li><a href="./earth_vein_index.html">Індекс Земних Жил</a></li>
+
+<li><a href="./hazards.html">Робота з Небезпеками</a></li>
+
+<li><a href="./nether_ore_index.html">Індекс Руд Безодні</a></li>
+
+<li><a href="./nether_vein_index.html">Індекс Жил безодні</a></li>
+
+<li><a href="./moon_ore_index.html">Індекс Місячних Руд</a></li>
+
+<li><a href="./moon_vein_index.html">Індекс Місячних Жил</a></li>
+
+<li><a href="./mars_ore_index.html">Mars Ore Index</a></li>
+
+<li><a href="./mars_vein_index.html">Mars Vein Index</a></li>
+
+    </ul>
+</li>
+
+<li><a href="../tfg/">Зміни в TFG</a></li>
+
+<li><a href="../tfg_tips/">Інформація та поради TFG</a></li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">Руди в TFG</a></li>
+<li class="breadcrumb-item active" aria-current="page">Індекс Земних Руд</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4"><img src="../../_images/item233.png" alt="{item.tfc.ore.normal_native_copper}" class="me-2" style="height: 1.5em;">Індекс Земних Руд
+</h1>
+<h5>Індекс Земних Руд</h5>
+<p>Це <span style="color:#3E8A00;">Індекс руд</span> для <span style="color:#3E8A00;">Земля</span>. Усі руди відсортовані в алфавітному порядку, а потім — від найбагатших до найбідніших жил. Ви можете натиснути на них, щоб дізнатися більше про кожну жилу.</p>
+<p></p>
+<ul>
+	<li>Азбест: <a href="../tfg_ores/earth_vein_index.html#normal_garnet_tin">25%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_quartz">18%</a></li>
+	<li>Алмандін: <a href="../tfg_ores/earth_vein_index.html#deep_sapphire">38%</a></li>
+	<li>Алуніт: <a href="../tfg_ores/earth_vein_index.html#normal_saltpeter">15%</a></li>
+	<li>Аметист: <a href="../tfg_ores/earth_vein_index.html#deep_garnet_amethyst">65%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_garnet_opal">25%</a></li>
+	<li>Апатит: <a href="../tfg_ores/earth_vein_index.html#normal_apatite">50%</a></li>
+	<li>Базальтовий мінеральний пісок: <a href="../tfg_ores/earth_vein_index.html#normal_basaltic_sands">35%</a></li>
+	<li>Барит: <a href="../tfg_ores/earth_vein_index.html#normal_quartz">37%</a></li>
+	<li>Бастнезит: <a href="../tfg_ores/earth_vein_index.html#normal_monazite">62%</a></li>
+	<li>Бентоніт: <a href="../tfg_ores/earth_vein_index.html#normal_olivine">35%</a></li>
+	<li>Берилій: <a href="../tfg_ores/earth_vein_index.html#normal_beryllium">35%</a></li>
+	<li>Блакитний топаз: <a href="../tfg_ores/earth_vein_index.html#deep_topaz">35%</a></li>
+	<li>Боксит: <a href="../tfg_ores/earth_vein_index.html#normal_mica">25%</a></li>
+	<li>Борніт: <a href="../tfg_ores/earth_vein_index.html#deep_sheldonite">53%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_topaz">15%</a></li>
+	<li>Бура: <a href="../tfg_ores/earth_vein_index.html#normal_gypsum">20%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_salt">15%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Ванадієвий магнетит: <a href="../tfg_ores/earth_vein_index.html#normal_magnetite">22%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_magnetite">25%</a></li>
+	<li>Вісмут: <a href="../tfg_ores/earth_vein_index.html#surface_bismuthinite">85%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_bismuthinite">72%</a></li>
+	<li>Вольфрам: <a href="../tfg_ores/earth_vein_index.html#deep_scheelite">35%</a></li>
+	<li>Вугілля: <a href="../tfg_ores/earth_vein_index.html#normal_coal">100%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_graphite">30%</a></li>
+	<li>Вульфеніт: <a href="../tfg_ores/earth_vein_index.html#deep_molybdenum">47%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_pitchblende">12%</a></li>
+	<li>Галена: <a href="../tfg_ores/earth_vein_index.html#normal_silver">30%</a></li>
+	<li>Гарнієрит: <a href="../tfg_ores/earth_vein_index.html#normal_garnierite">30%</a></li>
+	<li>Гематит: <a href="../tfg_ores/earth_vein_index.html#normal_hematite">50%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_hematite">35%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_gold">20%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_limonite">20%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_gold">15%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_limonite">15%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_copper">5%</a></li>
+	<li>Гетит: <a href="../tfg_ores/earth_vein_index.html#deep_limonite">50%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_hematite">25%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_hematite">15%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_limonite">15%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_gold">5%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_gold">5%</a></li>
+	<li>Гіпс: <a href="../tfg_ores/earth_vein_index.html#normal_gypsum">35%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_basaltic_sands">15%</a></li>
+	<li>Главконітний пісок: <a href="../tfg_ores/earth_vein_index.html#normal_lubricant">25%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_olivine">15%</a></li>
+	<li>Гранатовий пісок: <a href="../tfg_ores/earth_vein_index.html#normal_garnet_tin">25%</a></li>
+	<li>Гранітний мінеральний пісок: <a href="../tfg_ores/earth_vein_index.html#normal_basaltic_sands">25%</a></li>
+	<li>Графіт: <a href="../tfg_ores/earth_vein_index.html#normal_graphite">45%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Гроссуляр: <a href="../tfg_ores/earth_vein_index.html#normal_manganese">37%</a></li>
+	<li>Діамант: <a href="../tfg_ores/earth_vein_index.html#normal_graphite">25%</a></li>
+	<li>Діатомітн: <a href="../tfg_ores/earth_vein_index.html#normal_saltpeter">25%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_garnet_tin">15%</a></li>
+	<li>Електротин: <a href="../tfg_ores/earth_vein_index.html#normal_saltpeter">25%</a></li>
+	<li>Жовтий гранат: <a href="../tfg_ores/earth_vein_index.html#deep_garnet_amethyst">15%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_garnet_opal">15%</a></li>
+	<li>Жовтий лимоніт: <a href="../tfg_ores/earth_vein_index.html#normal_limonite">50%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_hematite">30%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_gold">20%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_hematite">15%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_limonite">15%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_gold">5%</a></li>
+	<li>Зелений сапфір: <a href="../tfg_ores/earth_vein_index.html#deep_sapphire">16%</a></li>
+	<li>Земля Фуллера: <a href="../tfg_ores/earth_vein_index.html#normal_basaltic_sands">25%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_gypsum">15%</a></li>
+	<li>Кальцит: <a href="../tfg_ores/earth_vein_index.html#normal_gypsum">30%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_lapis">15%</a></li>
+	<li>Кам’яна сіль: <a href="../tfg_ores/earth_vein_index.html#normal_salt">40%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_spodumene">20%</a></li>
+	<li>Каситерит: <a href="../tfg_ores/earth_vein_index.html#surface_cassiterite">60%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_cassiterite">40%</a>, <a href="../tfg_ores/earth_vein_index.html#surface_copper">5%</a></li>
+	<li>Каситеритові піски: <a href="../tfg_ores/earth_vein_index.html#normal_garnet_tin">35%</a></li>
+	<li>Кварцит: <a href="../tfg_ores/earth_vein_index.html#normal_quartz">43%</a></li>
+	<li>Кіаніт: <a href="../tfg_ores/earth_vein_index.html#normal_mica">35%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Кіновар: <a href="../tfg_ores/earth_vein_index.html#normal_redstone">20%</a></li>
+	<li>Кобальт: <a href="../tfg_ores/earth_vein_index.html#normal_garnierite">15%</a></li>
+	<li>Кобальтит: <a href="../tfg_ores/earth_vein_index.html#normal_garnierite">20%</a></li>
+	<li>Лазурит: <a href="../tfg_ores/earth_vein_index.html#normal_lapis">35%</a></li>
+	<li>Лапіс: <a href="../tfg_ores/earth_vein_index.html#normal_lapis">25%</a></li>
+	<li>Лепідоліт: <a href="../tfg_ores/earth_vein_index.html#normal_salt">15%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_spodumene">15%</a></li>
+	<li>Літій: <a href="../tfg_ores/earth_vein_index.html#deep_scheelite">20%</a></li>
+	<li>Магнезит: <a href="../tfg_ores/earth_vein_index.html#normal_olivine">25%</a></li>
+	<li>Магнетит: <a href="../tfg_ores/earth_vein_index.html#normal_magnetite">63%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_magnetite">8%</a></li>
+	<li>Малахіт: <a href="../tfg_ores/earth_vein_index.html#deep_limonite">20%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_limonite">15%</a></li>
+	<li>Молібденіт: <a href="../tfg_ores/earth_vein_index.html#deep_molybdenum">35%</a></li>
+	<li>Монацит: <a href="../tfg_ores/earth_vein_index.html#normal_monazite">31%</a></li>
+	<li>Нафтові піски: <a href="../tfg_ores/earth_vein_index.html#normal_oilsands">100%</a></li>
+	<li>Неодим: <a href="../tfg_ores/earth_vein_index.html#normal_monazite">6%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Нікель: <a href="../tfg_ores/earth_vein_index.html#normal_garnierite">10%</a></li>
+	<li>Нітрат калію: <a href="../tfg_ores/earth_vein_index.html#normal_saltpeter">35%</a></li>
+	<li>Оливін: <a href="../tfg_ores/earth_vein_index.html#normal_olivine">25%</a></li>
+	<li>Олово: <a href="../tfg_ores/earth_vein_index.html#normal_cassiterite">60%</a>, <a href="../tfg_ores/earth_vein_index.html#surface_cassiterite">40%</a></li>
+	<li>Опал: <a href="../tfg_ores/earth_vein_index.html#deep_garnet_opal">55%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_garnet_amethyst">15%</a></li>
+	<li>Пентландит: <a href="../tfg_ores/earth_vein_index.html#normal_garnierite">25%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_lubricant">15%</a></li>
+	<li>Пірит: <a href="../tfg_ores/earth_vein_index.html#normal_sulfur">35%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_sphalerite">25%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_copper">10%</a>, <a href="../tfg_ores/earth_vein_index.html#surface_sphalerite">5%</a></li>
+	<li>Піролюзит: <a href="../tfg_ores/earth_vein_index.html#normal_manganese">25%</a></li>
+	<li>Піроп: <a href="../tfg_ores/earth_vein_index.html#deep_sapphire">27%</a></li>
+	<li>Пірохлор: <a href="../tfg_ores/earth_vein_index.html#normal_apatite">15%</a></li>
+	<li>Платина: <a href="../tfg_ores/earth_vein_index.html#deep_sheldonite">7%</a></li>
+	<li>Повеліт: <a href="../tfg_ores/earth_vein_index.html#deep_molybdenum">17%</a></li>
+	<li>Полюцит: <a href="../tfg_ores/earth_vein_index.html#normal_mica">15%</a></li>
+	<li>Реальгар: <a href="../tfg_ores/earth_vein_index.html#surface_copper">16%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Редстоун: <a href="../tfg_ores/earth_vein_index.html#normal_redstone">45%</a></li>
+	<li>Рубін: <a href="../tfg_ores/earth_vein_index.html#normal_redstone">35%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_hematite">20%</a></li>
+	<li>Самородна Золото: <a href="../tfg_ores/earth_vein_index.html#deep_gold">75%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_gold">55%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_magnetite">25%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_magnetite">9%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_hematite">5%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_hematite">5%</a></li>
+	<li>Самородна Мідь: <a href="../tfg_ores/earth_vein_index.html#normal_copper">65%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_tetrahedrite">30%</a>, <a href="../tfg_ores/earth_vein_index.html#surface_tetrahedrite">20%</a></li>
+	<li>Самородна Срібла: <a href="../tfg_ores/earth_vein_index.html#normal_silver">15%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_bismuthinite">9%</a>, <a href="../tfg_ores/earth_vein_index.html#surface_bismuthinite">5%</a></li>
+	<li>Сапфір: <a href="../tfg_ores/earth_vein_index.html#deep_sapphire">16%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_magnetite">8%</a></li>
+	<li>Свинець: <a href="../tfg_ores/earth_vein_index.html#normal_silver">55%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_bismuthinite">10%</a>, <a href="../tfg_ores/earth_vein_index.html#surface_bismuthinite">7%</a></li>
+	<li>Сіль: <a href="../tfg_ores/earth_vein_index.html#normal_salt">30%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_spodumene">30%</a></li>
+	<li>Сірка: <a href="../tfg_ores/earth_vein_index.html#surface_sphalerite">55%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_sulfur">50%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_sphalerite">35%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_bismuthinite">8%</a>, <a href="../tfg_ores/earth_vein_index.html#surface_bismuthinite">3%</a></li>
+	<li>Слюда: <a href="../tfg_ores/earth_vein_index.html#normal_mica">25%</a></li>
+	<li>Смарагд: <a href="../tfg_ores/earth_vein_index.html#normal_beryllium">50%</a></li>
+	<li>Соапостон: <a href="../tfg_ores/earth_vein_index.html#normal_lubricant">30%</a></li>
+	<li>Содаліт: <a href="../tfg_ores/earth_vein_index.html#normal_lapis">25%</a></li>
+	<li>Спесартін: <a href="../tfg_ores/earth_vein_index.html#normal_manganese">25%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Сподумен: <a href="../tfg_ores/earth_vein_index.html#normal_spodumene">35%</a></li>
+	<li>Стибніт: <a href="../tfg_ores/earth_vein_index.html#normal_tetrahedrite">20%</a>, <a href="../tfg_ores/earth_vein_index.html#surface_tetrahedrite">20%</a></li>
+	<li>Сфалерит: <a href="../tfg_ores/earth_vein_index.html#normal_sphalerite">40%</a>, <a href="../tfg_ores/earth_vein_index.html#surface_sphalerite">40%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_sulfur">15%</a></li>
+	<li>Тальк: <a href="../tfg_ores/earth_vein_index.html#normal_lubricant">20%</a></li>
+	<li>Танталіт: <a href="../tfg_ores/earth_vein_index.html#normal_manganese">12%</a></li>
+	<li>Тетраедрит: <a href="../tfg_ores/earth_vein_index.html#surface_tetrahedrite">60%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_tetrahedrite">50%</a></li>
+	<li>Топаз: <a href="../tfg_ores/earth_vein_index.html#deep_topaz">25%</a></li>
+	<li>Торій: <a href="../tfg_ores/earth_vein_index.html#normal_beryllium">15%</a></li>
+	<li>Трикальційфосфат: <a href="../tfg_ores/earth_vein_index.html#normal_apatite">35%</a></li>
+	<li>Трона: <a href="../tfg_ores/earth_vein_index.html#normal_lubricant">10%</a></li>
+	<li>Уранит: <a href="../tfg_ores/earth_vein_index.html#deep_pitchblende">62%</a></li>
+	<li>Ураніт: <a href="../tfg_ores/earth_vein_index.html#deep_pitchblende">25%</a></li>
+	<li>Халькопирит: <a href="../tfg_ores/earth_vein_index.html#surface_copper">61%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_copper">20%</a></li>
+	<li>Халькоцит: <a href="../tfg_ores/earth_vein_index.html#deep_topaz">25%</a></li>
+</ul>
+<p></p>
+<ul>
+	<li>Хроміт: <a href="../tfg_ores/earth_vein_index.html#deep_magnetite">33%</a>, <a href="../tfg_ores/earth_vein_index.html#normal_magnetite">4%</a></li>
+	<li>Цеоліт: <a href="../tfg_ores/earth_vein_index.html#surface_copper">16%</a></li>
+	<li>Червоний гранат: <a href="../tfg_ores/earth_vein_index.html#deep_garnet_amethyst">5%</a>, <a href="../tfg_ores/earth_vein_index.html#deep_garnet_opal">5%</a></li>
+	<li>Шеєліт: <a href="../tfg_ores/earth_vein_index.html#deep_scheelite">45%</a></li>
+	<li>Шелдонітн: <a href="../tfg_ores/earth_vein_index.html#deep_sheldonite">38%</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> API Документація
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'uk_ua';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Рослини | TFC Field Guide" />
+    <meta name="description" content="Рослини" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:title" content="Рослини | TFC Field Guide" />
+    <meta property="og:description" content="Рослини" />
+    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/tfc:textures/item/food/wheat.png" />
+
+    <title>Рослини | TFC Field Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../..//static/style.css">
+  </head>
+  <body>
+    <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
+    <script src="../..//static/theme-switcher.js"></script>
+
+    <nav id="nav-primary" class="navbar navbar-expand-lg mb-5" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="../">Польовий посібник TerraFirmaCraft</a>
+
+        <!-- Navbar toggle control for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbar-content">
+          <ul class="navbar-nav">
+            <!-- Search bar-->
+             <li class="nav-item">
+              <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+                <input id="search-box" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+             </li>
+            <!-- Version submenu -->
+            <li class="nav-item px-2 dropdown" id="version-dropdown">
+              <a class="nav-link dropdown-toggle" id="version-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-collection-fill"></i> Версія 1.20.1 - v4.0.9-beta
+              </a>
+              <div class="dropdown-menu" aria-labelledby="version-dropdown-button" id="version-dropdown-menu">
+              </div>
+            </li>
+
+            <!-- Language submenu -->
+            <li class="nav-item px-2 dropdown">
+              <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-translate"></i> Українська мова
+              </a>
+              <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
+                <a href="../../en_us/mechanics/crops.html" class="dropdown-item">English</a>
+
+<a href="../../ja_jp/mechanics/crops.html" class="dropdown-item">日本語</a>
+
+<a href="../../pt_br/mechanics/crops.html" class="dropdown-item">Portuguese (Brazil)</a>
+
+<a href="../../ko_kr/mechanics/crops.html" class="dropdown-item">한국어</a>
+
+<a href="../../uk_ua/mechanics/crops.html" class="dropdown-item">Українська мова</a>
+
+<a href="../../zh_cn/mechanics/crops.html" class="dropdown-item">简体中文(中国大陆)</a>
+
+<a href="../../zh_hk/mechanics/crops.html" class="dropdown-item">繁體中文（香港特別行政區)</a>
+
+<a href="../../zh_tw/mechanics/crops.html" class="dropdown-item">繁體中文(台灣)</a>
+
+<a href="../../ru_ru/mechanics/crops.html" class="dropdown-item">Русский</a>
+
+              </div>
+            </li>
+
+            <!-- Theme switcher -->
+            <li class="nav-item ps-2 dropdown">
+              <button id="bd-theme" class="btn btn-link nav-link dropdown-toggle" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <i id="bd-theme-icon-active"></i>
+                <span id="bd-theme-text" class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Light theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center active" type="button" data-bs-theme-value="light">
+                    <i class="bi bi-sun-fill me-2"></i>
+                    Light
+                  </button>
+                </li>
+
+                <!-- Dark theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                    <i class="bi bi-moon-stars-fill me-2"></i>
+                    Dark
+                  </button>
+                </li>
+
+                <!-- System theme -->
+                <li>
+                  <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                    <i class="bi bi-circle-half me-2"></i>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <!-- Table of contents -->
+        <nav class="col-md-3">
+          <p class="mb-3"><strong>Зміст</strong></p>
+
+          <ul class="list-unstyled lh-lg">
+            <li><a href="../">Зміст</a></li>
+            <li><a href="../the_world/">Світ</a></li>
+
+<li><a href="../getting_started/">Починаємо</a></li>
+
+<li><a href="../mechanics/">Розширена механіка</a>
+    <ul>
+    <li><a href="./advanced_building_materials.html">Передові матеріали</a></li>
+
+<li><a href="./animal_husbandry.html">Тваринництво</a></li>
+
+<li><a href="./anvils.html">Ковадло</a></li>
+
+<li><a href="./aqueducts.html">Акведук</a></li>
+
+<li><a href="./armor.html">Броня (обладунки)</a></li>
+
+<li><a href="./armor_trims.html">Armor Trims</a></li>
+
+<li><a href="./barrels.html">Діжки</a></li>
+
+<li><a href="./bellows.html">Міхи</a></li>
+
+<li><a href="./blast_furnace.html">Доменна Піч</a></li>
+
+<li><a href="./bloomery.html">Горно</a></li>
+
+<li><a href="./bowls.html">Bowls</a></li>
+
+<li><a href="./bread.html">Хліб</a></li>
+
+<li><a href="./charcoal_forge.html">Ковальське горно</a></li>
+
+<li><a href="./charcoal_pit.html">Вуглярка</a></li>
+
+<li><a href="./chisel.html">Долото</a></li>
+
+<li><a href="./composter.html">Компостер</a></li>
+
+<li><a href="./crankshaft.html">Crankshafts</a></li>
+
+<li><a href="./crops.html" class="active">Рослини</a></li>
+
+<li><a href="./crucible.html">Тигель</a></li>
+
+<li><a href="./dairy.html">Молочні продукти</a></li>
+
+<li><a href="./damage_types.html">Види пошкоджень</a></li>
+
+<li><a href="./decay.html">Консервація</a></li>
+
+<li><a href="./dye.html">Dye</a></li>
+
+<li><a href="./fertilizers.html">Добрива</a></li>
+
+<li><a href="./fire_clay.html">Вогнетривка глина</a></li>
+
+<li><a href="./fishing.html">Рибальство</a></li>
+
+<li><a href="./fishing_nets.html">Рибальські сітки</a></li>
+
+<li><a href="./flux.html">Флюс</a></li>
+
+<li><a href="./gems.html">Дорогоцінне каміння</a></li>
+
+<li><a href="./glassworking.html">Склодувство</a></li>
+
+<li><a href="./glassworking_applications.html">Вироби зі скла</a></li>
+
+<li><a href="./grill.html">Багаття та гриль</a></li>
+
+<li><a href="./harvest_baskets.html">Кошики для врожаю</a></li>
+
+<li><a href="./heating.html">Нагрівання</a></li>
+
+<li><a href="./hydration.html">Зрошування</a></li>
+
+<li><a href="./jarring.html">Jarring</a></li>
+
+<li><a href="./lamps.html">Ліхтарі</a></li>
+
+<li><a href="./leather_making.html">Обробка шкіри</a></li>
+
+<li><a href="./lighting.html">Освітлення</a></li>
+
+<li><a href="./mechanical_power.html">Mechanical Power</a></li>
+
+<li><a href="./minecarts.html">Вагонетка</a></li>
+
+<li><a href="./panning.html">Промивання</a></li>
+
+<li><a href="./papermaking.html">Виготовлення паперу</a></li>
+
+<li><a href="./pets.html">Улюбленці</a></li>
+
+<li><a href="./pot.html">Багаття та казан</a></li>
+
+<li><a href="./powderkegs.html">Порохова бочка</a></li>
+
+<li><a href="./prospecting.html">Геологорозвідка</a></li>
+
+<li><a href="./pumps.html">Pumps</a></li>
+
+<li><a href="./quern.html">Жорна</a></li>
+
+<li><a href="./salad.html">Салати</a></li>
+
+<li><a href="./sandwiches.html">Бутерброди</a></li>
+
+<li><a href="./scribing_table.html">Стіл писаря</a></li>
+
+<li><a href="./sewing_table.html">Sewing Table</a></li>
+
+<li><a href="./sluices.html">Мийний жолоб</a></li>
+
+<li><a href="./steel.html">Сталь</a></li>
+
+<li><a href="./support_beams.html">Опорні балки та обвали</a></li>
+
+<li><a href="./surface_kaolin.html">Каолінова глина</a></li>
+
+<li><a href="./trowel.html">Кельма</a></li>
+
+<li><a href="./weaving.html">Ткацтво</a></li>
+
+<li><a href="./wooden_buckets.html">Дерев'яні відра</a></li>
+
+    </ul>
+</li>
+
+<li><a href="../tfg_ores/">Руди в TFG</a></li>
+
+<li><a href="../tfg/">Зміни в TFG</a></li>
+
+<li><a href="../tfg_tips/">Інформація та поради TFG</a></li>
+
+          </ul>
+        </nav>
+
+        <!-- Page content -->
+        <div class="col-md-9">
+          <nav class="mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+    <a href="../"><i class="bi bi-house-fill"></i></a>
+</li>
+
+<li class="breadcrumb-item"><a href="./">Розширена механіка</a></li>
+<li class="breadcrumb-item active" aria-current="page">Рослини</li>
+
+            </ol>
+          </nav>
+
+          <h1 class="d-flex align-items-center mb-4"><img src="../../_images/image20.png" alt="Рослини" class="me-2" style="height: 1.5em;">Рослини
+</h1>
+<p>Рослини — це джерело їжі та деяких інших матеріалів. Хоча кожна рослина трохи відрізняється, усі вони мають спільні принципи. Щоб почати вирощування рослин, вам знадобляться <span style="color:#3E8A00;">Насіння</span>, які можна отримати, знаходячи та ламаючи <a href="../the_world/wild_crops.html">Дикі рослини</a>.<br/>
+<br/>
+Після того як ви отримаєте насіння, вам також знадобиться <span style="color:#3E8A00;">Мотика</span>. Насіння також корисні як <a href="../mechanics/fishing.html">приманка</a>.</p>
+<p>Окрім пошуку диких рослин, насіння також можна отримати з уже вирощених рослин. Коли повністю дозріла рослина гине — через погоду або якщо її залишити гнити — вона переходить у стан насіння, залишаючи більше насіння, яке можна використати для вирощування нових рослин наступного сезону.</p>
+<p>Після того як оголів'я мотики буде обтесана, її можна скрафтити в мотику.<br/>
+<br/>
+Мотики працюють так само, як у звичайному Minecraft: правий клац по блоках землі перетворює їх на <span style="color:#3E8A00;">Ріллю</span>. Їх також можна використовувати для перетворення <span style="color:#3E8A00;">Кореневої землі</span> на <span style="color:#3E8A00;">Землю</span>.</p>
+<h5>Вирощування рослин</h5>
+<p>Усі рослини потрібно садити на ріллі, щоб вони могли рости. Деякі рослини мають додаткові вимоги — наприклад, повинні бути затоплені водою або потребують палицю для росту.<br/>
+<br/>
+Рослинам не потрібні <span style="color:#3E8A00;">поживні речовини</span> для росту, але вони безумовно допомагають. Існує три поживні речовини: <span style="color:#55FFFF;">Азот</span>, <span style="color:#FFAA00;">Фосфор</span> і Калій. Кожна рослина має улюблену речовину.</p>
+<p>Споживання улюбленої поживної речовини пришвидшує ріст рослини та покращує її врожайність під час збору. Це означає, що рослини, які спожили більше поживних речовин, дають більше їжі при збиранні! Споживання поживної речовини також частково відновлює інші речовини навколо неї.<br/>
+<br/>
+Наступні кілька сторінок містять перелік усіх рослин, присутніх у TFC</p>
+<a class="anchor" id="barley"></a><h5>Ячмінь</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: -8 – 26 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 18 – 75 %<br/>
+<strong>Поживна речовина</strong>: Азот<br/>
+<br/>
+Ячмінь — це одноблокова рослина. Насіння ячменю можна садити на ріллі, і вони дадуть <span style="color:#3E8A00;">Ячмінь</span> та <span style="color:#3E8A00;">Насіння ячменю</span> як продукт.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="oat"></a><h5>Овес</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: 3 – 40 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 35 – 100 %<br/>
+<strong>Поживна речовина</strong>: Фосфор<br/>
+<br/>
+Овес — це одноблокова рослина. Насіння вівса можна садити на ріллі, і вони дадуть <span style="color:#3E8A00;">Овес</span> та <span style="color:#3E8A00;">Насіння вівса</span> як продукт.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="rye"></a><h5>Жито</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: -11 – 30 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 25 – 85 %<br/>
+<strong>Поживна речовина</strong>: Фосфор<br/>
+<br/>
+Жито — це одноблокова рослина. Насіння жита можна садити на ріллі, і вони дадуть <span style="color:#3E8A00;">Жито</span> та <span style="color:#3E8A00;">Насіння жита</span> як продукт.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="maize"></a><h5>Кукурудза</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: 13 – 40 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 75 – 100 %<br/>
+<strong>Поживна речовина</strong>: Фосфор<br/>
+<br/>
+Кукурудза — це двоблокова культура. Насіння кукурудзи можна садити на ріллі, вона виростає на два блоки у висоту та дає <span style="color:#3E8A00;">Кукурудзу</span> і <span style="color:#3E8A00;">Насіння кукурудзи</span> як продукт.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="wheat"></a><h5>Пшениця</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: -4 – 35 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 25 – 100 %<br/>
+<strong>Поживна речовина</strong>: Фосфор<br/>
+<br/>
+Пшениця — це одноблокова рослина. Насіння пшениці можна садити на ріллі, і вони дадуть <span style="color:#3E8A00;">Пшеницю</span> та <span style="color:#3E8A00;">Насіння пшениці</span> як продукт.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="rice"></a><h5>Рис</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: 15 – 30 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 25 – 100 %<br/>
+<strong>Поживна речовина</strong>: Фосфор<br/>
+<br/>
+Рис — це одноблокова рослина. Рис потрібно вирощувати під водою — його слід садити на ріллі у прісній воді глибиною в один блок. Він дає <span style="color:#3E8A00;">Рис</span> і <span style="color:#3E8A00;">Насіння рису</span> як продукт.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p>Примітка: щоб рости, блок рису має бути <span style="color:#3E8A00;">затопленим</span>.</p>
+<a class="anchor" id="beet"></a><h5>Буряк</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: -5 – 20 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 18 – 85 %<br/>
+<strong>Поживна речовина</strong>: Калій<br/>
+<br/>
+Буряк — це одноблокова рослина. Насіння буряка можна садити на ріллі, і вони дадуть <span style="color:#3E8A00;">Буряк</span> та <span style="color:#3E8A00;">Насіння буряка</span> як продукт.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="cabbage"></a><h5>Капуста</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: -10 – 27 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 15 – 65 %<br/>
+<strong>Поживна речовина</strong>: Азот<br/>
+<br/>
+Капуста — це одноблокова рослина. Насіння капусти можна садити на ріллі, і вони дадуть <span style="color:#3E8A00;">Капусту</span> та <span style="color:#3E8A00;">Насіння капусти</span> як продукт.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="carrot"></a><h5>Морква</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: 3 – 30 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 25 – 100 %<br/>
+<strong>Поживна речовина</strong>: Калій<br/>
+<br/>
+Морква — це одноблокова рослина. Насіння моркви можна садити на ріллі, і вони дадуть <span style="color:#3E8A00;">Моркву</span> та <span style="color:#3E8A00;">Насіння моркви</span> як продукт.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="garlic"></a><h5>Часник</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: -20 – 18 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 15 – 75 %<br/>
+<strong>Поживна речовина</strong>: Азот<br/>
+<br/>
+Часник — це одноблокова рослина. Насіння часнику можна садити на ріллі, і вони дадуть <span style="color:#3E8A00;">Часник</span> та <span style="color:#3E8A00;">Насіння часнику</span> як продукт.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="green_bean"></a><h5>Зелена квасоля</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: 2 – 35 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 38 – 100 %<br/>
+<strong>Поживна речовина</strong>: Азот<br/>
+<br/>
+Зелена квасоля — це витка двоблокова культура. Насіння зеленої квасолі можна садити на ріллі, вона виростає на два блоки у висоту, якщо поруч є палиця, і дає <span style="color:#3E8A00;">Зелену квасолю</span> та <span style="color:#3E8A00;">Насіння зеленої квасолі</span> як продукт.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p>Палиця є обов’язковою умовою для повного росту цієї рослини.</p>
+<a class="anchor" id="potato"></a><h5>Картопля</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: -1 – 37 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 50 – 100 %<br/>
+<strong>Поживна речовина</strong>: Калій<br/>
+<br/>
+Картопля — це одноблокова рослина. Насіння картоплі можна садити на ріллі, і вони дадуть <span style="color:#3E8A00;">Картоплю</span> та <span style="color:#3E8A00;">Насіння картоплі</span> як продукт.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="pumpkin"></a><h5>Гарбуз</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: 0 – 30 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 30 – 80 %<br/>
+<strong>Поживна речовина</strong>: Фосфор<br/>
+<br/>
+Гарбузи — це розповсюджуюча культура. Насіння гарбуза можна садити на ріллі, і під час дозрівання рослина може розмістити до двох <span style="color:#3E8A00;">Блоків гарбуза</span> на землі поруч із собою. Якщо ці блоки зібрати, і рослина знову дозріє, вона може виростити нові гарбузи. Гарбузи можна перетворити на <a href="../mechanics/lighting.html#jack_o_lanterns">Ліхтарі Джека</a>.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="melon"></a><h5>Кавуни</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: 5 – 37 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 75 – 100 %<br/>
+<strong>Поживна речовина</strong>: Фосфор<br/>
+<br/>
+Кавун — це розповсюджуюча культура. Насіння дині можна садити на ріллі, і під час дозрівання рослина може розмістити до двох <span style="color:#3E8A00;">Блоків кавуна</span> на землі поруч із собою. Якщо ці блоки зібрати, і рослина знову дозріє, вона може виростити новий кавун.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="red_bell_pepper"></a><h5>Червоний солодкий перець</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: 16 – 30 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 25 – 60 %<br/>
+<strong>Поживна речовина</strong>: Калій<br/>
+<br/>
+Червоний солодкий перець — це рослина, з якої можна збирати врожай без її знищення. Коли вона майже дозріла, її можна зібрати за допомогою <span style="color:#b0b;">ПКМ</span>, щоб отримати зелений солодкий перець. Збір за допомогою <span style="color:#b0b;">ПКМ</span> дозволяє рослині надалі вирощувати нові перці, не знищуючи її.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="yellow_bell_pepper"></a><h5>Жовтий солодкий перець</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: 16 – 30 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 25 – 60 %<br/>
+<strong>Поживна речовина</strong>: Калій<br/>
+<br/>
+Жовтий солодкий перець — це рослина, з якої можна збирати врожай без її знищення. Коли вона майже дозріла, її можна зібрати за допомогою <span style="color:#b0b;">ПКМ</span>, щоб отримати зелений солодкий перець. Збір за допомогою <span style="color:#b0b;">ПКМ</span> дозволяє рослині надалі вирощувати нові перці, не знищуючи її.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="onion"></a><h5>Цибуля</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: 0 – 30 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 25 – 90 %<br/>
+<strong>Поживна речовина</strong>: Азот<br/>
+<br/>
+Цибуля — це одноблокова рослина. Насіння цибулі можна садити на ріллі, і вони дадуть <span style="color:#3E8A00;">Цибулю</span> та <span style="color:#3E8A00;">Насіння цибулі</span> як продукт.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="soybean"></a><h5>Соя</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: 8 – 30 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 40 – 100 %<br/>
+<strong>Поживна речовина</strong>: Азот<br/>
+<br/>
+Соя — це одноблокова рослина. Насіння сої можна садити на ріллі, і вони дадуть <span style="color:#3E8A00;">Сою</span> та <span style="color:#3E8A00;">Насіння сої</span> як продукт.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="squash"></a><h5>Кабачок</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: 5 – 33 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 23 – 95 %<br/>
+<strong>Поживна речовина</strong>: Калій<br/>
+<br/>
+ Кабачок — це одноблокова рослина. Насіння кабачка можна садити на ріллі, і вони дадуть <span style="color:#3E8A00;">Кабачок</span> та <span style="color:#3E8A00;">Насіння кабачка</span> як продукт.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="sugarcane"></a><h5>Цукрова тростина</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: 12 – 38 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 40 – 100 %<br/>
+<strong>Поживна речовина</strong>: Калій<br/>
+<br/>
+Цукрова тростина — це двоблокова культура. Насіння цукрової тростини можна садити на ріллі, вона виростає на два блоки у висоту та дає <span style="color:#3E8A00;">Цукрову тростину</span> і <span style="color:#3E8A00;">Насіння цукрової тростини</span> як продукт. Цукрову тростину можна використовувати для виготовлення <span style="color:#3E8A00;">Цукру</span>.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="tomatoes"></a><h5>Помідори</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: 0 – 36 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 30 – 95 %<br/>
+<strong>Поживна речовина</strong>: Калій<br/>
+<br/>
+Помідори — це витка двоблокова культура. Насіння помідорів можна садити на ріллі, вони виростають на два блоки у висоту, якщо поруч є палиця, і дають <span style="color:#3E8A00;">Помідори</span> та <span style="color:#3E8A00;">Насіння помідорів</span> як продукт.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p>Палиця є обов’язковою умовою для повного росту цієї рослини.</p>
+<a class="anchor" id="jute"></a><h5>Джут</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: 5 – 37 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 25 – 100 %<br/>
+<strong>Поживна речовина</strong>: Калій<br/>
+<br/>
+Джут — це двоблокова культура. Насіння джуту можна садити на ріллі, він виростає на два блоки у висоту та дає <span style="color:#3E8A00;">Джут</span> і <span style="color:#3E8A00;">Насіння джуту</span> як продукт.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<a class="anchor" id="papyrus"></a><h5>Папірус</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: 19 – 37 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 70 – 100 %<br/>
+<strong>Поживна речовина</strong>: Калій<br/>
+<br/>
+Папірус — це двоблокова культура. Насіння папірусу можна садити на ріллі, він виростає на два блоки у висоту та дає <a href="../mechanics/papermaking.html">Папірус</a> і <span style="color:#3E8A00;">Насіння папірусу</span> як продукт.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<h5>Соняшник</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: 5 – 40 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 20 – 80 %<br/>
+<strong>Поживна речовина</strong>: Азот<br/>
+<br/>
+Соняшник — це двоблокова культура. Насіння соняшника можна садити на ріллі, він виростає на два блоки у висоту та дає <span style="color:#b0b;">Капелюшки соняшника</span>, які можна переробити на <span style="color:#3E8A00;">Олію з насіння</span>. Олію з насіння можна використовувати як паливо для ламп, а також для виготовлення <span style="color:#3E8A00;">Біодизеля</span> у майбутньому.<br/>
+Соняшник також вважається Квіткою для цілей <a href="../firmalife/beekeeping.html">Бджільництва</a>.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Дикі соняшники</span> ростуть при температурі від 5 до 40 °C та кількості опадів від 100 до 450 мм. Їхнє насіння також можна обсмажити та з’їсти!</p>
+<h5>Канола</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: -5 – 25 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 10 – 60 %<br/>
+<strong>Поживна речовина</strong>: Фосфор<br/>
+<br/>
+Канола — це двоблокова культура. Насіння каноли можна садити на ріллі, він виростає на два блоки у висоту та дає <span style="color:#b0b;">Листя каноли</span>, які можна переробити на <span style="color:#3E8A00;">Олію з насіння</span>. Олію з насіння можна використовувати як паливо для ламп, а також для виготовлення <span style="color:#3E8A00;">Біодизеля</span> у майбутньому.<br/>
+Ріпак також вважається Квіткою для цілей <a href="../firmalife/beekeeping.html">Бджільництва</a>.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Дика канола</span>, також відома як <span style="color:#3E8A00;">Ріпак</span>, росте при температурі від -7 до 25 °C та кількості опадів від 50 до 350 мм.</p>
+<h5>Льон</h5>
+<p><strong><a href="../the_world/climate.html#temperature">Температура</a></strong>: -8 – 25 °C<br/>
+<strong><a href="../mechanics/hydration.html">Вологість</a></strong>: 15 – 65 %<br/>
+<strong>Поживна речовина</strong>: Азот<br/>
+<br/>
+Льон — це двоблокова культура. Насіння льону можна садити на ріллі, він виростає на два блоки у висоту та дає <span style="color:#b0b;">Стебла льону</span>, які можна переробити на <span style="color:#3E8A00;">Льон</span> або <span style="color:#3E8A00;">Мішковину</span>.<br/>
+Льон також вважається Квіткою для цілей <a href="../firmalife/beekeeping.html">Бджільництва</a>.</p>
+<div style="text-align: center;">
+    <p class="text-muted"><span href="#" data-bs-toggle="tooltip" title="Перегляньте польовий посібник у Minecraft, щоб побачити цей мультиблок.">Mультиблок</span></p>
+</div>
+<p><span style="color:#3E8A00;">Дикий льон</span> росте при температурі від -5 до 27 °C та кількості опадів від 175 до 475 мм.</p>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="py-3 my-5 border-top">
+        <ul class="nav justify-content-center">
+          <!-- API docs -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
+              <i class="bi bi-journal-code"></i> API Документація
+            </a>
+          </li>
+
+          <!-- GitHub repo -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </li>
+
+          <!-- Discord server -->
+          <li class="nav-item">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+              <i class="bi bi-discord"></i> Discord
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../..//static/icons.min.js"></script>
+
+    <script>
+      window._CURRENT_ROOT = '../../';
+      window._CURRENT_LANG = 'uk_ua';
+    </script>
+
+    <script src="../..//static/metadata.js"></script>
+    <script src="../..//static/tooltips.js"></script>
+    <script src="../..//static/versions.js"></script>
+    <script src="../..//static/search.js"></script>
+  </body>
+</html>
