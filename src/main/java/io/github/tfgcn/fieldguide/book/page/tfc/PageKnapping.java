@@ -1,10 +1,10 @@
 package io.github.tfgcn.fieldguide.book.page.tfc;
 
-import io.github.tfgcn.fieldguide.book.page.AbstractPageDoubleRecipe;
+import io.github.tfgcn.fieldguide.book.page.IPageDoubleRecipe;
 import lombok.Data;
 
 @Data
-public class PageKnapping extends AbstractPageDoubleRecipe {
+public class PageKnapping extends IPageDoubleRecipe {
 
     public PageKnapping() {
         super("tfc:knapping");

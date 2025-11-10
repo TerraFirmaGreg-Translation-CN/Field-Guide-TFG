@@ -1,15 +1,15 @@
 package io.github.tfgcn.fieldguide.book.page.tfc;
 
 import com.google.gson.annotations.SerializedName;
-import io.github.tfgcn.fieldguide.book.page.AbstractPageWithText;
+import io.github.tfgcn.fieldguide.book.page.IPageWithText;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class PageTable extends AbstractPageWithText {
-    private List<StyledStringElement> strings; // 包含 text 和 bold 字段的元素
-    private List<LegendItem> legend;
+public class PageTable extends IPageWithText {
+    private List<PageTableString> strings;
+    private List<PageTableLegend> legend;
     private Integer columns;
     @SerializedName("first_column_width")
     private Integer firstColumnWidth;

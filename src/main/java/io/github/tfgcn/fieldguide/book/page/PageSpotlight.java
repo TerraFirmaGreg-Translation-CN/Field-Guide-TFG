@@ -2,17 +2,16 @@ package io.github.tfgcn.fieldguide.book.page;
 
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import io.github.tfgcn.fieldguide.item.SpotlightItem;
-import io.github.tfgcn.fieldguide.item.SpotlightItemAdapter;
+import io.github.tfgcn.fieldguide.book.adapter.PageSpotlightItemAdapter;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class PageSpotlight extends AbstractPageWithText {
+public class PageSpotlight extends IPageWithText {
 
-    @JsonAdapter(SpotlightItemAdapter.class)
-    private List<SpotlightItem> item;
+    @JsonAdapter(PageSpotlightItemAdapter.class)
+    private List<PageSpotlightItem> item;
 
     /**
      * A custom title to show instead on top of the item.

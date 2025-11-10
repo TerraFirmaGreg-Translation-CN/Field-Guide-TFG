@@ -6,9 +6,10 @@ import io.github.tfgcn.fieldguide.asset.Asset;
 import io.github.tfgcn.fieldguide.asset.AssetLoader;
 import io.github.tfgcn.fieldguide.book.BookCategory;
 import io.github.tfgcn.fieldguide.book.BookEntry;
-import io.github.tfgcn.fieldguide.book.page.AbstractPageWithText;
-import io.github.tfgcn.fieldguide.item.ItemImageResult;
+import io.github.tfgcn.fieldguide.book.page.IPageWithText;
+import io.github.tfgcn.fieldguide.asset.ItemImageResult;
 import io.github.tfgcn.fieldguide.mc.BlockModel;
+import io.github.tfgcn.fieldguide.renderer.TextFormatter;
 import io.github.tfgcn.fieldguide.renderer.TextureRenderer;
 import io.github.tfgcn.fieldguide.renderer.HtmlRenderer;
 import lombok.Data;
@@ -248,7 +249,7 @@ public class Context {
         }
     }
 
-    public void formatText(List<String> buffer, AbstractPageWithText page) {
+    public void formatText(List<String> buffer, IPageWithText page) {
         formatText(buffer, page.getText(), null);
     }
     

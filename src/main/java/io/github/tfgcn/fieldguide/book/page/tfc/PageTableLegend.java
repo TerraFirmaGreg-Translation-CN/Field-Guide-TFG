@@ -3,7 +3,7 @@ package io.github.tfgcn.fieldguide.book.page.tfc;
 import lombok.Data;
 
 @Data
-public class LegendItem {
+public class PageTableLegend {
     private String text;
     private String color;
 }

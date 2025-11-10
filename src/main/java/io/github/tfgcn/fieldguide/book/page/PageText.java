@@ -3,7 +3,7 @@ package io.github.tfgcn.fieldguide.book.page;
 import lombok.Data;
 
 @Data
-public class PageText extends AbstractPageWithText {
+public class PageText extends IPageWithText {
 
     /**
      * An optional title to display at the top of the page. If you set this,

@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class PageRelations extends AbstractPageWithText {
+public class PageRelations extends IPageWithText {
 
     private List<String> entries;
 

@@ -1,7 +1,7 @@
 package io.github.tfgcn.fieldguide.asset;
 
 import io.github.tfgcn.fieldguide.MCMeta;
-import io.github.tfgcn.fieldguide.PatchouliBook;
+import io.github.tfgcn.fieldguide.book.Book;
 import io.github.tfgcn.fieldguide.Versions;
 import lombok.extern.slf4j.Slf4j;
 
@@ -110,8 +110,8 @@ public class AssetLoader {
         return null;
     }
 
-    public Map<String, List<PatchouliBook>> findAllPatchouliBooks() {
-        Map<String, List<PatchouliBook>> booksByMod = new HashMap<>();
+    public Map<String, List<Book>> findAllPatchouliBooks() {
+        Map<String, List<Book>> booksByMod = new HashMap<>();
         
         for (AssetSource source : sources) {
             List<String> bookPaths = source.findPatchouliBooks();
@@ -124,7 +124,7 @@ public class AssetLoader {
                     String modId = parts[1]; // data/modid/... or assets/modid/...
                     String bookId = parts[3]; // .../patchouli_books/bookid/...
 
-                    PatchouliBook book = new PatchouliBook(modId, bookId, source.getSourceId());
+                    Book book = new Book(modId, bookId, source.getSourceId());
                     booksByMod.computeIfAbsent(modId, k -> new ArrayList<>()).add(book);
 
                     System.out.println("Found book: " + book);
@@ -151,9 +151,9 @@ public class AssetLoader {
             }
         }
         
-        Map<String, List<PatchouliBook>> allBooks = findAllPatchouliBooks();
+        Map<String, List<Book>> allBooks = findAllPatchouliBooks();
         System.out.println("\nTotal books by mod:");
-        for (Map.Entry<String, List<PatchouliBook>> entry : allBooks.entrySet()) {
+        for (Map.Entry<String, List<Book>> entry : allBooks.entrySet()) {
             System.out.println("  " + entry.getKey() + ": " + entry.getValue().size() + " books");
         }
     }

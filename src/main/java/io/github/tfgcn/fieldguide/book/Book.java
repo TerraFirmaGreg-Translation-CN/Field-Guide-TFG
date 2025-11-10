@@ -1,14 +1,14 @@
-package io.github.tfgcn.fieldguide;
+package io.github.tfgcn.fieldguide.book;
 
 import lombok.Getter;
 
 @Getter
-public class PatchouliBook {
+public class Book {
     private final String modId;
     private final String bookId;
     private final String source;
     
-    public PatchouliBook(String modId, String bookId, String source) {
+    public Book(String modId, String bookId, String source) {
         this.modId = modId;
         this.bookId = bookId;
         this.source = source;

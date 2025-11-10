@@ -1,4 +1,4 @@
-package io.github.tfgcn.fieldguide;
+package io.github.tfgcn.fieldguide.renderer;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -155,10 +155,12 @@ public class TextFormatter {
             colorTags(VANILLA_COLORS.get(key));
         } else if (key.startsWith("k:") && keybindings.containsKey(key.substring(2))) {
             buffer.add(keybindings.get(key.substring(2)));
-        } else if (key.startsWith("t")) {
+        } else if (key.startsWith("t:")) {
             // Discard tooltips
+            log.info("Discard tooltip, {}, {}", key, text);
         } else if (key.equals("/t")) {
             // End Link, ends the current tooltip but maintains formatting ($() also ends tooltips)
+            log.info("Discard tooltip ends, {}, {}", key, text);
         } else {
             log.warn("Unrecognized Formatting Code $({})", key);
         }

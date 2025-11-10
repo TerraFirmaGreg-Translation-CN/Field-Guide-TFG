@@ -4,7 +4,7 @@ import io.github.tfgcn.fieldguide.book.BookPage;
 import lombok.Data;
 
 @Data
-public abstract class AbstractPageWithText extends BookPage {
+public abstract class IPageWithText extends BookPage {
 
      /**
       * The text to display on this page.

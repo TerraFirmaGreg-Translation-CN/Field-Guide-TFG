@@ -1,8 +1,9 @@
-package io.github.tfgcn.fieldguide.item;
+package io.github.tfgcn.fieldguide.book.adapter;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.github.tfgcn.fieldguide.book.page.PageSpotlightItem;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,15 +34,15 @@ import java.util.List;
  *
  * @author yanmaoyuan
  */
-public class SpotlightItemAdapter extends TypeAdapter<List<SpotlightItem>> {
+public class PageSpotlightItemAdapter extends TypeAdapter<List<PageSpotlightItem>> {
     @Override
-    public void write(JsonWriter out, List<SpotlightItem> value) {
+    public void write(JsonWriter out, List<PageSpotlightItem> value) {
         throw new UnsupportedOperationException("Serialization is not supported");
     }
 
     @Override
-    public List<SpotlightItem> read(JsonReader in) throws IOException {
-        List<SpotlightItem> list = new ArrayList<>();
+    public List<PageSpotlightItem> read(JsonReader in) throws IOException {
+        List<PageSpotlightItem> list = new ArrayList<>();
 
         switch (in.peek()) {
             case BEGIN_OBJECT:
@@ -51,10 +52,10 @@ public class SpotlightItemAdapter extends TypeAdapter<List<SpotlightItem>> {
                     String name = in.nextName();
                     if ("item".equals(name)) {
                         String itemId = in.nextString();
-                        list.add(new SpotlightItem("item", itemId));
+                        list.add(new PageSpotlightItem("item", itemId));
                     } else if ("tag".equals(name)) {
                         String tagId = in.nextString();
-                        list.add(new SpotlightItem("tag", tagId));
+                        list.add(new PageSpotlightItem("tag", tagId));
                     } else {
                         in.skipValue();
                     }
@@ -67,9 +68,9 @@ public class SpotlightItemAdapter extends TypeAdapter<List<SpotlightItem>> {
                 for (String part : parts) {
                     part = part.trim();
                     if (part.startsWith("tag:")) {
-                        list.add(new SpotlightItem("tag", part.substring(4)));
+                        list.add(new PageSpotlightItem("tag", part.substring(4)));
                     } else {
-                        list.add(new SpotlightItem("item", part));
+                        list.add(new PageSpotlightItem("item", part));
                     }
                 }
                 break;

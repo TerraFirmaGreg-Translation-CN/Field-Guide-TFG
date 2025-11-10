@@ -1,12 +1,12 @@
 package io.github.tfgcn.fieldguide.book.page.tfc;
 
-import io.github.tfgcn.fieldguide.book.page.AbstractPageDoubleRecipe;
+import io.github.tfgcn.fieldguide.book.page.IPageDoubleRecipe;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class PageRockKnapping extends AbstractPageDoubleRecipe {
+public class PageRockKnapping extends IPageDoubleRecipe {
 
     private List<String> recipes;
 

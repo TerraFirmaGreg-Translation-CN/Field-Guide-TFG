@@ -3,15 +3,15 @@ package io.github.tfgcn.fieldguide.book.page;
 import lombok.Data;
 
 @Data
-public class AbstractPageDoubleRecipe extends AbstractPageWithText {
+public class IPageDoubleRecipe extends IPageWithText {
     private String recipeType;
 
     private String recipe;
     private String recipe2;
     private String title;
 
-    AbstractPageDoubleRecipe() {}
-    protected AbstractPageDoubleRecipe(String recipeType) {
+    IPageDoubleRecipe() {}
+    protected IPageDoubleRecipe(String recipeType) {
         this.recipeType = recipeType;
     }
 }

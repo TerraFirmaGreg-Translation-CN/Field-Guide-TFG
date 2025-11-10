@@ -1,7 +1,8 @@
-package io.github.tfgcn.fieldguide.book;
+package io.github.tfgcn.fieldguide.book.adapter;
 
 import com.google.gson.*;
 import io.github.tfgcn.fieldguide.JsonUtils;
+import io.github.tfgcn.fieldguide.book.BookPage;
 import io.github.tfgcn.fieldguide.book.page.*;
 import io.github.tfgcn.fieldguide.book.page.tfc.*;
 

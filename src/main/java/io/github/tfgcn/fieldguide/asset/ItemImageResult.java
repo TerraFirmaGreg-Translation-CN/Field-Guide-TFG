@@ -1,4 +1,4 @@
-package io.github.tfgcn.fieldguide.item;
+package io.github.tfgcn.fieldguide.asset;
 
 import lombok.Data;
 

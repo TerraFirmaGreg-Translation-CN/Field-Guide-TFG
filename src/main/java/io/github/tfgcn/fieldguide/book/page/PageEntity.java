@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 @Data
-public class PageEntity extends AbstractPageWithText {
+public class PageEntity extends IPageWithText {
 
     @SerializedName("entity")
     private String entityId;

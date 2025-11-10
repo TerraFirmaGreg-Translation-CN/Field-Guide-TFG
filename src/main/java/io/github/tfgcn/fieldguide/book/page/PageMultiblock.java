@@ -1,11 +1,10 @@
 package io.github.tfgcn.fieldguide.book.page;
 
 import com.google.gson.annotations.SerializedName;
-import io.github.tfgcn.fieldguide.book.Multiblock;
 import lombok.Data;
 
 @Data
-public class PageMultiblock extends AbstractPageWithText {
+public class PageMultiblock extends IPageWithText {
 
     private String name;
 
@@ -15,7 +14,7 @@ public class PageMultiblock extends AbstractPageWithText {
     /**
      * @see <a href="https://vazkiimods.github.io/Patchouli/docs/patchouli-basics/multiblocks">Defining Multiblocks</a>
      */
-    private Multiblock multiblock;
+    private PageMultiblockData multiblock;
 
     @SerializedName("enable_visualize")
     private boolean enableVisualize;
