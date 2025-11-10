@@ -82,7 +82,7 @@ public class HtmlRenderer {
         // copy files from assets/textures to outputDir/_images
         FileUtils.copyDirectory(new File("assets/textures"), new File(context.getOutputRootDir() + "/_images"));
         // Always copy the redirect, which defaults to en_us/
-        FileUtils.copyFile(new File("assets/templates/redirect.html"), new File(context.getOutputDir() + "/index.html"));
+        FileUtils.copyFile(new File("assets/templates/redirect.html"), new File(context.getOutputRootDir() + "/index.html"));
         // Write metadata.js
         String metadata = "window._VERSIONS = [\n" +
                 "    [\"%s - %s\", null, false],\n".formatted(Versions.MC_VERSION, Versions.VERSION) +
@@ -139,7 +139,7 @@ public class HtmlRenderer {
         data.put("current_lang", context.translate(String.format(I18n.LANGUAGE_NAME, context.getLang())));
         data.put("langs", generateCategoryLanguageLinks(Versions.LANGUAGES, context, categoryId));
         data.put("index", "../");
-        data.put("root", "../../");// context.getRootDir()
+        data.put("root", context.getRootDir());
         data.put("tfc_version", Versions.TFC_VERSION);
         data.put("location", generateCategoryBreadcrumb("../", cat.getName()));
         data.put("contents", generateCategoryTableOfContents(context.getSortedCategories(), categoryId));
@@ -232,6 +232,16 @@ public class HtmlRenderer {
         return String.format(
                 """
                 <!-- START -->
+                <div align="center">
+                  <a href="https://discord.gg/AEaCzCTUwQ">
+                    <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3.1.2/assets/compact/social/discord-singular_vector.svg" alt="Chat on Discord">
+                  </a>
+                  <a href="https://www.curseforge.com/members/terrafirmagreg/projects">
+                    <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges/assets/compact/available/curseforge_vector.svg" alt="Available on СurseForge">
+                  </a>
+                  <br/>
+                </div>
+                <br/>
                 <img class="d-block w-200 mx-auto mb-3 img-fluid" src="../_images/%s.png" alt="TerraFirmaCraft Field Guide Splash Image">
                 <p>%s</p>
                 <p><strong>%s</strong></p>
@@ -366,7 +376,7 @@ public class HtmlRenderer {
             data.put("current_lang", context.translate(String.format(I18n.LANGUAGE_NAME, context.getLang())));
             data.put("langs", generateEntryLanguageLinks(Versions.LANGUAGES, context, entryId));
             data.put("index", "../");
-            data.put("root", "../../");// context.getRootDir();
+            data.put("root", context.getRootDir());
             data.put("tfc_version", Versions.TFC_VERSION);
             data.put("location", generateEntryBreadcrumb("../", cat.getName(), entry.getName()));
             data.put("contents", generateEntryTableOfContents(context.getSortedCategories(), categoryId, entryId));

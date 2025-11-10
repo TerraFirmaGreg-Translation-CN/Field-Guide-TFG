@@ -6,10 +6,10 @@
     <meta name="title" content="${long_title}" />
     <meta name="description" content="${short_description}" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://terrafirmacraft.github.io/Field-Guide" />
+    <meta property="og:url" content="https://terrafirmagreg-translation-cn.github.io/Field-Guide-TFG" />
     <meta property="og:title" content="${long_title}" />
     <meta property="og:description" content="${short_description}" />
-    <meta property="og:image" content="https://terrafirmacraft.github.io/Field-Guide/_images/${preview_image}" />
+    <meta property="og:image" content="https://terrafirmagreg-translation-cn.github.io/Field-Guide-TFG/_images/${preview_image}" />
 
     <title>${long_title}</title>
 
@@ -124,23 +124,17 @@
     <div class="container">
       <footer class="py-3 my-5 border-top">
         <ul class="nav justify-content-center">
-          <!-- API docs -->
-          <li class="nav-item">
-            <a class="nav-link px-3 text-body-secondary" href="https://terrafirmacraft.github.io/Documentation/">
-              <i class="bi bi-journal-code"></i> ${text_api_docs}
-            </a>
-          </li>
 
           <!-- GitHub repo -->
           <li class="nav-item">
-            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaCraft/Field-Guide">
+            <a class="nav-link px-3 text-body-secondary" href="https://github.com/TerraFirmaGreg-Translation-CN/Field-Guide-TFG">
               <i class="bi bi-github"></i> ${text_github}
             </a>
           </li>
 
           <!-- Discord server -->
           <li class="nav-item">
-            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/PRuAKvY">
+            <a class="nav-link px-3 text-body-secondary" href="https://discord.gg/AEaCzCTUwQ">
               <i class="bi bi-discord"></i> ${text_discord}
             </a>
           </li>

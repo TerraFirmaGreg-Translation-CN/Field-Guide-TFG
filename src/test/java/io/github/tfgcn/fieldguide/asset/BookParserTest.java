@@ -27,7 +27,8 @@ public class BookParserTest {
         AssetLoader assetLoader = new AssetLoader(Paths.get(modpackPath));
         assetLoader.addMcClientSource();// Add minecraft client jar manually
 
-        Context context = new Context(assetLoader, "output", "..", false);
+        Context context = new Context(assetLoader, "assets/www", "/Field-Guide-TFG", false);
+        // Context context = new Context(assetLoader, "output", ".", false);
 
         BookParser bookParser = new BookParser();
         bookParser.processAllLanguages(context);
