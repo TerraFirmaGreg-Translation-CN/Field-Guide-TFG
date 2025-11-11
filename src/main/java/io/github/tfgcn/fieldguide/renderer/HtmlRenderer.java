@@ -73,16 +73,13 @@ public class HtmlRenderer {
     public void copyStaticFiles(Context context) throws IOException {
 
         // copy files from assets/static to outputDir
+        FileUtils.deleteDirectory(new File(context.getOutputRootDir() + "/static"));
         FileUtils.copyDirectory(new File("assets/static"), new File(context.getOutputRootDir() + "/static"));
+
         // copy files from assets/textures to outputDir/_images
         FileUtils.copyDirectory(new File("assets/textures"), new File(context.getOutputRootDir() + "/_images"));
         // Always copy the redirect, which defaults to en_us/
         FileUtils.copyFile(new File("assets/templates/redirect.html"), new File(context.getOutputRootDir() + "/index.html"));
-        // Write metadata.js
-        String metadata = "window._VERSIONS = [\n" +
-                "    [\"%s - %s\", null, false],\n".formatted(Versions.MC_VERSION, Versions.VERSION) +
-                "];";
-        FileUtils.writeStringToFile(new File(context.getOutputRootDir() + "/static/metadata.js"), metadata, "UTF-8");
     }
 
     public void buildHomePage(Context context) throws IOException, TemplateException {
