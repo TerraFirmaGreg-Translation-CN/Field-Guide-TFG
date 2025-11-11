@@ -67,7 +67,6 @@ public class CraftingRecipeFormatter {
         }
         
         if (recipe != null) {
-            // 格式化网格中的成分
             for (int i = 0; i < recipe.grid.length; i++) {
                 Object key = recipe.grid[i];
                 if (key != null) {

@@ -580,7 +580,7 @@ public class Context {
         List<String> items;
 
         if (item.startsWith("#")) {
-            name = translate(I18n.TAG) + item;
+            name = String.format(translate(I18n.TAG), item);
             items = loadItemTag(item.substring(1));
         } else if (item.contains(",")) {
             items = Arrays.asList(item.split(","));
@@ -640,7 +640,7 @@ public class Context {
             log.warn("Failed to create item image: {}", item, e);
             if (placeholder) {
                 // Fallback to using the placeholder image
-                ItemImageResult fallback = new ItemImageResult("../../_images/item_placeholder.png", name, null);
+                ItemImageResult fallback = new ItemImageResult("../../_images/placeholder_64.png", name, null);
                 itemImageCache.put(item, fallback);
             }
             throw new InternalException("Failed to create item image: " + item);
