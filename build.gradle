@@ -12,10 +12,6 @@ java {
     }
 }
 
-test {
-    reports.html.required = false
-}
-
 repositories {
     mavenCentral()
 
@@ -49,6 +45,24 @@ dependencies {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+}
+
+
+test {
+    useJUnitPlatform()
+    failOnNoMatchingTests = false
+
+    testLogging {
+        events "passed", "skipped", "failed"
+        showExceptions = true
+        exceptionFormat = "full"
+        showCauses = true
+        showStackTraces = true
+    }
+
+    reports.html.required = false
+
+    maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
 }
 
 jar {
