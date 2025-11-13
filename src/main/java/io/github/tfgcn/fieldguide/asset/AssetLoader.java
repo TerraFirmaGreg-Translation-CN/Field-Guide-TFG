@@ -27,6 +27,8 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+import static io.github.tfgcn.fieldguide.MCMeta.CACHE;
+
 @Slf4j
 public class AssetLoader {
 
@@ -50,18 +52,11 @@ public class AssetLoader {
     private void initializeSources() {
         log.info("Initializing AssetManager for: {}", instanceRoot);
 
-        // KubeJS
-        Path kubejsPath = instanceRoot.resolve("kubejs");
-        if (Files.exists(kubejsPath)) {
-            log.info("Found KubeJS directory");
-            sources.add(new FsAssetSource(kubejsPath, "file:kubejs"));
-        }
-
-        // Resource Packs
-        Path resourcePacksPath = instanceRoot.resolve("resourcepacks");
-        if (Files.exists(resourcePacksPath)) {
-            log.info("Found Resource Packs directory");
-            try (Stream<Path> files = Files.list(resourcePacksPath)) {
+        // KubeJS Export Zips
+        Path kubejsExport = instanceRoot.resolve(CACHE);
+        if (Files.exists(kubejsExport)) {
+            log.info("Found KubeJS export directory");
+            try (Stream<Path> files = Files.list(kubejsExport)) {
                 List<Path> zipList = files
                         .filter(p -> p.toString().endsWith(".zip"))
                         .sorted()
@@ -71,12 +66,19 @@ public class AssetLoader {
                     try {
                         sources.add(new ZipAssetSource(zip));
                     } catch (IOException e) {
-                        log.error("Error loading resource pack: {}", zip, e);
+                        log.error("Error loading KubeJS export: {}", zip, e);
                     }
                 }
             } catch (IOException e) {
-                log.error("Error scanning resource packs", e);
+                log.error("Error scanning KubeJS export", e);
             }
+        }
+
+        // KubeJS
+        Path kubejsPath = instanceRoot.resolve("kubejs");
+        if (Files.exists(kubejsPath)) {
+            log.info("Found KubeJS directory");
+            sources.add(new FsAssetSource(kubejsPath, "file:kubejs"));
         }
 
         // Mod JARs
@@ -101,10 +103,32 @@ public class AssetLoader {
             }
         }
 
+        // Resource Packs
+        Path resourcePacksPath = instanceRoot.resolve("resourcepacks");
+        if (Files.exists(resourcePacksPath)) {
+            log.info("Found Resource Packs directory");
+            try (Stream<Path> files = Files.list(resourcePacksPath)) {
+                List<Path> zipList = files
+                        .filter(p -> p.toString().endsWith(".zip"))
+                        .sorted()
+                        .toList();
+
+                for (Path zip : zipList) {
+                    try {
+                        sources.add(new ZipAssetSource(zip));
+                    } catch (IOException e) {
+                        log.error("Error loading resource pack: {}", zip, e);
+                    }
+                }
+            } catch (IOException e) {
+                log.error("Error scanning resource packs", e);
+            }
+        }
+
         // download minecraft and forge
         MCMeta.loadCache(Versions.MC_VERSION, Versions.FORGE_VERSION, Versions.LANGUAGES);
 
-        Path forgeJar = Paths.get(MCMeta.CACHE, MCMeta.getForgeJarName(Versions.MC_VERSION));
+        Path forgeJar = Paths.get(CACHE, MCMeta.getForgeJarName(Versions.MC_VERSION));
         if (Files.exists(forgeJar)) {
             try {
                 sources.add(new JarAssetSource(forgeJar));
@@ -113,7 +137,7 @@ public class AssetLoader {
             }
         }
 
-        Path clientJar = Paths.get(MCMeta.CACHE, MCMeta.getClientJarName(Versions.MC_VERSION));
+        Path clientJar = Paths.get(CACHE, MCMeta.getClientJarName(Versions.MC_VERSION));
         if (Files.exists(clientJar)) {
             try {
                 sources.add(new JarAssetSource(clientJar));
@@ -122,7 +146,7 @@ public class AssetLoader {
             }
 
             // KubeJS
-            Path cachePath = Paths.get(MCMeta.CACHE, "assets");
+            Path cachePath = Paths.get(CACHE, "assets");
             if (Files.exists(cachePath)) {
                 log.info("Found Cache directory");
                 sources.add(new FsAssetSource(cachePath, "file:cache"));
@@ -403,20 +427,6 @@ public class AssetLoader {
         } catch (IOException e) {
             log.error("Error loading recipe: {}", recipeId, e);
             throw new InternalException("Error loading recipe: " + recipeId);
-        }
-    }
-
-    public BufferedImage loadExplicitTexture(String path) {
-        Asset asset = loadResource(path, "", "assets", ".png");
-        if (asset == null) {
-            log.error("Texture not found: {}", path);
-            throw new InternalException("Texture not found: " + path);
-        }
-        try {
-            return ImageIO.read(asset.getInputStream());
-        } catch (IOException e) {
-            log.error("Error loading texture: {}", path, e);
-            throw new InternalException("Error loading texture: " + path);
         }
     }
 

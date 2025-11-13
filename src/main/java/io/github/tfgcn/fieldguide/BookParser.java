@@ -492,19 +492,14 @@ public class BookParser {
     private void parseRockKnappingRecipe(Context context, List<String> buffer,
                                      PageRockKnapping page, Map<String, String> search) {
         try {
-            String recipeId;
-            if (page.getRecipe() != null && !page.getRecipe().isEmpty()) {
-                recipeId = page.getRecipe();
-            } else {
-                recipeId = page.getRecipes().getFirst();
-            }
+            String recipeId = page.getRecipes().getFirst();
             KnappingRecipe recipe = KnappingRecipes.formatKnappingRecipe(context, recipeId);
             buffer.add(String.format(IMAGE_KNAPPING, recipe.image(), "Recipe: " + recipeId));
             context.setRecipesPassed(context.getRecipesPassed() + 1);
         } catch (Exception e) {
             // TODO add e later
             log.error("Failed to load knapping page: {}, message: {}", page.getRecipes(), e.getMessage());
-            context.formatRecipe(buffer, page.getRecipe());
+            context.formatRecipe(buffer, page.getRecipes().getFirst());
             context.setRecipesFailed(context.getRecipesFailed() + 1);
         }
 

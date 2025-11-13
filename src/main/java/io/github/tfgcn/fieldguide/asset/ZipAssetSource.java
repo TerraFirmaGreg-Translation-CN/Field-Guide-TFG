@@ -1,5 +1,7 @@
 package io.github.tfgcn.fieldguide.asset;
 
+import io.github.tfgcn.fieldguide.exception.AssetNotFoundException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;

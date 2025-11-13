@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static io.github.tfgcn.fieldguide.renderer.TextureRenderer.resizeImage;
+
 /**
  * 敲击配方格式化工具
  */
@@ -62,10 +64,16 @@ public class KnappingRecipes {
         BufferedImage hi = null;
         
         if (typeData.low() != null) {
-            low = context.getLoader().loadExplicitTexture(typeData.low());
+            low = context.getLoader().loadTexture(typeData.low());
+            if (low.getWidth() != 16 || low.getHeight() != 16) {
+                low = resizeImage(low, 16, 16);
+            }
         }
         if (typeData.hi() != null) {
-            hi = context.getLoader().loadExplicitTexture(typeData.hi());
+            hi = context.getLoader().loadTexture(typeData.hi());
+            if (hi.getWidth() != 16 || hi.getHeight() != 16) {
+                hi = resizeImage(hi, 16, 16);
+            }
         }
         
         // 图案
@@ -75,7 +83,7 @@ public class KnappingRecipes {
         
         // 如果图案在任何方向上小于5格宽，我们偏移它以使其居中显示，向下取整
         int offsetY = (5 - pattern.size()) / 2;
-        int offsetX = (5 - pattern.get(0).length()) / 2;
+        int offsetX = (5 - pattern.getFirst().length()) / 2;
         
         for (int x = 0; x < 5; x++) {
             for (int y = 0; y < 5; y++) {

@@ -38,6 +38,7 @@ import java.util.*;
 import java.util.List;
 
 import static io.github.tfgcn.fieldguide.renderer.TextureRenderer.adjustBrightness;
+import static io.github.tfgcn.fieldguide.renderer.TextureRenderer.resizeImage;
 
 @Slf4j
 @Data
@@ -446,22 +447,6 @@ public class Context {
             throw new InternalException("Failed to convert icon: " + image + " - " + e.getMessage());
         }
     }
-    
-    /**
-     * 图片缩放工具方法
-     */
-    private BufferedImage resizeImage(BufferedImage original, int targetWidth, int targetHeight) {
-        BufferedImage resized = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2d = resized.createGraphics();
-
-        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
-        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_SPEED);
-
-        g2d.drawImage(original, 0, 0, targetWidth, targetHeight, null);
-        g2d.dispose();
-        return resized;
-    }
 
     /**
      * Saves an image to a location based on an identifier.
@@ -577,7 +562,12 @@ public class Context {
             List<BufferedImage> images = new ArrayList<>();
             for (String it : items) {
                 try {
-                    images.add(createItemImage(it));
+                    BufferedImage img = createItemImage(it);
+                    if (img != null) {
+                        images.add(img);
+                    } else {
+                        log.warn("image is null: {}", it);
+                    }
                 } catch (Exception e) {
                     // TODO add "e" later
                     log.error("Failed to create item image for {}, message: {}", it, e.getMessage());
@@ -1011,10 +1001,7 @@ public class Context {
         }
         Map<String, String> textures = model.getTextures();
 
-        if (model.instanceOf("minecraft:block/block")) {
-            BufferedImage textureAll = loader.loadTexture(textures.get("all"));
-            return createBlockModelProjection(textureAll, textureAll, textureAll, false);
-        } else if (model.instanceOf("minecraft:block/cube_all")) {
+        if (model.instanceOf("minecraft:block/cube_all")) {
             BufferedImage textureAll = loader.loadTexture(textures.get("all"));
             return createBlockModelProjection(textureAll, textureAll, textureAll, false);
         } else if (model.instanceOf("minecraft:block/cube_column")) {
@@ -1036,6 +1023,12 @@ public class Context {
         } else if (model.instanceOf("minecraft:block/crop")) {
             BufferedImage crop = loader.loadTexture(textures.get("crop"));
             return createCropModelProjection(crop);
+        } else if (model.instanceOf("minecraft:block/leaves")) {
+            BufferedImage textureAll = loader.loadTexture(textures.get("all"));
+            return createBlockModelProjection(textureAll, textureAll, textureAll, false);
+        } else if (model.instanceOf("tfc:block/thatch")) {
+            BufferedImage textureAll = loader.loadTexture(textures.get("texture"));
+            return createBlockModelProjection(textureAll, textureAll, textureAll, false);
         } else if (model.instanceOf("tfc:block/ore")) {
             BufferedImage oreAll = loader.loadTexture(textures.get("all"));
             BufferedImage overlay = loader.loadTexture(textures.get("overlay"));
@@ -1046,7 +1039,7 @@ public class Context {
             g.drawImage(overlay, 0, 0, null);
             g.dispose();
             return createBlockModelProjection(combined, combined, combined, false);
-        } else{
+        } else {
             log.warn("Unsupported parent: {}@{}", parent, block);
             throw new RuntimeException("Block Model : Unknown Parent '" + parent + "' : at '" + block + "'");
         }
