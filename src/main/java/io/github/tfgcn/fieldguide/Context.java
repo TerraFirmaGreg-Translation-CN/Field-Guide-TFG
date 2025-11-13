@@ -570,7 +570,7 @@ public class Context {
                     }
                 } catch (Exception e) {
                     // TODO add "e" later
-                    log.error("Failed to create item image for {}, message: {}", it, e.getMessage());
+                    log.error("Failed to create item image for {}, message: {}", it, e.getMessage(), e);
                 }
             }
 
@@ -893,12 +893,18 @@ public class Context {
         String[][] pattern = data.getPattern();
         String[][] validPattern1 = {{"X"}, {"0"}};
         String[][] validPattern2 = {{"X"}, {"Y"}, {"0"}};
+        String[][] validPattern3 = {{"0"}, {" "}};
 
+        boolean isTFGOre = false;
         if (!Arrays.deepEquals(pattern, validPattern1) && !Arrays.deepEquals(pattern, validPattern2)) {
-            throw new RuntimeException("Multiblock : Complex Pattern '" + Arrays.deepToString(pattern) + "'");
+            if (!Arrays.deepEquals(pattern, validPattern3)) {
+                throw new RuntimeException("Multiblock : Complex Pattern '" + Arrays.deepToString(pattern) + "'");
+            } else {
+                isTFGOre = true;
+            }
         }
 
-        String block = data.getMapping().get("X");
+        String block = data.getMapping().get(isTFGOre ? "0" : "X");
         List<String> blocks;
 
         if (block.startsWith("#")) {
@@ -909,7 +915,12 @@ public class Context {
 
         List<BufferedImage> blockImages = new ArrayList<>();
         for (String b : blocks) {
-            blockImages.add(getBlockImage(b));
+            try {
+                BufferedImage image = getBlockImage(b);
+                blockImages.add(image);
+            } catch (Exception e) {
+                log.error("Failed loading block image: {}, message: {}", b, e.getMessage());
+            }
         }
 
         return new Pair<>(block, blockImages);
@@ -1036,6 +1047,16 @@ public class Context {
             BufferedImage combined = new BufferedImage(oreAll.getWidth(), oreAll.getHeight(), BufferedImage.TYPE_INT_ARGB);
             Graphics2D g = combined.createGraphics();
             g.drawImage(oreAll, 0, 0, null);
+            g.drawImage(overlay, 0, 0, null);
+            g.dispose();
+            return createBlockModelProjection(combined, combined, combined, false);
+        } else if (model.instanceOf("tfc:block/ore_column")) {
+            BufferedImage side = loader.loadTexture(textures.get("side"));
+            BufferedImage overlay = loader.loadTexture(textures.get("overlay"));
+            // 在Java中实现图像叠加
+            BufferedImage combined = new BufferedImage(side.getWidth(), side.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            Graphics2D g = combined.createGraphics();
+            g.drawImage(side, 0, 0, null);
             g.drawImage(overlay, 0, 0, null);
             g.dispose();
             return createBlockModelProjection(combined, combined, combined, false);
