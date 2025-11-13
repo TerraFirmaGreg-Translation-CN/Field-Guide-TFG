@@ -4,6 +4,10 @@ import io.github.tfgcn.fieldguide.asset.AssetLoader;
 import io.github.tfgcn.fieldguide.mc.BlockModel;
 import io.github.tfgcn.fieldguide.mc.ElementFace;
 import io.github.tfgcn.fieldguide.mc.ModelElement;
+import org.apache.commons.io.FileUtils;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.*;
 import java.nio.file.Files;
@@ -22,8 +26,16 @@ public class OBJExporter {
     /**
      * 将 BlockModel 导出为 OBJ 文件
      */
+    public void exportToOBJ(String modeId, String filePath) throws IOException {
+        BlockModel model = loader.loadModel(modeId);
+        exportToOBJ(model, filePath);
+    }
+
+    /**
+     * 将 BlockModel 导出为 OBJ 文件
+     */
     public void exportToOBJ(BlockModel model, String filePath) throws IOException {
-        exportToOBJ(model, filePath, "minecraft_block");
+        exportToOBJ(model, filePath, "1");
     }
 
     /**
@@ -69,8 +81,8 @@ public class OBJExporter {
         objContent.append("\n# Normals\n");
         objContent.append("vn 0.000000 1.000000 0.000000\n");  // up
         objContent.append("vn 0.000000 -1.000000 0.000000\n"); // down
-        objContent.append("vn 0.000000 0.000000 1.000000\n");  // north
-        objContent.append("vn 0.000000 0.000000 -1.000000\n"); // south
+        objContent.append("vn 0.000000 0.000000 -1.000000\n");  // north
+        objContent.append("vn 0.000000 0.000000 1.000000\n"); // south
         objContent.append("vn 1.000000 0.000000 0.000000\n");  // east
         objContent.append("vn -1.000000 0.000000 0.000000\n"); // west
 
@@ -99,15 +111,20 @@ public class OBJExporter {
 
             // 将四边形分为两个三角形
             objContent.append(String.format("f %d/%d/%d %d/%d/%d %d/%d/%d\n",
-                    v1, t1, normalIndex, v2, t2, normalIndex, v3, t3, normalIndex));
+                    v1, t1, normalIndex,
+                    v2, t2, normalIndex,
+                    v3, t3, normalIndex));
             objContent.append(String.format("f %d/%d/%d %d/%d/%d %d/%d/%d\n",
-                    v1, t1, normalIndex, v3, t3, normalIndex, v4, t4, normalIndex));
+                    v1, t1, normalIndex,
+                    v3, t3, normalIndex,
+                    v4, t4, normalIndex));
         }
 
         // 创建 MTL 文件内容
         createMTLContent(mtlContent, materialName, model.getTextures());
 
         // 写入文件
+        FileUtils.createParentDirectories(new File(filePath));
         Files.write(Paths.get(filePath), objContent.toString().getBytes());
         Files.write(Paths.get(filePath.replace(".obj", ".mtl")), mtlContent.toString().getBytes());
     }
@@ -256,8 +273,9 @@ public class OBJExporter {
     /**
      * 创建 MTL 文件内容
      */
-    private void createMTLContent(StringBuilder mtlContent, String materialName,
-                                         Map<String, String> textures) {
+    private void createMTLContent(StringBuilder mtlContent,
+                                  String materialName,
+                                  Map<String, String> textures) {
         mtlContent.append("# Material file for Minecraft block\n");
         mtlContent.append("newmtl ").append(materialName).append("\n");
 
@@ -270,9 +288,15 @@ public class OBJExporter {
 
         // 纹理映射
         if (textures != null && !textures.isEmpty()) {
-            String texturePath = getTexturePath(textures);
+            String texturePath = getTexture("all", textures);
             if (texturePath != null) {
-                mtlContent.append("map_Kd ").append(texturePath).append("\n");
+                mtlContent.append("map_Kd ").append("all.png").append("\n");
+                try {
+                    BufferedImage image = loader.loadTexture(texturePath);
+                    ImageIO.write(image, "png", new File("output/all.png"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -283,20 +307,27 @@ public class OBJExporter {
     private String getTexturePath(Map<String, String> textures) {
         // 优先使用 "all" 纹理，否则使用第一个可用的纹理
         if (textures.containsKey("all")) {
-            return convertTexturePath(textures.get("all"));
+            return getTexture("all", textures);
         }
-
-        for (String texture : textures.values()) {
-            return convertTexturePath(texture);
-        }
-
         return null;
+    }
+
+    private String getTexture(String key, Map<String, String> textures) {
+        String value = textures.get(key);
+        if (value == null) {
+            return null;
+        }
+        if (value.equals("#")) {
+            String ref = value.substring(1);
+            return getTexture(ref, textures);
+        }
+        return value;
     }
 
     /**
      * 转换纹理路径格式
      */
-    private String convertTexturePath(String minecraftPath) {
+    private String convertTexturePath(String key, String minecraftPath) {
         // 将 "minecraft:block/stone" 转换为 "textures/block/stone.png"
         if (minecraftPath.contains(":")) {
             String[] parts = minecraftPath.split(":", 2);
