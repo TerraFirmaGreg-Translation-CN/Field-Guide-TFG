@@ -41,8 +41,6 @@ public class Main implements Callable<Integer>  {
         // The TerraFirmaGreg modpack directory
         String modpackPath = inputDir.replace("\\", "/");
 
-        MCMeta.loadCache(Versions.MC_VERSION, Versions.FORGE_VERSION, Versions.LANGUAGES);
-
         AssetLoader assetLoader = new AssetLoader(Paths.get(modpackPath));
 
         Context context = new Context(assetLoader, outputDir, "/Field-Guide-TFG", false);

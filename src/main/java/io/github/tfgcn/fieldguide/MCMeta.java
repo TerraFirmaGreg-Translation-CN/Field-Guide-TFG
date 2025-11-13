@@ -28,7 +28,7 @@ public class MCMeta {
     }
     
     public static String getForgeJarUrl(String mcVersion, String forgeVersion) {
-        if (mcVersion.equals("1.20.1") || mcVersion.equals("1.18.2")) {
+        if (mcVersion.equals("1.20.1")) {
             return String.format("https://maven.creeperhost.net/net/minecraftforge/forge/%s-%s/forge-%s-%s-universal.jar", mcVersion, forgeVersion, mcVersion, forgeVersion);
         } else {
             return String.format("https://maven.neoforged.net/#/releases/net/neoforged/neoforge/%s/neoforge-%s-universal.jar", forgeVersion, forgeVersion);
@@ -82,7 +82,7 @@ public class MCMeta {
     public static void loadCache(String mcVersion, String forgeVersion, List<String> languages) {
         log.info("Loading Cache");
         try {
-            Files.createDirectories(Paths.get(CACHE));
+            Files.createDirectories(Paths.get(CACHE, "assets", "minecraft", "lang"));
         } catch (IOException e) {
             log.error("Failed to create cache directory: " + e.getMessage());
             return;
@@ -143,7 +143,7 @@ public class MCMeta {
                     byte[] languageData = download(languageUrl);
                     Map<String, Object> languageJson = parseJson(languageData);
                     
-                    Path langPath = Paths.get(CACHE, "lang_" + lang + ".json");
+                    Path langPath = Paths.get(CACHE, "assets", "minecraft", "lang", lang + ".json");
                     try (FileWriter fw = new FileWriter(langPath.toFile(), StandardCharsets.UTF_8)) {
                         writeJson(fw, languageJson);
                     }

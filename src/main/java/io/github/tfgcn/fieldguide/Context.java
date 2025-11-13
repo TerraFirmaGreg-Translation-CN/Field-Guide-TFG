@@ -213,7 +213,7 @@ public class Context {
             this.categories.get(categoryId).getEntries().add(entryId);
             this.searchTree.add(search);
         } catch (Exception e) {
-            // FIXME
+            // FIXME category not found for other languages
             log.warn("Add Entry: {} : {}, {}", categoryId, entryId, e.getMessage());
         }
     }

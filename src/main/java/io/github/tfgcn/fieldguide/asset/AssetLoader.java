@@ -55,9 +55,32 @@ public class AssetLoader {
             sources.add(new FsAssetSource(kubejsPath, "file:kubejs"));
         }
 
+        // Resource Packs
+        Path resourcePacksPath = instanceRoot.resolve("resourcepacks");
+        if (Files.exists(resourcePacksPath)) {
+            log.info("Found Resource Packs directory");
+            try (Stream<Path> files = Files.list(resourcePacksPath)) {
+                List<Path> zipList = files
+                        .filter(p -> p.toString().endsWith(".zip"))
+                        .sorted()
+                        .toList();
+
+                for (Path zip : zipList) {
+                    try {
+                        sources.add(new ZipAssetSource(zip));
+                    } catch (IOException e) {
+                        log.error("Error loading resource pack: {}", zip, e);
+                    }
+                }
+            } catch (IOException e) {
+                log.error("Error scanning resource packs", e);
+            }
+        }
+
         // Mod JARs
         Path modsPath = instanceRoot.resolve("mods");
         if (Files.exists(modsPath)) {
+            log.info("Found Mods directory");
             try (Stream<Path> jars = Files.list(modsPath)) {
                 List<Path> jarList = jars
                     .filter(p -> p.toString().endsWith(".jar"))
@@ -94,6 +117,13 @@ public class AssetLoader {
                 sources.add(new JarAssetSource(clientJar));
             } catch (IOException e) {
                 log.error("Error loading client JAR: {}", clientJar, e);
+            }
+
+            // KubeJS
+            Path cachePath = Paths.get(MCMeta.CACHE, "assets");
+            if (Files.exists(cachePath)) {
+                log.info("Found Cache directory");
+                sources.add(new FsAssetSource(cachePath, "file:cache"));
             }
         }
 
@@ -274,10 +304,6 @@ public class AssetLoader {
             log.error("Error loading texture: {}", assetKey, e);
         }
         return null;
-    }
-
-    public Asset loadResource(String path, String resourceRoot, String resourceSuffix) {
-        return loadResource(path, null, resourceRoot, resourceSuffix);
     }
 
     public Asset loadResource(String resourceLocation, String resourceType, String resourceRoot, String resourceSuffix) {
@@ -472,7 +498,6 @@ public class AssetLoader {
         for (Asset asset : assets) {
             try {
                 Tags tags = JsonUtils.readFile(asset.getInputStream(), Tags.class);
-                log.info("Load tag, path: {}, source: {}", asset.getPath(), asset.getSource());
                 tagsList.add(tags);
             } catch (Exception e) {
                 log.error("Failed to parse tag asset: {}", asset.getPath(), e);

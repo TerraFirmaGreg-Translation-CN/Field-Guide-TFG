@@ -6,45 +6,44 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 /**
- * Asset source for a JAR file
+ * Asset source for a ZIP file
  *
  * @author yanmaoyuan
  */
-public class JarAssetSource extends AssetSource {
+public class ZipAssetSource extends AssetSource {
 
-    private final JarFile jarFile;
-    
-    public JarAssetSource(Path jarPath) throws IOException {
-        super(jarPath, "mod:" + jarPath.getFileName().toString());
-        this.jarFile = new JarFile(jarPath.toFile());
+    private final ZipFile zipFile;
+
+    public ZipAssetSource(Path zipPath) throws IOException {
+        super(zipPath, "zip:" + zipPath.getFileName().toString());
+        this.zipFile = new ZipFile(zipPath.toFile());
     }
 
     @Override
     public boolean exists(String resourcePath) {
-        return jarFile.getJarEntry(resourcePath) != null;
+        return zipFile.getEntry(resourcePath) != null;
     }
 
     @Override
     public InputStream getInputStream(String resourcePath) throws IOException {
-        JarEntry entry = jarFile.getJarEntry(resourcePath);
+        ZipEntry entry = zipFile.getEntry(resourcePath);
         if (entry != null) {
-            return jarFile.getInputStream(entry);
+            return zipFile.getInputStream(entry);
         }
-        throw new IOException("Resource not found in JAR: " + resourcePath);
+        throw new IOException("Resource not found in ZIP: " + resourcePath);
     }
 
     @Override
     public List<String> findPatchouliBooks() {
         List<String> books = new ArrayList<>();
-        Enumeration<JarEntry> entries = jarFile.entries();
-        
+        Enumeration<? extends ZipEntry> entries = zipFile.entries();
+
         while (entries.hasMoreElements()) {
-            JarEntry entry = entries.nextElement();
+            ZipEntry entry = entries.nextElement();
             String name = entry.getName();
             if (name.contains("patchouli_books") && entry.isDirectory()) {
                 books.add(name);
@@ -58,13 +57,13 @@ public class JarAssetSource extends AssetSource {
         List<Asset> assets = new ArrayList<>();
         String normalizedDir = normalizePath(resourcePath);
 
-        Enumeration<? extends JarEntry> entries = jarFile.entries();
+        Enumeration<? extends ZipEntry> entries = zipFile.entries();
         while (entries.hasMoreElements()) {
-            JarEntry entry = entries.nextElement();
+            ZipEntry entry = entries.nextElement();
             String entryName = entry.getName();
             if (entryName.startsWith(normalizedDir)) {
                 if (!entry.isDirectory()) {
-                    assets.add(new Asset(entryName, jarFile.getInputStream(entry), this));
+                    assets.add(new Asset(entryName, zipFile.getInputStream(entry), this));
                 }
             }
         }
@@ -79,7 +78,7 @@ public class JarAssetSource extends AssetSource {
             normalizedPath += "/";
         }
 
-        ZipEntry entry = jarFile.getEntry(normalizedPath);
+        ZipEntry entry = zipFile.getEntry(normalizedPath);
         return entry != null && entry.isDirectory();
     }
 
