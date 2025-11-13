@@ -4,8 +4,6 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Path2D;
 import java.awt.image.BufferedImage;
-import java.awt.image.IndexColorModel;
-import java.awt.image.RescaleOp;
 
 public class TextureRenderer {
     
@@ -87,10 +85,10 @@ public class TextureRenderer {
             
             // 对于平行四边形面，使用仿射变换
             if (isParallelogram(points)) {
-                drawParallelogramTexture(g2d, texture, points, bounds);
+                drawParallelogramTexture(g2d, texture, points);
             } else {
                 // 对于梯形面，使用更复杂的变换
-                drawTrapezoidTexture(g2d, texture, points, bounds);
+                drawTrapezoidTexture(g2d, texture, bounds);
             }
         } finally {
             // 恢复裁剪区域
@@ -118,8 +116,7 @@ public class TextureRenderer {
     /**
      * 绘制平行四边形纹理
      */
-    private static void drawParallelogramTexture(Graphics2D g2d, BufferedImage texture, 
-                                               Point[] points, Rectangle bounds) {
+    private static void drawParallelogramTexture(Graphics2D g2d, BufferedImage texture, Point[] points) {
         // 计算仿射变换矩阵
         double sx1 = points[1].x - points[0].x;
         double sy1 = points[1].y - points[0].y;
@@ -138,8 +135,7 @@ public class TextureRenderer {
     /**
      * 绘制梯形纹理（简化版本）
      */
-    private static void drawTrapezoidTexture(Graphics2D g2d, BufferedImage texture, 
-                                           Point[] points, Rectangle bounds) {
+    private static void drawTrapezoidTexture(Graphics2D g2d, BufferedImage texture, Rectangle bounds) {
         // 对于梯形，使用缩放和平移（这是一个简化方案）
         // 在实际应用中，您可能需要真正的透视变换
         
@@ -154,38 +150,6 @@ public class TextureRenderer {
     }
 
     public static BufferedImage adjustBrightness(BufferedImage image, float factor) {
-        // 检查图像类型
-        boolean isIndexed = isIndexedImage(image);
-
-        if (!isIndexed) {
-            // 对于非索引图像，使用快速的RescaleOp
-            return adjustBrightnessFast(image, factor);
-        } else {
-            // 对于索引图像，使用精确的逐像素方法
-            return adjustBrightnessPrecise(image, factor);
-        }
-    }
-
-    public static boolean isIndexedImage(BufferedImage image) {
-        int type = image.getType();
-        return type == BufferedImage.TYPE_BYTE_INDEXED ||
-                type == BufferedImage.TYPE_BYTE_BINARY ||
-                image.getColorModel() instanceof IndexColorModel;
-    }
-
-    public static BufferedImage adjustBrightnessFast(BufferedImage image, float factor) {
-        BufferedImage result = new BufferedImage(image.getWidth(), image.getHeight(), 
-                                               BufferedImage.TYPE_INT_ARGB);
-        
-        // 使用RescaleOp进行快速调整
-        float[] scales = { factor, factor, factor, 1.0f }; // RGB缩放，Alpha不变
-        float[] offsets = new float[4];
-        RescaleOp op = new RescaleOp(scales, offsets, null);
-        
-        return op.filter(image, result);
-    }
-
-    public static BufferedImage adjustBrightnessPrecise(BufferedImage image, float factor) {
         int width = image.getWidth();
         int height = image.getHeight();
         BufferedImage result = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);

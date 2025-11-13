@@ -47,7 +47,7 @@ public class AssetLoader {
 
     private void initializeSources() {
         log.info("Initializing AssetManager for: {}", instanceRoot);
-        
+
         // KubeJS
         Path kubejsPath = instanceRoot.resolve("kubejs");
         if (Files.exists(kubejsPath)) {
@@ -76,15 +76,9 @@ public class AssetLoader {
             }
         }
 
-        addMcClientSource();
-        log.info("Total sources: {}", sources.size());
-    }
+        // download minecraft and forge
+        MCMeta.loadCache(Versions.MC_VERSION, Versions.FORGE_VERSION, Versions.LANGUAGES);
 
-    private void addMcClientSource() {
-        if (!MCMeta.ENABLED) {
-            log.info("Skipping client JAR loading because MCMeta is disabled");
-            return;
-        }
         Path forgeJar = Paths.get(MCMeta.CACHE, MCMeta.getForgeJarName(Versions.MC_VERSION));
         if (Files.exists(forgeJar)) {
             try {
@@ -102,7 +96,10 @@ public class AssetLoader {
                 log.error("Error loading client JAR: {}", clientJar, e);
             }
         }
+
+        log.info("Total sources: {}", sources.size());
     }
+
     public List<Asset> listAssets(String resourcePath) throws IOException {
         List<Asset> assets = new ArrayList<>();
         for (AssetSource source : sources) {
@@ -305,11 +302,8 @@ public class AssetLoader {
 
             String parent = model.getParent();
             if (parent != null && !parent.isEmpty()) {
-                log.info("model parent: {}", parent);
                 BlockModel parentModel = loadModel(parent);
                 model.setParentModel(parentModel);
-            } else {
-                log.info("no parent for: {}", path);
             }
 
             model.mergeWithParent();// important

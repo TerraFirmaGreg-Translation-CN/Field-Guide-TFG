@@ -604,12 +604,13 @@ public class Context {
                 try {
                     images.add(createItemImage(it));
                 } catch (Exception e) {
-                    log.warn("Failed to create item image for {}", it, e);
+                    // TODO add "e" later
+                    log.error("Failed to create item image for {}, message: {}", it, e.getMessage());
                 }
             }
 
             if (images.isEmpty()) {
-                log.warn("Failed to create item image for: {}", item);
+                log.error("Failed to create item image for: {}", item);
                 // Fallback to using the placeholder image
                 ItemImageResult fallback = new ItemImageResult("../../_images/placeholder_64.png", name, null);
                 itemImageCache.put(item, fallback);
@@ -644,7 +645,8 @@ public class Context {
             itemImageCache.put(item, result);
             return result;
         } catch (Exception e) {
-            log.warn("Failed to create item image: {}", item, e);
+            // TODO add e later
+            log.error("Failed to create item image: {}, message: {}", item, e.getMessage());
             if (placeholder) {
                 // Fallback to using the placeholder image
                 ItemImageResult fallback = new ItemImageResult("../../_images/placeholder_64.png", name, null);
@@ -718,7 +720,8 @@ public class Context {
                 img = resizeImage(img, 64, 64);
                 return img;
             } catch (Exception e) {
-                log.error("Failed load model {} @ {}, model: {}", parent, itemId, model, e);
+                // add e later
+                log.error("Failed load model {} @ {}, model: {}, message: {}", parent, itemId, model, e.getMessage());
                 throw new InternalException("Failed load model " + parent + " @ " + itemId);
             }
         } else {
@@ -1067,7 +1070,7 @@ public class Context {
                 return createBlockModelProjection(combined, combined, combined, false);
             }
             default:
-                log.warn("Block Model: Unknown parent: {} @ {}, model: {}", parent, block, model);
+                log.warn("Block Model: Unknown parent: {}@{}", parent, block);
                 throw new RuntimeException("Block Model : Unknown Parent '" + parent + "' : at '" + block + "'");
         }
     }

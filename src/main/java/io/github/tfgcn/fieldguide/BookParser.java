@@ -21,7 +21,7 @@ import static io.github.tfgcn.fieldguide.renderer.ImageTemplates.IMAGE_SINGLE;
 
 @Slf4j
 public class BookParser {
-    
+
     public void processAllLanguages(Context context) {
         // load en_us lang
 
@@ -57,30 +57,42 @@ public class BookParser {
     private void parseCategories(Context context, String ownerId) {
         // assets/tfc/patchouli_books/field_guide/en_us/categories
         String categoriesPath = context.getSourcePath("categories");
+        List<Asset> assets;
         try {
-            List<Asset> assets = context.listAssets(categoriesPath);
-            for (Asset asset : assets) {
-                if (asset.getPath().endsWith(".json")) {
-                    parseCategory(context, categoriesPath, asset, ownerId);
-                }
-            }
+            assets = context.listAssets(categoriesPath);
         } catch (IOException e) {
             log.error("Failed to list assets", e);
+            return;
+        }
+        for (Asset asset : assets) {
+            if (asset.getPath().endsWith(".json")) {
+                try {
+                    parseCategory(context, categoriesPath, asset, ownerId);
+                } catch (Exception e) {
+                    log.error("Failed to parse category file: {}, message: {}", asset, e.getMessage());
+                }
+            }
         }
     }
 
     private void parseEntries(Context context, String ownerId) {
         // assets/tfc/patchouli_books/field_guide/en_us/entries
         String entriesPath = context.getSourcePath("entries");
+        List<Asset> assets;
         try {
-            List<Asset> assets = context.listAssets(entriesPath);
-            for (Asset asset : assets) {
-                if (asset.getPath().endsWith(".json")) {
-                    parseEntry(context, entriesPath, asset, ownerId);
-                }
-            }
+            assets = context.listAssets(entriesPath);
         } catch (IOException e) {
             log.error("Failed to list assets", e);
+            return;
+        }
+        for (Asset asset : assets) {
+            if (asset.getPath().endsWith(".json")) {
+                try {
+                    parseEntry(context, entriesPath, asset, ownerId);
+                } catch (Exception e) {
+                    log.error("Failed to parse entry file: {}, message: {}", asset, e.getMessage());
+                }
+            }
         }
     }
 
@@ -221,7 +233,7 @@ public class BookParser {
                 }
 
                 if (processedImages.size() == 1) {
-                    Map.Entry<String, String> imageEntry = processedImages.get(0);
+                    Map.Entry<String, String> imageEntry = processedImages.getFirst();
                     buffer.add(String.format(IMAGE_SINGLE,
                             imageEntry.getValue(), imageEntry.getKey()));
                 } else if (!processedImages.isEmpty()) {
@@ -262,7 +274,7 @@ public class BookParser {
                 context.formatText(buffer, pageEntity.getText(), search);
                 break;
             }
-            case PageEmpty pageEmpty: {// patchouli:empty
+            case PageEmpty ignored: {// patchouli:empty
                 buffer.add("<hr>");
                 break;
             }
@@ -338,7 +350,8 @@ public class BookParser {
                 CraftingRecipeFormatter.formatCraftingRecipe(context, buffer, page.getRecipe());
                 context.setRecipesPassed(context.getRecipesPassed() + 1);
             } catch (Exception e) {
-                log.error("Recipe processing failed: {}", page.getRecipe(), e);
+                // TODO add "e" later
+                log.error("Recipe processing craft failed: {}. e: {}", page.getRecipe(), e.getMessage());
                 context.formatRecipe(buffer, page.getRecipe());
                 context.setRecipesFailed(context.getRecipesFailed() + 1);
             }
@@ -350,7 +363,8 @@ public class BookParser {
                 CraftingRecipeFormatter.formatCraftingRecipe(context, buffer, page.getRecipe2());
                 context.setRecipesPassed(context.getRecipesPassed() + 1);
             } catch (Exception e) {
-                log.error("Recipe2 processing failed: {}", page.getRecipe2(), e);
+                // TODO add e later
+                log.error("Recipe2 processing failed: {}, message: {}", page.getRecipe2(), e.getMessage());
                 context.formatRecipe(buffer, page.getRecipe2());
                 context.setRecipesFailed(context.getRecipesFailed() + 1);
             }
@@ -413,7 +427,7 @@ public class BookParser {
             context.formatCenteredText(buffer, page.getText());
             context.setBlocksPassed(context.getBlocksPassed() + 1);
         } catch (Exception e) {
-            log.error("Multiblock image processing failed", e);
+            // FIXME addback later log.error("Multiblock image processing failed", e);
             Object multiblock = page.getMultiblock() != null ? page.getMultiblock() : page.getMultiblockId();
             if (multiblock == null) {
                 log.warn("multiblock is null, page:{}", page);
@@ -454,7 +468,8 @@ public class BookParser {
             MiscRecipeFormatter.formatMiscRecipe(context, buffer, page.getRecipe());
             context.setRecipesPassed(context.getRecipesPassed() + 1);
         } catch (Exception e) {
-            log.error("Misc recipe processing not implemented for: {}", pageType, e);
+            // TODO add e later
+            log.error("Misc recipe processing failed: {}, message: {}", pageType, e.getMessage());
             context.formatRecipe(buffer, page.getRecipe());
             context.setRecipesFailed(context.getRecipesFailed() + 1);
         }
@@ -477,17 +492,18 @@ public class BookParser {
     private void parseRockKnappingRecipe(Context context, List<String> buffer,
                                      PageRockKnapping page, Map<String, String> search) {
         try {
-            String recipeId = page.getRecipes().get(0);
+            String recipeId;
             if (page.getRecipe() != null && !page.getRecipe().isEmpty()) {
                 recipeId = page.getRecipe();
             } else {
-                recipeId = page.getRecipes().get(0);
+                recipeId = page.getRecipes().getFirst();
             }
             KnappingRecipe recipe = KnappingRecipes.formatKnappingRecipe(context, recipeId);
             buffer.add(String.format(IMAGE_KNAPPING, recipe.image(), "Recipe: " + recipeId));
             context.setRecipesPassed(context.getRecipesPassed() + 1);
         } catch (Exception e) {
-            log.error("Failed to load knapping page: {}", page.getRecipes(), e);
+            // TODO add e later
+            log.error("Failed to load knapping page: {}, message: {}", page.getRecipes(), e.getMessage());
             context.formatRecipe(buffer, page.getRecipe());
             context.setRecipesFailed(context.getRecipesFailed() + 1);
         }

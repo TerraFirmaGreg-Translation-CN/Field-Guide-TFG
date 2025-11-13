@@ -15,8 +15,7 @@ import java.util.zip.ZipFile;
 public class MCMeta {
     
     public static final String CACHE = ".cache";
-    public static boolean ENABLED = false;
-    
+
     private static final String VERSION_MANIFEST_URL = "https://piston-meta.mojang.com/mc/game/version_manifest.json";
     private static final String RESOURCES_URL = "https://resources.download.minecraft.net/";
 
@@ -58,11 +57,7 @@ public class MCMeta {
     }
     
     public static <T> T loadFromSource(String source, String path, FileReader<T> reader) {
-        if (!ENABLED) {
-            log.error("mcmeta not enabled");
-            return null;
-        }
-        
+
         try {
             path = path.replace("\\", "/");
             Path clientJar = Paths.get(CACHE, source);
@@ -85,8 +80,6 @@ public class MCMeta {
     
     @SuppressWarnings("unchecked")
     public static void loadCache(String mcVersion, String forgeVersion, List<String> languages) {
-        ENABLED = true;
-        
         log.info("Loading Cache");
         try {
             Files.createDirectories(Paths.get(CACHE));
