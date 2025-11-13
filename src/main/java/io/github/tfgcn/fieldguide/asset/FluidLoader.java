@@ -153,10 +153,11 @@ public class FluidLoader {
                 images.add(createFluidImage(fluidId));
             }
 
+            String fluidId = context.nextId("fluid");// counting fluid
             if (images.size() == 1) {
-                path = context.saveImage(context.nextId("fluid"), images.get(0));
+                path = context.saveImage("assets/generated/" + fluidId + ".png", images.getFirst());
             } else {
-                path = context.saveGif(context.nextId("fluid"), images);
+                path = context.saveGif("assets/generated/" + fluidId + ".gif", images);
             }
         } catch (Exception e) {
             System.err.println("Warning: Fluid Image(s) - " + e.getMessage());

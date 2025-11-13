@@ -3,6 +3,7 @@ package io.github.tfgcn.fieldguide;
 import com.google.gson.reflect.TypeToken;
 import com.madgag.gif.fmsware.AnimatedGifEncoder;
 import io.github.tfgcn.fieldguide.asset.Asset;
+import io.github.tfgcn.fieldguide.asset.AssetKey;
 import io.github.tfgcn.fieldguide.asset.AssetLoader;
 import io.github.tfgcn.fieldguide.exception.InternalException;
 import io.github.tfgcn.fieldguide.patchouli.BookCategory;
@@ -383,8 +384,8 @@ public class Context {
         }
 
         try {
-            Asset asset = loader.loadResource(image, "assets", ".png");
-            BufferedImage img = ImageIO.read(asset.getInputStream());
+            AssetKey assetKey = loader.getTextureKey(image);
+            BufferedImage img = loader.loadTexture(assetKey);
 
             int width = img.getWidth();
             int height = img.getHeight();
@@ -410,7 +411,8 @@ public class Context {
                 cropped = resizeImage(cropped, 400, 400);
             }
 
-            String ref = saveImage(nextId("image"), cropped);
+            nextId("image");// counting images
+            String ref = saveImage(assetKey.getResourcePath(), cropped);
             IMAGE_CACHE.put(image, ref);
             return ref;
         } catch (Exception e) {
@@ -427,8 +429,8 @@ public class Context {
         }
         
         try {
-            BufferedImage img = loader.loadTexture(image);
-
+            AssetKey assetKey = new AssetKey(image, null, "assets", ".png");
+            BufferedImage img = loader.loadTexture(assetKey);
             int width = img.getWidth();
             int height = img.getHeight();
 
@@ -437,7 +439,7 @@ public class Context {
 
             // 调整到64x64以匹配物品图标尺寸
             BufferedImage resized = resizeImage(img, 64, 64);
-            String ref = saveImage(nextId("image"), resized);
+            String ref = saveImage(assetKey.getResourcePath(), resized);
             IMAGE_CACHE.put(image, ref);
             return ref;
         } catch (Exception e) {
@@ -461,32 +463,14 @@ public class Context {
         return resized;
     }
 
-
     /**
      * Saves an image to a location based on an identifier.
-     * @param id the resource path identifier
+     * @param path the resource path
      * @param image the image to save
      * @return the relative id to that location.
      */
-    public String saveImage(String id, BufferedImage image) {
-        // Parse resource location (remove namespace if present)
-        String processedPath;
-        if (id.contains(":")) {
-            processedPath = id.split(":")[1];
-        } else {
-            processedPath = id;
-        }
-
-        // Replace slashes with underscores and join with '_images'
-        String filename = processedPath.replace("/", "_");
-        String outputPath = Paths.get("_images", filename).toString();
-
-        // Ensure .png extension
-        if (!outputPath.toLowerCase().endsWith(".png")) {
-            outputPath += ".png";
-        }
-
-        File outputFile = new File(outputRootDir, outputPath);
+    public String saveImage(String path, BufferedImage image) {
+        File outputFile = new File(outputRootDir, path);
         try {
             // Create output directory if it doesn't exist
             FileUtils.createParentDirectories(outputFile);
@@ -498,7 +482,7 @@ public class Context {
         }
 
         // Return relative path
-        return Paths.get("../../", outputPath).toString();
+        return "../../" + path;
     }
 
     /**
@@ -509,12 +493,9 @@ public class Context {
             throw new IllegalArgumentException("Images list cannot be empty");
         }
 
-        // Process path similar to the Python version
-        String processedPath = processPath(path);
-
         // Create output directory if it doesn't exist
-        File outputFile = new File(outputRootDir, processedPath);
-        outputFile.getParentFile().mkdirs();
+        File outputFile = new File(outputRootDir, path);
+        FileUtils.createParentDirectories(outputFile);
 
         // Save as GIF
         try (FileOutputStream fos = new FileOutputStream(outputFile)) {
@@ -530,15 +511,7 @@ public class Context {
             encoder.finish();
         }
 
-        return "../../" + processedPath;
-    }
-
-    private String processPath(String path) {
-        // Remove .png suffix and add .gif
-        String processed = path.replace(".png", "") + ".gif";
-        // Replace slashes with underscores and add to _images directory
-        processed = "_images/" + processed.replace("/", "_");
-        return processed;
+        return "../../" + path;
     }
 
     /**
@@ -583,6 +556,7 @@ public class Context {
         String key = null;// translation key, if this needs to be re-translated
         List<String> items;
 
+        boolean isItem = false;// this is to identify the itemId
         if (item.startsWith("#")) {
             name = String.format(translate(I18n.TAG), item);
             items = loadItemTag(item.substring(1));
@@ -590,10 +564,11 @@ public class Context {
             items = Arrays.asList(item.split(","));
         } else {
             items = Collections.singletonList(item);
+            isItem = true;
         }
 
         if (items.size() == 1) {
-            key = items.get(0).replace('/', '.').replace(':', '.');
+            key = items.getFirst().replace('/', '.').replace(':', '.');
             name = translate("item." + key, "block." + key);
         }
 
@@ -617,9 +592,14 @@ public class Context {
             }
 
             String path;
+            String itemId = nextId("item");// counting
             if (images.size() == 1) {
-                images.get(0);
-                path = saveImage(nextId("item"), images.get(0));
+                if (isItem) {
+                    AssetKey assetKey = new AssetKey(item, "textures", "assets", ".png");
+                    path = saveImage(assetKey.getResourcePath(), images.getFirst());
+                } else {
+                    path = saveImage("assets/generated/" + itemId + ".png", images.getFirst());
+                }
             } else {
                 // # If any images are 64x64, then we need to resize them all to be 64x64 if we're saving a .gif
                 boolean flag = false;
@@ -638,7 +618,7 @@ public class Context {
                     }).toList();
                 }
 
-                path = saveGif(nextId("item"), images);
+                path = saveGif("assets/generated/" + itemId + ".gif", images);
             }
 
             ItemImageResult result = new ItemImageResult(path, name, key);
@@ -857,7 +837,7 @@ public class Context {
 
         if (!data.getMultiblocks().isEmpty()) {
 
-            List <TFCMultiblockData> multiblocks = data.getMultiblocks();
+            List<TFCMultiblockData> multiblocks = data.getMultiblocks();
             StringBuilder keyBuilder = new StringBuilder("multiblocks-");
             for (TFCMultiblockData block : multiblocks) {
                 Pair<String, List<BufferedImage>> result = getMultiBlockImages(block);
@@ -874,10 +854,11 @@ public class Context {
         }
 
         String path;
+        String blockId = nextId("block");// counting blocks
         if (images.size() == 1) {
-            path = saveImage(nextId("block"), images.get(0));
+            path = saveImage("assets/generated/" + blockId + ".png", images.getFirst());
         } else {
-            path = saveGif(nextId("block"), images);
+            path = saveGif("assets/generated/" + blockId + ".gif", images);
         }
 
         CACHE.put(key, path);
@@ -902,10 +883,11 @@ public class Context {
         }
 
         String path;
+        String blockId = nextId("block");// counting blocks
         if (images.size() == 1) {
-            path = saveImage(nextId("block"), images.get(0));
+            path = saveImage("assets/generated/" + blockId + ".png", images.getFirst());
         } else {
-            path = saveGif(nextId("block"), images);
+            path = saveGif("assets/generated/" + blockId + ".gif", images);
         }
 
         CACHE.put(key, path);

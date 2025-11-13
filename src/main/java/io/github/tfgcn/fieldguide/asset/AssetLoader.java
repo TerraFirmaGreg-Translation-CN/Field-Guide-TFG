@@ -240,22 +240,38 @@ public class AssetLoader {
         return map;
     }
 
-    public BufferedImage loadTexture(String path) {
-        Asset asset;
+    public AssetKey getTextureKey(String path) {
+        AssetKey assetKey;
         if (path.endsWith(".png")) {
-            asset = loadResource(path, null, "assets", ".png");
+            assetKey = new AssetKey(path, null, "assets", ".png");
         } else {
-            asset = loadResource(path, "textures", "assets", ".png");
+            assetKey = new AssetKey(path, "textures", "assets", ".png");
         }
+        return assetKey;
+    }
+
+    public BufferedImage loadTexture(String path) {
+        AssetKey assetKey;
+        if (path.endsWith(".png")) {
+            assetKey = new AssetKey(path, null, "assets", ".png");
+        } else {
+            assetKey = new AssetKey(path, "textures", "assets", ".png");
+        }
+
+        return loadTexture(assetKey);
+    }
+
+    public BufferedImage loadTexture(AssetKey assetKey) {
+        Asset asset = getAsset(assetKey);
         if (asset == null) {
-            log.error("Texture not found: {}", path);
+            log.error("Texture not found: {}", assetKey);
             return null;
         }
 
         try {
             return ImageIO.read(asset.getInputStream());
         } catch (IOException e) {
-            log.error("Error loading texture: {}", path, e);
+            log.error("Error loading texture: {}", assetKey, e);
         }
         return null;
     }

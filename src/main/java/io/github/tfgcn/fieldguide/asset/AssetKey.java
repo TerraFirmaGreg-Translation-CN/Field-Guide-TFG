@@ -6,7 +6,7 @@ import lombok.Data;
 public class AssetKey {
     private String id;
     private String namespace;
-    private String path;
+    private String resource;
     private String resourcePath;
 
     public AssetKey(String id, String resourceType, String resourceRoot, String resourceSuffix) {
@@ -14,10 +14,10 @@ public class AssetKey {
         int index = id.indexOf(':');
         if (index <= 0) {
             this.namespace = "minecraft";
-            this.path = id;
+            this.resource = id;
         } else {
             this.namespace = id.substring(0, index);
-            this.path = id.substring(index + 1);
+            this.resource = id.substring(index + 1);
         }
 
         StringBuilder sb = new StringBuilder();
@@ -25,8 +25,8 @@ public class AssetKey {
         if (resourceType != null && !resourceType.isEmpty()) {
             sb.append("/").append(resourceType);
         }
-        sb.append("/").append(path);
-        if (!path.endsWith(resourceSuffix)) {
+        sb.append("/").append(resource);
+        if (!resource.endsWith(resourceSuffix)) {
             sb.append(resourceSuffix);
         }
 

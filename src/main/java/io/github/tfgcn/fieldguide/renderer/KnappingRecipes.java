@@ -1,6 +1,7 @@
 package io.github.tfgcn.fieldguide.renderer;
 
 import io.github.tfgcn.fieldguide.Context;
+import io.github.tfgcn.fieldguide.asset.AssetKey;
 
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
@@ -39,7 +40,7 @@ public class KnappingRecipes {
         
         Map<String, Object> recipeData = context.getLoader().loadRecipe(recipeId);
         BufferedImage img = new BufferedImage(90, 90, BufferedImage.TYPE_INT_ARGB);
-        
+
         // 1.18版本使用'type'字段表示敲击类型
         // 1.20版本'type'字段仅为'tfc:knapping'，使用'knapping_type'字段表示具体类型
         KnappingType typeData;
@@ -96,8 +97,10 @@ public class KnappingRecipes {
                 }
             }
         }
-        
-        String path = context.saveImage(context.nextId("image"), img);
+
+        context.nextId("image");// counting images
+        AssetKey assetKey = new AssetKey(recipeId, "textures/recipes", "assets", ".png");
+        String path = context.saveImage(assetKey.getResourcePath(), img);
         KnappingRecipe result = new KnappingRecipe(recipeId, path);
         CACHE.put(recipeId, result);
         return result;
