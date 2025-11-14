@@ -47,11 +47,6 @@ public class Main implements Callable<Integer>  {
 
         BookParser bookParser = new BookParser();
         bookParser.processAllLanguages(context);
-
-        System.out.println("Missing keys: " + context.missingKeys.size());
-        for (String key : context.missingKeys) {
-            System.out.println(key);
-        }
         return 0;
     }
 }

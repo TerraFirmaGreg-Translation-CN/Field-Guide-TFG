@@ -39,32 +39,33 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build jar
-        run: ./gradlew build
+        run: ./gradlew clean build
 
       - name: Fetch mods
         run: |
           cd Modpack-Modern
           java -jar pakku.jar fetch
 
-      - name: Copy Modpack
-        run: |
-          mkdir run
-          mv ./Modpack-Modern/mods ./run
-          mv ./Modpack-Modern/kubejs ./run
-          mv ./Modpack-Modern/resourcepacks ./run
-          ls -l run/mods
-          ls -l run/kubejs
-          ls -l run/resourcepacks
-
       - name: Build Website
         run: |
           rm -rf output
-          java -jar build/libs/field-guide-tfg-1.0.0.jar -i run -o output
+          java -jar build/libs/field-guide-tfg-*.jar -i Modpack-Modern -o output
 
-      #- name: Setup Pages
-      #  uses: actions/configure-pages@v5
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
-      #- name: Upload Pages artifact
-      #  uses: actions/upload-pages-artifact@v3
-      #  with:
-      #    path: 'www'
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'output'
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
