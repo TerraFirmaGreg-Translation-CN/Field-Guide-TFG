@@ -3,7 +3,6 @@ package io.github.tfgcn.fieldguide.asset;
 import io.github.jmecn.draw3d.Application;
 import io.github.jmecn.draw3d.material.Material;
 import io.github.jmecn.draw3d.material.Texture;
-import io.github.jmecn.draw3d.math.Quaternion;
 import io.github.jmecn.draw3d.math.Vector2f;
 import io.github.jmecn.draw3d.math.Vector3f;
 import io.github.jmecn.draw3d.math.Vector4f;
@@ -16,11 +15,8 @@ import io.github.jmecn.draw3d.shader.UnshadedShader;
 import io.github.tfgcn.fieldguide.mc.BlockModel;
 import io.github.tfgcn.fieldguide.mc.ElementFace;
 import io.github.tfgcn.fieldguide.mc.ModelElement;
-import org.w3c.dom.Text;
 
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Map;
 
@@ -36,7 +32,11 @@ public class RendererTest extends Application {
         app.start();
     }
     //String model = "beneath:block/unposter";
-    String model = "tfc:block/metal/anvil/bismuth_bronze";
+    String model = "tfc:block/metal/anvil/bismuth_bronze";// TODO up、down的纹理不正常
+    //String model = "firmalife:block/plant/pineapple_bush_2";// TODO 需要处理模型旋转
+    //String model = "create:block/mechanical_pump/item";// TODO 模型不正常，需要处理uv旋转
+    //String model = "gtceu:block/machine/hv_chemical_reactor";// TODO 需要处理变体
+    //String model = "createaddition:block/electric_motor/block";// TODO cullface, face.rotaton, element.name, element.rotation
 
     Vector4f LIGHT = new Vector4f(1);// top
     Vector4f LIGHT_GRAY = new Vector4f(0.8f);// north and south
@@ -52,8 +52,6 @@ public class RendererTest extends Application {
 
     private AssetLoader assetLoader;
 
-    private Node node;
-
     public RendererTest() {
         this.width = 1080;
         this.height = 720;
@@ -66,8 +64,7 @@ public class RendererTest extends Application {
         String modpackPath = "Modpack-Modern";
         assetLoader = new AssetLoader(Paths.get(modpackPath));
 
-        BlockModel itemModel = assetLoader.loadItemModel("beneath:unposter");
-        Node node = buildModel(itemModel.getParent());
+        Node node = buildModel(model);
 
         rootNode.attachChild(node);
 
@@ -81,11 +78,13 @@ public class RendererTest extends Application {
     }
 
     double v3_scale = 1.0;
-    Vector3f v3(double x, double y, double z) {
+
+    private Vector3f v3(double x, double y, double z) {
         return new Vector3f((float)(x * v3_scale), (float)(y * v3_scale), (float)(z * v3_scale));
     }
-    Vector2f v2(double s, double t) {
-        return new Vector2f((float)(s / 16.0), (float)(t / 16.0));
+
+    private Vector2f v2(double s, double t) {
+        return new Vector2f((float) (s / 16.0), (float) (1.0 - t / 16.0));
     }
 
     public Node buildModel(String modelId) {
@@ -117,6 +116,8 @@ public class RendererTest extends Application {
             String dir = entry.getKey();
             ElementFace face = entry.getValue();
 
+            System.out.println(dir + ": " + face.getRotation());
+
             double s1 = face.getUv()[0];
             double t1 = face.getUv()[1];
             double s2 = face.getUv()[2];
@@ -129,10 +130,10 @@ public class RendererTest extends Application {
                     Vector3f v2 = v3(x2, y1, z1);
                     Vector3f v3 = v3(x2, y1, z2);
 
-                    Vector2f uv0 = v2(s1, 16 - t2);
-                    Vector2f uv1 = v2(s2, 16 - t2);
-                    Vector2f uv2 = v2(s2, 16 - t1);
-                    Vector2f uv3 = v2(s1, 16 - t1);
+                    Vector2f uv0 = v2(s2, t2);
+                    Vector2f uv1 = v2(s2, t1);
+                    Vector2f uv2 = v2(s1, t1);
+                    Vector2f uv3 = v2(s1, t2);
 
                     // index (0,1,2) (0,2,3) 上
                     // index (0,2,1) (0,3,2) 下
@@ -157,9 +158,9 @@ public class RendererTest extends Application {
                     Vector3f v3 = v3(x2, y2, z1);
 
                     Vector2f uv0 = v2(s1, t1);
-                    Vector2f uv1 = v2(s1, t2);
+                    Vector2f uv1 = v2(s2, t1);
                     Vector2f uv2 = v2(s2, t2);
-                    Vector2f uv3 = v2(s2, t1);
+                    Vector2f uv3 = v2(s1, t2);
 
                     int[] index = {0, 1, 2, 0, 2, 3};
                     Mesh mesh = new Mesh(
@@ -174,16 +175,16 @@ public class RendererTest extends Application {
                     rootNode.attachChild(new Geometry(mesh, material));
                     break;
                 }
-                case "north": {// FIXME
+                case "north": {
                     Vector3f v0 = v3(x2, y2, z1);
                     Vector3f v1 = v3(x2, y1, z1);
                     Vector3f v2 = v3(x1, y1, z1);
                     Vector3f v3 = v3(x1, y2, z1);
 
-                    Vector2f uv0 = v2(s2, 16 - t2);
-                    Vector2f uv1 = v2(s2, 16 - t1);
-                    Vector2f uv2 = v2(s1, 16 - t1);
-                    Vector2f uv3 = v2(s1, 16 - t2);
+                    Vector2f uv0 = v2(s1, t1);
+                    Vector2f uv1 = v2(s2, t1);
+                    Vector2f uv2 = v2(s2, t2);
+                    Vector2f uv3 = v2(s1, t2);
 
                     int[] index = {0, 1, 2, 0, 2, 3};
                     Mesh mesh = new Mesh(
@@ -204,10 +205,10 @@ public class RendererTest extends Application {
                     Vector3f v2 = v3(x2, y1, z2);
                     Vector3f v3 = v3(x2, y2, z2);
 
-                    Vector2f uv0 = v2(s1, 16 - t2);
-                    Vector2f uv1 = v2(s2, 16 - t2);
-                    Vector2f uv2 = v2(s2, 16 - t1);
-                    Vector2f uv3 = v2(s1, 16 - t1);
+                    Vector2f uv0 = v2(s1, t1);
+                    Vector2f uv1 = v2(s2, t1);
+                    Vector2f uv2 = v2(s2, t2);
+                    Vector2f uv3 = v2(s1, t2);
 
                     int[] index = {0, 1, 2, 0, 2, 3};
                     Mesh mesh = new Mesh(
@@ -222,16 +223,16 @@ public class RendererTest extends Application {
                     rootNode.attachChild(new Geometry(mesh, material));
                     break;
                 }
-                case "west": {// FIXME
+                case "west": {
                     Vector3f v0 = v3(x1, y2, z1);
                     Vector3f v1 = v3(x1, y1, z1);
                     Vector3f v2 = v3(x1, y1, z2);
                     Vector3f v3 = v3(x1, y2, z2);
 
-                    Vector2f uv0 = v2(s1, 16 - t2);
-                    Vector2f uv1 = v2(s1, 16 - t1);
-                    Vector2f uv2 = v2(s2, 16 - t1);
-                    Vector2f uv3 = v2(s2, 16 - t2);
+                    Vector2f uv0 = v2(s2, t2);
+                    Vector2f uv1 = v2(s2, t1);
+                    Vector2f uv2 = v2(s1, t1);
+                    Vector2f uv3 = v2(s1, t2);
 
                     int[] index = {0, 1, 2, 0, 2, 3};
                     Mesh mesh = new Mesh(
@@ -252,10 +253,10 @@ public class RendererTest extends Application {
                     Vector3f v2 = v3(x2, y1, z1);
                     Vector3f v3 = v3(x2, y2, z1);
 
-                    Vector2f uv0 = v2(s2, 16 - t2);
-                    Vector2f uv1 = v2(s2, 16 - t1);
-                    Vector2f uv2 = v2(s1, 16 - t1);
-                    Vector2f uv3 = v2(s1, 16 - t2);
+                    Vector2f uv0 = v2(s2, t2);
+                    Vector2f uv1 = v2(s2, t1);
+                    Vector2f uv2 = v2(s1, t1);
+                    Vector2f uv3 = v2(s1, t2);
 
                     int[] index = {0, 1, 2, 0, 2, 3};
                     Mesh mesh = new Mesh(
@@ -291,7 +292,15 @@ public class RendererTest extends Application {
 
     private String getTexture(Map<String, String> map, String id) {
         if (id.startsWith("#")) {
-            return getTexture(map, id.substring(1));
+            String ref = map.get(id.substring(1));
+            if (ref == null) {
+                return "#missing";
+            }
+            if (ref.startsWith("#")) {
+                return getTexture(map, ref);
+            } else {
+                return ref;
+            }
         } else {
             return map.getOrDefault(id, "assets/minecraft/textures/block/missing.png");
         }

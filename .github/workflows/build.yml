@@ -2,7 +2,7 @@ name: Build Project
 
 on:
   push:
-    branches: ["dev"]
+    branches: ["master"]
 
 permissions:
   contents: write

@@ -11,7 +11,7 @@ import java.util.*;
 @Data
 public class BlockModel {
 
-    private String credit;
+    private String credit;// Blockbench
     private String parent;
     private Boolean ambientOcclusion;
     private Map<String, String> textures;

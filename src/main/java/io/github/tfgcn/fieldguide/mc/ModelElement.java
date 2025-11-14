@@ -7,6 +7,7 @@ import java.util.Map;
 
 @Data
 public class ModelElement {
+    private String name;// Blockbench
     private double[] from;
     private double[] to;
     private ElementRotation rotation;
