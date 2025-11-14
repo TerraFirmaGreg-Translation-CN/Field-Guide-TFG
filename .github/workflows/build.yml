@@ -38,16 +38,15 @@ jobs:
       - name: Grant Execute Permission For Gradlew
         run: chmod +x gradlew
 
-      - name: Build
+      - name: Build jar
         run: ./gradlew build
 
-      - name: Build Pakku Modpack
+      - name: Fetch mods
         run: |
           cd Modpack-Modern
           java -jar pakku.jar fetch
-          java -jar pakku.jar export
 
-      - name: Copy modpack
+      - name: Copy Modpack
         run: |
           mkdir run
           mv ./Modpack-Modern/mods ./run
@@ -57,6 +56,11 @@ jobs:
           ls -l run/kubejs
           ls -l run/resourcepacks
 
+      - name: Build Website
+        run: |
+          rm -rf output
+          java -jar build/libs/field-guide-tfg-1.0.0.jar -i run -o output
+
       #- name: Setup Pages
       #  uses: actions/configure-pages@v5
 
@@ -64,14 +68,3 @@ jobs:
       #  uses: actions/upload-pages-artifact@v3
       #  with:
       #    path: 'www'
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
