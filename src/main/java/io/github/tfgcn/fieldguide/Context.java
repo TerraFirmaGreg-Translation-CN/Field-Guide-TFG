@@ -67,13 +67,15 @@ public class Context {
 
     // language
     private Map<String, String> langFallbackKeys = new HashMap<>();// en_us
-    public Set<String> missingKeys = new TreeSet<>();// FIXME remove later
     private Map<String, String> langKeys = new HashMap<>();
 
     private Map<String, String> keybindings = new HashMap<>();
 
     // ID 计数器
     private Map<String, Integer> lastUid = new HashMap<>();
+
+    public Set<String> missingKeys = new TreeSet<>();// FIXME remove later
+    public Set<String> missingImages = new TreeSet<>();
 
     // 统计信息
     private int recipesFailed = 0;
@@ -635,6 +637,7 @@ public class Context {
         if (model.getParent() == null) {
             log.warn("Item model no parent: {}", itemId);
             // TODO 支持无parent的模型
+            missingImages.add(itemId);
             throw new InternalException("Item model no parent: " + itemId);
         }
         // TODO
@@ -677,7 +680,13 @@ public class Context {
         if ("item".equals(type)) {
             // single-layer item model
             String layer0 = model.getTextures().get("layer0");
-            return loader.loadTexture(layer0);
+            if (layer0 != null) {
+                return loader.loadTexture(layer0);
+            } else {
+                log.warn("Item model no layer0: {}", itemId);
+                missingImages.add(itemId);
+                throw new InternalException("Item model no layer0: " + itemId);
+            }
         } else if ("block".equals(type)) {
             // Block model
             // TODO remove the try-catch
@@ -688,11 +697,13 @@ public class Context {
                 img = resizeImage(img, 64, 64);
                 return img;
             } catch (Exception e) {
-                // add e later
+                // TODO add e later
+                missingImages.add(itemId);
                 log.error("Failed load model {} @ {}, message: {}", parent, itemId, e.getMessage());
                 throw new InternalException("Failed load model " + parent + " @ " + itemId);
             }
         } else {
+            missingImages.add(itemId);
             log.error("Unknown Parent {} @ {}, model: {}", parent, itemId, model);
             throw new InternalException("Unknown Parent " + parent + " @ " + itemId);
         }

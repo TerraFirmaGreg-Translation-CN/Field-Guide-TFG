@@ -47,6 +47,19 @@ public class BookParser {
                 context.getLastUid().get("block"), 
                 context.getLastUid().get("item"), 
                 context.getLastUid().get("image"));
+
+        log.info("Missing language keys: {}", context.getMissingKeys().size());
+        for (String key : context.getMissingKeys()) {
+            System.out.println(key);
+        }
+        log.info("Missing asset keys: {}", context.getLoader().getMissingAssets().size());
+        for (String key : context.getLoader().getMissingAssets()) {
+            System.out.println(key);
+        }
+        log.info("Missing image keys: {}", context.getMissingImages().size());
+        for (String key : context.getMissingImages()) {
+            System.out.println(key);
+        }
     }
 
     public void parseBook(Context context) {

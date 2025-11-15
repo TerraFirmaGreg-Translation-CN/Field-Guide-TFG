@@ -11,6 +11,7 @@ import io.github.tfgcn.fieldguide.minecraft.Tags;
 import io.github.tfgcn.fieldguide.patchouli.Book;
 import io.github.tfgcn.fieldguide.Versions;
 import io.github.tfgcn.fieldguide.exception.InternalException;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.imageio.ImageIO;
@@ -39,6 +40,9 @@ public class AssetLoader {
     private final Map<String, BlockModel> itemModelCache;
     private final Map<String, List<Tags>> tagsCache;
 
+    @Getter
+    private final Set<String> missingAssets = new TreeSet<>();
+
     public AssetLoader(Path instanceRoot) {
         this.instanceRoot = instanceRoot;
         this.sources = new ArrayList<>();
@@ -46,7 +50,30 @@ public class AssetLoader {
         this.blockModelCache = new TreeMap<>();
         this.itemModelCache = new TreeMap<>();
         this.tagsCache = new TreeMap<>();
+
         initializeSources();
+        initBuiltinModels();
+    }
+
+    private void initBuiltinModels() {
+        BlockModel itemGenerated = new BlockModel();
+        itemGenerated.setTextures(Map.of("particle", "#layer0"));
+        itemGenerated.setGuiLight("front");
+
+        BlockModel builtinGenerated = new BlockModel();
+        builtinGenerated.setTextures(Map.of("particle", "#layer0"));
+        builtinGenerated.setGuiLight("front");
+
+        blockModelCache.put("minecraft:builtin/entity", new BlockModel());
+        blockModelCache.put("minecraft:builtin/generated", builtinGenerated);
+        blockModelCache.put("minecraft:item/generated", itemGenerated);
+        blockModelCache.put("forge:item/bucket", new BlockModel());
+        blockModelCache.put("forge:item/default", new BlockModel());
+
+        itemModelCache.put("minecraft:item/generated", itemGenerated);
+        itemModelCache.put("minecraft:builtin/generated", builtinGenerated);
+        itemModelCache.put("forge:item/bucket", new BlockModel());
+        itemModelCache.put("forge:item/default", new BlockModel());
     }
 
     private void initializeSources() {
@@ -315,7 +342,7 @@ public class AssetLoader {
 
         Asset asset = getAsset(assetKey.getResourcePath());
         if (asset == null) {
-            log.error("Resource not found: {}, in {}", resourceLocation, assetKey);
+            missingAssets.add(resourceLocation);
             throw new AssetNotFoundException("Resource not found: " + resourceLocation + " in " + assetKey.getResourcePath());
         }
         return asset;
@@ -359,7 +386,8 @@ public class AssetLoader {
             blockModelCache.put(resourceLocation, model);
             return model;
         } catch (Exception e) {
-            throw new InternalException("");
+            log.error("Load model failed, {}, message: {}", resourceLocation, e.getMessage());
+            throw new InternalException("Load model failed");
         }
     }
 

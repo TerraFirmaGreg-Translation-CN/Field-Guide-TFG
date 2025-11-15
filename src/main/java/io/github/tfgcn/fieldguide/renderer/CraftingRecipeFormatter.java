@@ -5,10 +5,12 @@ import io.github.tfgcn.fieldguide.ProjectUtil;
 import io.github.tfgcn.fieldguide.asset.ItemImageResult;
 import io.github.tfgcn.fieldguide.asset.ItemStackResult;
 import io.github.tfgcn.fieldguide.exception.InternalException;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 public class CraftingRecipeFormatter {
 
     /**
@@ -179,6 +181,12 @@ public class CraftingRecipeFormatter {
             } else if (mapData.containsKey("type")) {
                 String type = (String) mapData.get("type");
                 switch (type) {
+                    case "tfc:has_trait": {// FIXME 不知道对不对。这是 firmalife:food/pineapple firmalife:dried
+                        return formatIngredient(context, mapData.get("ingredient"));
+                    }
+                    case "tfc:lacks_trait": {// FIXME 不知道对不对。这是 casting_channel 做巧克力的配方。
+                        return formatIngredient(context, mapData.get("ingredient"));
+                    }
                     case "tfc:not_rotten":
                         return formatIngredient(context, mapData.get("ingredient"));
                     case "tfc:fluid_item":
@@ -204,6 +212,8 @@ public class CraftingRecipeFormatter {
                             }
                         }
                         return context.getItemImage(csvString.toString(), true);
+                    default:
+                        log.info("Unknown ingredient type: {}", type);
                 }
             }
         } else if (data instanceof List) {

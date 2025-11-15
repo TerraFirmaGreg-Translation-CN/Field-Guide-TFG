@@ -5,7 +5,6 @@ import io.github.tfgcn.fieldguide.asset.ItemImageResult;
 import io.github.tfgcn.fieldguide.asset.ItemStackResult;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class MiscRecipeFormatter {
     
@@ -90,14 +89,14 @@ public class MiscRecipeFormatter {
                     // 1.18 格式
                     count = ((Number) data.get("input_count")).intValue();
                     ingredient = ing;
-                } else if (ingMap.containsKey("count")) {
-                    // 1.20 格式
-                    count = ((Number) ingMap.get("count")).intValue();
-                    ingredient = ing;
                 } else if (ingMap.containsKey("ingredient") && ingMap.containsKey("count")) {
                     // 嵌套格式
                     ingredient = ingMap.get("ingredient");
                     count = ((Number) ingMap.get("count")).intValue();
+                } else if (ingMap.containsKey("count")) {
+                    // 1.20 格式
+                    count = ((Number) ingMap.get("count")).intValue();
+                    ingredient = ing;
                 }
             }
         }
