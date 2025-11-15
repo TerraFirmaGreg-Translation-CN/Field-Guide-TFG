@@ -526,8 +526,7 @@ public class BookParser {
     
     private void parseTablePage(Context context, List<String> buffer, PageTable page) {
         try {
-            // table_formatter.format_table(context, buffer, data)
-            // FIXME log.debug("Table formatting not implemented");
+            TableFormatter.formatTable(context, buffer, page);
         } catch (InternalException e) {
             log.error("Table formatting failed", e);
         }
