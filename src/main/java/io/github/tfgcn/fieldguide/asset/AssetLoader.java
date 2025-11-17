@@ -2,6 +2,7 @@ package io.github.tfgcn.fieldguide.asset;
 
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
+import io.github.tfgcn.fieldguide.data.gtceu.utils.ResourceHelper;
 import io.github.tfgcn.fieldguide.data.mc.tag.TagElement;
 import io.github.tfgcn.fieldguide.data.mc.tag.Tags;
 import io.github.tfgcn.fieldguide.gson.JsonUtils;
@@ -61,6 +62,9 @@ public class AssetLoader {
         this.registeredImage = new HashMap<>();
 
         initializeSources();
+
+        ResourceHelper.assetLoader = this;
+
         initBuiltinModels();
         initGtceuIngots();
     }
@@ -413,15 +417,8 @@ public class AssetLoader {
     public BlockModel loadBlockModelWithState(String modelId) {
         // FIXME 这样对吗？有一些blockState文件中没有定义默认模型，导致 modelId 中没有 [] 时，无法正确找到映射的方块。
         BlockVariant blockVariant = loadBlockVariant(modelId);
-        log.info("blockVariant: {}", blockVariant);
+        loadBlockStates(blockVariant.getBlock());
         return loadModel(blockVariant.getVariant().getModel());
-//        if (modelId.indexOf('[') > 0) {
-//            BlockVariant blockVariant = loadBlockVariant(modelId);
-//            log.info("blockVariant: {}", blockVariant);
-//            return loadModel(blockVariant.getVariant().getModel());
-//        } else {
-//            return loadBlockModel(modelId);
-//        }
     }
 
     public static BlockVariant parseBlockState(String blockStateId) {
@@ -454,17 +451,31 @@ public class AssetLoader {
         return state;
     }
 
-    public BlockState loadBlockState(String blockState) {
-        BlockVariant parsedState = parseBlockState(blockState);
-        String block = parsedState.getBlock();
-
-        Asset asset = loadResource(block, "blockstates", "assets", ".json");
+    public BlockState loadBlockState(String id) {
+        Asset asset = loadResource(id, "blockstates", "assets", ".json");
         try {
             return JsonUtils.readFile(asset.getInputStream(), BlockState.class);
         } catch (IOException e) {
-            log.error("Failed to read blockstate:{}, message: {}", blockState, e.getMessage());
-            throw new InternalException("Failed to read blockState: " + blockState);
+            log.error("Failed to read blockstate:{}, message: {}", id, e.getMessage());
+            throw new InternalException("Failed to read id: " + id);
         }
+    }
+
+    public List<BlockState> loadBlockStates(String id) {
+        List<BlockState> list = new ArrayList<>();
+        AssetKey assetKey = new AssetKey(id, "blockstates", "assets", ".json");
+
+        List<Asset> assets = getAssets(assetKey);
+        for (Asset asset : assets) {
+            try {
+                BlockState blockState = JsonUtils.readFile(asset.getInputStream(), BlockState.class);
+                list.add(blockState);
+            } catch (IOException e) {
+                log.error("Failed to read blockstate:{}, message: {}", asset.getPath(), e.getMessage());
+            }
+        }
+
+        return list;
     }
 
     public BlockVariant loadBlockVariant(String blockStateId) {
@@ -472,12 +483,12 @@ public class AssetLoader {
         String block = blockVariant.getBlock();
         if (!blockVariant.hasProperties()) {
             // FIXME what to do if no variants found ?
-            log.info("No properties for blockStateId:{}", blockStateId);
+            log.debug("No properties for blockStateId:{}", blockStateId);
         }
 
         Map<String, String> state = blockVariant.getProperties();
 
-        BlockState blockState = loadBlockState(block);
+        BlockState blockState = loadBlockState(blockVariant.getBlock());
 
         if (blockState.hasVariants()) {
             List<Variant> variants = blockState.selectByVariants(state);

@@ -3,6 +3,7 @@ package io.github.tfgcn.fieldguide.gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.github.tfgcn.fieldguide.data.patchouli.ItemStackParser;
 import io.github.tfgcn.fieldguide.data.patchouli.page.PageSpotlightItem;
 
 import java.io.IOException;
@@ -62,7 +63,7 @@ public class PageSpotlightItemAdapter extends TypeAdapter<List<PageSpotlightItem
                 in.endObject();
                 break;
             case STRING:
-                String[] parts = in.nextString().split(",");
+                String[] parts = ItemStackParser.splitStacksFromSerializedIngredient(in.nextString());
                 for (String part : parts) {
                     part = part.trim();
                     if (part.startsWith("tag:")) {
