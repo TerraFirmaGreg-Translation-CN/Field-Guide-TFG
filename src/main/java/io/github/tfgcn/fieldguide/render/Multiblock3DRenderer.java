@@ -88,7 +88,7 @@ public class Multiblock3DRenderer {
         int height = pattern.length;
         int col = pattern[0].length;
         int row = pattern[0][0].length();
-        log.info("Model size: {}x{}x{}", col, height, row);
+        log.debug("Model size: {}x{}x{}", col, height, row);
 
         float startX = -col * 8f;
         float startZ = -row * 8f;
@@ -104,7 +104,8 @@ public class Multiblock3DRenderer {
                         continue;
                     }
                     String model = mapping.get(String.valueOf(c));
-                    if (model == null || "AIR".equalsIgnoreCase(model)) {
+                    // FIXME 考虑把 minecraft:air 注册为一个空模型
+                    if (model == null || "AIR".equalsIgnoreCase(model) || "minecraft:air".equalsIgnoreCase(model)) {
                         continue;
                     }
                     Vector3f location = v3(x * 16 + startX, y * 16 + startY, z * 16 + startZ);

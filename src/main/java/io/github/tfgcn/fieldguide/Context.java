@@ -970,12 +970,8 @@ public class Context {
     }
 
     public BufferedImage createBlockModelImage(String block, BlockModel model) throws Exception {
-        if (model.getParent() == null) {
-            throw new RuntimeException("Block Model : No Parent : '" + block + "'");
-        }
-
         String parent = model.getParent();
-        if (parent.indexOf(':') < 0) {
+        if (parent != null && parent.indexOf(':') < 0) {
             parent = "minecraft:" + parent;
         }
         Map<String, String> textures = model.getTextures();
