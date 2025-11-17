@@ -14,9 +14,9 @@ import io.github.tfgcn.fieldguide.render3d.scene.Mesh;
 import io.github.tfgcn.fieldguide.render3d.scene.Node;
 import io.github.tfgcn.fieldguide.render3d.shader.UnshadedShader;
 import io.github.tfgcn.fieldguide.exception.AssetNotFoundException;
-import io.github.tfgcn.fieldguide.minecraft.BlockModel;
-import io.github.tfgcn.fieldguide.minecraft.ElementFace;
-import io.github.tfgcn.fieldguide.minecraft.ModelElement;
+import io.github.tfgcn.fieldguide.data.mc.blockmodel.BlockModel;
+import io.github.tfgcn.fieldguide.data.mc.blockmodel.ElementFace;
+import io.github.tfgcn.fieldguide.data.mc.blockmodel.ModelElement;
 import lombok.extern.slf4j.Slf4j;
 
 import java.awt.image.BufferedImage;

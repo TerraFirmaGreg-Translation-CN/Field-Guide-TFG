@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.nio.file.Paths;
 
-import static io.github.tfgcn.fieldguide.renderer.TextureRenderer.multiplyImageByColor;
+import static io.github.tfgcn.fieldguide.render.TextureRenderer.multiplyImageByColor;
 
 /**
  * desc:

@@ -2,15 +2,17 @@ package io.github.tfgcn.fieldguide.asset;
 
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import io.github.tfgcn.fieldguide.JsonUtils;
+import io.github.tfgcn.fieldguide.data.mc.tag.TagElement;
+import io.github.tfgcn.fieldguide.data.mc.tag.Tags;
+import io.github.tfgcn.fieldguide.gson.JsonUtils;
 import io.github.tfgcn.fieldguide.MCMeta;
 import io.github.tfgcn.fieldguide.exception.AssetNotFoundException;
-import io.github.tfgcn.fieldguide.minecraft.*;
-import io.github.tfgcn.fieldguide.minecraft.blockstate.BlockState;
-import io.github.tfgcn.fieldguide.minecraft.blockstate.BlockVariant;
-import io.github.tfgcn.fieldguide.minecraft.blockstate.Variant;
-import io.github.tfgcn.fieldguide.patchouli.Book;
-import io.github.tfgcn.fieldguide.Versions;
+import io.github.tfgcn.fieldguide.data.mc.blockstate.BlockState;
+import io.github.tfgcn.fieldguide.data.mc.blockstate.BlockVariant;
+import io.github.tfgcn.fieldguide.data.mc.blockstate.Variant;
+import io.github.tfgcn.fieldguide.data.mc.blockmodel.BlockModel;
+import io.github.tfgcn.fieldguide.data.patchouli.Book;
+import io.github.tfgcn.fieldguide.Constants;
 import io.github.tfgcn.fieldguide.exception.InternalException;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +34,7 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 import static io.github.tfgcn.fieldguide.MCMeta.CACHE;
-import static io.github.tfgcn.fieldguide.renderer.TextureRenderer.multiplyImageByColor;
+import static io.github.tfgcn.fieldguide.render.TextureRenderer.multiplyImageByColor;
 
 @Slf4j
 public class AssetLoader {
@@ -185,9 +187,9 @@ public class AssetLoader {
         }
 
         // download minecraft and forge
-        MCMeta.loadCache(Versions.MC_VERSION, Versions.FORGE_VERSION, Versions.LANGUAGES);
+        MCMeta.loadCache(Constants.MC_VERSION, Constants.FORGE_VERSION, Constants.LANGUAGES);
 
-        Path forgeJar = Paths.get(CACHE, MCMeta.getForgeJarName(Versions.MC_VERSION));
+        Path forgeJar = Paths.get(CACHE, MCMeta.getForgeJarName(Constants.MC_VERSION));
         if (Files.exists(forgeJar)) {
             try {
                 sources.add(new JarAssetSource(forgeJar));
@@ -196,7 +198,7 @@ public class AssetLoader {
             }
         }
 
-        Path clientJar = Paths.get(CACHE, MCMeta.getClientJarName(Versions.MC_VERSION));
+        Path clientJar = Paths.get(CACHE, MCMeta.getClientJarName(Constants.MC_VERSION));
         if (Files.exists(clientJar)) {
             try {
                 sources.add(new JarAssetSource(clientJar));

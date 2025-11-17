@@ -1,23 +1,23 @@
 package io.github.tfgcn.fieldguide;
 
 import io.github.tfgcn.fieldguide.asset.Asset;
+import io.github.tfgcn.fieldguide.data.patchouli.page.*;
+import io.github.tfgcn.fieldguide.data.tfc.page.*;
 import io.github.tfgcn.fieldguide.exception.InternalException;
-import io.github.tfgcn.fieldguide.patchouli.BookCategory;
-import io.github.tfgcn.fieldguide.patchouli.BookEntry;
-import io.github.tfgcn.fieldguide.patchouli.BookPage;
+import io.github.tfgcn.fieldguide.gson.JsonUtils;
+import io.github.tfgcn.fieldguide.data.patchouli.BookCategory;
+import io.github.tfgcn.fieldguide.data.patchouli.BookEntry;
+import io.github.tfgcn.fieldguide.data.patchouli.BookPage;
 import io.github.tfgcn.fieldguide.asset.ItemImageResult;
-import io.github.tfgcn.fieldguide.patchouli.page.PageSpotlightItem;
-import io.github.tfgcn.fieldguide.patchouli.page.*;
-import io.github.tfgcn.fieldguide.patchouli.page.tfc.*;
-import io.github.tfgcn.fieldguide.renderer.*;
+import io.github.tfgcn.fieldguide.render.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.*;
 
-import static io.github.tfgcn.fieldguide.renderer.ImageTemplates.IMAGE_KNAPPING;
-import static io.github.tfgcn.fieldguide.renderer.ImageTemplates.IMAGE_SINGLE;
+import static io.github.tfgcn.fieldguide.render.ImageTemplates.IMAGE_KNAPPING;
+import static io.github.tfgcn.fieldguide.render.ImageTemplates.IMAGE_SINGLE;
 
 @Slf4j
 public class BookParser {
@@ -25,7 +25,7 @@ public class BookParser {
     public void processAllLanguages(Context context) {
         // load en_us lang
 
-        for (String lang : Versions.LANGUAGES) {
+        for (String lang : Constants.LANGUAGES) {
             log.info("Language: {}", lang);
             parseBook(context.withLang(lang));
             context.sort();

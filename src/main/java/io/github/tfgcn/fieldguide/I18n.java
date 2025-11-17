@@ -1,8 +1,5 @@
 package io.github.tfgcn.fieldguide;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
-
 public final class I18n {
 
     public static final String TITLE = key("title");

@@ -1,13 +1,12 @@
 package io.github.tfgcn.fieldguide.asset;
 
-import io.github.tfgcn.fieldguide.renderer.Multiblock3DRenderer;
+import io.github.tfgcn.fieldguide.render.Multiblock3DRenderer;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**

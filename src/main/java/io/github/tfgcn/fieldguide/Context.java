@@ -6,18 +6,19 @@ import io.github.tfgcn.fieldguide.asset.Asset;
 import io.github.tfgcn.fieldguide.asset.AssetKey;
 import io.github.tfgcn.fieldguide.asset.AssetLoader;
 import io.github.tfgcn.fieldguide.exception.InternalException;
-import io.github.tfgcn.fieldguide.minecraft.blockstate.BlockVariant;
-import io.github.tfgcn.fieldguide.patchouli.BookCategory;
-import io.github.tfgcn.fieldguide.patchouli.BookEntry;
-import io.github.tfgcn.fieldguide.patchouli.page.IPageDoubleRecipe;
-import io.github.tfgcn.fieldguide.patchouli.page.IPageWithText;
+import io.github.tfgcn.fieldguide.gson.JsonUtils;
+import io.github.tfgcn.fieldguide.data.mc.blockstate.BlockVariant;
+import io.github.tfgcn.fieldguide.data.patchouli.BookCategory;
+import io.github.tfgcn.fieldguide.data.patchouli.BookEntry;
+import io.github.tfgcn.fieldguide.data.patchouli.page.IPageDoubleRecipe;
+import io.github.tfgcn.fieldguide.data.patchouli.page.IPageWithText;
 import io.github.tfgcn.fieldguide.asset.ItemImageResult;
-import io.github.tfgcn.fieldguide.minecraft.BlockModel;
-import io.github.tfgcn.fieldguide.patchouli.page.PageMultiblock;
-import io.github.tfgcn.fieldguide.patchouli.page.PageMultiblockData;
-import io.github.tfgcn.fieldguide.patchouli.page.tfc.PageMultiMultiblock;
-import io.github.tfgcn.fieldguide.patchouli.page.tfc.TFCMultiblockData;
-import io.github.tfgcn.fieldguide.renderer.*;
+import io.github.tfgcn.fieldguide.data.mc.blockmodel.BlockModel;
+import io.github.tfgcn.fieldguide.data.patchouli.page.PageMultiblock;
+import io.github.tfgcn.fieldguide.data.patchouli.page.PageMultiblockData;
+import io.github.tfgcn.fieldguide.data.tfc.page.PageMultiMultiblock;
+import io.github.tfgcn.fieldguide.data.tfc.page.TFCMultiblockData;
+import io.github.tfgcn.fieldguide.render.*;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
@@ -35,8 +36,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.List;
 
-import static io.github.tfgcn.fieldguide.renderer.TextureRenderer.adjustBrightness;
-import static io.github.tfgcn.fieldguide.renderer.TextureRenderer.resizeImage;
+import static io.github.tfgcn.fieldguide.render.TextureRenderer.adjustBrightness;
+import static io.github.tfgcn.fieldguide.render.TextureRenderer.resizeImage;
 
 @Slf4j
 @Data
