@@ -1,4 +1,4 @@
-package io.github.tfgcn.fieldguide;
+package io.github.tfgcn.fieldguide.localization;
 
 import lombok.Getter;
 

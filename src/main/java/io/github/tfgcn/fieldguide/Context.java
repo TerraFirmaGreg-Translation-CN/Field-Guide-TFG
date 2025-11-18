@@ -18,6 +18,7 @@ import io.github.tfgcn.fieldguide.data.patchouli.page.PageMultiblock;
 import io.github.tfgcn.fieldguide.data.patchouli.page.PageMultiblockData;
 import io.github.tfgcn.fieldguide.data.tfc.page.PageMultiMultiblock;
 import io.github.tfgcn.fieldguide.data.tfc.page.TFCMultiblockData;
+import io.github.tfgcn.fieldguide.localization.Language;
 import io.github.tfgcn.fieldguide.render.*;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

@@ -5,7 +5,7 @@ import io.github.tfgcn.fieldguide.*;
 import io.github.tfgcn.fieldguide.gson.JsonUtils;
 import io.github.tfgcn.fieldguide.data.patchouli.BookCategory;
 import io.github.tfgcn.fieldguide.data.patchouli.BookEntry;
-import io.github.tfgcn.fieldguide.Language;
+import io.github.tfgcn.fieldguide.localization.Language;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 

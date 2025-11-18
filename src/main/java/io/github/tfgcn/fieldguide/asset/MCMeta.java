@@ -1,7 +1,7 @@
 package io.github.tfgcn.fieldguide.asset;
 
 import com.google.gson.Gson;
-import io.github.tfgcn.fieldguide.Language;
+import io.github.tfgcn.fieldguide.localization.Language;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.*;

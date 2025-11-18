@@ -9,6 +9,7 @@ import io.github.tfgcn.fieldguide.data.patchouli.BookCategory;
 import io.github.tfgcn.fieldguide.data.patchouli.BookEntry;
 import io.github.tfgcn.fieldguide.data.patchouli.BookPage;
 import io.github.tfgcn.fieldguide.asset.ItemImageResult;
+import io.github.tfgcn.fieldguide.localization.Language;
 import io.github.tfgcn.fieldguide.render.*;
 import lombok.extern.slf4j.Slf4j;
 

@@ -2,7 +2,7 @@ package io.github.tfgcn.fieldguide.asset;
 
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import io.github.tfgcn.fieldguide.Language;
+import io.github.tfgcn.fieldguide.localization.Language;
 import io.github.tfgcn.fieldguide.data.gtceu.utils.ResourceHelper;
 import io.github.tfgcn.fieldguide.data.minecraft.tag.TagElement;
 import io.github.tfgcn.fieldguide.data.minecraft.tag.Tags;
