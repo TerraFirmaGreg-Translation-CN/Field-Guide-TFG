@@ -121,7 +121,24 @@
             </ol>
           </nav>
 
-          ${page_content}
+          <h1 class="mb-4">${current_category.name}</h1>
+          <p>${current_category.description}</p>
+          <div class="row row-cols-1 row-cols-md-3 g-3">
+            <#list current_category.entries! as entry>
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <#assign iconSrc = ((entry.iconPath)?? && entry.iconPath?has_content)?then(entry.iconPath, '../../_images/placeholder_16.png')>
+                    <#assign altText = (entry.iconName)!(entry.name)!>
+                    <img class="entry-card-icon me-2" src="${iconSrc}" alt="${altText}" />
+                    <a href="${entry.relId}.html">${entry.name}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </#list>
+          </div>
         </div>
       </div>
     </div>

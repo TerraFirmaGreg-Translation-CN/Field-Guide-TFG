@@ -174,8 +174,6 @@ public class HtmlRenderer {
         data.put("categories", context.getCategories());
         data.put("current_category", cat);
 
-        data.put("page_content", generateCategoryPageContent(cat));
-
         // 生成分类页面
         String outputDir = Paths.get(context.getOutputLangDir(), categoryId).toString();
         context.getHtmlRenderer().generatePage("category.ftl", outputDir, "index.html", data);
@@ -209,7 +207,7 @@ public class HtmlRenderer {
             data.put("categories", context.getCategories());
             data.put("current_category", cat);
             data.put("current_entry", entry);
-            data.put("contents", generateEntryTableOfContents(context.getCategories(), categoryId, entryId));
+
             data.put("page_content", generateEntryPageContent(entry));
 
             // 生成条目页面
@@ -236,23 +234,6 @@ public class HtmlRenderer {
                 .collect(Collectors.toList());
     }
 
-    public static String generateLanguageDropdown(List<String> languages, Context context) {
-        if (languages == null || languages.isEmpty()) {
-            return "";
-        }
-
-        return languages.stream()
-                .filter(Objects::nonNull)
-                .map(lang -> String.format(
-                        """
-                        <a href="../%s/index.html" class="dropdown-item">%s</a>
-                        """,
-                        lang,
-                        context.translate(String.format(I18n.LANGUAGE_NAME, lang))
-                ))
-                .collect(Collectors.joining("\n"));
-    }
-
     public static String indexBreadcrumbModern(String relativePath) {
         String iconHtml = "<i class=\"bi bi-house-fill\"></i>";
 
@@ -267,82 +248,6 @@ public class HtmlRenderer {
         }
     }
 
-    public static String generateTableOfContents(List<BookCategory> categories) {
-        return categories.stream()
-                .map(category -> {
-                    return String.format(
-                            """
-                            <li><a href="./%s/">%s</a></li>
-                            """,
-                            category.getId(), category.getName()
-                    );
-                })
-                .collect(Collectors.joining("\n"));
-    }
-
-    /**
-     * 生成主页内容
-     */
-    public static String generateHomePageContent(Context context, List<BookCategory> categories) {
-        String splashImage = getSplashLocation();
-        String textHome = context.translate(I18n.HOME);
-        String textEntries = context.translate(I18n.CATEGORIES);
-
-        // 生成分类卡片
-        String categoryCards = categories.stream()
-                .map(category -> {
-                    String catId = category.getId();
-                    return String.format(
-                            """
-                            <div class="col">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <a href="%s/index.html">%s</a>
-                                    </div>
-                                    <div class="card-body">%s</div>
-                                </div>
-                            </div>
-                            """,
-                            catId, category.getName(), category.getDescription()
-                    );
-                })
-                .collect(Collectors.joining("\n"));
-
-        return String.format(
-                """
-                <!-- START -->
-                <div align="center">
-                  <a href="https://discord.gg/AEaCzCTUwQ">
-                    <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3.1.2/assets/compact/social/discord-singular_vector.svg" alt="Chat on Discord">
-                  </a>
-                  <a href="https://www.curseforge.com/members/terrafirmagreg/projects">
-                    <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges/assets/compact/available/curseforge_vector.svg" alt="Available on СurseForge">
-                  </a>
-                  <br/>
-                </div>
-                <br/>
-                <img class="d-block w-200 mx-auto mb-3 img-fluid" src="../_images/%s.png" alt="TerraFirmaCraft Field Guide Splash Image">
-                <p>%s</p>
-                <p><strong>%s</strong></p>
-                <div class="row row-cols-1 row-cols-md-2 g-3">
-                %s
-                </div><!-- END -->
-                """,
-                splashImage, textHome, textEntries, categoryCards
-        );
-    }
-
-    private static String generateCategoryLanguageLinks(List<String> languages, Context context, String categoryId) {
-        return languages.stream()
-                .map(lang -> String.format(
-                        """
-                        <a href="../../%s/%s/" class="dropdown-item">%s</a>
-                        """,
-                        lang, categoryId, context.translate(String.format(I18n.LANGUAGE_NAME, lang))
-                ))
-                .collect(Collectors.joining("\n"));
-    }
-
     private static String generateCategoryBreadcrumb(String relativePath, String categoryName) {
         String indexBreadcrumb = indexBreadcrumbModern(relativePath);
         return String.format(
@@ -354,87 +259,9 @@ public class HtmlRenderer {
         );
     }
 
-    private static String generateCategoryTableOfContents(List<BookCategory> categories, String currentCategoryId) {
-        return categories.stream()
-                .map(category -> {
-                    String catId = category.getId();
-
-                    if (!catId.equals(currentCategoryId)) {
-                        return String.format(
-                                """
-                                <li><a href="../%s/">%s</a></li>
-                                """,
-                                catId, category.getName()
-                        );
-                    } else {
-                        // 当前分类，显示子条目
-                        String subEntries = category.getEntries().stream()
-                                .map(bookEntry -> {
-                                    return String.format(
-                                            """
-                                            <li><a href="./%s.html">%s</a></li>
-                                            """,
-                                            bookEntry.getRelId(), bookEntry.getName()
-                                    );
-                                })
-                                .collect(Collectors.joining("\n"));
-
-                        return String.format(
-                                """
-                                <li><a href="../%s/">%s</a>
-                                    <ul>
-                                    %s
-                                    </ul>
-                                </li>
-                                """,
-                                catId, category.getName(), subEntries
-                        );
-                    }
-                })
-                .collect(Collectors.joining("\n"));
-    }
-
-    private static String generateCategoryPageContent(BookCategory cat) {
-        String categoryListing = cat.getEntries().stream()
-                .map(bookEntry -> {
-                    return String.format(
-                            """
-                            <div class="col">
-                                <div class="card">%s</div>
-                            </div>
-                            """,
-                            entryCardWithDefaultIcon(bookEntry.getRelId(), bookEntry.getName(),
-                                    bookEntry.getIconPath(), bookEntry.getIconName())
-                    );
-                })
-                .collect(Collectors.joining("\n"));
-
-        return String.format(
-                """
-                <h1 class="mb-4">%s</h1>
-                <p>%s</p>
-                <div class="row row-cols-1 row-cols-md-3 g-3">
-                    %s
-                </div>
-                """,
-                cat.getName(), cat.getDescription(), categoryListing
-        );
-    }
-
     private static String cleanImagePath(String iconPath) {
         if (iconPath == null) return "";
         return iconPath.replace("../../_images/", "").replace("..\\..\\_images\\", "");
-    }
-
-    private static String generateEntryLanguageLinks(List<String> languages, Context context, String categoryId, String relId) {
-        return languages.stream()
-                .map(lang -> String.format(
-                        """
-                        <a href="../../%s/%s/%s.html" class="dropdown-item">%s</a>
-                        """,
-                        lang, categoryId, relId, context.translate(String.format(I18n.LANGUAGE_NAME, lang))
-                ))
-                .collect(Collectors.joining("\n"));
     }
 
     private static String generateEntryBreadcrumb(String relativePath, String categoryName, String entryName) {
@@ -449,52 +276,6 @@ public class HtmlRenderer {
         );
     }
 
-    private static String generateEntryTableOfContents(List<BookCategory> categories,
-                                                       String currentCategoryId, String currentEntryId) {
-        return categories.stream()
-                .map(category -> {
-                    String catId = category.getId();
-
-                    if (!catId.equals(currentCategoryId)) {
-                        return String.format(
-                                """
-                                <li><a href="../%s/">%s</a></li>
-                                """,
-                                catId, category.getName()
-                        );
-                    } else {
-                        // 当前分类，显示子条目
-                        String subEntries = category.getEntries().stream()
-                                .map(bookEntry -> {
-                                    String entryId = bookEntry.getId();
-                                    boolean isCurrent = entryId.equals(currentEntryId);
-
-                                    return String.format(
-                                            """
-                                            <li><a href="./%s.html"%s>%s</a></li>
-                                            """,
-                                            bookEntry.getRelId(),
-                                            isCurrent ? " class=\"active\"" : "",
-                                            bookEntry.getName()
-                                    );
-                                })
-                                .collect(Collectors.joining("\n"));
-
-                        return String.format(
-                                """
-                                <li><a href="../%s/">%s</a>
-                                    <ul>
-                                    %s
-                                    </ul>
-                                </li>
-                                """,
-                                catId, category.getName(), subEntries
-                        );
-                    }
-                })
-                .collect(Collectors.joining("\n"));
-    }
-
     private static String generateEntryPageContent(BookEntry entry) {
         String titleWithIcon = titleWithOptionalIcon(entry.getName(), entry.getIconPath(), entry.getIconName());
         String innerContent = String.join("", entry.getBuffer());
@@ -505,27 +286,6 @@ public class HtmlRenderer {
                 %s
                 """,
                 titleWithIcon, innerContent
-        );
-    }
-
-    private static String entryCardWithDefaultIcon(String entryPath, String entryTitle, String iconPath, String iconName) {
-        String iconSrc;
-        if (iconPath == null || iconPath.isEmpty()) {
-            iconSrc = "../../_images/placeholder_16.png";
-        } else {
-            iconSrc = iconPath;
-        }
-
-        return String.format(
-                """
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <img class="entry-card-icon me-2" src="%s" alt="%s" />
-                        <a href="%s.html">%s</a>
-                    </div>
-                </div>
-                """,
-                iconSrc, iconName != null ? iconName : entryTitle, entryPath, entryTitle
         );
     }
 
