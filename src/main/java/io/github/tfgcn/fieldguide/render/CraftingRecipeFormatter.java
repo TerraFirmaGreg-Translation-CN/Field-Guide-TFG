@@ -1,7 +1,6 @@
 package io.github.tfgcn.fieldguide.render;
 
 import io.github.tfgcn.fieldguide.Context;
-import io.github.tfgcn.fieldguide.ProjectUtil;
 import io.github.tfgcn.fieldguide.asset.ItemImageResult;
 import io.github.tfgcn.fieldguide.asset.ItemStackResult;
 import io.github.tfgcn.fieldguide.exception.InternalException;
@@ -61,9 +60,10 @@ public class CraftingRecipeFormatter {
             case "tfc:advanced_shaped_crafting": {
                 data.put("type", "minecraft:crafting_shaped");
                 Object result = data.get("result");
-                Object stack = ProjectUtil.anyOf(result, "stack", "id");
-                ProjectUtil.require(stack != null,
-                        "Advanced shaped crafting with complex modifiers: '" + data.get("result") + "'");
+                Object stack = anyOf(result, "stack", "id");
+                if (stack == null) {
+                    throw new InternalException("Advanced shaped crafting with complex modifiers: '" + data.get("result") + "'");
+                }
                 data.put("result", stack); // 丢弃修饰符
                 formatCraftingRecipeFromData(context, buffer, identifier, data);
                 return;
@@ -71,9 +71,10 @@ public class CraftingRecipeFormatter {
             case "tfc:advanced_shapeless_crafting": {
                 data.put("type", "minecraft:crafting_shapeless");
                 Object result2 = data.get("result");
-                Object stack2 = ProjectUtil.anyOf(result2, "stack", "id");
-                ProjectUtil.require(stack2 != null,
-                        "Advanced shapeless crafting with complex modifiers: '" + data.get("result") + "'");
+                Object stack2 = anyOf(result2, "stack", "id");
+                if (stack2 == null) {
+                    throw new InternalException("Advanced shapeless crafting with complex modifiers: '" + data.get("result") + "'");
+                }
                 data.put("result", stack2); // 丢弃修饰符
                 formatCraftingRecipeFromData(context, buffer, identifier, data);
                 return;
@@ -127,7 +128,22 @@ public class CraftingRecipeFormatter {
             output.path
         ));
     }
-    
+
+    /**
+     * 从多个键中获取第一个存在的值
+     */
+    public static Object anyOf(Object data, String... keys) {
+        if (data instanceof Map) {
+            Map<String, Object> map = (Map<String, Object>) data;
+            for (String key : keys) {
+                if (map.containsKey(key)) {
+                    return map.get(key);
+                }
+            }
+        }
+        return null;
+    }
+
     /**
      * 解析有序合成配方
      */
@@ -192,13 +208,15 @@ public class CraftingRecipeFormatter {
                     case "tfc:fluid_item":
                         Map<String, Object> fluidIngredient = (Map<String, Object>) mapData.get("fluid_ingredient");
                         Map<String, Object> ingredient = (Map<String, Object>) fluidIngredient.get("ingredient");
-                        ProjectUtil.require("minecraft:water".equals(ingredient.get("ingredient")),
-                            "Unknown `tfc:fluid_item` ingredient: '" + data + "'");
+                        if (!"minecraft:water".equals(ingredient.get("ingredient"))) {
+                            throw new RuntimeException("Unknown `tfc:fluid_item` ingredient: '" + data + "'");
+                        }
                         return context.getItemImage("minecraft:water_bucket", true);
                     case "tfc:fluid_content":
                         Map<String, Object> fluid = (Map<String, Object>) mapData.get("fluid");
-                        ProjectUtil.require("minecraft:water".equals(fluid.get("fluid")),
-                            "Unknown `tfc:fluid_content` ingredient: '" + data + "'");
+                        if (!"minecraft:water".equals(fluid.get("fluid"))) {
+                            throw new RuntimeException("Unknown `tfc:fluid_content` ingredient: '" + data + "'");
+                        }
                         return context.getItemImage("minecraft:water_bucket", true);
                     case "tfc:and":
                         List<Map<String, Object>> children = (List<Map<String, Object>>) mapData.get("children");

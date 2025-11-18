@@ -7,7 +7,6 @@ import io.github.tfgcn.fieldguide.data.minecraft.tag.TagElement;
 import io.github.tfgcn.fieldguide.data.minecraft.tag.Tags;
 import io.github.tfgcn.fieldguide.data.tfc.TFCWood;
 import io.github.tfgcn.fieldguide.gson.JsonUtils;
-import io.github.tfgcn.fieldguide.MCMeta;
 import io.github.tfgcn.fieldguide.exception.AssetNotFoundException;
 import io.github.tfgcn.fieldguide.data.minecraft.blockstate.BlockState;
 import io.github.tfgcn.fieldguide.data.minecraft.blockstate.BlockVariant;
@@ -35,7 +34,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-import static io.github.tfgcn.fieldguide.MCMeta.CACHE;
+import static io.github.tfgcn.fieldguide.asset.MCMeta.CACHE;
 import static io.github.tfgcn.fieldguide.render.TextureRenderer.multiplyImageByColor;
 
 @Slf4j

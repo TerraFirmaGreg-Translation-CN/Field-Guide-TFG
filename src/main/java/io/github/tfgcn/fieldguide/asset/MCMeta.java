@@ -1,4 +1,4 @@
-package io.github.tfgcn.fieldguide;
+package io.github.tfgcn.fieldguide.asset;
 
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;

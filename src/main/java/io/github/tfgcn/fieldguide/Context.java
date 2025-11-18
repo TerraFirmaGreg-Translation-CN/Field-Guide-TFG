@@ -32,7 +32,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.List;
 
@@ -120,8 +119,8 @@ public class Context {
      */
     public Context withLang(String lang) {
         this.lang = lang;
-        this.outputDir = ProjectUtil.pathJoin(outputRootDir, lang);
-        
+        this.outputDir = outputRootDir + "/" + lang;
+
         this.categoryMap = new HashMap<>();
         this.entryMap = new HashMap<>();
         this.categories = new ArrayList<>();
@@ -180,11 +179,10 @@ public class Context {
      */
     private void loadLocalLang(String lang) {
         try {
-            File langFile = new File(ProjectUtil.pathJoin("assets/lang", lang + ".json"));
+            File langFile = new File("assets/lang/%s.json".formatted(lang));
             if (langFile.exists()) {
-                String content = FileUtils.readFileToString(langFile, StandardCharsets.UTF_8);
                 Type mapType = new TypeToken<Map<String, String>>() {}.getType();
-                Map<String, String> data = JsonUtils.fromJson(content, mapType);
+                Map<String, String> data = JsonUtils.readFile(langFile, mapType);
                 
                 for (Map.Entry<String, String> entry : data.entrySet()) {
                     this.langKeys.put("field_guide." + entry.getKey(), entry.getValue());
@@ -422,8 +420,10 @@ public class Context {
             int width = img.getWidth();
             int height = img.getHeight();
 
-            ProjectUtil.require(width == 16 && height == 16,
-                    "Icon must be 16x16: " + image);
+            if (width != 16 || height != 16) {
+                log.warn("Icon must be 16x16: {} ({} x {})", image, width, height);
+                throw new InternalException("Icon must be 16x16: " + image);
+            }
 
             // 调整到64x64以匹配物品图标尺寸
             BufferedImage resized = resizeImage(img, 64, 64);

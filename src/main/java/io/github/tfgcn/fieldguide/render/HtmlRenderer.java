@@ -12,10 +12,13 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Slf4j
 public class HtmlRenderer {
+    private static final Pattern SEARCH_STRIP_PATTERN = Pattern.compile("\\$\\([^)]*\\)");
+
     private final Configuration cfg;
 
     public HtmlRenderer(String templateDir) throws IOException {
@@ -140,7 +143,8 @@ public class HtmlRenderer {
         context.getHtmlRenderer().generatePage("search.ftl", context.getOutputDir(), "search.html", data);
 
         for (Map<String, String> result : context.getSearchTree()) {
-            String content = ProjectUtil.searchStrip(result.get("content"));
+            String originalContent = result.get("content");
+            String content = searchStrip(originalContent);
             result.put("content", content);
         }
         JsonUtils.writeFile(new File(context.getOutputDir() + "/search_index.json"), context.getSearchTree());
@@ -199,6 +203,13 @@ public class HtmlRenderer {
             String outputFileName = categoryId + "/" + entry.getRelId() + ".html";
             context.getHtmlRenderer().generatePage("index.ftl", context.getOutputDir(), outputFileName, data);
         }
+    }
+
+    /**
+     * 清理搜索文本，移除 $(...) 模式
+     */
+    public static String searchStrip(String input) {
+        return SEARCH_STRIP_PATTERN.matcher(input).replaceAll("");
     }
 
     public static String generateLanguageDropdown(List<String> languages, Context context) {

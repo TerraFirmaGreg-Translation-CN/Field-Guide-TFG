@@ -8,6 +8,7 @@ import io.github.tfgcn.fieldguide.data.patchouli.BookPage;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
 
 /**
  * desc:
