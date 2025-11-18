@@ -47,7 +47,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
                 <#list languages as lang>
-                <a href="${root}/${lang.code}/${current_category_id}/index.html" class="dropdown-item">${lang.name}</a>
+                <a href="${root}/${lang.code}/${current_category.id}/${current_entry.relId}.html" class="dropdown-item">${lang.name}</a>
                 </#list>
               </div>
             </li>
@@ -101,11 +101,11 @@
             <#list categories as category>
             <li>
               <a href="../${category.id}/">${category.name}</a>
-              <#if current_category_id == category.id && category.entries?? && category.entries?size gt 0>
+              <#if current_category.id == category.id && category.entries?? && category.entries?size gt 0>
               <ul>
                 <#list category.entries as entry>
-                <li><a href="./${entry.relId}.html">${entry.name}</a></li>
-              </#list>
+                <li><a href="./${entry.relId}.html"<#if current_entry.relId == entry.relId> class="active"</#if>>${entry.name}</a></li>
+                </#list>
               </ul>
               </#if>
             </li>

@@ -167,12 +167,13 @@ public class HtmlRenderer {
 
         data.put("current_lang_key", context.getLang());
         data.put("current_lang", context.translate(String.format(I18n.LANGUAGE_NAME, context.getLang())));
-        data.put("current_category_id", cat.getId());
         data.put("languages", getLanguageDropdown(Constants.LANGUAGES, context));
         data.put("index", "../");
         data.put("location", generateCategoryBreadcrumb("../", cat.getName()));
 
         data.put("categories", context.getCategories());
+        data.put("current_category", cat);
+
         data.put("page_content", generateCategoryPageContent(cat));
 
         // 生成分类页面
@@ -201,17 +202,19 @@ public class HtmlRenderer {
 
             data.put("current_lang_key", context.getLang());
             data.put("current_lang", context.translate(String.format(I18n.LANGUAGE_NAME, context.getLang())));
-            data.put("current_category_id", cat.getId());
-            data.put("langs", generateEntryLanguageLinks(Constants.LANGUAGES, context, categoryId, entry.getRelId()));
+            data.put("languages", getLanguageDropdown(Constants.LANGUAGES, context));
             data.put("index", "../");
             data.put("location", generateEntryBreadcrumb("../", cat.getName(), entry.getName()));
 
+            data.put("categories", context.getCategories());
+            data.put("current_category", cat);
+            data.put("current_entry", entry);
             data.put("contents", generateEntryTableOfContents(context.getCategories(), categoryId, entryId));
             data.put("page_content", generateEntryPageContent(entry));
 
             // 生成条目页面
             String outputFileName = categoryId + "/" + entry.getRelId() + ".html";
-            context.getHtmlRenderer().generatePage("index.ftl", context.getOutputLangDir(), outputFileName, data);
+            context.getHtmlRenderer().generatePage("entry.ftl", context.getOutputLangDir(), outputFileName, data);
         }
     }
 
