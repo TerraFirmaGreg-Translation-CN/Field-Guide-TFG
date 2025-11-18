@@ -4,10 +4,10 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
-import io.github.tfgcn.fieldguide.data.mc.blockstate.AndCondition;
-import io.github.tfgcn.fieldguide.data.mc.blockstate.Condition;
-import io.github.tfgcn.fieldguide.data.mc.blockstate.OrCondition;
-import io.github.tfgcn.fieldguide.data.mc.blockstate.PropertyCondition;
+import io.github.tfgcn.fieldguide.data.minecraft.blockstate.AndCondition;
+import io.github.tfgcn.fieldguide.data.minecraft.blockstate.Condition;
+import io.github.tfgcn.fieldguide.data.minecraft.blockstate.OrCondition;
+import io.github.tfgcn.fieldguide.data.minecraft.blockstate.PropertyCondition;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;

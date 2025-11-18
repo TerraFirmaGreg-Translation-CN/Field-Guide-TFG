@@ -5,7 +5,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import io.github.tfgcn.fieldguide.data.gtceu.utils.ResourceHelper;
-import io.github.tfgcn.fieldguide.data.mc.ResourceLocation;
+import io.github.tfgcn.fieldguide.data.minecraft.ResourceLocation;
 
 import java.util.HashMap;
 import java.util.Map;

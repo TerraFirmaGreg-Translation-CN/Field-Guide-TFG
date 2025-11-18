@@ -1,7 +1,6 @@
-package io.github.tfgcn.fieldguide.data.mc.blockstate;
+package io.github.tfgcn.fieldguide.data.minecraft.blockstate;
 
 import com.google.gson.annotations.JsonAdapter;
-import io.github.tfgcn.fieldguide.exception.InternalException;
 import io.github.tfgcn.fieldguide.gson.BlockStateVariantMapAdapter;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

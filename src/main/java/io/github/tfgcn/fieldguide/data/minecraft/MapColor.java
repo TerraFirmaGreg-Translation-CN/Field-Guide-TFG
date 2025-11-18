@@ -1,4 +1,4 @@
-package io.github.tfgcn.fieldguide.data.mc;
+package io.github.tfgcn.fieldguide.data.minecraft;
 
 import com.google.common.base.Preconditions;
 import lombok.Getter;

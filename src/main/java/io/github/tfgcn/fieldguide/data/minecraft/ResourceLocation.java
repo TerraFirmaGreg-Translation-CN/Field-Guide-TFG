@@ -1,4 +1,4 @@
-package io.github.tfgcn.fieldguide.data.mc;
+package io.github.tfgcn.fieldguide.data.minecraft;
 
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;

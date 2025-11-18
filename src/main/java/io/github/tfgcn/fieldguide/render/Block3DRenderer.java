@@ -2,10 +2,10 @@ package io.github.tfgcn.fieldguide.render;
 
 import io.github.tfgcn.fieldguide.asset.AssetLoader;
 import io.github.tfgcn.fieldguide.exception.AssetNotFoundException;
-import io.github.tfgcn.fieldguide.data.mc.blockmodel.BlockModel;
-import io.github.tfgcn.fieldguide.data.mc.blockmodel.ElementFace;
-import io.github.tfgcn.fieldguide.data.mc.blockmodel.ElementRotation;
-import io.github.tfgcn.fieldguide.data.mc.blockmodel.ModelElement;
+import io.github.tfgcn.fieldguide.data.minecraft.blockmodel.BlockModel;
+import io.github.tfgcn.fieldguide.data.minecraft.blockmodel.ElementFace;
+import io.github.tfgcn.fieldguide.data.minecraft.blockmodel.ElementRotation;
+import io.github.tfgcn.fieldguide.data.minecraft.blockmodel.ModelElement;
 import io.github.tfgcn.fieldguide.render3d.material.Material;
 import io.github.tfgcn.fieldguide.render3d.material.Texture;
 import io.github.tfgcn.fieldguide.render3d.math.*;

@@ -4,7 +4,7 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
-import io.github.tfgcn.fieldguide.data.mc.blockstate.Variant;
+import io.github.tfgcn.fieldguide.data.minecraft.blockstate.Variant;
 
 import java.io.IOException;
 import java.util.*;

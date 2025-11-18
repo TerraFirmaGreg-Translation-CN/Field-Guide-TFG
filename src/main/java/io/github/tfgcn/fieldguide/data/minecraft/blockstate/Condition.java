@@ -1,4 +1,4 @@
-package io.github.tfgcn.fieldguide.data.mc.blockstate;
+package io.github.tfgcn.fieldguide.data.minecraft.blockstate;
 
 import java.util.Map;
 

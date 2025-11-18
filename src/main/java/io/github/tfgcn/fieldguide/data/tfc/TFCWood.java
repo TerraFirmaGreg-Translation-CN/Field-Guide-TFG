@@ -1,6 +1,6 @@
 package io.github.tfgcn.fieldguide.data.tfc;
 
-import io.github.tfgcn.fieldguide.data.mc.MapColor;
+import io.github.tfgcn.fieldguide.data.minecraft.MapColor;
 import lombok.Getter;
 
 import java.util.Locale;

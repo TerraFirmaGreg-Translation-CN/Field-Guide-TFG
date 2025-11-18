@@ -1,4 +1,4 @@
-package io.github.tfgcn.fieldguide.data.mc.tag;
+package io.github.tfgcn.fieldguide.data.minecraft.tag;
 
 import lombok.Data;
 

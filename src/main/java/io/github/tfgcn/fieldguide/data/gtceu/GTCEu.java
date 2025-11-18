@@ -1,6 +1,6 @@
 package io.github.tfgcn.fieldguide.data.gtceu;
 
-import io.github.tfgcn.fieldguide.data.mc.ResourceLocation;
+import io.github.tfgcn.fieldguide.data.minecraft.ResourceLocation;
 import io.github.tfgcn.fieldguide.data.gtceu.utils.FormattingUtil;
 
 public class GTCEu {

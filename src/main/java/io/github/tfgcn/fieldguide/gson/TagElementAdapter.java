@@ -3,7 +3,7 @@ package io.github.tfgcn.fieldguide.gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.github.tfgcn.fieldguide.data.mc.tag.TagElement;
+import io.github.tfgcn.fieldguide.data.minecraft.tag.TagElement;
 
 import java.io.IOException;
 

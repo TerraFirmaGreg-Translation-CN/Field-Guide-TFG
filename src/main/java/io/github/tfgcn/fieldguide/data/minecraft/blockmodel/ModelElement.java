@@ -1,4 +1,4 @@
-package io.github.tfgcn.fieldguide.data.mc.blockmodel;
+package io.github.tfgcn.fieldguide.data.minecraft.blockmodel;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;

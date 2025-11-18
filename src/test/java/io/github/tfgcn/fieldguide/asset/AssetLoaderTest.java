@@ -2,7 +2,7 @@ package io.github.tfgcn.fieldguide.asset;
 
 import io.github.tfgcn.fieldguide.data.gtceu.MaterialIconSet;
 import io.github.tfgcn.fieldguide.data.gtceu.MaterialIconType;
-import io.github.tfgcn.fieldguide.data.mc.ResourceLocation;
+import io.github.tfgcn.fieldguide.data.minecraft.ResourceLocation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

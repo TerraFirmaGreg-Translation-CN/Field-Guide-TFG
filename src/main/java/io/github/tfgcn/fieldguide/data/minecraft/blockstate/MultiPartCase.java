@@ -1,4 +1,4 @@
-package io.github.tfgcn.fieldguide.data.mc.blockstate;
+package io.github.tfgcn.fieldguide.data.minecraft.blockstate;
 
 import com.google.gson.annotations.JsonAdapter;
 import io.github.tfgcn.fieldguide.gson.BlockStateVariantListAdapter;
