@@ -56,7 +56,7 @@ public class Context {
     private final boolean debugI18n;
     
     private String outputLangDir;
-    private String lang;
+    private Language lang;
 
     // 数据结构
     private Map<String, BookCategory> categoryMap = new HashMap<>();
@@ -117,16 +117,16 @@ public class Context {
     /**
      * 切换到指定语言
      */
-    public Context withLang(String lang) {
+    public Context withLang(Language lang) {
         this.lang = lang;
-        this.outputLangDir = outputRootDir + "/" + lang;
+        this.outputLangDir = outputRootDir + "/" + lang.getCode();
 
         this.categoryMap = new HashMap<>();
         this.entryMap = new HashMap<>();
         this.categories = new ArrayList<>();
         this.langKeys = new HashMap<>();
         
-        loadTranslations(lang);
+        loadTranslations(lang.getCode());
         
         this.keybindings = new HashMap<>();
         for (String key : I18n.KEYS) {

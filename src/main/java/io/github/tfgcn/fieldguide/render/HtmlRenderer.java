@@ -5,7 +5,7 @@ import io.github.tfgcn.fieldguide.*;
 import io.github.tfgcn.fieldguide.gson.JsonUtils;
 import io.github.tfgcn.fieldguide.data.patchouli.BookCategory;
 import io.github.tfgcn.fieldguide.data.patchouli.BookEntry;
-import io.github.tfgcn.fieldguide.html.LanguageDropdown;
+import io.github.tfgcn.fieldguide.Language;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 
@@ -14,7 +14,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.util.*;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 @Slf4j
 public class HtmlRenderer {
@@ -98,9 +97,8 @@ public class HtmlRenderer {
         data.put("text_contents", context.translate(I18n.CONTENTS));
 
         // langs and navigation
-        data.put("current_lang_key", context.getLang());
-        data.put("current_lang", context.translate(String.format(I18n.LANGUAGE_NAME, context.getLang())));
-        data.put("languages", getLanguageDropdown(Constants.LANGUAGES, context));
+        data.put("current_lang", context.getLang());
+        data.put("languages", Language.asList());
         data.put("index", "#");
 
         // contents
@@ -126,9 +124,8 @@ public class HtmlRenderer {
         data.put("text_discord", context.translate(I18n.DISCORD));
 
         // langs and navigation
-        data.put("current_lang_key", context.getLang());
-        data.put("current_lang", context.translate(String.format(I18n.LANGUAGE_NAME, context.getLang())));
-        data.put("languages", getLanguageDropdown(Constants.LANGUAGES, context));
+        data.put("current_lang", context.getLang());
+        data.put("languages", Language.asList());
         data.put("index", "./");
 
         // contents
@@ -158,9 +155,8 @@ public class HtmlRenderer {
         data.put("text_github", context.translate(I18n.GITHUB));
         data.put("text_discord", context.translate(I18n.DISCORD));
 
-        data.put("current_lang_key", context.getLang());
-        data.put("current_lang", context.translate(String.format(I18n.LANGUAGE_NAME, context.getLang())));
-        data.put("languages", getLanguageDropdown(Constants.LANGUAGES, context));
+        data.put("current_lang", context.getLang());
+        data.put("languages", Language.asList());
         data.put("index", "../");
 
         data.put("categories", context.getCategories());
@@ -188,9 +184,8 @@ public class HtmlRenderer {
             data.put("text_github", context.translate(I18n.GITHUB));
             data.put("text_discord", context.translate(I18n.DISCORD));
 
-            data.put("current_lang_key", context.getLang());
-            data.put("current_lang", context.translate(String.format(I18n.LANGUAGE_NAME, context.getLang())));
-            data.put("languages", getLanguageDropdown(Constants.LANGUAGES, context));
+            data.put("current_lang", context.getLang());
+            data.put("languages", Language.asList());
             data.put("index", "../");
 
             data.put("categories", context.getCategories());
@@ -210,16 +205,6 @@ public class HtmlRenderer {
         return SEARCH_STRIP_PATTERN.matcher(input).replaceAll("");
     }
 
-    public static List<LanguageDropdown> getLanguageDropdown(List<String> languages, Context context) {
-        if (languages == null || languages.isEmpty()) {
-            return null;
-        }
-
-        return languages.stream()
-                .filter(Objects::nonNull)
-                .map(lang -> new LanguageDropdown(lang, context.translate(String.format(I18n.LANGUAGE_NAME, lang))))
-                .collect(Collectors.toList());
-    }
 
     private static String cleanImagePath(String iconPath) {
         if (iconPath == null) return "";

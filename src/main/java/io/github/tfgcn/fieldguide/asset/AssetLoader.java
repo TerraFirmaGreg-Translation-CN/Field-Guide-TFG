@@ -2,6 +2,7 @@ package io.github.tfgcn.fieldguide.asset;
 
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
+import io.github.tfgcn.fieldguide.Language;
 import io.github.tfgcn.fieldguide.data.gtceu.utils.ResourceHelper;
 import io.github.tfgcn.fieldguide.data.minecraft.tag.TagElement;
 import io.github.tfgcn.fieldguide.data.minecraft.tag.Tags;
@@ -36,7 +37,6 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-import static io.github.tfgcn.fieldguide.Constants.EN_US;
 import static io.github.tfgcn.fieldguide.asset.MCMeta.CACHE;
 import static io.github.tfgcn.fieldguide.render.TextureRenderer.multiplyImageByColor;
 
@@ -208,7 +208,7 @@ public class AssetLoader {
         }
 
         // download minecraft and forge
-        MCMeta.loadCache(Constants.MC_VERSION, Constants.FORGE_VERSION, Constants.LANGUAGES);
+        MCMeta.loadCache(Constants.MC_VERSION, Constants.FORGE_VERSION, Language.asList());
 
         Path forgeJar = Paths.get(CACHE, MCMeta.getForgeJarName(Constants.MC_VERSION));
         if (Files.exists(forgeJar)) {
@@ -305,6 +305,7 @@ public class AssetLoader {
      * @throws IOException
      */
     public Book loadBook(String bookId) throws IOException {
+        String lang = Language.EN_US.getCode();
         // load book
         String bookPath = Constants.getBookPath(bookId);
         Asset bookAsset = getAsset(bookPath);
@@ -314,11 +315,11 @@ public class AssetLoader {
         }
 
         Book book = JsonUtils.readFile(bookAsset.getInputStream(), Book.class);
-        book.setLanguage(EN_US);
+        book.setLanguage(lang);
         book.setAssetSource(bookAsset);
 
         // load categories
-        String categoryDir = Constants.getCategoryDir(bookId, EN_US);
+        String categoryDir = Constants.getCategoryDir(bookId, lang);
         List<Asset> assets = listAssets(categoryDir);
         for (Asset asset : assets) {
             BookCategory category = JsonUtils.readFile(asset.getInputStream(), BookCategory.class);
@@ -328,7 +329,7 @@ public class AssetLoader {
         }
 
         // load entries
-        String entryDir = Constants.getEntryDir(bookId, EN_US);
+        String entryDir = Constants.getEntryDir(bookId, lang);
         assets = listAssets(entryDir);
         for (Asset asset : assets) {
             BookEntry entry = JsonUtils.readFile(asset.getInputStream(), BookEntry.class);

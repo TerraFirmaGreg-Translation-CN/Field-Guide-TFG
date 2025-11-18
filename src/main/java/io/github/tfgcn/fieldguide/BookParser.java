@@ -25,7 +25,7 @@ public class BookParser {
     public void processAllLanguages(Context context) {
         // load en_us lang
 
-        for (String lang : Constants.LANGUAGES) {
+        for (Language lang : Language.values()) {
             log.info("Language: {}", lang);
             parseBook(context.withLang(lang));
             context.sort();
@@ -69,7 +69,7 @@ public class BookParser {
 
     private void parseCategories(Context context) {
         // assets/tfc/patchouli_books/field_guide/en_us/categories
-        String categoriesPath = Constants.getCategoryDir(context.getLang());
+        String categoriesPath = Constants.getCategoryDir(context.getLang().getCode());
         List<Asset> assets;
         try {
             assets = context.listAssets(categoriesPath);
@@ -90,7 +90,7 @@ public class BookParser {
 
     private void parseEntries(Context context) {
         // assets/tfc/patchouli_books/field_guide/en_us/entries
-        String entriesPath = Constants.getEntryDir(context.getLang());
+        String entriesPath = Constants.getEntryDir(context.getLang().getCode());
         List<Asset> assets;
         try {
             assets = context.listAssets(entriesPath);

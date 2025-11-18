@@ -43,7 +43,7 @@
             <!-- Language submenu -->
             <li class="nav-item px-2 dropdown">
               <a class="nav-link dropdown-toggle" id="lang-dropdown-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-translate"></i> ${current_lang}
+                <i class="bi bi-translate"></i> ${current_lang.name}
               </a>
               <div class="dropdown-menu" aria-labelledby="lang-dropdown-button">
                 <#list languages as lang>
@@ -174,7 +174,7 @@
 
     <script>
       window._CURRENT_ROOT = '${root}';
-      window._CURRENT_LANG = '${current_lang_key}';
+      window._CURRENT_LANG = '${current_lang.code}';
     </script>
 
     <script src="${root}/static/tooltips.js"></script>

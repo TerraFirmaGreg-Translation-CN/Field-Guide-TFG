@@ -1,6 +1,7 @@
 package io.github.tfgcn.fieldguide.asset;
 
 import com.google.gson.Gson;
+import io.github.tfgcn.fieldguide.Language;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.*;
@@ -34,12 +35,12 @@ public class MCMeta {
     }
 
     @SuppressWarnings("unchecked")
-    public static void loadCache(String mcVersion, String forgeVersion, List<String> languages) {
+    public static void loadCache(String mcVersion, String forgeVersion, List<Language> languages) {
         log.info("Loading Cache");
         try {
             Files.createDirectories(Paths.get(CACHE, "assets", "minecraft", "lang"));
         } catch (IOException e) {
-            log.error("Failed to create cache directory: " + e.getMessage());
+            log.error("Failed to create cache directory", e);
             return;
         }
         
@@ -81,12 +82,12 @@ public class MCMeta {
                 Map<String, Object> assets = parseJson(assetIndexData);
                 Map<String, Object> objects = (Map<String, Object>) assets.get("objects");
                 
-                for (String lang : languages) {
-                    if (lang.equals("en_us")) {
+                for (Language lang : languages) {
+                    if (lang.getCode().equals("en_us")) {
                         continue; // This file is in the main client jar
                     }
                     
-                    String langKey = "minecraft/lang/" + lang + ".json";
+                    String langKey = "minecraft/lang/" + lang.getCode() + ".json";
                     Map<String, Object> langObject = (Map<String, Object>) objects.get(langKey);
                     if (langObject == null) {
                         log.warn("Language file not found: " + langKey);
@@ -98,7 +99,7 @@ public class MCMeta {
                     byte[] languageData = download(languageUrl);
                     Map<String, Object> languageJson = parseJson(languageData);
                     
-                    Path langPath = Paths.get(CACHE, "assets", "minecraft", "lang", lang + ".json");
+                    Path langPath = Paths.get(CACHE, "assets", "minecraft", "lang", lang.getCode() + ".json");
                     try (FileWriter fw = new FileWriter(langPath.toFile(), StandardCharsets.UTF_8)) {
                         writeJson(fw, languageJson);
                     }

@@ -6,8 +6,6 @@ public final class I18n {
     public static final String SHORT_TITLE = key("short_title");
     public static final String INDEX = key("index");
     public static final String CONTENTS = key("contents");
-    public static final String VERSION = key("version");
-    public static final String API_DOCS = key("api_docs");
     public static final String GITHUB = key("github");
     public static final String DISCORD = key("discord");
     public static final String CATEGORIES = key("categories");
@@ -19,7 +17,6 @@ public final class I18n {
     public static final String ITEM = key("item");
     public static final String ITEMS = key("items");
     public static final String ITEM_ONLY_IN_GAME = key("item_only_in_game");
-    public static final String ADDON = key("addon");
     public static final String TICKS = key("ticks");
     public static final String TAG = key("tag");
 
@@ -32,8 +29,6 @@ public final class I18n {
     public static final String KEY_PLACE_BLOCK = key("tfc.key.place_block");
 
     public static final String[] KEYS = {KEY_INVENTORY, KEY_ATTACK, KEY_USE, KEY_DROP, KEY_SNEAK, KEY_CYCLE_CHISEL_MODE, KEY_PLACE_BLOCK};
-
-    public static final String LANGUAGE_NAME = key("language.%s");
 
     private I18n() {
     }
