@@ -1,7 +1,7 @@
 package io.github.tfgcn.fieldguide.asset;
 
 import io.github.tfgcn.fieldguide.Context;
-import io.github.tfgcn.fieldguide.I18n;
+import io.github.tfgcn.fieldguide.localization.I18n;
 import io.github.tfgcn.fieldguide.exception.InternalException;
 import lombok.extern.slf4j.Slf4j;
 

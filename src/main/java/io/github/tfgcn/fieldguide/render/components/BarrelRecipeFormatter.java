@@ -1,12 +1,13 @@
-package io.github.tfgcn.fieldguide.render;
+package io.github.tfgcn.fieldguide.render.components;
 
 import io.github.tfgcn.fieldguide.Context;
-import io.github.tfgcn.fieldguide.I18n;
+import io.github.tfgcn.fieldguide.localization.I18n;
 import io.github.tfgcn.fieldguide.asset.FluidImageResult;
 import io.github.tfgcn.fieldguide.asset.FluidLoader;
 import io.github.tfgcn.fieldguide.asset.ItemImageResult;
 import io.github.tfgcn.fieldguide.asset.ItemStackResult;
 import io.github.tfgcn.fieldguide.exception.InternalException;
+import io.github.tfgcn.fieldguide.render.CraftingRecipeFormatter;
 
 import java.util.List;
 import java.util.Map;

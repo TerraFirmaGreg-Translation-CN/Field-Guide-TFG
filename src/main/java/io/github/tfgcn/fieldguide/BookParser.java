@@ -9,8 +9,10 @@ import io.github.tfgcn.fieldguide.data.patchouli.BookCategory;
 import io.github.tfgcn.fieldguide.data.patchouli.BookEntry;
 import io.github.tfgcn.fieldguide.data.patchouli.BookPage;
 import io.github.tfgcn.fieldguide.asset.ItemImageResult;
+import io.github.tfgcn.fieldguide.localization.I18n;
 import io.github.tfgcn.fieldguide.localization.Language;
 import io.github.tfgcn.fieldguide.render.*;
+import io.github.tfgcn.fieldguide.render.components.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -270,7 +272,7 @@ public class BookParser {
                     buffer.add(MessageFormat.format(ImageTemplates.IMAGE_MULTIPLE, uid, seq.toString(), parts.toString()));
                 }
 
-                context.formatCenteredText(buffer, pageImage.getText());
+                context.formatCenteredText(buffer, pageImage.getText(), search);
                 break;
             }
             case PageCrafting pageCrafting: {// patchouli:crafting
@@ -281,6 +283,7 @@ public class BookParser {
             }
             case PageSpotlight pageSpotlight: {// patchouli:spotlight
                 parseSpotlightPage(context, buffer, pageSpotlight, search);
+                context.formatText(buffer, pageSpotlight.getText(), search);
                 break;
             }
             case PageEntity pageEntity: {// patchouli:entity
@@ -293,43 +296,53 @@ public class BookParser {
                 break;
             }
             case PageMultiblock pageMultiblock: {// patchouli:multiblock
-                parseMultiblockPage(context, buffer, pageMultiblock, search);
+                context.formatTitle(buffer, pageMultiblock.getName(), search);
+                parseMultiblockPage(context, buffer, pageMultiblock);
+                context.formatCenteredText(buffer, pageMultiblock.getText(), search);
                 break;
             }
             case PageMultiMultiblock pageMultiMultiblock: {// tfc:multimultiblock
-                parseMultiMultiblockPage(context, buffer, pageMultiMultiblock, search);
+                parseMultiMultiblockPage(context, buffer, pageMultiMultiblock);
+                context.formatCenteredText(buffer, pageMultiMultiblock.getText(), search);
                 break;
             }
-            case PageHeating PageHeating: {// tfc:heating
-                parseMiscRecipe(context, buffer, PageHeating, search, pageType);
+            case PageHeating pageHeating: {// tfc:heating
+                parseMiscRecipe(context, buffer, pageHeating, pageType);
+                context.formatText(buffer, pageHeating.getText(), search);
                 break;
             }
             case PageQuern pageQuern:{// tfc:quern
-                parseMiscRecipe(context, buffer, pageQuern, search, pageType);
+                parseMiscRecipe(context, buffer, pageQuern, pageType);
+                context.formatText(buffer, pageQuern.getText(), search);
                 break;
             }
             case PageLoom pageLoom: {// tfc:loom
-                parseMiscRecipe(context, buffer, pageLoom, search, pageType);
+                parseMiscRecipe(context, buffer, pageLoom, pageType);
+                context.formatText(buffer, pageLoom.getText(), search);
                 break;
             }
             case PageAnvil pageAnvil: {// tfc:anvil
-                parseMiscRecipe(context, buffer, pageAnvil, search, pageType);
+                parseMiscRecipe(context, buffer, pageAnvil, pageType);
+                context.formatText(buffer, pageAnvil.getText(), search);
                 break;
             }
             case PageGlassworking pageGlassworking: {// tfc:glassworking
-                parseMiscRecipe(context, buffer, pageGlassworking, search, pageType);
+                parseMiscRecipe(context, buffer, pageGlassworking, pageType);
+                context.formatText(buffer, pageGlassworking.getText(), search);
                 break;
             }
             case PageSmelting pageSmelting: {// tfc:smelting
-                parseMiscRecipe(context, buffer, pageSmelting, search, pageType);
+                parseMiscRecipe(context, buffer, pageSmelting, pageType);
+                context.formatText(buffer, pageSmelting.getText(), search);
                 break;
             }
             case PageDrying pageDrying: {// tfc:drying
-                parseMiscRecipe(context, buffer, pageDrying, search, pageType);
+                parseMiscRecipe(context, buffer, pageDrying, pageType);
+                context.formatText(buffer, pageDrying.getText(), search);
                 break;
             }
             case PageBarrel pageBarrel: {// tfc:instant_barrel_recipe, tfc:sealed_barrel_recipe
-                parseBarrelRecipe(context, buffer, pageBarrel, search, pageType);
+                parseBarrelRecipe(context, buffer, pageBarrel, pageType);
                 break;
             }
             case PageWelding pageWelding: {// tfc:welding_recipe
@@ -339,11 +352,13 @@ public class BookParser {
                 break;
             }
             case PageRockKnapping pageRockKnapping: {// tfc:rock_knapping_recipe, tfc:clay_knapping_recipe, tfc:fire_clay_knapping_recipe, tfc:leather_knapping_recipe
-                parseRockKnappingRecipe(context, buffer, pageRockKnapping, search);
+                parseRockKnappingRecipe(context, buffer, pageRockKnapping);
+                context.formatText(buffer, pageRockKnapping.getText(), search);
                 break;
             }
             case PageKnapping pageKnapping: {// tfc:knapping
-                parseKnappingRecipe(context, buffer, pageKnapping, search);
+                parseKnappingRecipe(context, buffer, pageKnapping);
+                context.formatText(buffer, pageKnapping.getText(), search);
                 break;
             }
             case PageTable pageTable: {// tfc:table, tfc:table_small
@@ -427,18 +442,12 @@ public class BookParser {
             context.formatWithTooltip(buffer, itemHtml, context.translate(I18n.ITEM_ONLY_IN_GAME));
             context.setItemsFailed(context.getItemsFailed() + 1);
         }
-
-        context.formatText(buffer, page.getText(), search);
     }
 
-    private void parseMultiblockPage(Context context, List<String> buffer,
-                                     PageMultiblock page, Map<String, String> search) {
-        context.formatTitle(buffer, page.getName(), search);
-        
+    private void parseMultiblockPage(Context context, List<String> buffer, PageMultiblock page) {
         try {
             String src = context.getMultiBlockImage(page);
             buffer.add(String.format(IMAGE_SINGLE, src, "Block Visualization"));
-            context.formatCenteredText(buffer, page.getText());
             context.setBlocksPassed(context.getBlocksPassed() + 1);
         } catch (Exception e) {
             // FIXME add me later log.error("Multiblock image processing failed, message: {}", e.getMessage());
@@ -453,17 +462,14 @@ public class BookParser {
                         String.format("%s: <code>%s</code>", context.translate(I18n.MULTIBLOCK), JsonUtils.toJson(page.getMultiblock())),
                         context.translate(I18n.MULTIBLOCK_ONLY_IN_GAME));
             }
-            context.formatCenteredText(buffer, page.getText());
             context.setBlocksFailed(context.getBlocksFailed() + 1);
         }
     }
 
-    private void parseMultiMultiblockPage(Context context, List<String> buffer,
-                                     PageMultiMultiblock page, Map<String, String> search) {
+    private void parseMultiMultiblockPage(Context context, List<String> buffer, PageMultiMultiblock page) {
         try {
             String src = context.getMultiBlockImage(page);
             buffer.add(String.format(IMAGE_SINGLE, src, "Block Visualization"));
-            context.formatCenteredText(buffer, page.getText());
             context.setBlocksPassed(context.getBlocksPassed() + 1);
         } catch (Exception e) {
             // TODO 日志太多暂时移除 log.error("tfc:multimultiblock image processing failed", e);
@@ -474,13 +480,11 @@ public class BookParser {
                         context.translate(I18n.MULTIBLOCK_ONLY_IN_GAME));
             }
             // TODO context.formatWithTooltip(buffer, context.translate(I18n.MULTIBLOCK), context.translate(I18n.MULTIBLOCK_ONLY_IN_GAME));
-            context.formatCenteredText(buffer, page.getText());
             context.setBlocksFailed(context.getBlocksFailed() + 1);
         }
     }
 
-    private void parseMiscRecipe(Context context, List<String> buffer,
-                                 IPageDoubleRecipe page, Map<String, String> search, String pageType) {
+    private void parseMiscRecipe(Context context, List<String> buffer, IPageDoubleRecipe page, String pageType) {
         try {
             MiscRecipeFormatter.formatMiscRecipe(context, buffer, page.getRecipe());
             context.setRecipesPassed(context.getRecipesPassed() + 1);
@@ -490,12 +494,9 @@ public class BookParser {
             context.formatRecipe(buffer, page.getRecipe());
             context.setRecipesFailed(context.getRecipesFailed() + 1);
         }
-
-        context.formatText(buffer, page.getText(), search);
     }
     
-    private void parseBarrelRecipe(Context context, List<String> buffer, 
-                                 PageBarrel page, Map<String, String> search, String pageType) {
+    private void parseBarrelRecipe(Context context, List<String> buffer, PageBarrel page, String pageType) {
         try {
             BarrelRecipeFormatter.formatBarrelRecipe(context, buffer, page.getRecipe());
             context.setRecipesPassed(context.getRecipesPassed() + 1);
@@ -506,8 +507,7 @@ public class BookParser {
         }
     }
 
-    private void parseRockKnappingRecipe(Context context, List<String> buffer,
-                                     PageRockKnapping page, Map<String, String> search) {
+    private void parseRockKnappingRecipe(Context context, List<String> buffer, PageRockKnapping page) {
         try {
             String recipeId = page.getRecipes().getFirst();
             KnappingRecipe recipe = KnappingRecipes.formatKnappingRecipe(context, recipeId);
@@ -519,12 +519,9 @@ public class BookParser {
             context.formatRecipe(buffer, page.getRecipes().getFirst());
             context.setRecipesFailed(context.getRecipesFailed() + 1);
         }
-
-        context.formatText(buffer, page.getText(), search);
     }
 
-    private void parseKnappingRecipe(Context context, List<String> buffer,
-                                     PageKnapping page, Map<String, String> search) {
+    private void parseKnappingRecipe(Context context, List<String> buffer, PageKnapping page) {
         try {
             KnappingRecipe recipe = KnappingRecipes.formatKnappingRecipe(context, page.getRecipe());
             buffer.add(String.format(IMAGE_KNAPPING, recipe.image(), "Recipe: " + recipe.recipeId()));
@@ -534,8 +531,6 @@ public class BookParser {
             context.formatRecipe(buffer, page.getRecipe());
             context.setRecipesFailed(context.getRecipesFailed() + 1);
         }
-        
-        context.formatText(buffer, page.getText(), search);
     }
     
     private void parseTablePage(Context context, List<String> buffer, PageTable page) {

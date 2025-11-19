@@ -11,15 +11,17 @@ import io.github.tfgcn.fieldguide.data.minecraft.blockstate.BlockVariant;
 import io.github.tfgcn.fieldguide.data.patchouli.BookCategory;
 import io.github.tfgcn.fieldguide.data.patchouli.BookEntry;
 import io.github.tfgcn.fieldguide.data.patchouli.page.IPageDoubleRecipe;
-import io.github.tfgcn.fieldguide.data.patchouli.page.IPageWithText;
 import io.github.tfgcn.fieldguide.asset.ItemImageResult;
 import io.github.tfgcn.fieldguide.data.minecraft.blockmodel.BlockModel;
 import io.github.tfgcn.fieldguide.data.patchouli.page.PageMultiblock;
 import io.github.tfgcn.fieldguide.data.patchouli.page.PageMultiblockData;
 import io.github.tfgcn.fieldguide.data.tfc.page.PageMultiMultiblock;
 import io.github.tfgcn.fieldguide.data.tfc.page.TFCMultiblockData;
+import io.github.tfgcn.fieldguide.localization.I18n;
 import io.github.tfgcn.fieldguide.localization.Language;
 import io.github.tfgcn.fieldguide.render.*;
+import io.github.tfgcn.fieldguide.render.components.Block3DRenderer;
+import io.github.tfgcn.fieldguide.render.components.Multiblock3DRenderer;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
@@ -247,10 +249,6 @@ public class Context {
         }
     }
 
-    public void formatText(List<String> buffer, IPageWithText page) {
-        formatText(buffer, page.getText(), null);
-    }
-    
     public void formatTitle(List<String> buffer, String title, Map<String, String> search) {
         if (title != null && !title.isEmpty()) {
             String stripped = TextFormatter.stripVanillaFormatting(title);
@@ -306,9 +304,9 @@ public class Context {
     /**
      * 居中对齐文本
      */
-    public void formatCenteredText(List<String> buffer, String text) {
+    public void formatCenteredText(List<String> buffer, String text, Map<String, String> search) {
         buffer.add("<div style=\"text-align: center;\">");
-        formatText(buffer, text, null);
+        formatText(buffer, text, search);
         buffer.add("</div>");
     }
     
@@ -528,7 +526,7 @@ public class Context {
         boolean isItem = false;// this is to identify the itemId
         if (item.startsWith("#")) {
             name = String.format(translate(I18n.TAG), item);
-            items = loadItemTag(item.substring(1));
+            items = loader.loadItemTag(item.substring(1));
         } else if (item.contains(",")) {
             items = Arrays.asList(item.split(","));
         } else {

@@ -10,7 +10,9 @@ public interface LocalizationManager {
 
     String translate(String ... keys);
 
-    String translate(String key, Object ... args);
+    String translateWithArgs(String key, Object ... args);
 
     Map<String, String> getKeybindings();
+
+    void lazyLoadNamespace(String namespace);
 }

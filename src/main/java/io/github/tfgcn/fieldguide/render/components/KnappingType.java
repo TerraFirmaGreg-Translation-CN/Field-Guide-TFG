@@ -1,4 +1,4 @@
-package io.github.tfgcn.fieldguide.render;
+package io.github.tfgcn.fieldguide.render.components;
 
 public record KnappingType(
     String type_1_18, 

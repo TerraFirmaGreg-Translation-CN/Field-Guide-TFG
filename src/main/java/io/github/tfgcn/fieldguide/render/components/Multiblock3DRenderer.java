@@ -1,4 +1,4 @@
-package io.github.tfgcn.fieldguide.render;
+package io.github.tfgcn.fieldguide.render.components;
 
 import io.github.tfgcn.fieldguide.asset.AssetLoader;
 import io.github.tfgcn.fieldguide.exception.AssetNotFoundException;
@@ -7,6 +7,7 @@ import io.github.tfgcn.fieldguide.data.minecraft.blockmodel.ElementFace;
 import io.github.tfgcn.fieldguide.data.minecraft.blockmodel.ElementRotation;
 import io.github.tfgcn.fieldguide.data.minecraft.blockmodel.ModelElement;
 import io.github.tfgcn.fieldguide.render3d.material.Material;
+import io.github.tfgcn.fieldguide.render3d.material.RenderState;
 import io.github.tfgcn.fieldguide.render3d.material.Texture;
 import io.github.tfgcn.fieldguide.render3d.math.*;
 import io.github.tfgcn.fieldguide.render3d.renderer.Camera;
@@ -30,7 +31,7 @@ import java.util.Map;
  * @author yanmaoyuan
  */
 @Slf4j
-public class Block3DRenderer {
+public class Multiblock3DRenderer {
 
     static int SCALER = 16;
     static float SCALE = 1f / SCALER;
@@ -56,7 +57,9 @@ public class Block3DRenderer {
 
     private AssetLoader assetLoader;
 
-    public Block3DRenderer(AssetLoader assetLoader, int width, int height) {
+    Map<String, Material> materialCache = new HashMap<>();
+
+    public Multiblock3DRenderer(AssetLoader assetLoader, int width, int height) {
         this.assetLoader = assetLoader;
         this.width = width;
         this.height = height;
@@ -69,12 +72,7 @@ public class Block3DRenderer {
         // 创建摄像机
         camera = new Camera(width, height);
 
-        // parallel
-        camera.setParallel(-11 * SCALE, 11 * SCALE, -11 * SCALE, 11 * SCALE, -1000f, 1000f);
-        camera.lookAt(new Vector3f(-100, 100, -100), new Vector3f(0, 0, 0), Vector3f.UNIT_Y);
-
-        camera.setLocation(new Vector3f(32f, 32f, 32f).multLocal((float) SCALE));
-        camera.setDirection(new Vector3f(-1f, -1f, -1f).normalizeLocal());
+        camera.lookAt(v3(100, 100, 100), v3(0, 0, 0), Vector3f.UNIT_Y);
 
         // 场景根节点
         rootNode = new Node();
@@ -82,22 +80,48 @@ public class Block3DRenderer {
 
     /**
      * 渲染模型
-     * @param modelId
      * @return
      */
-    public BufferedImage render(String modelId) {
-        Node node = buildModel(modelId);
-        rootNode.attachChild(node);
-        BufferedImage image = render();
-        rootNode.detachChild(node);
-        return image;
-    }
+    public BufferedImage render(String[][] pattern, Map<String, String> mapping) {
 
-    public BufferedImage render(BlockModel model) {
-        Node node = buildModel(model);
-        rootNode.attachChild(node);
+        Node root = new Node();
+        int height = pattern.length;
+        int col = pattern[0].length;
+        int row = pattern[0][0].length();
+        log.debug("Model size: {}x{}x{}", col, height, row);
+
+        float startX = -row * 8f;
+        float startY = -height * 8f;
+        float startZ = -col * 8f;
+
+        for (int y = 0; y < height; y++) {
+            String[] layer = pattern[height - y - 1];
+            for (int z = 0; z < col; z++) {
+                String line = layer[z];
+                for (int x = 0; x < row; x++) {
+                    char c = line.charAt(x);
+                    if (c == ' ') {
+                        continue;
+                    }
+                    String model = mapping.get(String.valueOf(c));
+                    // FIXME 考虑把 minecraft:air 注册为一个空模型
+                    if (model == null || "AIR".equalsIgnoreCase(model) || "minecraft:air".equalsIgnoreCase(model)) {
+                        continue;
+                    }
+                    Vector3f location = v3(x * 16 + startX, y * 16 + startY, z * 16 + startZ);
+                    Node node = buildModel(model);
+                    node.getLocalTransform().setTranslation(location);
+                    root.attachChild(node);
+                }
+            }
+        }
+
+        int max = Math.max(Math.max(col, height), row);
+        camera.lookAt(v3(max * 10, max * 10, max * 10), v3(0, 0, 0), Vector3f.UNIT_Y);
+
+        rootNode.attachChild(root);
         BufferedImage image = render();
-        rootNode.detachChild(node);
+        rootNode.detachChild(root);
         return image;
     }
 
@@ -148,7 +172,14 @@ public class Block3DRenderer {
     }
 
     public Node buildModel(String modelId) {
-        BlockModel blockModel = assetLoader.loadModel(modelId);
+        if (modelId.startsWith("#")) {
+            List<String> blocks = assetLoader.loadBlockTag(modelId.substring(1));
+            modelId = blocks.get(0);// 获取第一个方块
+        }
+        BlockModel blockModel = assetLoader.loadBlockModelWithState(modelId);
+        if (!blockModel.hasElements()) {
+            return new Node();// FIXME
+        }
         return buildModel(blockModel);
     }
 
@@ -162,9 +193,6 @@ public class Block3DRenderer {
         return node;
     }
 
-
-    Map<String, Material> materialCache = new HashMap<>();
-
     private Material makeMaterial(String texture) {
         if (materialCache.containsKey(texture)) {
             return materialCache.get(texture);
@@ -176,10 +204,11 @@ public class Block3DRenderer {
         diffuseMap.setMagFilter(Texture.MagFilter.NEAREST);
 
         Material material = new Material();
-        material.getRenderState().setAlphaTest(true);
-        material.getRenderState().setAlphaFalloff(0.1f);
         material.setUseVertexColor(true);
         material.setShader(new UnshadedShader());
+        material.getRenderState().setBlendMode(RenderState.BlendMode.ALPHA_BLEND);
+        material.getRenderState().setAlphaTest(true);
+        material.getRenderState().setAlphaFalloff(0.1f);
         material.setDiffuseMap(diffuseMap);
 
         materialCache.put(texture, material);

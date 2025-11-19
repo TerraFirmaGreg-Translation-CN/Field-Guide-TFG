@@ -1,30 +1,34 @@
 package io.github.tfgcn.fieldguide.localization;
 
+import com.google.gson.reflect.TypeToken;
 import io.github.tfgcn.fieldguide.asset.AssetLoader;
+import io.github.tfgcn.fieldguide.gson.JsonUtils;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.*;
 
 @Slf4j
-public class LazyLocalizationManager implements LocalizationManager{
+public class LazyLocalizationManager implements LocalizationManager {
 
     private final AssetLoader assetLoader;
 
-    private final Map<String, Map<String, String>> translationCache = new ConcurrentHashMap<>();
-    private final Set<String> loadedNamespaces = ConcurrentHashMap.newKeySet();
+    private final Map<String, Map<String, String>> translationCache = new TreeMap<>();
+    private final Set<String> loadedNamespaces = new TreeSet<>();
 
     private Language currentLanguage = Language.EN_US;
-    private final Map<String, String> currentTranslations = new ConcurrentHashMap<>();
-    private final Map<String, String> fallbackTranslations = new ConcurrentHashMap<>();
+    private final Map<String, String> currentTranslations = new TreeMap<>();
+    private final Map<String, String> fallbackTranslations = new TreeMap<>();
 
     private final Set<String> essentialNamespaces;
-    private final Set<String> discoveredNamespaces = ConcurrentHashMap.newKeySet();
     private final Set<String> excludedNamespaces;
 
-    // 性能统计
+    private final Map<String, String> keybindings = new TreeMap<>();
+
+    private final Set<String> missingKeys = new TreeSet<>();
+
     private int cacheHits = 0;
     private int cacheMisses = 0;
 
@@ -34,6 +38,7 @@ public class LazyLocalizationManager implements LocalizationManager{
         this.essentialNamespaces = Set.of(
                 "minecraft", "forge", "tfc", "patchouli", "tfg", "beneath", "firmalife", "gtceu", "ae2"
         );
+
         this.excludedNamespaces = Set.of(
                 "cloth_config", "config", "library", "api", "util", "lib",
                 "jei", "rei", "emi", "jade", "appleskin", "journeymap", "xaeros_minimap",
@@ -53,22 +58,45 @@ public class LazyLocalizationManager implements LocalizationManager{
         log.info("Pre-loaded essential namespaces: {}", essentialNamespaces);
     }
 
+    private void loadStatic(String lang, Map<String, String> target) {
+        try {
+            File langFile = new File("assets/lang/%s.json".formatted(lang));
+            if (langFile.exists()) {
+                Type mapType = new TypeToken<Map<String, String>>() {}.getType();
+                Map<String, String> data = JsonUtils.readFile(langFile, mapType);
+
+                for (Map.Entry<String, String> entry : data.entrySet()) {
+                    target.put("field_guide." + entry.getKey(), entry.getValue());
+                }
+            }
+        } catch (IOException e) {
+            log.warn("Load local failed: {}", lang, e);
+        }
+    }
+
     @Override
     public void switchLanguage(Language lang) {
         String languageCode = lang.getKey();
         this.currentLanguage = lang;
         this.currentTranslations.clear();
 
-        log.info("Loading translations for {} namespaces in {}", discoveredNamespaces.size(), languageCode);
+        log.info("Loading translations for {} namespaces in {}", loadedNamespaces.size(), languageCode);
 
-        for (String namespace : discoveredNamespaces) {
+        for (String namespace : loadedNamespaces) {
             loadNamespaceTranslations(namespace, languageCode, currentTranslations);
             loadedNamespaces.add(namespace);
         }
+        loadStatic(languageCode, currentTranslations);
 
         // 如果当前语言不是英语，确保回退翻译存在
         if (!"en_us".equals(languageCode)) {
-            ensureFallbackTranslations(discoveredNamespaces);
+            ensureFallbackTranslations(loadedNamespaces);
+        }
+
+        keybindings.clear();
+        for (String key : I18n.KEYS) {
+            String bindingKey = key.substring("field_guide.".length());
+            keybindings.put(bindingKey, translate(key));
         }
 
         log.info("Loaded {} translations for {}", currentTranslations.size(), languageCode);
@@ -81,6 +109,8 @@ public class LazyLocalizationManager implements LocalizationManager{
                 loadedNamespaces.add(namespace);
             }
         }
+
+        loadStatic("en_us", fallbackTranslations);
     }
 
     private void loadNamespaceTranslations(String namespace, String language, Map<String, String> target) {
@@ -104,43 +134,46 @@ public class LazyLocalizationManager implements LocalizationManager{
 
     @Override
     public Language getCurrentLanguage() {
-        return null;
+        return this.currentLanguage;
     }
 
     @Override
     public String translate(String... keys) {
         for (String key : keys) {
-            // 首先检查当前语言
-            String translation = currentTranslations.get(key);
-            if (translation != null) {
-                return translation;
+            if (currentTranslations.containsKey(key)) {
+                return currentTranslations.get(key);
             }
 
-            // 然后检查回退语言
-            translation = fallbackTranslations.get(key);
-            if (translation != null) {
-                return translation;
+            // fallback to en_us
+            if (fallbackTranslations.containsKey(key)) {
+                return fallbackTranslations.get(key);
             }
         }
 
-        // 记录缺失的键（可选）
-        log.trace("Missing translation for: {}", Arrays.toString(keys));
-        return "{" + keys[0] + "}";
+        if (!missingKeys.contains(keys[0])) {
+            missingKeys.add(keys[0]);
+            log.info("Missing translation for: {}", Arrays.toString(keys));
+        }
+        return keys[0];
     }
 
     @Override
-    public String translate(String key, Object... args) {
+    public String translateWithArgs(String key, Object... args) {
         return String.format(translate(key), args);
     }
 
     @Override
     public Map<String, String> getKeybindings() {
-        return Map.of();
+        return keybindings;
     }
 
-    private void lazyLoadNamespace(String namespace) {
+    @Override
+    public void lazyLoadNamespace(String namespace) {
+        if (excludedNamespaces.contains(namespace)) {
+            return;
+        }
         if (!loadedNamespaces.contains(namespace)) {
-            log.debug("Lazy loading namespace: {}", namespace);
+            log.info("Lazy loading namespace: {}", namespace);
             loadNamespaceTranslations(namespace, currentLanguage.getKey(), currentTranslations);
             loadNamespaceTranslations(namespace, "en_us", fallbackTranslations);
             loadedNamespaces.add(namespace);
