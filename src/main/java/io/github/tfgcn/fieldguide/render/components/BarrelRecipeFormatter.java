@@ -7,6 +7,7 @@ import io.github.tfgcn.fieldguide.asset.FluidLoader;
 import io.github.tfgcn.fieldguide.asset.ItemImageResult;
 import io.github.tfgcn.fieldguide.asset.ItemStackResult;
 import io.github.tfgcn.fieldguide.exception.InternalException;
+import io.github.tfgcn.fieldguide.localization.LocalizationManager;
 import io.github.tfgcn.fieldguide.render.CraftingRecipeFormatter;
 
 import java.util.List;
@@ -48,6 +49,8 @@ public class BarrelRecipeFormatter {
         String outputFluidDiv = "";
         String outputItemDiv = "";
         String duration = "";
+
+        LocalizationManager lm = context.getLocalizationManager();
 
         // 处理输入物品
         if (data.containsKey("input_item")) {
@@ -92,7 +95,7 @@ public class BarrelRecipeFormatter {
             <div style="text-align: center;" class="minecraft-text minecraft-gray">
                 <p>%s</p>
             </div>
-            """, String.format(context.translate(I18n.TICKS), durationTicks));
+            """, String.format(lm.translate(I18n.TICKS), durationTicks));
         }
 
         String toAppend = String.format("""

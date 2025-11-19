@@ -143,7 +143,7 @@ public class MiscRecipeFormatter {
         
         List<String> operations = (List<String>) data.get("operations");
         for (String key : operations) {
-            String opName = context.translate("tfc.enum.glassoperation." + key);
+            String opName = context.getLocalizationManager().translate("tfc.enum.glassoperation." + key);
             
             if (!GLASS_ITEMS.containsKey(key)) {
                 throw new RuntimeException("Missing item for glass op: " + key);
@@ -151,7 +151,7 @@ public class MiscRecipeFormatter {
             
             String opItem = GLASS_ITEMS.get(key);
             try {
-                ItemImageResult itemResult = context.getItemImage(opItem, false);
+                ItemImageResult itemResult = context.getTextureRenderer().getItemImage(opItem, false);
                 buffer.add("<li>");
                 context.formatTitleWithIcon(buffer, itemResult.getPath(), opName, (String)data.get( "title"), "p", itemResult.getName(), null);
                 buffer.add("</li>");
@@ -231,7 +231,7 @@ public class MiscRecipeFormatter {
             HeatLevel next = HEAT.get(i + 1);
             
             if (temperature <= current.value) {
-                String tooltip = context.translate("tfc.enum.heat." + current.key);
+                String tooltip = context.getLocalizationManager().translate("tfc.enum.heat." + current.key);
                 
                 // 计算温度等级内的细分
                 for (double t : Arrays.asList(0.2, 0.4, 0.6, 0.8)) {
@@ -245,7 +245,7 @@ public class MiscRecipeFormatter {
         }
         
         HeatLevel last = HEAT.get(HEAT.size() - 1);
-        return new TemperatureResult(last.cssClass, context.translate("tfc.enum.heat." + last.key));
+        return new TemperatureResult(last.cssClass, context.getLocalizationManager().translate("tfc.enum.heat." + last.key));
     }
     
     /**
@@ -254,9 +254,9 @@ public class MiscRecipeFormatter {
     public static String getTier(Context context, int tier) {
         String[] tierNames = {"0", "i", "ii", "iii", "iv", "v", "vi", "vii"};
         if (tier >= 0 && tier < tierNames.length) {
-            return context.translate("tfc.enum.tier.tier_" + tierNames[tier]);
+            return context.getLocalizationManager().translate("tfc.enum.tier.tier_" + tierNames[tier]);
         }
-        return context.translate("tfc.enum.tier.tier_0");
+        return context.getLocalizationManager().translate("tfc.enum.tier.tier_0");
     }
     
     // 辅助类

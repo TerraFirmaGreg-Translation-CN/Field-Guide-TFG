@@ -50,19 +50,6 @@ public class BookParser {
                 context.getLastUid().get("block"), 
                 context.getLastUid().get("item"), 
                 context.getLastUid().get("image"));
-
-//        log.info("Missing language keys: {}", context.getMissingKeys().size());
-//        for (String key : context.getMissingKeys()) {
-//            System.out.println(key);
-//        }
-//        log.info("Missing asset keys: {}", context.getLoader().getMissingAssets().size());
-//        for (String key : context.getLoader().getMissingAssets()) {
-//            System.out.println(key);
-//        }
-//        log.info("Missing image keys: {}", context.getMissingImages().size());
-//        for (String key : context.getMissingImages()) {
-//            System.out.println(key);
-//        }
     }
 
     public void parseBook(Context context) {
@@ -133,7 +120,7 @@ public class BookParser {
 
             // 格式化描述文本
             List<String> descriptionBuffer = new ArrayList<>();
-            TextFormatter.formatText(descriptionBuffer, category.getDescription(), context.getKeybindings());
+            TextFormatter.formatText(descriptionBuffer, category.getDescription(), context.getLocalizationManager().getKeybindings());
             category.setDescription(String.join("", descriptionBuffer));
 
             context.addCategory(category);
@@ -174,7 +161,7 @@ public class BookParser {
             }
 
             try {
-                ItemImageResult itemSrc = context.getItemImage(entry.getIcon(), false);
+                ItemImageResult itemSrc = context.getTextureRenderer().getItemImage(entry.getIcon(), false);
                 if (itemSrc != null) {
                     entry.setIconPath(itemSrc.getPath());
                     entry.setIconName(itemSrc.getName());
@@ -240,7 +227,7 @@ public class BookParser {
                 if (images != null) {
                     for (String image : images) {
                         try {
-                            String convertedImage = context.convertImage(image);
+                            String convertedImage = context.getTextureRenderer().convertImage(image);
                             processedImages.add(Map.entry(image, convertedImage));
                         } catch (InternalException e) {
                             log.error("Failed to convert entry image: {} @ {}", image, entryId, e);
@@ -277,7 +264,7 @@ public class BookParser {
             }
             case PageCrafting pageCrafting: {// patchouli:crafting
                 context.formatTitle(buffer, pageCrafting.getTitle(), search);
-                parseCraftingRecipe(context, buffer, pageCrafting, search);
+                parseCraftingRecipe(context, buffer, pageCrafting);
                 context.formatText(buffer, pageCrafting.getText(), search);
                 break;
             }
@@ -371,8 +358,7 @@ public class BookParser {
         }
     }
     
-    private void parseCraftingRecipe(Context context, List<String> buffer,
-                                     PageCrafting page, Map<String, String> search) {
+    private void parseCraftingRecipe(Context context, List<String> buffer, PageCrafting page) {
         // 处理主要配方
         if (page.getRecipe() != null) {
             try {
@@ -400,7 +386,6 @@ public class BookParser {
         }
     }
     
-    @SuppressWarnings("unchecked")
     private void parseSpotlightPage(Context context, List<String> buffer,
                                     PageSpotlight page, Map<String, String> search) {
         List<PageSpotlightItem> items = page.getItem();
@@ -411,10 +396,10 @@ public class BookParser {
         try {
             for (PageSpotlightItem item : items) {
                 if ("tag".equals(item.getType())) {
-                    ItemImageResult itemResult = context.getItemImage("#" + item.getText(), false);
+                    ItemImageResult itemResult = context.getTextureRenderer().getItemImage("#" + item.getText(), false);
                     context.formatTitleWithIcon(buffer, itemResult.getPath(), itemResult.getName(), page.getTitle());
                 } else {
-                    ItemImageResult itemResult = context.getItemImage(item.getText(), false);
+                    ItemImageResult itemResult = context.getTextureRenderer().getItemImage(item.getText(), false);
                     context.formatTitleWithIcon(buffer, itemResult.getPath(), itemResult.getName(), page.getTitle());
                 }
                 context.setItemsPassed(context.getItemsPassed() + 1);
@@ -438,15 +423,15 @@ public class BookParser {
                 sb.append("</code>");
                 count++;
             }
-            String itemHtml = String.format("%s: %s", context.translate(count > 1 ? I18n.ITEMS : I18n.ITEM), sb);
-            context.formatWithTooltip(buffer, itemHtml, context.translate(I18n.ITEM_ONLY_IN_GAME));
+            String itemHtml = String.format("%s: %s", context.getLocalizationManager().translate(count > 1 ? I18n.ITEMS : I18n.ITEM), sb);
+            context.formatWithTooltip(buffer, itemHtml, context.getLocalizationManager().translate(I18n.ITEM_ONLY_IN_GAME));
             context.setItemsFailed(context.getItemsFailed() + 1);
         }
     }
 
     private void parseMultiblockPage(Context context, List<String> buffer, PageMultiblock page) {
         try {
-            String src = context.getMultiBlockImage(page);
+            String src = context.getTextureRenderer().getMultiBlockImage(page);
             buffer.add(String.format(IMAGE_SINGLE, src, "Block Visualization"));
             context.setBlocksPassed(context.getBlocksPassed() + 1);
         } catch (Exception e) {
@@ -454,13 +439,13 @@ public class BookParser {
             // Fallback
             if (page.getMultiblockId() != null) {
                 context.formatWithTooltip(buffer,
-                        String.format("%s: <code>%s</code>", context.translate(I18n.MULTIBLOCK), page.getMultiblockId()),
-                        context.translate(I18n.MULTIBLOCK_ONLY_IN_GAME));
+                        String.format("%s: <code>%s</code>", context.getLocalizationManager().translate(I18n.MULTIBLOCK), page.getMultiblockId()),
+                        context.getLocalizationManager().translate(I18n.MULTIBLOCK_ONLY_IN_GAME));
             } else {
                 // FIXME for debug
                 context.formatWithTooltip(buffer,
-                        String.format("%s: <code>%s</code>", context.translate(I18n.MULTIBLOCK), JsonUtils.toJson(page.getMultiblock())),
-                        context.translate(I18n.MULTIBLOCK_ONLY_IN_GAME));
+                        String.format("%s: <code>%s</code>", context.getLocalizationManager().translate(I18n.MULTIBLOCK), JsonUtils.toJson(page.getMultiblock())),
+                        context.getLocalizationManager().translate(I18n.MULTIBLOCK_ONLY_IN_GAME));
             }
             context.setBlocksFailed(context.getBlocksFailed() + 1);
         }
@@ -468,7 +453,7 @@ public class BookParser {
 
     private void parseMultiMultiblockPage(Context context, List<String> buffer, PageMultiMultiblock page) {
         try {
-            String src = context.getMultiBlockImage(page);
+            String src = context.getTextureRenderer().getMultiBlockImage(page);
             buffer.add(String.format(IMAGE_SINGLE, src, "Block Visualization"));
             context.setBlocksPassed(context.getBlocksPassed() + 1);
         } catch (Exception e) {
@@ -476,8 +461,8 @@ public class BookParser {
             // FIXME for debug
             for (TFCMultiblockData multiblock : page.getMultiblocks()) {
                 context.formatWithTooltip(buffer,
-                        String.format("%s: <code>%s</code>", context.translate(I18n.MULTIBLOCK), JsonUtils.toJson(multiblock)),
-                        context.translate(I18n.MULTIBLOCK_ONLY_IN_GAME));
+                        String.format("%s: <code>%s</code>", context.getLocalizationManager().translate(I18n.MULTIBLOCK), JsonUtils.toJson(multiblock)),
+                        context.getLocalizationManager().translate(I18n.MULTIBLOCK_ONLY_IN_GAME));
             }
             // TODO context.formatWithTooltip(buffer, context.translate(I18n.MULTIBLOCK), context.translate(I18n.MULTIBLOCK_ONLY_IN_GAME));
             context.setBlocksFailed(context.getBlocksFailed() + 1);
@@ -532,7 +517,7 @@ public class BookParser {
             context.setRecipesFailed(context.getRecipesFailed() + 1);
         }
     }
-    
+
     private void parseTablePage(Context context, List<String> buffer, PageTable page) {
         try {
             TableFormatter.formatTable(context, buffer, page);

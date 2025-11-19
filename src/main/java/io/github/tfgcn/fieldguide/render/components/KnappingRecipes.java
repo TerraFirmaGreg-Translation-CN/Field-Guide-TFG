@@ -108,7 +108,7 @@ public class KnappingRecipes {
 
         context.nextId("image");// counting images
         AssetKey assetKey = new AssetKey(recipeId, "textures/recipes", "assets", ".png");
-        String path = context.saveImage(assetKey.getResourcePath(), img);
+        String path = context.getTextureRenderer().saveImage(assetKey.getResourcePath(), img);
         KnappingRecipe result = new KnappingRecipe(recipeId, path);
         CACHE.put(recipeId, result);
         return result;

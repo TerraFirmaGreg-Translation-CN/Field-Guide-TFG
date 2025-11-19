@@ -74,7 +74,7 @@ public class BookEntry implements Comparable<BookEntry> {
      * Entries with the same sorting number are sorted alphabetically, whereas entries with different
      * sorting numbers are sorted from lowest to highest. Priority entries always show up first.
      *
-     * It's recommended you do not use this, as breaking the alphabetical sorting order can make things confusing, but it's left as an option.
+     * <p>It's recommended you do not use this, as breaking the alphabetical sorting order can make things confusing, but it's left as an option.</p>
      */
     @SerializedName("sortnum")
     private int sort = 0;

@@ -113,7 +113,7 @@ public class FluidLoader {
             if (entry.getKey() != null) {
                 try {
                     // 必须每次都重新翻译，因为相同的图像会在不同的本地化环境中被请求
-                    name = context.translate("fluid." + entry.getKey(), "block." + entry.getKey());
+                    name = context.getLocalizationManager().translate("fluid." + entry.getKey(), "block." + entry.getKey());
                 } catch (Exception e) {
                     System.err.println("Warning: " + e.getMessage());
                 }
@@ -126,10 +126,10 @@ public class FluidLoader {
 
         String name = null;
         String key = null;
-        List<String> fluids = new ArrayList<>();
+        List<String> fluids;
 
         if (fluid.startsWith("#")) {
-            name = String.format(context.translate(I18n.TAG), fluid);
+            name = String.format(context.getLocalizationManager().translate(I18n.TAG), fluid);
             fluids = context.getLoader().loadFluidTag(fluid.substring(1));
         } else if (fluid.contains(",")) {
             fluids = Arrays.asList(fluid.split(","));
@@ -140,7 +140,7 @@ public class FluidLoader {
         if (fluids.size() == 1) {
             key = fluids.get(0).replace("/", ".").replace(":", ".");
             try {
-                name = context.translate("fluid." + key, "block." + key);
+                name = context.getLocalizationManager().translate("fluid." + key, "block." + key);
             } catch (Exception e) {
                 System.err.println("Warning: " + e.getMessage());
             }
@@ -155,9 +155,9 @@ public class FluidLoader {
 
             String fluidId = context.nextId("fluid");// counting fluid
             if (images.size() == 1) {
-                path = context.saveImage("assets/generated/" + fluidId + ".png", images.getFirst());
+                path = context.getTextureRenderer().saveImage("assets/generated/" + fluidId + ".png", images.getFirst());
             } else {
-                path = Context.saveGif(context.getOutputRootDir(), "assets/generated/" + fluidId + ".gif", images);
+                path = context.getTextureRenderer().saveGif("assets/generated/" + fluidId + ".gif", images);
             }
         } catch (Exception e) {
             System.err.println("Warning: Fluid Image(s) - " + e.getMessage());

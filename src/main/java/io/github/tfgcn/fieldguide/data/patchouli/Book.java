@@ -3,6 +3,7 @@ package io.github.tfgcn.fieldguide.data.patchouli;
 import com.google.gson.annotations.SerializedName;
 import io.github.tfgcn.fieldguide.asset.Asset;
 import io.github.tfgcn.fieldguide.asset.AssetSource;
+import io.github.tfgcn.fieldguide.localization.Language;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
@@ -244,7 +245,7 @@ public class Book {
     @SerializedName("allow_extensions")
     private Boolean allowExtensions;
 
-    private transient String language;
+    private transient Language language;
     private transient AssetSource assetSource;
     private transient List<BookCategory> categories = new ArrayList<>();
     private transient Map<String, BookCategory> categoryMap = new TreeMap<>();

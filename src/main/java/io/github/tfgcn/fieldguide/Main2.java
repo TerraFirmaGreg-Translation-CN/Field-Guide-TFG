@@ -6,6 +6,7 @@ import io.github.tfgcn.fieldguide.data.patchouli.Book;
 import io.github.tfgcn.fieldguide.data.patchouli.BookCategory;
 import io.github.tfgcn.fieldguide.data.patchouli.BookEntry;
 import io.github.tfgcn.fieldguide.data.patchouli.BookPage;
+import io.github.tfgcn.fieldguide.data.patchouli.page.IPageWithText;
 import io.github.tfgcn.fieldguide.data.patchouli.page.PageTemplate;
 import io.github.tfgcn.fieldguide.exception.InternalException;
 import io.github.tfgcn.fieldguide.localization.Language;
@@ -14,6 +15,7 @@ import io.github.tfgcn.fieldguide.localization.LocalizationManager;
 import io.github.tfgcn.fieldguide.render.TextFormatter;
 import io.github.tfgcn.fieldguide.render.TextureRenderer;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import picocli.CommandLine;
 
 import java.nio.file.Paths;
@@ -69,13 +71,13 @@ public class Main2 implements Callable<Integer>  {
         Book fallback = assetLoader.loadBook(FIELD_GUIDE);
 
         for (Language lang : Language.values()) {
-            Book book = assetLoader.loadBook(FIELD_GUIDE, lang.getKey(), fallback);
-            render(book, lang, assetLoader, localizationManager, textureRenderer);
+            Book book = assetLoader.loadBook(FIELD_GUIDE, lang, fallback);
+            render(book, lang, localizationManager, textureRenderer);
         }
         return 0;
     }
 
-    public void render(Book book, Language lang, AssetLoader assetLoader, LocalizationManager localizationManager, TextureRenderer textureRenderer) {
+    public void render(Book book, Language lang, LocalizationManager localizationManager, TextureRenderer textureRenderer) {
 
         // prepare
         localizationManager.switchLanguage(lang);
@@ -87,31 +89,29 @@ public class Main2 implements Callable<Integer>  {
 
         // render categories
         for (BookCategory category : book.getCategories()) {
-            // remove "§."
-            category.setName(TextFormatter.stripVanillaFormatting(category.getName()));
-            // 格式化描述文本
-            List<String> descriptionBuffer = new ArrayList<>();
-            TextFormatter.formatText(descriptionBuffer, category.getDescription(), localizationManager.getKeybindings());
-            category.setDescription(String.join("", descriptionBuffer));
-
+            prepareCategory(category, localizationManager);
             System.out.printf("%s\n%s\n\n", category.getName(), category.getDescription());
+
+            // 搜索树
+            List<Map<String, String>> searchTree = new ArrayList<>();
+
+            for (BookEntry entry : category.getEntries()) {
+                prepareEntry(entry, localizationManager, textureRenderer);
+                System.out.printf("[%s]%s <img src=\"%s\" alt=\"%s\">\n", entry.getIcon(), entry.getName(), entry.getIconPath(), entry.getIconName());
+
+                for (BookPage page : entry.getPages()) {
+                    try {
+                        preparePage(entry, page, localizationManager, textureRenderer, searchTree);
+                    } catch (InternalException e) {
+                        log.error("Failed to parse page: {}", page, e);
+                    }
+                }
+            }
         }
 
         // render entries
         for (BookEntry entry : book.getEntries()) {
-            entry.setName(TextFormatter.stripVanillaFormatting(entry.getName()));
-
-            try {
-                ItemImageResult itemSrc = textureRenderer.getItemImage(entry.getIcon(), false);
-                if (itemSrc != null) {
-                    entry.setIconPath(itemSrc.getPath());
-                    entry.setIconName(itemSrc.getName());
-                } else {
-                    log.error("Item image is null for entry: {}", entry.getId());
-                }
-            } catch (Exception e) {
-                log.error("Failed to get item image for entry: {}", entry.getId());
-            }
+            prepareEntry(entry, localizationManager, textureRenderer);
 
             System.out.printf("[%s]%s <img src=\"%s\" alt=\"%s\">\n", entry.getIcon(), entry.getName(), entry.getIconPath(), entry.getIconName());
         }
@@ -127,18 +127,11 @@ public class Main2 implements Callable<Integer>  {
             search.put("entry", entry.getName());
             search.put("url", "./" + entry.getCategoryId() + "/" + entry.getRelId() + ".html");
 
-            // 解析页面
-            List<BookPage> pages = entry.getPages();
-            if (pages != null) {
-                for (BookPage page : pages) {
-                    if (page instanceof PageTemplate) {
-                        log.debug("Page: {}, {}", page.getType(), page.getJsonObject());
-                    }
-                    try {
-                        // renderPage(entry.getBuffer(), page, search);
-                    } catch (InternalException e) {
-                        log.error("Failed to parse page: {}", page, e);
-                    }
+            for (BookPage page : entry.getPages()) {
+                try {
+                    preparePage(entry, page, localizationManager, textureRenderer, searchTree);
+                } catch (InternalException e) {
+                    log.error("Failed to parse page: {}", page, e);
                 }
             }
 
@@ -150,6 +143,51 @@ public class Main2 implements Callable<Integer>  {
                 entry.setRendered(true);
             }
         }
+    }
 
+    private void prepareCategory(BookCategory category, LocalizationManager localizationManager) {
+        // remove "§."
+        category.setName(TextFormatter.stripVanillaFormatting(category.getName()));
+
+        // format description text
+        List<String> descriptionBuffer = new ArrayList<>();
+        TextFormatter.formatText(descriptionBuffer, category.getDescription(), localizationManager.getKeybindings());
+        category.setDescription(String.join("", descriptionBuffer));
+    }
+
+    private void prepareEntry(BookEntry entry, LocalizationManager localizationManager, TextureRenderer textureRenderer) {
+        entry.setName(TextFormatter.stripVanillaFormatting(entry.getName()));
+        try {
+            ItemImageResult itemSrc = textureRenderer.getItemImage(entry.getIcon(), false);
+            if (itemSrc != null) {
+                entry.setIconPath(itemSrc.getPath());
+                entry.setIconName(itemSrc.getName());
+            } else {
+                log.error("Item image is null for entry: {}", entry.getId());
+            }
+        } catch (Exception e) {
+            log.error("Failed to get item image for entry: {}", entry.getId());
+        }
+    }
+
+    private void preparePage(BookEntry entry,
+                             BookPage page,
+                             LocalizationManager localizationManager,
+                             TextureRenderer textureRenderer,
+                             List<Map<String, String>> searchTree) {
+
+        if (page instanceof PageTemplate) {
+            log.debug("Page: {}, {}", page.getType(), page.getJsonObject());
+        }
+
+        if (page instanceof IPageWithText textPage) {
+            if (StringUtils.isBlank(textPage.getText())) {
+                Map<String, String> search = new HashMap<>();
+                search.put("content", textPage.getText());
+                search.put("entry", entry.getName());
+                search.put("url", "./" + entry.getCategoryId() + "/" + entry.getRelId() + ".html");
+                searchTree.add(search);
+            }
+        }
     }
 }

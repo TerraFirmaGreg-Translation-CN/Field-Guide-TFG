@@ -210,7 +210,7 @@ public class TextureRenderer {
                     }).toList();
                 }
 
-                path = saveGif(outputRootDir, "assets/generated/" + itemId + ".gif", images);
+                path = saveGif("assets/generated/" + itemId + ".gif", images);
             }
 
             ItemImageResult result = new ItemImageResult(path, name, key);
@@ -229,8 +229,7 @@ public class TextureRenderer {
         }
     }
 
-
-    BufferedImage createItemImage(String itemId) {
+    public BufferedImage createItemImage(String itemId) {
 
         BlockModel model = loader.loadItemModel(itemId);
         if (model.getParent() == null) {
@@ -407,7 +406,7 @@ public class TextureRenderer {
     /**
      * Saves multiple images to a .gif based on an identifier. Returns the relative path to that location.
      */
-    public static String saveGif(String outputRootDir, String path, List<BufferedImage> images) throws IOException {
+    public String saveGif(String path, List<BufferedImage> images) throws IOException {
         if (images == null || images.isEmpty()) {
             throw new IllegalArgumentException("Images list cannot be empty");
         }
@@ -586,7 +585,7 @@ public class TextureRenderer {
         if (images.size() == 1) {
             path = saveImage("assets/generated/" + blockId + ".png", images.getFirst());
         } else {
-            path = saveGif(outputRootDir, "assets/generated/" + blockId + ".gif", images);
+            path = saveGif( "assets/generated/" + blockId + ".gif", images);
         }
 
         CACHE.put(key, path);
@@ -616,7 +615,7 @@ public class TextureRenderer {
         if (images.size() == 1) {
             path = saveImage("assets/generated/" + blockId + ".png", images.getFirst());
         } else {
-            path = saveGif(outputRootDir, "assets/generated/" + blockId + ".gif", images);
+            path = saveGif("assets/generated/" + blockId + ".gif", images);
         }
 
         CACHE.put(key, path);

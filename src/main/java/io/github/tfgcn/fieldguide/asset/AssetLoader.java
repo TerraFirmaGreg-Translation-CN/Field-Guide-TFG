@@ -305,7 +305,7 @@ public class AssetLoader {
      * @throws IOException
      */
     public Book loadBook(String bookId) throws IOException {
-        String lang = Language.EN_US.getKey();
+        Language lang = Language.EN_US;
         // load book
         String bookPath = Constants.getBookPath(bookId);
         Asset bookAsset = getAsset(bookPath);
@@ -319,7 +319,7 @@ public class AssetLoader {
         book.setAssetSource(bookAsset);
 
         // load categories
-        String categoryDir = Constants.getCategoryDir(bookId, lang);
+        String categoryDir = Constants.getCategoryDir(bookId, lang.getKey());
         List<Asset> assets = listAssets(categoryDir);
         for (Asset asset : assets) {
             BookCategory category = JsonUtils.readFile(asset.getInputStream(), BookCategory.class);
@@ -329,7 +329,7 @@ public class AssetLoader {
         }
 
         // load entries
-        String entryDir = Constants.getEntryDir(bookId, lang);
+        String entryDir = Constants.getEntryDir(bookId, lang.getKey());
         assets = listAssets(entryDir);
         for (Asset asset : assets) {
             BookEntry entry = JsonUtils.readFile(asset.getInputStream(), BookEntry.class);
@@ -342,7 +342,7 @@ public class AssetLoader {
         return book;
     }
 
-    public Book loadBook(String bookId, String lang, Book fallback) throws IOException {
+    public Book loadBook(String bookId, Language lang, Book fallback) throws IOException {
         String bookPath = Constants.getBookPath(bookId);
         Asset bookAsset = getAsset(bookPath);
 
@@ -350,10 +350,10 @@ public class AssetLoader {
         book.setLanguage(lang);
         book.setAssetSource(bookAsset);
 
-        String categoryDir = Constants.getCategoryDir(bookId, lang);
+        String categoryDir = Constants.getCategoryDir(bookId, lang.getKey());
         String fallbackCategoryDir = Constants.getCategoryDir();
         for (BookCategory category : fallback.getCategories()) {
-            String path = Constants.getCategoryPath(lang, category.getId());
+            String path = Constants.getCategoryPath(lang.getKey(), category.getId());
             Asset asset = getAsset(path);
             if (asset != null) {
                 BookCategory localizedCategory = JsonUtils.readFile(asset.getInputStream(), BookCategory.class);
@@ -369,9 +369,9 @@ public class AssetLoader {
             }
         }
 
-        String entryDir = Constants.getEntryDir(lang);
+        String entryDir = Constants.getEntryDir(lang.getKey());
         for (BookEntry entry : fallback.getEntries()) {
-            String path = Constants.getEntryPath(lang, entry.getId());
+            String path = Constants.getEntryPath(lang.getKey(), entry.getId());
             Asset asset = getAsset(path);
             if (asset != null) {
                 BookEntry localizedEntry = JsonUtils.readFile(asset.getInputStream(), BookEntry.class);

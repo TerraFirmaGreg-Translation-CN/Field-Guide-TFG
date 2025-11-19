@@ -7,6 +7,7 @@ import io.github.tfgcn.fieldguide.data.patchouli.BookCategory;
 import io.github.tfgcn.fieldguide.data.patchouli.BookEntry;
 import io.github.tfgcn.fieldguide.localization.I18n;
 import io.github.tfgcn.fieldguide.localization.Language;
+import io.github.tfgcn.fieldguide.localization.LocalizationManager;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 
@@ -81,24 +82,25 @@ public class HtmlRenderer {
     }
 
     public void buildHomePage(Context context) throws IOException, TemplateException {
+        LocalizationManager lm = context.getLocalizationManager();
         Map<String, Object> data = new HashMap<>();
         // meta
-        data.put("title", context.translate(I18n.TITLE));
-        data.put("long_title", context.translate(I18n.TITLE) + " | " + Constants.MC_VERSION);
-        data.put("short_description", context.translate(I18n.HOME));
+        data.put("title", lm.translate(I18n.TITLE));
+        data.put("long_title", lm.translate(I18n.TITLE) + " | " + Constants.MC_VERSION);
+        data.put("short_description", lm.translate(I18n.HOME));
         data.put("preview_image", "splash.png");
         data.put("root", "..");// context.getBasePath()
 
         // text
-        data.put("text_index", context.translate(I18n.INDEX));
-        data.put("text_home", context.translate(I18n.HOME));
-        data.put("text_github", context.translate(I18n.GITHUB));
-        data.put("text_discord", context.translate(I18n.DISCORD));
-        data.put("text_categories", context.translate(I18n.CATEGORIES));
-        data.put("text_contents", context.translate(I18n.CONTENTS));
+        data.put("text_index", lm.translate(I18n.INDEX));
+        data.put("text_home", lm.translate(I18n.HOME));
+        data.put("text_github", lm.translate(I18n.GITHUB));
+        data.put("text_discord", lm.translate(I18n.DISCORD));
+        data.put("text_categories", lm.translate(I18n.CATEGORIES));
+        data.put("text_contents", lm.translate(I18n.CONTENTS));
 
         // langs and navigation
-        data.put("current_lang", context.getLang());
+        data.put("current_lang", lm.getCurrentLanguage());
         data.put("languages", Language.asList());
         data.put("index", "#");
 
@@ -110,22 +112,23 @@ public class HtmlRenderer {
     }
 
     public void buildSearchPage(Context context) throws IOException, TemplateException {
+        LocalizationManager lm = context.getLocalizationManager();
         Map<String, Object> data = new HashMap<>();
         // meta
-        data.put("title", context.translate(I18n.TITLE));
-        data.put("long_title", context.translate(I18n.TITLE) + " | " + Constants.MC_VERSION);
-        data.put("short_description", context.translate(I18n.HOME));
+        data.put("title", lm.translate(I18n.TITLE));
+        data.put("long_title", lm.translate(I18n.TITLE) + " | " + Constants.MC_VERSION);
+        data.put("short_description", lm.translate(I18n.HOME));
         data.put("preview_image", "splash.png");
         data.put("root", "..");// basePath
 
         // text
-        data.put("text_index", context.translate(I18n.INDEX));
-        data.put("text_contents", context.translate(I18n.CONTENTS));
-        data.put("text_github", context.translate(I18n.GITHUB));
-        data.put("text_discord", context.translate(I18n.DISCORD));
+        data.put("text_index", lm.translate(I18n.INDEX));
+        data.put("text_contents", lm.translate(I18n.CONTENTS));
+        data.put("text_github", lm.translate(I18n.GITHUB));
+        data.put("text_discord", lm.translate(I18n.DISCORD));
 
         // langs and navigation
-        data.put("current_lang", context.getLang());
+        data.put("current_lang", lm.getCurrentLanguage());
         data.put("languages", Language.asList());
         data.put("index", "./");
 
@@ -144,19 +147,20 @@ public class HtmlRenderer {
     }
 
     public void buildCategoryPage(Context context, String categoryId, BookCategory cat) throws IOException, TemplateException {
+        LocalizationManager lm = context.getLocalizationManager();
         Map<String, Object> data = new HashMap<>();
-        data.put("title", context.translate(I18n.TITLE));
-        data.put("long_title", cat.getName() + " | " + context.translate(I18n.SHORT_TITLE));
+        data.put("title", lm.translate(I18n.TITLE));
+        data.put("long_title", cat.getName() + " | " + lm.translate(I18n.SHORT_TITLE));
         data.put("short_description", cat.getName());
         data.put("preview_image", "splash.png");
         data.put("root", "../..");
 
-        data.put("text_index", context.translate(I18n.INDEX));
-        data.put("text_contents", context.translate(I18n.CONTENTS));
-        data.put("text_github", context.translate(I18n.GITHUB));
-        data.put("text_discord", context.translate(I18n.DISCORD));
+        data.put("text_index", lm.translate(I18n.INDEX));
+        data.put("text_contents", lm.translate(I18n.CONTENTS));
+        data.put("text_github", lm.translate(I18n.GITHUB));
+        data.put("text_discord", lm.translate(I18n.DISCORD));
 
-        data.put("current_lang", context.getLang());
+        data.put("current_lang", lm.getCurrentLanguage());
         data.put("languages", Language.asList());
         data.put("index", "../");
 
@@ -172,20 +176,21 @@ public class HtmlRenderer {
     }
 
     private void buildEntryPages(Context context, String categoryId, BookCategory cat) throws IOException, TemplateException {
+        LocalizationManager lm = context.getLocalizationManager();
         for (BookEntry entry : cat.getEntries()) {
             Map<String, Object> data = new HashMap<>();
-            data.put("title", context.translate(I18n.TITLE));
-            data.put("long_title", entry.getName() + " | " + context.translate(I18n.SHORT_TITLE));
+            data.put("title", lm.translate(I18n.TITLE));
+            data.put("long_title", entry.getName() + " | " + lm.translate(I18n.SHORT_TITLE));
             data.put("short_description", entry.getName());
             data.put("preview_image", cleanImagePath(entry.getIconPath()));
             data.put("root", "../..");
 
-            data.put("text_index", context.translate(I18n.INDEX));
-            data.put("text_contents", context.translate(I18n.CONTENTS));
-            data.put("text_github", context.translate(I18n.GITHUB));
-            data.put("text_discord", context.translate(I18n.DISCORD));
+            data.put("text_index", lm.translate(I18n.INDEX));
+            data.put("text_contents", lm.translate(I18n.CONTENTS));
+            data.put("text_github", lm.translate(I18n.GITHUB));
+            data.put("text_discord", lm.translate(I18n.DISCORD));
 
-            data.put("current_lang", context.getLang());
+            data.put("current_lang", lm.getCurrentLanguage());
             data.put("languages", Language.asList());
             data.put("index", "../");
 

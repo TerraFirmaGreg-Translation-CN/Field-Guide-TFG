@@ -191,9 +191,9 @@ public class CraftingRecipeFormatter {
             Map<String, Object> mapData = (Map<String, Object>) data;
             
             if (mapData.containsKey("item")) {
-                return context.getItemImage((String) mapData.get("item"), true);
+                return context.getTextureRenderer().getItemImage((String) mapData.get("item"), true);
             } else if (mapData.containsKey("tag")) {
-                return context.getItemImage("#" + mapData.get("tag"), true);
+                return context.getTextureRenderer().getItemImage("#" + mapData.get("tag"), true);
             } else if (mapData.containsKey("type")) {
                 String type = (String) mapData.get("type");
                 switch (type) {
@@ -211,13 +211,13 @@ public class CraftingRecipeFormatter {
                         if (!"minecraft:water".equals(ingredient.get("ingredient"))) {
                             throw new RuntimeException("Unknown `tfc:fluid_item` ingredient: '" + data + "'");
                         }
-                        return context.getItemImage("minecraft:water_bucket", true);
+                        return context.getTextureRenderer().getItemImage("minecraft:water_bucket", true);
                     case "tfc:fluid_content":
                         Map<String, Object> fluid = (Map<String, Object>) mapData.get("fluid");
                         if (!"minecraft:water".equals(fluid.get("fluid"))) {
                             throw new RuntimeException("Unknown `tfc:fluid_content` ingredient: '" + data + "'");
                         }
-                        return context.getItemImage("minecraft:water_bucket", true);
+                        return context.getTextureRenderer().getItemImage("minecraft:water_bucket", true);
                     case "tfc:and":
                         List<Map<String, Object>> children = (List<Map<String, Object>>) mapData.get("children");
                         StringBuilder csvString = new StringBuilder();
@@ -229,7 +229,7 @@ public class CraftingRecipeFormatter {
                                 csvString.append(child.get("item"));
                             }
                         }
-                        return context.getItemImage(csvString.toString(), true);
+                        return context.getTextureRenderer().getItemImage(csvString.toString(), true);
                     default:
                         log.info("Unknown ingredient type: {}", type);
                 }
@@ -248,7 +248,7 @@ public class CraftingRecipeFormatter {
                     }
                 }
             }
-            return context.getItemImage(csvString.toString(), true);
+            return context.getTextureRenderer().getItemImage(csvString.toString(), true);
         }
         
         throw new RuntimeException("Unsupported ingredient: " + data);
@@ -287,7 +287,7 @@ public class CraftingRecipeFormatter {
             }
             
             if (itemId != null) {
-                ItemImageResult itemImage = context.getItemImage(itemId, true);
+                ItemImageResult itemImage = context.getTextureRenderer().getItemImage(itemId, true);
                 int count = mapData.containsKey("count") ? ((Number) mapData.get("count")).intValue() : 1;
                 return new ItemStackResult(itemImage.getPath(), itemImage.getName(), count);
             }
