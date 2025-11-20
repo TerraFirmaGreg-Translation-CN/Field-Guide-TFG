@@ -50,6 +50,8 @@ public class AssetLoader {
     private final Map<String, BlockModel> itemModelCache;
     private final Map<String, List<Tags>> tagsCache;
 
+    public Map<String, Map<String, Object>> recipeCache = new TreeMap<>();
+
     private final Map<String, BufferedImage> registeredImage;
 
     @Getter
@@ -785,7 +787,6 @@ public class AssetLoader {
         }
     }
 
-    Map<String, Map<String, Object>> recipeCache = new TreeMap<>();
     public Map<String, Object> loadRecipe(String recipeId) {
         if (recipeCache.containsKey(recipeId)) {
             return recipeCache.get(recipeId);

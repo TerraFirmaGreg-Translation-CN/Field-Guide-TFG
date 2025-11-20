@@ -13,7 +13,12 @@ public class LexiconPageAdapter implements JsonDeserializer<BookPage> {
 
 	public final Map<String, Class<? extends BookPage>> pageTypes;
 
+	public final Gson gson;
+
 	public LexiconPageAdapter() {
+		gson = new GsonBuilder()
+				.create();
+
 		this.pageTypes = new HashMap<>();
 		pageTypes.put("patchouli:text", PageText.class);
 		pageTypes.put("patchouli:image", PageImage.class);
@@ -70,7 +75,7 @@ public class LexiconPageAdapter implements JsonDeserializer<BookPage> {
 		if (clazz == null) {
 			clazz = PageTemplate.class;
 		}
-		BookPage page = JsonUtils.RAW_GSON.fromJson(json, clazz);
+		BookPage page = gson.fromJson(json, clazz);
 		if (flag) {
 			page.setType(type);// Add default domain to the type
 		}

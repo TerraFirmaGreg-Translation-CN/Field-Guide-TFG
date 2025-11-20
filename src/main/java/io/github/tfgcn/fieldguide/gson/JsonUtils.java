@@ -3,12 +3,17 @@ package io.github.tfgcn.fieldguide.gson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.ToNumberPolicy;
+import io.github.tfgcn.fieldguide.data.recipe.Recipe;
 import io.github.tfgcn.fieldguide.data.patchouli.BookPage;
+import io.github.tfgcn.fieldguide.data.recipe.RecipeResult;
+import io.github.tfgcn.fieldguide.data.recipe.adapter.IngredientDeserializer;
+import io.github.tfgcn.fieldguide.data.recipe.adapter.RecipeDeserializer;
+import io.github.tfgcn.fieldguide.data.recipe.adapter.RecipeResultDeserializer;
+import io.github.tfgcn.fieldguide.data.recipe.Ingredient;
 
 import java.io.*;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
-import java.util.Map;
 
 /**
  * desc:
@@ -18,15 +23,16 @@ import java.util.Map;
 public final class JsonUtils {
 
     public static final Gson GSON;
-    public static final Gson RAW_GSON;
 
     static {
         GSON = new GsonBuilder()
                 .setObjectToNumberStrategy(ToNumberPolicy.LAZILY_PARSED_NUMBER)
                 .registerTypeHierarchyAdapter(BookPage.class, new LexiconPageAdapter())
+                .registerTypeAdapter(Ingredient.class, new IngredientDeserializer())
+                .registerTypeAdapter(RecipeResult.class, new RecipeResultDeserializer())
+                .registerTypeAdapter(Recipe.class, new RecipeDeserializer())
+                .setObjectToNumberStrategy(ToNumberPolicy.LONG_OR_DOUBLE)
                 .disableHtmlEscaping()
-                .create();
-        RAW_GSON = new GsonBuilder()
                 .create();
     }
 

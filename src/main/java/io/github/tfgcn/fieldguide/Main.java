@@ -8,6 +8,7 @@ import io.github.tfgcn.fieldguide.data.patchouli.BookCategory;
 import io.github.tfgcn.fieldguide.data.patchouli.BookEntry;
 import io.github.tfgcn.fieldguide.data.patchouli.BookPage;
 import io.github.tfgcn.fieldguide.exception.InternalException;
+import io.github.tfgcn.fieldguide.gson.JsonUtils;
 import io.github.tfgcn.fieldguide.localization.Language;
 import io.github.tfgcn.fieldguide.localization.LazyLocalizationManager;
 import io.github.tfgcn.fieldguide.localization.LocalizationManager;
@@ -18,6 +19,7 @@ import io.github.tfgcn.fieldguide.render.TextureRenderer;
 import lombok.extern.slf4j.Slf4j;
 import picocli.CommandLine;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -72,12 +74,15 @@ public class Main implements Callable<Integer>  {
         HtmlRenderer htmlRenderer = new HtmlRenderer(localizationManager, outputDir);
         // Load en_us book as a fallback
         Book fallback = assetLoader.loadBook(FIELD_GUIDE);
+        prepare(fallback, localizationManager, textureRenderer, pageRenderer);
 
         for (Language lang : Language.values()) {
             Book book = assetLoader.loadBook(FIELD_GUIDE, lang, fallback);
             prepare(book, localizationManager, textureRenderer, pageRenderer);
             generateHtml(book, htmlRenderer);
         }
+
+        JsonUtils.writeFile(new File(outputDir + "/recipes.json"), assetLoader.recipeCache);
         return 0;
     }
 
