@@ -32,6 +32,10 @@ dependencies {
     implementation 'com.google.guava:guava:32.1.2-jre'
     implementation 'com.google.code.gson:gson:2.13.1'
 
+    // resolve forge mod dependencies
+    implementation 'net.vieiro:toml-java:13.4.2'
+    implementation 'org.jgrapht:jgrapht-core:1.5.2'
+
     implementation 'gov.nist.math:jama:1.0.3'
     implementation 'com.madgag:animated-gif-lib:1.4'
     implementation 'org.freemarker:freemarker:2.3.32'

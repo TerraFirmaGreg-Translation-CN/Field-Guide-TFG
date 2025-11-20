@@ -158,22 +158,61 @@ public class AssetLoader {
     private void initializeSources() {
         log.info("Initializing AssetManager for: {}", instanceRoot);
 
-        // KubeJS
-        Path kubejsPath = instanceRoot.resolve("kubejs");
-        if (Files.exists(kubejsPath)) {
-            log.info("Found KubeJS directory");
-            sources.add(new FsAssetSource(kubejsPath, "file:kubejs"));
-        }
+        List<AssetSource> sources = new ArrayList<>();
 
-        // Mod JARs
+        // download minecraft and forge
+        MCMeta.loadCache(Constants.MC_VERSION, Constants.FORGE_VERSION, Language.asList());
+
+        addClientJar(sources);// 1- minecraft
+        addForgeJar(sources);// 2- forge
+        addModsJars(sources);// 3- Mod JARs
+        addResourcePacks(sources);// 4- Resource Packs
+        addKubejs(sources);// 5- KubeJS
+
+        // Reverse the list
+        int size = sources.size();
+        for (int i = 0; i < size; i++) {
+            this.sources.add(sources.get(size - i - 1));
+        }
+        log.info("Total sources: {}", size);
+    }
+
+    private void addClientJar(List<AssetSource> sources) {
+        Path clientJar = Paths.get(CACHE, MCMeta.getClientJarName(Constants.MC_VERSION));
+        if (Files.exists(clientJar)) {
+            try {
+                sources.add(new JarAssetSource(clientJar));
+                log.info("Found Minecraft JAR");
+            } catch (IOException e) {
+                log.error("Error loading client JAR: {}", clientJar, e);
+            }
+
+            Path cachePath = Paths.get(CACHE, "assets");
+            if (Files.exists(cachePath)) {
+                sources.add(new FsAssetSource(Paths.get(CACHE), "file:cache"));
+                log.info("Found Cache directory");
+            }
+        }
+    }
+
+    private void addForgeJar(List<AssetSource> sources) {
+        Path forgeJar = Paths.get(CACHE, MCMeta.getForgeJarName(Constants.FORGE_VERSION));
+        if (Files.exists(forgeJar)) {
+            try {
+                sources.add(new JarAssetSource(forgeJar));
+                log.info("Found Forge JAR");
+            } catch (IOException e) {
+                log.error("Error loading Forge JAR: {}", forgeJar, e);
+            }
+        }
+    }
+
+    private void addModsJars(List<AssetSource> sources) {
         Path modsPath = instanceRoot.resolve("mods");
         if (Files.exists(modsPath)) {
             log.info("Found Mods directory");
             try (Stream<Path> jars = Files.list(modsPath)) {
-                List<Path> jarList = jars
-                    .filter(p -> p.toString().endsWith(".jar"))
-                    .sorted()
-                    .toList();
+                List<Path> jarList = jars.filter(p -> p.toString().endsWith(".jar")).sorted().toList();
 
                 for (Path jar : jarList) {
                     try {
@@ -186,17 +225,14 @@ public class AssetLoader {
                 log.error("Error scanning mods", e);
             }
         }
+    }
 
-        // Resource Packs
+    public void addResourcePacks(List<AssetSource> sources) {
         Path resourcePacksPath = instanceRoot.resolve("resourcepacks");
         if (Files.exists(resourcePacksPath)) {
             log.info("Found Resource Packs directory");
             try (Stream<Path> files = Files.list(resourcePacksPath)) {
-                List<Path> zipList = files
-                        .filter(p -> p.toString().endsWith(".zip"))
-                        .sorted()
-                        .toList();
-
+                List<Path> zipList = files.filter(p -> p.toString().endsWith(".zip")).sorted().toList();
                 for (Path zip : zipList) {
                     try {
                         sources.add(new ZipAssetSource(zip));
@@ -208,36 +244,14 @@ public class AssetLoader {
                 log.error("Error scanning resource packs", e);
             }
         }
+    }
 
-        // download minecraft and forge
-        MCMeta.loadCache(Constants.MC_VERSION, Constants.FORGE_VERSION, Language.asList());
-
-        Path forgeJar = Paths.get(CACHE, MCMeta.getForgeJarName(Constants.MC_VERSION));
-        if (Files.exists(forgeJar)) {
-            try {
-                sources.add(new JarAssetSource(forgeJar));
-            } catch (IOException e) {
-                log.error("Error loading Forge JAR: {}", forgeJar, e);
-            }
+    public void addKubejs(List<AssetSource> sources) {
+        Path kubejsPath = instanceRoot.resolve("kubejs");
+        if (Files.exists(kubejsPath)) {
+            log.info("Found KubeJS directory");
+            sources.add(new FsAssetSource(kubejsPath, "file:kubejs"));
         }
-
-        Path clientJar = Paths.get(CACHE, MCMeta.getClientJarName(Constants.MC_VERSION));
-        if (Files.exists(clientJar)) {
-            try {
-                sources.add(new JarAssetSource(clientJar));
-            } catch (IOException e) {
-                log.error("Error loading client JAR: {}", clientJar, e);
-            }
-
-            // KubeJS
-            Path cachePath = Paths.get(CACHE, "assets");
-            if (Files.exists(cachePath)) {
-                log.info("Found Cache directory");
-                sources.add(new FsAssetSource(cachePath, "file:cache"));
-            }
-        }
-
-        log.info("Total sources: {}", sources.size());
     }
 
     public List<Asset> listAssets(String resourcePath) throws IOException {
