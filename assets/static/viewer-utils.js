@@ -5,9 +5,8 @@ class GLBViewerUtils {
      * 在指定容器中创建一个嵌入式的 GLB 查看器
      */
     static createEmbeddedViewer(containerId, modelUrl, options = {}) {
+        // 移除固定尺寸设置，让查看器自适应容器
         const defaultOptions = {
-            width: 800,
-            height: 400,
             backgroundColor: 0xf0f0f0,
             enableGrid: false,
             enableAxes: false,
@@ -20,70 +19,27 @@ class GLBViewerUtils {
         
         const finalOptions = { ...defaultOptions, ...options };
         
-        // 创建容器包装器（如果不存在）
+        // 获取容器
         const container = document.getElementById(containerId);
         if (!container) {
             console.error(`Container with id '${containerId}' not found`);
             return null;
         }
         
-        // 添加包装样式
-        const wrapper = document.createElement('div');
-        wrapper.className = 'glb-viewer-wrapper';
-        wrapper.style.cssText = `
-            margin: 15px 0;
-            padding: 10px;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            background: #f8f9fa;
-        `;
+        // 直接使用原容器，设置必要的样式
+        container.style.cssText = 'position: relative; display: inline-block;';
         
-        // 添加标题
-        if (finalOptions.title) {
-            const title = document.createElement('div');
-            title.className = 'glb-viewer-title';
-            title.style.cssText = `
-                font-size: 1rem;
-                font-weight: 600;
-                margin-bottom: 8px;
-                color: #495057;
-            `;
-            title.innerHTML = `<i class="bi bi-badge-3d"></i> ${finalOptions.title}`;
-            wrapper.appendChild(title);
+        // 如果指定了宽度和高度，则设置固定尺寸
+        if (finalOptions.width && finalOptions.height) {
+            container.style.width = `${finalOptions.width}px`;
+            container.style.height = `${finalOptions.height}px`;
         }
         
-        // 创建查看器容器
-        const viewerContainer = document.createElement('div');
-        viewerContainer.id = `${containerId}-viewer`;
-        viewerContainer.style.cssText = `
-            width: 100%;
-            height: ${finalOptions.height}px;
-            border: 2px solid #dee2e6;
-            border-radius: 6px;
-            background: white;
-        `;
-        wrapper.appendChild(viewerContainer);
-        
-        // 添加控制提示
-        if (finalOptions.showControlsHint !== false) {
-            const hint = document.createElement('div');
-            hint.className = 'glb-viewer-hint';
-            hint.style.cssText = `
-                font-size: 0.875rem;
-                color: #6c757d;
-                margin-top: 5px;
-            `;
-            hint.innerHTML = '<i class="bi bi-mouse"></i> 使用鼠标拖拽旋转，滚轮缩放，右键平移';
-            wrapper.appendChild(hint);
-        }
-        
-        // 替换原容器内容
-        container.innerHTML = '';
-        container.appendChild(wrapper);
+
         
         // 初始化查看器
         try {
-            const viewer = new GLBViewer(viewerContainer.id, finalOptions);
+            const viewer = new GLBViewer(containerId, finalOptions);
             
             // 加载模型
             if (modelUrl) {
@@ -110,14 +66,14 @@ class GLBViewerUtils {
     static createMultiblockViewer(containerId, modelUrl, multiblockData = {}) {
         const options = {
             width: 800,
-            height: 500,
+            height: 600,
             backgroundColor: 0xf0f0f0,
             enableGrid: true,
             enableAxes: true,
             enableShadows: true,
             autoRotate: true,
             rotationSpeed: 0.005,
-            title: '多方块 3D 视图',
+            showLoadingIndicator: false,
             modelOptions: {
                 position: [0, 0, 0],
                 scale: [1, 1, 1]
@@ -139,14 +95,11 @@ class GLBViewerUtils {
      */
     static createBlockViewer(containerId, modelUrl, blockData = {}) {
         const options = {
-            width: 400,
-            height: 300,
             backgroundColor: 0xffffff,
             enableGrid: false,
             enableAxes: false,
             enableShadows: true,
             autoRotate: false,
-            title: blockData.name || '方块 3D 视图',
             modelOptions: {
                 position: [0, 0, 0],
                 scale: [0.5, 0.5, 0.5]
@@ -218,7 +171,6 @@ class GLBViewerUtils {
             const containerId = element.id || `glb-viewer-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
             const modelUrl = element.dataset.glbViewer;
             const type = element.dataset.viewerType || 'default';
-            const title = element.dataset.title;
             const autoRotate = element.dataset.autoRotate === 'true';
             const height = element.dataset.height || 400;
             
@@ -228,7 +180,6 @@ class GLBViewerUtils {
             // 根据类型创建不同的查看器
             let viewer = null;
             const options = {
-                title: title,
                 autoRotate: autoRotate,
                 height: parseInt(height)
             };
@@ -264,7 +215,7 @@ class GLBViewerUtils {
             
             // 创建HTML内容
             const html = `
-                <div id="${containerId}" class="glb-viewer-container"></div>
+                <div id="${containerId}" class="glb-viewer-container" style="min-height: 300px;"></div>
             `;
             
             // 添加到缓冲区
@@ -273,13 +224,12 @@ class GLBViewerUtils {
             // 在DOM更新后初始化查看器
             setTimeout(() => {
                 this.createEmbeddedViewer(containerId, modelUrl, {
-                    title: options.title || '3D 模型视图',
-                    autoRotate: options.autoRotate !== false,
-                    enableGrid: options.enableGrid || false,
-                    enableAxes: options.enableAxes || false,
-                    height: options.height || 400,
-                    ...options
-                });
+                autoRotate: options.autoRotate !== false,
+                enableGrid: options.enableGrid || false,
+                enableAxes: options.enableAxes || false,
+                showLoadingIndicator: false,
+                ...options
+            });
             }, 100);
             
         } catch (error) {

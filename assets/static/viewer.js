@@ -14,9 +14,13 @@ class GLBViewer {
             throw new Error(`Container with id '${containerId}' not found`);
         }
         
+        // 获取容器的实际尺寸，如果容器没有设置尺寸则使用默认值
+        const containerWidth = this.container.clientWidth || 400;
+        const containerHeight = this.container.clientHeight || 300;
+        
         this.options = {
-            width: 800,
-            height: 600,
+            width: containerWidth,
+            height: containerHeight,
             backgroundColor: 0xe6f3ff, // Minecraft 风格的浅蓝色背景
             enableControls: true,
             enableGrid: true,
@@ -28,6 +32,11 @@ class GLBViewer {
             maxDistance: 50,
             ...options
         };
+        
+        // 确保容器有相对定位，以便控制渲染器位置
+        if (window.getComputedStyle(this.container).position === 'static') {
+            this.container.style.position = 'relative';
+        }
         
         this.scene = null;
         this.camera = null;
@@ -582,17 +591,33 @@ class GLBViewer {
     }
     
     /**
-     * 处理窗口大小变化
+     * 处理窗口大小变化和容器大小变化
      */
     handleResize() {
+        // 窗口大小变化事件
         window.addEventListener('resize', () => {
-            const width = this.container.clientWidth || this.options.width;
-            const height = this.container.clientHeight || this.options.height;
-            
-            this.camera.aspect = width / height;
-            this.camera.updateProjectionMatrix();
-            this.renderer.setSize(width, height);
+            this.updateRendererSize();
         });
+        
+        // 初始更新尺寸
+        this.updateRendererSize();
+    }
+    
+    /**
+     * 更新渲染器尺寸以适应容器
+     */
+    updateRendererSize() {
+        const width = this.container.clientWidth || this.options.width;
+        const height = this.container.clientHeight || this.options.height;
+        
+        // 设置渲染器尺寸
+        this.renderer.setSize(width, height);
+        
+        // 更新相机宽高比
+        this.camera.aspect = width / height;
+        this.camera.updateProjectionMatrix();
+        
+        console.log(`Updated renderer size: ${width}x${height}`);
     }
     
     /**
