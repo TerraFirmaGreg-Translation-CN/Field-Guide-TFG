@@ -14,6 +14,8 @@ import io.github.tfgcn.fieldguide.render3d.renderer.ImageRaster;
  */
 public class Texture {
 
+    private String name;
+
     private int width;
     private int height;
     private byte[] components;
@@ -88,6 +90,14 @@ public class Texture {
         this.width = image.getWidth();
         this.height = image.getHeight();
         this.components = image.getComponents();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**

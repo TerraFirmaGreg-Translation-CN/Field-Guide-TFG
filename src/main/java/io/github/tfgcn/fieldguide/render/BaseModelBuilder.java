@@ -1,5 +1,6 @@
 package io.github.tfgcn.fieldguide.render;
 
+import io.github.tfgcn.fieldguide.asset.AssetKey;
 import io.github.tfgcn.fieldguide.asset.AssetLoader;
 import io.github.tfgcn.fieldguide.exception.AssetNotFoundException;
 import io.github.tfgcn.fieldguide.data.minecraft.blockmodel.BlockModel;
@@ -21,16 +22,12 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * 基础的3D模型构建器，提供通用的模型构建功能
- */
 @Slf4j
 public class BaseModelBuilder {
     
     public static final int SCALER = 16;
     public static final float SCALE = 1f / SCALER;
 
-    // 光照颜色常量
     protected static final Vector4f LIGHT = new Vector4f(1f, 1f, 1f, 1f);      // 顶部
     protected static final Vector4f LIGHT_GRAY = new Vector4f(0.8f, 0.8f, 0.8f, 1f);  // 北面和南面
     protected static final Vector4f DARK_GRAY = new Vector4f(0.6f, 0.6f, 0.6f, 1f);   // 东面和西面
@@ -41,7 +38,6 @@ public class BaseModelBuilder {
     protected static final Vector4f[] COLOR_DARK_GRAY = {DARK_GRAY, DARK_GRAY, DARK_GRAY, DARK_GRAY};
     protected static final Vector4f[] COLOR_DARK = {DARK, DARK, DARK, DARK};
 
-    // 方向常量
     protected static final Vector3f UP = new Vector3f(0, 1, 0);
     protected static final Vector3f DOWN = new Vector3f(0, -1, 0);
     protected static final Vector3f EAST = new Vector3f(1, 0, 0);
@@ -356,9 +352,11 @@ public class BaseModelBuilder {
     }
 
     protected Material createMaterial(String texture) {
-        BufferedImage img = assetLoader.loadTexture(texture);
+        AssetKey assetKey = new AssetKey(texture, "textures", "assets", ".png");
+        BufferedImage img = assetLoader.loadTexture(assetKey);
         Image image = new Image(img);
         Texture diffuseMap = new Texture(image);
+        diffuseMap.setName(assetKey.getResourcePath());
         diffuseMap.setMagFilter(Texture.MagFilter.NEAREST);
 
         Material material = new Material();

@@ -6,6 +6,7 @@ import io.github.tfgcn.fieldguide.render3d.Application;
 import io.github.tfgcn.fieldguide.render3d.math.Vector3f;
 import io.github.tfgcn.fieldguide.render3d.renderer.Camera;
 import io.github.tfgcn.fieldguide.render3d.scene.Node;
+import lombok.extern.slf4j.Slf4j;
 
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -15,9 +16,9 @@ import java.util.Map;
 /**
  * 多方块结构测试类
  */
+@Slf4j
 public class MultiblockTest extends Application {
 
-    private AssetLoader assetLoader;
     private BaseModelBuilder modelBuilder;
 
     public static void main(String[] args) {
@@ -34,13 +35,13 @@ public class MultiblockTest extends Application {
     @Override
     protected void initialize() {
         String modpackPath = "Modpack-Modern";
-        assetLoader = new AssetLoader(Paths.get(modpackPath));
+        AssetLoader assetLoader = new AssetLoader(Paths.get(modpackPath));
         modelBuilder = new BaseModelBuilder(assetLoader) {
             @Override
             protected BlockModel loadModel(String modelId) {
                 if (modelId.startsWith("#")) {
                     List<String> blocks = assetLoader.loadBlockTag(modelId.substring(1));
-                    modelId = blocks.get(0); // 获取第一个方块
+                    modelId = blocks.getFirst(); // 获取第一个方块
                 }
                 BlockModel blockModel = assetLoader.loadBlockModelWithState(modelId);
                 if (!blockModel.hasElements()) {

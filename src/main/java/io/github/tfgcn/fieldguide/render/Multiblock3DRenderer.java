@@ -58,7 +58,7 @@ public class Multiblock3DRenderer extends BaseRenderer {
     /**
      * 构建多方块结构
      */
-    private Node buildMultiblock(String[][] pattern, Map<String, String> mapping) {
+    public Node buildMultiblock(String[][] pattern, Map<String, String> mapping) {
         Node root = new Node();
         int height = pattern.length;
         int col = pattern[0].length;

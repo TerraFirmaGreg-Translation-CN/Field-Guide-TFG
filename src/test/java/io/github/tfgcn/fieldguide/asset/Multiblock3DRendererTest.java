@@ -1,6 +1,9 @@
 package io.github.tfgcn.fieldguide.asset;
 
+import io.github.tfgcn.fieldguide.export.ObjExporter;
 import io.github.tfgcn.fieldguide.render.Multiblock3DRenderer;
+import io.github.tfgcn.fieldguide.render3d.scene.Node;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -14,6 +17,7 @@ import java.util.Map;
  *
  * @author yanmaoyuan
  */
+@Slf4j
 public class Multiblock3DRendererTest {
 
     public static void main(String[] args) throws IOException {
@@ -44,5 +48,14 @@ public class Multiblock3DRendererTest {
         BufferedImage image = renderer.render(pattern, mapping);
 
         ImageIO.write(image, "png", Paths.get("output", "multiblock.png").toFile());
+
+        try {
+            Node rootNode = renderer.buildMultiblock(pattern, mapping);
+            ObjExporter exporter = new ObjExporter();
+            exporter.export(rootNode, "output/multiblock.obj");
+        } catch (Exception e) {
+            log.error("Error exporting OBJ file:", e);
+        }
+
     }
 }
