@@ -16,6 +16,43 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="${root}/static/style.css">
+    
+    <!-- GLB Viewer Styles -->
+    <style>
+    .glb-viewer-container {
+        border: 2px solid #dee2e6;
+        border-radius: 8px;
+        margin: 20px 0;
+        background: #f8f9fa;
+        height: 400px;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .glb-viewer-container.drag-over {
+        border-color: #007bff;
+        background: #e3f2fd;
+        transform: scale(1.02);
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+        .glb-viewer-container {
+            height: 300px;
+        }
+    }
+    
+    /* 深色主题支持 */
+    [data-bs-theme="dark"] .glb-viewer-container {
+        background: #212529;
+        border-color: #495057;
+    }
+    
+    [data-bs-theme="dark"] .glb-viewer-container.drag-over {
+        background: #1e3a5f;
+        border-color: #0d6efd;
+    }
+    </style>
   </head>
   <body>
     <!-- Load theme switcher JavaScript early to avoid flashes of incorrectly-themed content -->
@@ -162,17 +199,34 @@
       </footer>
     </div>
 
-    <!-- Three.js and GLB loader -->
-    <script src="https://cdn.jsdelivr.net/npm/three@0.156.1/build/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.156.1/examples/jsm/controls/OrbitControls.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.156.1/examples/jsm/loaders/GLTFLoader.js"></script>
+    <!-- Three.js and GLB loader - 使用 ES Modules -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
     
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="${root}/static/icons.min.js"></script>
     <script src="${root}/static/tooltips.js"></script>
     <script src="${root}/static/search.js"></script>
-    <script src="${root}/static/viewer.js"></script>
     <script src="${root}/static/viewer-utils.js"></script>
+    <script src="${root}/static/glb-viewer-init.js"></script>
+    
+    <!-- GLB Viewer - 根据协议选择加载方式 -->
+    <script>
+    // 检测是否为本地文件协议
+    if (window.location.protocol === 'file:') {
+        // 本地文件协议：使用内联版本避免 CORS 问题
+        document.write('<script type="module" src="${root}/static/viewer-inline.js"><\/script>');
+    } else {
+        // HTTP/HTTPS 协议：使用外部模块文件
+        document.write('<script type="module" src="${root}/static/viewer.js"><\/script>');
+    }
+    </script>
   </body>
 </html>

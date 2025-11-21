@@ -1,6 +1,7 @@
 /**
- * GLB 3D 模型查看器组件
+ * GLB 3D 模型查看器组件 - 内联版本
  * Minecraft 风格的明亮光照和简洁界面
+ * 此版本用于避免 file:// 协议的 CORS 问题
  */
 
 import * as THREE from 'three';
@@ -20,12 +21,12 @@ class GLBViewer {
             backgroundColor: 0xe6f3ff, // Minecraft 风格的浅蓝色背景
             enableControls: true,
             enableGrid: true,
-            enableAxes: true,
+            enableAxes: false, // 生产环境中隐藏坐标轴
             enableShadows: true,
             autoRotate: false,
             rotationSpeed: 0.01,
-            minDistance: 5,
-            maxDistance: 50,
+            minDistance: 3,
+            maxDistance: 30,
             ...options
         };
         
@@ -255,7 +256,7 @@ class GLBViewer {
         overlay.innerHTML = `
             <div style="text-align: center; color: #007bff;">
                 <i class="bi bi-cloud-upload" style="font-size: 48px;"></i>
-                <h4>释放以加载 GLB 文件</h4>
+                <h4>拖拽 GLB 文件到此处</h4>
                 <p>支持 .glb 和 .gltf 格式</p>
             </div>
         `;
@@ -649,5 +650,24 @@ class GLBViewer {
     }
 }
 
-// 将 GLBViewer 添加到全局作用域，使其可以在其他脚本中使用
+// 将 GLBViewer 和 THREE 添加到全局作用域
 window.GLBViewer = GLBViewer;
+window.THREE = THREE;
+
+// 添加全局创建函数
+window.createGLBViewer = function(containerId, options = {}) {
+    return new Promise((resolve) => {
+        const viewer = new GLBViewer(containerId, {
+            backgroundColor: 0xe6f3ff,
+            enableControls: true,
+            enableGrid: true,
+            enableAxes: false,
+            enableShadows: true,
+            autoRotate: false,
+            minDistance: 3,
+            maxDistance: 30,
+            ...options
+        });
+        resolve(viewer);
+    });
+};
