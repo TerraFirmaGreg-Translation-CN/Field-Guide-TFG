@@ -214,17 +214,18 @@
     <script src="${root}/static/icons.min.js"></script>
     <script src="${root}/static/tooltips.js"></script>
     <script src="${root}/static/search.js"></script>
-    <script src="${root}/static/viewer-utils.js"></script>
-    <script src="${root}/static/glb-viewer-init.js"></script>
     
     <!-- GLB Viewer - 根据协议选择加载方式 -->
     <script>
     // 检测是否为本地文件协议
     if (window.location.protocol === 'file:') {
-        // 本地文件协议：使用内联版本避免 CORS 问题
-        document.write('<script type="module" src="${root}/static/viewer-inline.js"><\/script>');
+        // 本地文件协议：直接禁用 GLB 查看器功能以避免 CORS 问题
+        console.warn('GLB Viewer disabled for file:// protocol due to CORS restrictions');
+        window.GLBViewerUtils = { parseGLBViewer: function() {} };
     } else {
-        // HTTP/HTTPS 协议：使用外部模块文件
+        // HTTP/HTTPS 协议：动态加载 GLB 查看器脚本
+        document.write('<script src="${root}/static/viewer-utils.js"><\/script>');
+        document.write('<script src="${root}/static/glb-viewer-init.js"><\/script>');
         document.write('<script type="module" src="${root}/static/viewer.js"><\/script>');
     }
     </script>
