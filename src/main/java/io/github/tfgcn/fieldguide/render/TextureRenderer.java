@@ -87,7 +87,7 @@ public class TextureRenderer {
 
     private final AssetLoader loader;
     private final LocalizationManager localizationManager;
-    private final Block3DRenderer block3DRenderer;
+    private final SingleBlock3DRenderer singleBlock3DRenderer;
     private final Multiblock3DRenderer multiblock3DRenderer;
 
     private final String outputRootDir;
@@ -103,7 +103,7 @@ public class TextureRenderer {
     public TextureRenderer(AssetLoader loader, LocalizationManager localizationManager, String outputRootDir) {
         this.loader = loader;
         this.localizationManager = localizationManager;
-        this.block3DRenderer = new Block3DRenderer(loader, 256, 256);
+        this.singleBlock3DRenderer = new SingleBlock3DRenderer(loader, 256, 256);
         this.multiblock3DRenderer = new Multiblock3DRenderer(loader, 256, 256);
 
         this.outputRootDir = outputRootDir;
@@ -789,7 +789,7 @@ public class TextureRenderer {
             return createBlockModelProjection(combined, combined, combined, false);
         } else {
             try {
-                return block3DRenderer.render(model);
+                return singleBlock3DRenderer.render(model);
             } catch (Exception e) {
                 log.warn("Unsupported parent: {}@{}", parent, block);
                 throw new RuntimeException("Block Model : Unknown Parent '" + parent + "' : at '" + block + "'");

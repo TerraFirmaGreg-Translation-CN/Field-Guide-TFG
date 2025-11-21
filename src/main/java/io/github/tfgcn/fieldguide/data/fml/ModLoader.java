@@ -121,7 +121,7 @@ public class ModLoader {
                     Files.write(outputPath, jarData);
 
                     parseModInfo(outputPath);
-                    log.info("Extracted nested JAR: {}", nestedJarName);
+                    log.debug("Extracted nested JAR: {}", nestedJarName);
 
                     extractJarJar(outputPath);
                 }

@@ -37,7 +37,7 @@ public class Multiblock3DRendererTest {
         Map<String, String> mapping = new HashMap<>();
         mapping.put("X", "tfc:rock/smooth/gabbro");
         mapping.put("G", "minecraft:light_blue_stained_glass");
-        mapping.put("0", "tfc:charcoal_forge/heat_7");// [heat_level=7]
+        mapping.put("0", "tfc:charcoal_forge[heat_level=7]");
         mapping.put("C", "tfc:crucible");
         mapping.put("B", "tfc:bellows");
 
