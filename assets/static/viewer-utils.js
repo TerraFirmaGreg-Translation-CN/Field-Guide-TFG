@@ -142,7 +142,7 @@ class GLBViewerUtils {
                 GLBViewerUtils.startModelCycle(viewer, glbUrls, 1000, options.modelOptions);
             } else if (glbUrls.length === 1) {
                 // 单个模型模式
-                viewer.loadGLB(glbUrls[0], options.modelOptions).catch(error => {
+                viewer.loadGLB(glbUrls[0], options.modelOptions, true).catch(error => {
                     console.error('Failed to load model:', error);
                     if (options.showErrorMessages !== false) {
                         this.showError(container, error.message);
@@ -161,41 +161,99 @@ class GLBViewerUtils {
     
     /**
      * 启动模型循环切换显示
+     * 优化版：预先加载所有模型，切换时不重新加载，保持摄像机状态
      * @param {Object} viewer - GLB查看器实例
      * @param {Array} modelUrls - 模型URL数组
      * @param {number} interval - 切换间隔（毫秒）
      * @param {Object} modelOptions - 模型加载选项
      */
-    static startModelCycle(viewer, modelUrls, interval = 1000, modelOptions = {}) {
+    static async startModelCycle(viewer, modelUrls, interval = 1000, modelOptions = {}) {
         console.log(`GLBViewerUtils.startModelCycle called with ${modelUrls.length} models, interval: ${interval}ms`);
         
-        let currentIndex = 0;
-        
-        // 先加载第一个模型
-        console.log(`Loading first model: ${modelUrls[0]}`);
-        viewer.loadGLB(modelUrls[currentIndex], modelOptions).catch(error => {
-            console.error(`Failed to load first model:`, error);
-        });
+        // 检查是否已经有计时器在运行
+        if (viewer._modelCycleTimer) {
+            console.warn('Model cycle already running, stopping existing timer');
+            clearInterval(viewer._modelCycleTimer);
+            viewer._modelCycleTimer = null;
+        }
         
         // 如果只有一个模型，不需要循环
         if (modelUrls.length <= 1) {
-            console.log('Only one model provided, no cycle needed');
+            console.log('Only one model provided, loading directly');
+            await viewer.loadGLB(modelUrls[0], modelOptions, true);
             return;
+        }
+        
+        // 检查是否已经预加载过
+        if (viewer.preloadedModels && viewer.preloadedModels.length > 0) {
+            console.log('Models already preloaded, starting cycle directly');
+            // 显示第一个模型
+            viewer.showPreloadedModel(0, modelOptions, true);
+            // 设置循环计时器
+            viewer._modelCycleTimer = setInterval(() => {
+                viewer.cyclePreloadedModels();
+            }, interval);
+            return;
+        }
+        
+        // 一次性串行加载所有模型
+        console.log('Starting serial preloading of all models...');
+        const loadedModels = [];
+        
+        // 检查THREE和GLTFLoader是否可用
+        if (typeof THREE === 'undefined' || typeof GLTFLoader === 'undefined') {
+            console.error('THREE or GLTFLoader not available, falling back to individual loading');
+            // 降级到原来的加载方式
+            let currentIndex = 0;
+            await viewer.loadGLB(modelUrls[currentIndex], modelOptions, true);
+            viewer.currentModelIndex = 0;
+            
+            viewer._modelCycleTimer = setInterval(async () => {
+                currentIndex = (currentIndex + 1) % modelUrls.length;
+                try {
+                    await viewer.loadGLB(modelUrls[currentIndex], modelOptions, false);
+                } catch (error) {
+                    console.error(`Failed to load model at index ${currentIndex}:`, error);
+                }
+            }, interval);
+            return;
+        }
+        
+        const loader = new GLTFLoader();
+        
+        // 串行加载所有模型
+        for (let i = 0; i < modelUrls.length; i++) {
+            try {
+                console.log(`Loading model ${i + 1}/${modelUrls.length}: ${modelUrls[i]}`);
+                const gltf = await new Promise((resolve, reject) => {
+                    loader.load(modelUrls[i], resolve, undefined, reject);
+                });
+                loadedModels.push(gltf);
+                console.log(`Model ${i + 1} loaded successfully`);
+            } catch (error) {
+                console.error(`Failed to load model ${i + 1}:`, error);
+                loadedModels.push(null); // 保持索引对应关系
+            }
+        }
+        
+        console.log('All models loaded, starting cycle');
+        
+        // 保存预加载的模型到查看器实例
+        viewer.preloadedModels = loadedModels;
+        viewer.preloadedModelOptions = modelOptions;
+        viewer.currentModelIndex = -1;
+        
+        // 显示第一个模型（调整摄像机）
+        if (loadedModels[0]) {
+            viewer.showPreloadedModel(0, modelOptions, true);
         }
         
         // 设置循环计时器
         viewer._modelCycleTimer = setInterval(() => {
-            currentIndex = (currentIndex + 1) % modelUrls.length;
-            console.log(`Switching to model ${currentIndex}: ${modelUrls[currentIndex]}`);
-            
-            viewer.loadGLB(modelUrls[currentIndex], modelOptions).catch(error => {
-                console.error(`Failed to load model at index ${currentIndex}:`, error);
-                // 继续尝试下一个模型
-                currentIndex = (currentIndex + 1) % modelUrls.length;
-            });
+            viewer.cyclePreloadedModels();
         }, interval);
         
-        console.log(`Model cycle started with interval: ${interval}ms`);
+        console.log(`Preloaded model cycle started with interval: ${interval}ms`);
         
         // 为查看器添加停止循环的方法
         viewer.stopModelCycle = function() {
@@ -212,7 +270,7 @@ class GLBViewerUtils {
      */
     static createBlockViewer(containerId, modelUrl, blockData = {}) {
         const options = {
-            backgroundColor: 0xffffff,
+            backgroundColor: 0xf0f0f0,
             enableGrid: false,
             enableAxes: false,
             enableShadows: true,
@@ -392,7 +450,7 @@ class GLBViewerUtils {
                 if (glbPaths.length > 1) {
                     this.startModelCycle(viewer, glbPaths, 1000, { scale: [1, 1, 1] });
                 } else {
-                    viewer.loadGLB(glbPaths[0], { scale: [1, 1, 1] });
+                    viewer.loadGLB(glbPaths[0], { scale: [1, 1, 1] }, true);
                 }
             }, 100);
         } else {

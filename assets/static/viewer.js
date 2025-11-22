@@ -24,13 +24,13 @@ class GLBViewer {
         this.options = {
             width: containerWidth,
             height: containerHeight,
-            backgroundColor: 0xe6f3ff, // Minecraft 风格的浅蓝色背景
+            backgroundColor: 0xf0f0f0, // 淡灰色背景
             enableControls: true,
             enableGrid: false,
             enableAxes: false,
             enableShadows: true,
             autoRotate: false,
-            rotationSpeed: 0.01,
+            rotationSpeed: 0.05,
             minDistance: 2,
             maxDistance: 50,
             autoLoad: false, // 新增：默认不自动加载
@@ -49,6 +49,10 @@ class GLBViewer {
         this.currentModelIndex = -1;
         this.cycleTimer = null;
         this.cycleInterval = 1000; // 默认1秒切换一次
+        
+        // 预加载模型相关属性
+        this.preloadedModels = [];
+        this.preloadedModelOptions = {};
         
         // 加载状态
         this.isLoaded = false;
@@ -174,7 +178,7 @@ class GLBViewer {
     }
     
     /**
-     * 创建灯光 - Minecraft 风格的超明亮光照
+     * 创建灯光 - 统一的Minecraft风格超明亮光照配置
      */
     createLights() {
         // 超明亮的环境光 - 提供基础亮度
@@ -216,6 +220,8 @@ class GLBViewer {
         const bottomLight = new THREE.DirectionalLight(0xffffff, 0.4);
         bottomLight.position.set(0, -5, 0);
         this.scene.add(bottomLight);
+        
+        console.log('Created unified Minecraft-style lighting configuration');
     }
     
     /**
@@ -371,18 +377,23 @@ class GLBViewer {
             if (this.modelUrls && this.modelUrls.length > 0) {
                 // 多模型模式：使用工具类开始循环
                 if (this.modelUrls.length > 1) {
-                    window.GLBViewerUtils.startModelCycle(this, this.modelUrls, 1000, {
-                        scale: [1, 1, 1]
-                    });
+                    // 检查是否已经在循环中，避免重复启动
+                    if (!this._modelCycleTimer) {
+                        window.GLBViewerUtils.startModelCycle(this, this.modelUrls, 1000, {
+                            scale: [1, 1, 1]
+                        });
+                    } else {
+                        console.log('Model cycle already running, skipping restart');
+                    }
                 } else {
                     // 单个模型
                     await this.loadGLB(this.modelUrls[0], {
                         scale: [1, 1, 1]
-                    });
+                    }, true);
                 }
             } else if (this.options.modelUrl) {
                 // 单模型模式
-                await this.loadGLB(this.options.modelUrl);
+                await this.loadGLB(this.options.modelUrl, {}, true);
             } else {
                 throw new Error('没有指定模型URL');
             }
@@ -552,7 +563,7 @@ class GLBViewer {
             await this.loadGLB(url, {
                 position: [0, 0, 0],
                 scale: [1, 1, 1]
-            });
+            }, true);
             
             // 清理 URL 对象
             setTimeout(() => URL.revokeObjectURL(url), 1000);
@@ -567,10 +578,13 @@ class GLBViewer {
     
     /**
      * 加载 GLB 模型
+     * @param {string} url - 模型URL
+     * @param {Object} options - 模型选项
+     * @param {boolean} fitCamera - 是否调整摄像机以适应模型（默认true）
      */
-    async loadGLB(url, options = {}) {
+    async loadGLB(url, options = {}, fitCamera = true) {
         try {
-            console.log(`Loading GLB model: ${url}`);
+            console.log(`Loading GLB model: ${url}, fitCamera: ${fitCamera}`);
             
             // 显示加载指示器
             this.showLoadingIndicator();
@@ -593,8 +607,10 @@ class GLBViewer {
                 this.setupAnimations(gltf.animations);
             }
             
-            // 自动调整相机位置
-            this.fitCameraToModel();
+            // 只在要求时调整相机位置
+            if (fitCamera) {
+                this.fitCameraToModel();
+            }
             
             // 强制更新渲染器大小
             this.updateRendererSize();
@@ -632,7 +648,7 @@ class GLBViewer {
             // 先加载第一个模型
             if (this.modelUrls.length > 0) {
                 this.currentModelIndex = 0;
-                await this.loadGLB(this.modelUrls[0], options.modelOptions);
+                await this.loadGLB(this.modelUrls[0], options.modelOptions, true);
                 
                 // 如果有多个模型，则开始循环
                 if (this.modelUrls.length > 1) {
@@ -675,34 +691,46 @@ class GLBViewer {
     }
     
     /**
-     * 循环切换到下一个模型
+     * 循环切换到下一个模型（使用预加载的模型）
+     */
+    cyclePreloadedModels() {
+        if (!this.preloadedModels || this.preloadedModels.length <= 1) return;
+        
+        try {
+            // 计算下一个模型索引
+            const nextIndex = (this.currentModelIndex + 1) % this.preloadedModels.length;
+            
+            console.log(`Cycling to preloaded model ${nextIndex + 1}/${this.preloadedModels.length}`);
+            
+            // 使用预加载的模型，不调整摄像机
+            this.showPreloadedModel(nextIndex, this.preloadedModelOptions || {}, false);
+            
+        } catch (error) {
+            console.error('Error cycling preloaded models:', error);
+        }
+    }
+    
+    /**
+     * 循环切换到下一个模型（兼容性方法）
      */
     async cycleModels() {
+        // 如果有预加载的模型，使用预加载方法
+        if (this.preloadedModels && this.preloadedModels.length > 1) {
+            this.cyclePreloadedModels();
+            return;
+        }
+        
+        // 否则使用原来的加载方式
         if (this.modelUrls.length <= 1) return;
         
         try {
-            // 保存当前相机和控制器状态
-            const cameraPosition = this.camera.position.clone();
-            const cameraQuaternion = this.camera.quaternion.clone();
-            const cameraTarget = this.controls ? this.controls.target.clone() : null;
-            
             // 计算下一个模型索引
-            this.currentModelIndex = (this.currentModelIndex + 1) % this.modelUrls.length;
+            const nextIndex = (this.currentModelIndex + 1) % this.modelUrls.length;
             
-            console.log(`Cycling to model ${this.currentModelIndex + 1}/${this.modelUrls.length}`);
+            console.log(`Cycling to model ${nextIndex + 1}/${this.modelUrls.length}`);
             
-            // 加载下一个模型
-            await this.loadGLB(this.modelUrls[this.currentModelIndex], this.options.modelOptions || {});
-            
-            // 恢复相机和控制器状态
-            this.camera.position.copy(cameraPosition);
-            this.camera.quaternion.copy(cameraQuaternion);
-            this.camera.updateMatrixWorld(true);
-            
-            if (this.controls && cameraTarget) {
-                this.controls.target.copy(cameraTarget);
-                this.controls.update();
-            }
+            // 直接使用loadGLB但不调整摄像机
+            await this.loadGLB(this.modelUrls[nextIndex], this.options.modelOptions || {}, false);
             
         } catch (error) {
             console.error('Error cycling models:', error);
@@ -827,6 +855,50 @@ class GLBViewer {
             this.animationMixer = null;
         }
         this.animationActions = [];
+    }
+    
+    /**
+     * 显示预加载的模型（不重新加载，保持摄像机状态）
+     * @param {number} index - 模型索引
+     * @param {Object} options - 模型选项
+     * @param {boolean} fitCamera - 是否调整摄像机以适应模型（默认false）
+     */
+    showPreloadedModel(index, options = {}, fitCamera = false) {
+        console.log(`showPreloadedModel called: index=${index}, fitCamera=${fitCamera}`);
+        
+        if (!this.preloadedModels || !this.preloadedModels[index]) {
+            console.error(`Preloaded model at index ${index} not available`);
+            console.log('Available models:', this.preloadedModels?.map((m, i) => ({ index: i, available: m !== null })));
+            return;
+        }
+        
+        console.log(`Showing preloaded model ${index}, fitCamera: ${fitCamera}`);
+        
+        // 清除当前模型
+        this.clearModel();
+        
+        // 获取预加载的模型数据
+        const gltf = this.preloadedModels[index];
+        this.model = gltf.scene;
+        
+        // 设置模型
+        this.setupModel(this.model, options);
+        
+        // 处理动画
+        if (gltf.animations && gltf.animations.length > 0) {
+            this.setupAnimations(gltf.animations);
+        }
+        
+        // 只在明确要求时调整摄像机
+        if (fitCamera) {
+            console.log('Adjusting camera to fit model');
+            this.fitCameraToModel();
+        }
+        
+        // 更新当前模型索引
+        this.currentModelIndex = index;
+        
+        console.log(`Preloaded model ${index} displayed successfully, currentModelIndex is now ${this.currentModelIndex}`);
     }
     
     /**
@@ -1084,3 +1156,7 @@ class GLBViewer {
 
 // 将 GLBViewer 添加到全局作用域，使其可以在其他脚本中使用
 window.GLBViewer = GLBViewer;
+// 将 THREE 添加到全局作用域，使 viewer-utils.js 可以使用
+window.THREE = THREE;
+// 将 GLTFLoader 暴露到全局，但不尝试修改 THREE 对象本身
+window.GLTFLoader = GLTFLoader;

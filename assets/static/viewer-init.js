@@ -58,7 +58,7 @@ function initSingleGLBViewer(element, index) {
         
         // 如果是多方块类型，设置特定选项
         if (viewerType === 'multiblock') {
-            options.backgroundColor = 0xe6f3ff;
+            options.backgroundColor = 0xf0f0f0;
             options.enableControls = true;
             options.minDistance = 5;
             options.maxDistance = 50;
@@ -69,7 +69,7 @@ function initSingleGLBViewer(element, index) {
         
         // 加载模型
         if (glbPath) {
-            viewer.loadGLB(glbPath);
+            viewer.loadGLB(glbPath, {}, true);
         }
         
         console.log(`Initialized single GLB viewer: ${viewerId}`);
@@ -135,7 +135,7 @@ function initMultiGLBViewer(element, index) {
         
         // 如果是多方块类型，设置特定选项
         if (viewerType === 'multiblock') {
-            options.backgroundColor = 0xe6f3ff;
+            options.backgroundColor = 0xf0f0f0;
             options.enableControls = true;
             options.minDistance = 5;
             options.maxDistance = 50;
@@ -161,7 +161,7 @@ function initMultiGLBViewer(element, index) {
                     // 单模型直接加载
                     viewer.loadGLB(glbPaths[0], {
                         scale: [1, 1, 1]
-                    });
+                    }, true);
                 }
             }, 100);
         } else {
