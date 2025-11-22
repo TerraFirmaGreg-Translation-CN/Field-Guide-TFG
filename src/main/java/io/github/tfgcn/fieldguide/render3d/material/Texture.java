@@ -5,6 +5,7 @@ import io.github.tfgcn.fieldguide.render3d.math.Vector2f;
 import io.github.tfgcn.fieldguide.render3d.math.Vector4f;
 import io.github.tfgcn.fieldguide.render3d.renderer.Image;
 import io.github.tfgcn.fieldguide.render3d.renderer.ImageRaster;
+import lombok.Getter;
 
 /**
  * 纹理
@@ -12,6 +13,7 @@ import io.github.tfgcn.fieldguide.render3d.renderer.ImageRaster;
  * @author yanmaoyuan
  *
  */
+@Getter
 public class Texture {
 
     private String name;
@@ -19,7 +21,7 @@ public class Texture {
     private int width;
     private int height;
     private byte[] components;
-
+    private Image image;
     /**
      * 纹理放大时，如何滤波
      */
@@ -56,7 +58,7 @@ public class Texture {
      */
     public Texture() {
         Image image = new Image(64, 64);
-        
+
         // 创建一个ImageRaster用来画图。
         ImageRaster raster = new ImageRaster(image);
         
@@ -90,6 +92,7 @@ public class Texture {
         this.width = image.getWidth();
         this.height = image.getHeight();
         this.components = image.getComponents();
+        this.image = image;
     }
 
     public String getName() {

@@ -653,20 +653,46 @@ public class PageRenderer {
 
     private void parseMultiblockPage(List<String> buffer, PageMultiblock page) {
         try {
-            // 获取多方块结构的图片路径
             String src = textureRenderer.getMultiBlockImage(page);
-            // FIXME remove me later, use 3d viewer instead
-            // buffer.add(String.format(IMAGE_SINGLE, src, "Block Visualization"));
             
-            // 添加 GLB 3D 模型查看器
+            // 只添加GLB 3D模型查看器，不要2D图片
             if (src != null && src.endsWith(".png")) {
-                String glbPath = convertToGLBPath(src);
+                String glbPath = src.substring(0, src.length() - 4) + ".glb";
                 String viewerId = generateUniqueViewerId("multiblock");
-                addGLBViewer(buffer, viewerId, glbPath);
+                
+                // 添加GLB查看器div（手动加载模式）
+                buffer.add(String.format("""
+                    <div class="glb-viewer-container">
+                        <div id="%s" 
+                             class="glb-viewer" 
+                             data-glb-viewer="../../%s"
+                             data-viewer-type="multiblock"
+                             data-auto-rotate="true"
+                             data-auto-load="false">
+                            <div class="glb-viewer-loading">
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Loading 3D model...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    """, 
+                    viewerId, 
+                    glbPath));
             }
         } catch (Exception e) {
-            // FIXME add me later log.error("Multiblock image processing failed, message: {}", e.getMessage());
-            handleMultiblockError(buffer, page);
+            // FIXME add me later log.error("Multiblock GLB processing failed, message: {}", e.getMessage());
+            // Fallback
+            if (page.getMultiblockId() != null) {
+                formatWithTooltip(buffer,
+                        String.format("%s: <code>%s</code>", localizationManager.translate(I18n.MULTIBLOCK), page.getMultiblockId()),
+                        localizationManager.translate(I18n.MULTIBLOCK_ONLY_IN_GAME));
+            } else {
+                // FIXME for debug
+                formatWithTooltip(buffer,
+                        String.format("%s: <code>%s</code>", localizationManager.translate(I18n.MULTIBLOCK), JsonUtils.toJson(page.getMultiblock())),
+                        localizationManager.translate(I18n.MULTIBLOCK_ONLY_IN_GAME));
+            }
         }
     }
     
@@ -725,13 +751,53 @@ public class PageRenderer {
 
     private void parseMultiMultiblockPage(List<String> buffer, PageMultiMultiblock page) {
         try {
-            String src = textureRenderer.getMultiBlockImage(page);
-            buffer.add(String.format(IMAGE_SINGLE, src, "Block Visualization"));
+            // 使用新方法生成多个GLB文件
+            List<String> glbPaths = textureRenderer.generateMultiMultiblockGLB(page);
+            
+            // 以下是原来添加图像的代码，现在注释掉
+            // TextureRenderer.MultiModelResult result = textureRenderer.getMultiModelResult(page);
+            // String imagePath = result.getImagePath();
+            // buffer.add(String.format(IMAGE_SINGLE, imagePath, "Block Visualization"));
+            
+            // 添加GLB查看器
+            if (!glbPaths.isEmpty()) {
+                String viewerId = generateUniqueViewerId("multimultiblock");
+                StringBuilder glbPathsJson = new StringBuilder("[");
+                
+                // 构建GLB文件路径的JSON数组
+                for (int i = 0; i < glbPaths.size(); i++) {
+                    if (i > 0) {
+                        glbPathsJson.append(",");
+                    }
+                    glbPathsJson.append("\"../../")
+                              .append(glbPaths.get(i))
+                              .append("\"");
+                }
+                glbPathsJson.append("]");
+                
+                // 添加多方块GLB查看器，使用data-glb-viewers属性传递多个模型路径
+                buffer.add(String.format("<div class=\"glb-viewer-container\">\n" +
+                        "<div id=\"%s\" class=\"glb-viewer\"\n" +
+                        "data-glb-viewers=%s\n" +
+                        "data-viewer-type=\"multimultiblock\"\n" +
+                        "style=\"width: 100%%; height: 300px;\">\n" +
+                        "<div class=\"glb-viewer-loading\" style=\"display: flex; align-items: center; justify-content: center; height: 100%%; background: transparent;\">\n" +
+                        "<div style=\"text-align: center;\">\n" +
+                        "<svg class=\"glb-viewer-spinner\" width=\"40\" height=\"40\" viewBox=\"0 0 40 40\">\n" +
+                        "<circle cx=\"20\" cy=\"20\" r=\"15\" fill=\"none\" stroke=\"#888\" stroke-width=\"4\">\n" +
+                        "</circle>\n" +
+                        "</svg>\n" +
+                        "<div>Loading 3D Model...</div>\n" +
+                        "</div>\n" +
+                        "</div>\n" +
+                        "</div>\n" +
+                        "</div>", viewerId, glbPathsJson.toString()));
+            }
         } catch (Exception e) {
-            // TODO 日志太多暂时移除 log.error("tfc:multimultiblock image processing failed", e);
+            // TODO 日志太多暂时移除 log.error("tfc:multimultiblock GLB processing failed", e);
             // FIXME for debug
             for (TFCMultiblockData multiblock : page.getMultiblocks()) {
-                formatWithTooltip(buffer,
+                formatWithTooltip(buffer, 
                         String.format("%s: <code>%s</code>", localizationManager.translate(I18n.MULTIBLOCK), JsonUtils.toJson(multiblock)),
                         localizationManager.translate(I18n.MULTIBLOCK_ONLY_IN_GAME));
             }

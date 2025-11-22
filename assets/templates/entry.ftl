@@ -188,8 +188,8 @@
     } else {
         // HTTP/HTTPS 协议：动态加载 GLB 查看器脚本
         document.write('<script src="${root}/static/viewer-utils.js"><\/script>');
-        document.write('<script src="${root}/static/glb-viewer-init.js"><\/script>');
         document.write('<script type="module" src="${root}/static/viewer.js"><\/script>');
+        document.write('<script src="${root}/static/glb-viewer-init.js"><\/script>');
     }
     </script>
   </body>

@@ -1,6 +1,5 @@
 package io.github.tfgcn.fieldguide.render;
 
-import io.github.tfgcn.fieldguide.asset.AssetLoader;
 import io.github.tfgcn.fieldguide.data.minecraft.blockmodel.BlockModel;
 import io.github.tfgcn.fieldguide.render3d.math.Vector3f;
 import io.github.tfgcn.fieldguide.render3d.scene.Node;

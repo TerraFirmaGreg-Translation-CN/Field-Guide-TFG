@@ -19,13 +19,10 @@ import io.github.tfgcn.fieldguide.render3d.shader.UnshadedShader;
 import io.github.tfgcn.fieldguide.render3d.animation.AnimatedTexture;
 import io.github.tfgcn.fieldguide.render3d.animation.AnimatedMaterial;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.FileUtils;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -544,7 +541,7 @@ public class BaseModelBuilder {
     }
 
     protected Material createMaterial(String texture, String overlayTexture) {
-        // 先生成唯一的文件名，正确处理mod路径（替换冒号和其他非法字符）
+        // 直接在内存中生成纹理，不再保存到文件系统
         String fileName = texture.replace("assets/minecraft/textures/", "").replace(".png", "").replace(":", "_");
         if (overlayTexture != null) {
             String overlayName = overlayTexture.replace("assets/minecraft/textures/", "").replace(".png", "").replace(":", "_").replace("/", "_");
@@ -552,29 +549,7 @@ public class BaseModelBuilder {
         }
         fileName += ".png";
         
-        // 确保文件生成在assets/textures目录下
-        File imageFile = assetLoader.getOutputDir().resolve("assets/textures/" + fileName).toFile();
-        BufferedImage img;
-        
-        // 如果文件已存在，直接从文件读取
-        if (imageFile.exists()) {
-            try {
-                img = ImageIO.read(imageFile);
-            } catch (IOException e) {
-                log.error("Error reading existing image: {}", imageFile, e);
-                // 如果读取失败，回退到重新生成
-                img = generateCombinedImage(texture, overlayTexture);
-            }
-        } else {
-            // 文件不存在，生成并保存
-            img = generateCombinedImage(texture, overlayTexture);
-            try {
-                FileUtils.createParentDirectories(imageFile);
-                ImageIO.write(img, "png", imageFile);
-            } catch (IOException e) {
-                log.error("Error writing image: {}", imageFile, e);
-            }
-        }
+        BufferedImage img = generateCombinedImage(texture, overlayTexture);
 
         Image image = new Image(img);
         Texture diffuseMap = new Texture(image);

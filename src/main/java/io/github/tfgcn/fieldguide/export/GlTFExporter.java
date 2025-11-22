@@ -6,11 +6,11 @@ import io.github.tfgcn.fieldguide.render3d.material.Texture;
 import io.github.tfgcn.fieldguide.render3d.math.Transform;
 import io.github.tfgcn.fieldguide.render3d.math.Vector2f;
 import io.github.tfgcn.fieldguide.render3d.math.Vector3f;
+import io.github.tfgcn.fieldguide.render3d.renderer.Image;
 import io.github.tfgcn.fieldguide.render3d.scene.Geometry;
 import io.github.tfgcn.fieldguide.render3d.scene.Mesh;
 import io.github.tfgcn.fieldguide.render3d.scene.Node;
 import io.github.tfgcn.fieldguide.render3d.scene.Vertex;
-import io.github.tfgcn.fieldguide.render3d.animation.AnimatedMaterial;
 import io.github.tfgcn.fieldguide.render3d.animation.AnimatedTexture;
 import lombok.extern.slf4j.Slf4j;
 
@@ -365,10 +365,6 @@ public class GlTFExporter {
      * 从BufferedImage处理图像
      */
     private int processImageFromBufferedImage(BufferedImage image, String imageName) throws IOException {
-        if (imageIndexMap.containsKey(imageName)) {
-            return imageIndexMap.get(imageName);
-        }
-        
         // 转换图像为PNG字节数组
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(image, "png", baos);
@@ -498,12 +494,10 @@ public class GlTFExporter {
     }
 
     private int processTexture(Texture texture) throws IOException {
-        log.info("处理纹理: {}", texture.getName());
-        
+
         // 检查是否已经处理过这个纹理
         Integer existingIndex = imageIndexMap.get(texture);
         if (existingIndex != null) {
-            log.info("纹理已存在，复用图像索引: {}", existingIndex);
             // 创建纹理引用（指向现有图像）
             Map<String, Object> gltfTexture = new LinkedHashMap<>();
             gltfTexture.put("source", existingIndex);
@@ -516,8 +510,7 @@ public class GlTFExporter {
         
         // 从Texture创建PNG数据
         byte[] pngData = createPNGFromTexture(texture);
-        log.info("生成的PNG数据大小: {} bytes", pngData.length);
-        
+
         // 添加到二进制数据缓冲区
         int imageBufferView = createBufferView(pngData, 0); // target=0 for images
         
@@ -538,7 +531,6 @@ public class GlTFExporter {
         gltfTexture.put("sampler", createNearestSampler());
         textures.add(gltfTexture);
         
-        log.info("创建新纹理，图像索引: {}, 纹理索引: {}", imageIndex, textureIndex);
         return textureIndex;
     }
     
@@ -571,7 +563,6 @@ public class GlTFExporter {
      * 创建线性过滤的采样器
      */
     private int createLinearSampler() {
-        // 检查是否已经创建了线性采样器
         for (int i = 0; i < samplers.size(); i++) {
             Map<String, Object> sampler = samplers.get(i);
             if (MAG_FILTER_LINEAR == (Integer) sampler.get("magFilter") &&
@@ -710,21 +701,17 @@ public class GlTFExporter {
         return json.toString();
     }
 
+    @SuppressWarnings({"unchecked", "raw"})
     private String valueToJson(Object value) {
-        if (value == null) {
-            return "null";
-        } else if (value instanceof Map) {
-            return mapToJson((Map<String, Object>) value);
-        } else if (value instanceof List) {
-            return arrayToJson((List<?>) value);
-        } else if (value instanceof String) {
-            return "\"" + value + "\"";
-        } else if (value instanceof Number) {
-            return value.toString();
-        } else if (value instanceof float[]) {
-            return arrayToJson((float[]) value);
-        }
-        return "null";
+        return switch (value) {
+            case null -> "null";
+            case Map map -> mapToJson((Map<String, Object>) value);
+            case List list -> arrayToJson(list);
+            case String s -> "\"" + value + "\"";
+            case Number number -> value.toString();
+            case float[] floats -> arrayToJson(floats);
+            default -> "null";
+        };
     }
 
     private String arrayToJson(List<?> list) {
@@ -755,10 +742,10 @@ public class GlTFExporter {
 
     private int getComponentCount(String type) {
         switch (type) {
-            case ACCESSOR_TYPE_SCALAR: return 1;
-            case ACCESSOR_TYPE_VEC2: return 2;
-            case ACCESSOR_TYPE_VEC3: return 3;
-            default: return 1;
+            case ACCESSOR_TYPE_SCALAR -> { return 1; }
+            case ACCESSOR_TYPE_VEC2 -> { return 2; }
+            case ACCESSOR_TYPE_VEC3 -> { return 3; }
+            default -> throw new IllegalArgumentException("Unknown type: " + type);
         }
     }
 
@@ -822,105 +809,12 @@ public class GlTFExporter {
      * 从Texture创建PNG二进制数据
      */
     private byte[] createPNGFromTexture(Texture texture) throws IOException {
-        int width = 64;  // 默认尺寸
-        int height = 64;
-        byte[] components = null;
-        
-        // 尝试使用反射获取Texture的私有字段
-        try {
-            java.lang.reflect.Field widthField = Texture.class.getDeclaredField("width");
-            java.lang.reflect.Field heightField = Texture.class.getDeclaredField("height");
-            java.lang.reflect.Field componentsField = Texture.class.getDeclaredField("components");
-            
-            widthField.setAccessible(true);
-            heightField.setAccessible(true);
-            componentsField.setAccessible(true);
-            
-            width = widthField.getInt(texture);
-            height = heightField.getInt(texture);
-            components = (byte[]) componentsField.get(texture);
-            
-            log.info("成功获取纹理数据: {}x{}, 纹理名称: {}", width, height, texture.getName());
-        } catch (Exception e) {
-            log.warn("无法从纹理获取像素数据，使用默认图案: {}", e.getMessage());
-            components = new byte[width * height * 4];
-            generateTestPattern(components, width, height);
-        }
-        
-        // 创建BufferedImage
-        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        
-        // 填充像素数据
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                int srcIndex = (y * width + x) * 4;
-                int r = components[srcIndex] & 0xFF;
-                int g = components[srcIndex + 1] & 0xFF;
-                int b = components[srcIndex + 2] & 0xFF;
-                int a = components[srcIndex + 3] & 0xFF;
-                
-                int argb = (a << 24) | (r << 16) | (g << 8) | b;
-                image.setRGB(x, y, argb);
-            }
-        }
+        Image imageObj = texture.getImage();
+        BufferedImage image = imageObj.getSrcImage();
         
         // 写入PNG到字节数组
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ImageIO.write(image, "PNG", baos);
-        
-        log.info("生成的PNG数据大小: {} bytes, 纹理: {}", baos.size(), texture.getName());
+        ImageIO.write(image, "png", baos);
         return baos.toByteArray();
-    }
-    
-    /**
-     * 生成测试图案
-     */
-    private void generateTestPattern(byte[] components, int width, int height) {
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                int index = (y * width + x) * 4;
-                
-                // 创建一个类似Minecraft风格的图案
-                int blockX = x / 16;
-                int blockY = y / 16;
-                
-                if ((blockX + blockY) % 2 == 0) {
-                    // 浅色方块
-                    components[index] = (byte) 200;     // R
-                    components[index + 1] = (byte) 200; // G  
-                    components[index + 2] = (byte) 200; // B
-                    components[index + 3] = (byte) 255; // A
-                } else {
-                    // 深色方块
-                    components[index] = (byte) 100;     // R
-                    components[index + 1] = (byte) 100; // G
-                    components[index + 2] = (byte) 100; // B
-                    components[index + 3] = (byte) 255; // A
-                }
-            }
-        }
-    }
-    
-    /**
-     * 创建1x1透明PNG的二进制数据
-     */
-    private byte[] createPlaceholderPNG() {
-        // 1x1透明PNG的字节数据
-        return new byte[]{
-            (byte) 0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A, // PNG签名
-            0x00, 0x00, 0x00, 0x0D, // IHDR块长度 (13字节)
-            0x49, 0x48, 0x44, 0x52, // IHDR
-            0x00, 0x00, 0x00, 0x01, // 宽度: 1
-            0x00, 0x00, 0x00, 0x01, // 高度: 1
-            0x08, 0x06, 0x00, 0x00, 0x00, // 位深度: 8, 颜色类型: 6 (RGBA), 压缩: 0, 过滤: 0, 隔行扫描: 0
-            (byte) 0x5F, (byte) 0x9A, (byte) 0x86, 0x60, // IHDR CRC32
-            0x00, 0x00, 0x00, 0x0C, // IDAT块长度 (12字节)
-            0x49, 0x44, 0x41, 0x54, // IDAT
-            0x08, (byte) 0x99, 0x01, 0x01, 0x00, 0x00, (byte) 0xFF, (byte) 0xFF, 0x00, 0x00, 0x00, 0x02, 0x00, 0x01, // 压缩的图像数据 (1x1透明像素)
-            (byte) 0x72, (byte) 0x24, (byte) 0x9D, (byte) 0x1A, // IDAT CRC32
-            0x00, 0x00, 0x00, 0x00, // IEND块长度 (0字节)
-            0x49, 0x45, 0x4E, 0x44, // IEND
-            (byte) 0xAE, 0x42, 0x60, (byte) 0x82  // IEND CRC32
-        };
     }
 }

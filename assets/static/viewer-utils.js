@@ -30,45 +30,37 @@ class GLBViewerUtils {
         container.style.position = 'relative';
         container.style.display = 'block';
         
-        // 移除之前可能存在的loading元素
-        const existingLoading = container.querySelector('.glb-viewer-loading');
-        if (existingLoading) {
-            container.removeChild(existingLoading);
+        // 查找并管理loading指示器
+        const loadingIndicator = container.querySelector('.glb-viewer-loading');
+        
+        // 如果启用自动加载，显示loading；否则显示原始的loading
+        if (finalOptions.autoLoad && loadingIndicator) {
+            // 自动加载模式，使用GLBViewer的loading管理
+            // 不需要做特殊处理
         }
         
-
-        
         // 初始化查看器
+        console.log(`createEmbeddedViewer called with:`, {
+            containerId, 
+            modelUrl, 
+            finalOptions,
+            autoLoad: finalOptions.autoLoad
+        });
+        
         try {
-            const viewer = new GLBViewer(containerId, finalOptions);
+            const viewer = new GLBViewer(containerId, {
+                ...finalOptions,
+                modelUrl: modelUrl, // 传递模型URL
+                autoLoad: finalOptions.autoLoad || false // 默认不自动加载
+            });
             
-            // 加载模型
-            if (modelUrl) {
-                viewer.loadGLB(modelUrl, finalOptions.modelOptions).then(() => {
-                    // 确保加载完成后隐藏loading指示器
-                    const loadingIndicator = container.querySelector('.glb-viewer-loading');
-                    if (loadingIndicator) {
-                        loadingIndicator.style.display = 'none';
-                    }
-                }).catch(error => {
-                    if (finalOptions.showErrorMessages !== false) {
-                        this.showError(container, error.message);
-                    }
-                    // 错误时也隐藏loading指示器
-                    const loadingIndicator = container.querySelector('.glb-viewer-loading');
-                    if (loadingIndicator) {
-                        loadingIndicator.style.display = 'none';
-                    }
-                });
-            }
-            
+            console.log(`GLBViewer created with options:`, viewer.options);
             return viewer;
             
         } catch (error) {
             console.error('Failed to create GLB viewer:', error);
             this.showError(container, `初始化失败: ${error.message}`);
-            // 错误时也隐藏loading指示器
-            const loadingIndicator = container.querySelector('.glb-viewer-loading');
+            // 错误时隐藏loading指示器
             if (loadingIndicator) {
                 loadingIndicator.style.display = 'none';
             }
@@ -78,7 +70,7 @@ class GLBViewerUtils {
     
     /**
      * 创建多方块模型查看器
-     * 专门用于显示多方块结构
+     * 支持单个模型或多个模型循环显示（每秒切换一次）
      */
     static createMultiblockViewer(containerId, modelUrl, multiblockData = {}) {
         // 获取容器并设置尺寸
@@ -96,6 +88,8 @@ class GLBViewerUtils {
             autoRotate: true,
             rotationSpeed: 0.005,
             showLoadingIndicator: false,
+            modelUrl: modelUrl, // 传递模型URL
+            autoLoad: multiblockData.autoLoad || false, // 传递autoLoad选项
             modelOptions: {
                 position: [0, 0, 0],
                 scale: [1, 1, 1]
@@ -116,18 +110,85 @@ class GLBViewerUtils {
                 // 清理函数
                 return () => {
                     window.removeEventListener('resize', updateSize);
+                    // 如果有循环计时器，清理它
+                    if (viewer && viewer._modelCycleTimer) {
+                        clearInterval(viewer._modelCycleTimer);
+                        viewer._modelCycleTimer = null;
+                    }
                 };
             }
         };
         
-        const viewer = this.createEmbeddedViewer(containerId, modelUrl, options);
+        // 创建查看器
+        const viewer = new GLBViewer(containerId, options);
+        
+        // 支持从字符串解析多个GLB文件路径（后端返回的格式）
+        let glbUrls = [];
+        if (typeof modelUrl === 'string' && modelUrl.includes(',')) {
+            // 从逗号分隔的字符串解析多个URL
+            glbUrls = modelUrl.split(',').map(url => url.trim());
+        } else if (Array.isArray(modelUrl)) {
+            // 直接使用URL数组
+            glbUrls = modelUrl;
+        } else if (modelUrl) {
+            // 单个URL
+            glbUrls = [modelUrl];
+        }
+        
+        // 只有在autoLoad为true时才自动加载
+        if (options.autoLoad && glbUrls.length > 0) {
+            if (glbUrls.length > 1) {
+                // 多模型模式：实现每秒切换一次的循环显示
+                GLBViewerUtils.startModelCycle(viewer, glbUrls, 1000, options.modelOptions);
+            } else if (glbUrls.length === 1) {
+                // 单个模型模式
+                viewer.loadGLB(glbUrls[0], options.modelOptions).catch(error => {
+                    console.error('Failed to load model:', error);
+                    if (options.showErrorMessages !== false) {
+                        this.showError(container, error.message);
+                    }
+                });
+            }
+        }
         
         // 添加多方块信息
-        if (multiblockData.size) {
+        if (multiblockData.size || multiblockData.pattern || multiblockData.mapping) {
             this.addMultiblockInfo(containerId, multiblockData);
         }
         
         return viewer;
+    }
+    
+    /**
+     * 启动模型循环切换显示
+     * @param {Object} viewer - GLB查看器实例
+     * @param {Array} modelUrls - 模型URL数组
+     * @param {number} interval - 切换间隔（毫秒）
+     * @param {Object} modelOptions - 模型加载选项
+     */
+    static startModelCycle(viewer, modelUrls, interval = 1000, modelOptions = {}) {
+        let currentIndex = 0;
+        
+        // 先加载第一个模型
+        viewer.loadGLB(modelUrls[currentIndex], modelOptions);
+        
+        // 设置循环计时器
+        viewer._modelCycleTimer = setInterval(() => {
+            currentIndex = (currentIndex + 1) % modelUrls.length;
+            viewer.loadGLB(modelUrls[currentIndex], modelOptions).catch(error => {
+                console.error(`Failed to load model at index ${currentIndex}:`, error);
+                // 继续尝试下一个模型
+                currentIndex = (currentIndex + 1) % modelUrls.length;
+            });
+        }, interval);
+        
+        // 为查看器添加停止循环的方法
+        viewer.stopModelCycle = function() {
+            if (this._modelCycleTimer) {
+                clearInterval(this._modelCycleTimer);
+                this._modelCycleTimer = null;
+            }
+        };
     }
     
     /**
@@ -193,8 +254,8 @@ class GLBViewerUtils {
         `;
         errorDiv.innerHTML = `
             <i class="bi bi-exclamation-triangle"></i> 
-            <strong>3D 模型加载失败:</strong> ${message}
-            <br><small>请检查模型文件是否存在且格式正确</small>
+            <strong>3D Model load failed:</strong> ${message}
+            <br><small>Please check if the model file exists and is formatted correctly</small>
         `;
         
         container.appendChild(errorDiv);
@@ -208,20 +269,22 @@ class GLBViewerUtils {
         const elements = document.querySelectorAll('[data-glb-viewer]');
         
         elements.forEach(element => {
-            const containerId = element.id || `glb-viewer-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+            // 确保元素有ID
+            if (!element.id) {
+                element.id = `glb-viewer-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+            }
+            
+            const containerId = element.id;
             const modelUrl = element.dataset.glbViewer;
             const type = element.dataset.viewerType || 'default';
             const autoRotate = element.dataset.autoRotate === 'true';
-            const height = element.dataset.height || 400;
-            
-            // 设置元素ID
-            element.id = containerId;
+            const autoLoad = element.dataset.autoLoad === 'true'; // 读取data-auto-load属性
             
             // 根据类型创建不同的查看器
             let viewer = null;
             const options = {
                 autoRotate: autoRotate,
-                height: parseInt(height)
+                autoLoad: autoLoad // 使用实际的属性值
             };
             
             switch (type) {
@@ -239,7 +302,13 @@ class GLBViewerUtils {
             // 存储查看器实例
             if (viewer) {
                 element.dataset.viewerInstance = 'true';
-                console.log(`Auto-initialized GLB viewer: ${containerId}`);
+                console.log(`Auto-initialized GLB viewer: ${containerId}, autoLoad: ${autoLoad}`);
+            } else {
+                // 如果查看器创建失败，手动隐藏loading
+                const loadingIndicator = element.querySelector('.glb-viewer-loading');
+                if (loadingIndicator) {
+                    loadingIndicator.style.display = 'none';
+                }
             }
         });
     }

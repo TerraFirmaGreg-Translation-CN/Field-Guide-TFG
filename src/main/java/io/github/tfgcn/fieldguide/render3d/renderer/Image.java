@@ -1,5 +1,7 @@
 package io.github.tfgcn.fieldguide.render3d.renderer;
 
+import lombok.Getter;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -12,6 +14,7 @@ import javax.imageio.ImageIO;
  * @author yanmaoyuan
  *
  */
+@Getter
 public class Image {
 
     // 图片的宽度
@@ -20,6 +23,8 @@ public class Image {
     protected final int height;
     // 颜色数据
     protected final byte[] components;
+
+    protected BufferedImage srcImage;
 
     public Image(int width, int height) {
         this.width = width;
@@ -33,6 +38,7 @@ public class Image {
         byte[] components;
 
         BufferedImage image = ImageIO.read(new File(fileName));
+        this.srcImage = image;
 
         width = image.getWidth();
         height = image.getHeight();
@@ -56,6 +62,7 @@ public class Image {
     }
 
     public Image(BufferedImage image) {
+        this.srcImage = image;
         int width;
         int height;
         byte[] components;
@@ -80,17 +87,4 @@ public class Image {
         this.height = height;
         this.components = components;
     }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public byte[] getComponents() {
-        return components;
-    }
-
 }

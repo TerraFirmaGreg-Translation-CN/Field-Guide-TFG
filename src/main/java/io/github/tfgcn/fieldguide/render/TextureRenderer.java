@@ -14,8 +14,6 @@ import io.github.tfgcn.fieldguide.export.GlTFExporter;
 import io.github.tfgcn.fieldguide.localization.I18n;
 import io.github.tfgcn.fieldguide.localization.LocalizationManager;
 import io.github.tfgcn.fieldguide.render3d.scene.Node;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.FileUtils;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -26,8 +24,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.List;
+
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
 
 @Slf4j
 public class TextureRenderer {
@@ -160,7 +163,6 @@ public class TextureRenderer {
         if (nbtIndex > 0) {
             log.warn("Item with NBT: {}", item);
             item = item.substring(0, nbtIndex);// TODO remove it for test, maybe nbt support is much harder than I think
-            //throw new InternalException("Item with NBT: " + item);
         }
 
         String name = null;
@@ -216,12 +218,12 @@ public class TextureRenderer {
             String path;
             String itemId = nextId("item");// counting
             if (images.size() == 1) {
-                if (isItem) {
-                    AssetKey assetKey = new AssetKey(item, "textures", "assets", ".png");
-                    path = saveImage(assetKey.getResourcePath(), images.getFirst());
-                } else {
-                    path = saveImage("assets/generated/" + itemId + ".png", images.getFirst());
-                }
+            if (isItem) {
+                AssetKey assetKey = new AssetKey(item, "textures", "assets", ".png");
+                path = saveImage(assetKey.getResourcePath(), images.getFirst());
+            } else {
+                path = saveImage("assets/generated/" + itemId + ".png", images.getFirst());
+            }
             } else {
                 // # If any images are 64x64, then we need to resize them all to be 64x64 if we're saving a .gif
                 boolean flag = false;
@@ -232,12 +234,15 @@ public class TextureRenderer {
                     }
                 }
                 if (flag) {
-                    images = images.stream().map(image -> {
+                    List<BufferedImage> resizedImages = new ArrayList<>();
+                    for (BufferedImage image : images) {
                         if (image.getWidth() != 64 || image.getHeight() != 64) {
-                            image = resizeImage(image, 64, 64);
+                            resizedImages.add(resizeImage(image, 64, 64));
+                        } else {
+                            resizedImages.add(image);
                         }
-                        return image;
-                    }).toList();
+                    }
+                    images = resizedImages;
                 }
 
                 path = saveGif("assets/generated/" + itemId + ".gif", images);
@@ -466,6 +471,7 @@ public class TextureRenderer {
     ///
 
     private static final Map<String, String> CACHE = new HashMap<>();
+    private static final Map<String, String> GLB_CACHE = new HashMap<>();
 
     // 透视变换系数（与Python版本相同）
     private static final double[] LEFT = calculatePerspectiveCoefficients(
@@ -583,43 +589,242 @@ public class TextureRenderer {
             new Point(16, 16), new Point(0, 16)
     };
 
-    public String getMultiBlockImage(PageMultiMultiblock data) throws Exception {
-        String key;
-        List<BufferedImage> images = new ArrayList<>();
+    /**
+     * 存储多模型图像和GLB路径的结果类
+     */
+    public static class MultiModelResult {
+        private final String imagePath;
+        private final List<String> glbPaths;
 
+        public MultiModelResult(String imagePath, List<String> glbPaths) {
+            this.imagePath = imagePath;
+            this.glbPaths = glbPaths;
+        }
+
+        public String getImagePath() {
+            return imagePath;
+        }
+
+        public List<String> getGlbPaths() {
+            return glbPaths;
+        }
+    }
+
+    /**
+     * 为多个多方块生成GLB文件列表
+     * @param data 多方块数据
+     * @return GLB文件路径列表
+     */
+    public List<String> generateMultiMultiblockGLB(PageMultiMultiblock data) throws Exception {
+        List<String> glbPaths = new ArrayList<>();
+
+        // 检查是否有TFC多方块数据
         if (!data.getMultiblocks().isEmpty()) {
-
             List<TFCMultiblockData> multiblocks = data.getMultiblocks();
-            StringBuilder keyBuilder = new StringBuilder("multiblocks-");
+            
+            // 为每个多方块生成GLB文件
             for (TFCMultiblockData block : multiblocks) {
-                Pair<String, List<BufferedImage>> result = getMultiBlockImages(block);
-                keyBuilder.append(result.getKey());
-                images.addAll(result.getValue());
+                // 生成缓存键：基于多方块的模式和映射
+                String cacheKey = generateCacheKey(block.getPattern(), block.getMapping());
+                
+                // 检查缓存
+                if (GLB_CACHE.containsKey(cacheKey)) {
+                    glbPaths.add(GLB_CACHE.get(cacheKey));
+                    log.debug("Using cached GLB file for multiblock: {}", block.getMultiblockId());
+                    continue;
+                }
+                
+                try {
+                    // 构建多方块节点
+                    Node node = multiblock3DRenderer.buildMultiblock(block.getPattern(), block.getMapping());
+                    
+                    // 生成唯一的blockId
+                    String blockId = (block.getMultiblockId() != null ? 
+                        block.getMultiblockId().replaceAll("\\W+", "_") : "block_") + 
+                        cacheKey;
+                    
+                    // 导出GLB文件
+                    GlTFExporter exporter = new GlTFExporter();
+                    String glbPath = "assets/generated/" + blockId + ".glb";
+                    Path outputPath = loader.getOutputDir().resolve(glbPath);
+                    
+                    // 检查文件是否已存在
+                    if (!Files.exists(outputPath)) {
+                        exporter.export(node, outputPath.toString());
+                        log.info("Generated GLB file for multiblock: {}", blockId);
+                    } else {
+                        log.debug("GLB file already exists: {}", blockId);
+                    }
+                    
+                    // 缓存结果
+                    GLB_CACHE.put(cacheKey, glbPath);
+                    glbPaths.add(glbPath);
+                } catch (Exception e) {
+                    log.error("Failed to generate GLB for multiblock: {}, error: {}", block.getMultiblockId(), e.getMessage());
+                }
             }
-            key = keyBuilder.toString();
         } else {
-            throw new RuntimeException("Multiblock : Custom Multiblock");
+            throw new RuntimeException("Multiblock : No TFC multiblocks found");
+        }
+
+        if (glbPaths.isEmpty()) {
+            log.warn("Multiblock : No GLB files could be generated");
+            throw new RuntimeException("Multiblock : No GLB files could be generated");
+        }
+
+        return glbPaths;
+    }
+
+    @Deprecated
+    public MultiModelResult getMultiModelResult(PageMultiMultiblock data) throws Exception {
+        List<BufferedImage> images = new ArrayList<>();
+        List<String> glbPaths = new ArrayList<>();
+
+        // 检查是否有TFC多方块数据
+        if (!data.getMultiblocks().isEmpty()) {
+            List<TFCMultiblockData> multiblocks = data.getMultiblocks();
+            
+            // 为每个多方块生成图像和GLB文件
+            for (TFCMultiblockData block : multiblocks) {
+                // 生成缓存键
+                String cacheKey = generateCacheKey(block.getPattern(), block.getMapping());
+                
+                try {
+                    // 构建多方块节点
+                    Node node = multiblock3DRenderer.buildMultiblock(block.getPattern(), block.getMapping());
+                    
+                    // 渲染图像
+                    BufferedImage image = multiblock3DRenderer.render(node);
+                    images.add(image);
+                    
+                    // 检查GLB缓存
+                    if (GLB_CACHE.containsKey(cacheKey)) {
+                        glbPaths.add(GLB_CACHE.get(cacheKey));
+                        log.debug("Using cached GLB file for multiblock: {}", block.getMultiblockId());
+                    } else {
+                        // 生成唯一的blockId
+                        String blockId = (block.getMultiblockId() != null ? 
+                            block.getMultiblockId().replaceAll("\\W+", "_") : "block_") + 
+                            cacheKey;
+                        
+                        // 导出GLB文件
+                        GlTFExporter exporter = new GlTFExporter();
+                        String glbPath = "assets/generated/" + blockId + ".glb";
+                        Path outputPath = loader.getOutputDir().resolve(glbPath);
+                        
+                        // 检查文件是否已存在
+                        if (!Files.exists(outputPath)) {
+                            exporter.export(node, outputPath.toString());
+                            log.info("Generated GLB file for multiblock: {}", blockId);
+                        }
+                        
+                        // 缓存结果
+                        GLB_CACHE.put(cacheKey, glbPath);
+                        glbPaths.add(glbPath);
+                    }
+                } catch (Exception e) {
+                    log.error("Failed to process multiblock: {}, error: {}", block.getMultiblockId(), e.getMessage());
+                    // 继续处理其他多方块，不中断整个流程
+                }
+            }
+        } else {
+            throw new RuntimeException("Multiblock : No TFC multiblocks found");
         }
 
         if (images.isEmpty()) {
-            log.error("Multiblock : No multiblocks found");
-            throw new RuntimeException("Multiblock : No multiblocks found");
+            log.warn("Multiblock : No multiblocks could be rendered");
+            throw new RuntimeException("Multiblock : No multiblocks could be rendered");
         }
 
-        if (CACHE.containsKey(key)) {
-            return CACHE.get(key);
-        }
-
-        String path;
-        String blockId = nextId("block");// counting blocks
+        String imagePath;
+        String baseId = nextId("multiblock_image");
         if (images.size() == 1) {
-            path = saveImage("assets/generated/" + blockId + ".png", images.getFirst());
+            // 单个图像直接保存为PNG
+            imagePath = saveImage("assets/generated/" + baseId + ".png", images.getFirst());
         } else {
-            path = saveGif( "assets/generated/" + blockId + ".gif", images);
+            // 多个图像也保存为PNG（第一帧），GLB序列用于动画展示
+            imagePath = saveImage("assets/generated/" + baseId + ".png", images.getFirst());
         }
 
-        CACHE.put(key, path);
-        return path;
+        // 返回结果，包含图像路径和GLB文件路径列表
+        // 前端将使用glbPaths列表进行每秒切换显示
+        return new MultiModelResult(imagePath, glbPaths);
+    }
+
+    /**
+     * 兼容旧方法，仅返回图像路径
+     * @param data 多方块数据
+     * @return 图像路径
+     */
+    public String getMultiBlockImage(PageMultiMultiblock data) throws Exception {
+        return getMultiModelResult(data).getImagePath();
+    }
+
+    /**
+     * 为单个多方块生成GLB文件
+     * @param data 多方块数据
+     * @return GLB文件路径
+     */
+    public String generateMultiblockGLB(PageMultiblock data) throws Exception {
+        if (data.getMultiblock() != null) {
+            PageMultiblockData multiblock = data.getMultiblock();
+            
+            // 生成缓存键
+            String cacheKey = generateCacheKey(multiblock.getPattern(), multiblock.getMapping());
+            
+            // 检查缓存
+            if (GLB_CACHE.containsKey(cacheKey)) {
+                log.debug("Using cached GLB file for multiblock");
+                return GLB_CACHE.get(cacheKey);
+            }
+            
+            // 构建多方块节点
+            Node node = multiblock3DRenderer.buildMultiblock(multiblock.getPattern(), multiblock.getMapping());
+            
+            // 生成基于缓存键的blockId
+            String blockId = "block_" + cacheKey;
+            
+            // 导出GLB文件
+            GlTFExporter exporter = new GlTFExporter();
+            String glbPath = "assets/generated/" + blockId + ".glb";
+            Path outputPath = loader.getOutputDir().resolve(glbPath);
+            
+            // 检查文件是否已存在
+            if (!Files.exists(outputPath)) {
+                exporter.export(node, outputPath.toString());
+                log.info("Generated GLB file for multiblock: {}", blockId);
+            }
+            
+            // 缓存结果
+            GLB_CACHE.put(cacheKey, glbPath);
+            return glbPath;
+        } else {
+            throw new RuntimeException("Multiblock : Custom Multiblock '" + data.getMultiblockId() + "'");
+        }
+    }
+    
+    /**
+     * 生成多方块缓存键
+     * 基于模式和映射生成唯一标识符
+     */
+    private String generateCacheKey(String[][] pattern, Map<String, String> mapping) {
+        StringBuilder keyBuilder = new StringBuilder();
+        
+        // 添加模式信息
+        for (String[] row : pattern) {
+            keyBuilder.append(String.join(",", row)).append("|");
+        }
+        
+        // 添加映射信息（按键排序确保一致性）
+        if (mapping != null) {
+            mapping.keySet().stream()
+                .sorted()
+                .forEach(key -> keyBuilder.append(key).append(":").append(mapping.get(key)).append("|")
+            );
+        }
+        
+        // 使用哈希值作为最终键，避免键过长
+        return Integer.toHexString(keyBuilder.toString().hashCode());
     }
 
     public String getMultiBlockImage(PageMultiblock data) throws Exception {
@@ -651,9 +856,24 @@ public class TextureRenderer {
         }
 
         if (node != null) {
-            GlTFExporter exporter = new GlTFExporter();
-            String glbPath = "assets/generated/" + blockId + ".glb";
-            exporter.export(node, loader.getOutputDir().resolve(glbPath).toString());
+            // 生成缓存键
+            PageMultiblockData multiblock = data.getMultiblock();
+            String cacheKey = generateCacheKey(multiblock.getPattern(), multiblock.getMapping());
+            
+            // 检查缓存
+            if (!GLB_CACHE.containsKey(cacheKey)) {
+                GlTFExporter exporter = new GlTFExporter();
+                String glbPath = "assets/generated/" + blockId + ".glb";
+                Path outputPath = loader.getOutputDir().resolve(glbPath);
+                
+                // 检查文件是否已存在
+                if (!Files.exists(outputPath)) {
+                    exporter.export(node, outputPath.toString());
+                }
+                
+                // 缓存结果
+                GLB_CACHE.put(cacheKey, glbPath);
+            }
         }
 
         CACHE.put(key, path);
@@ -703,7 +923,7 @@ public class TextureRenderer {
                 image = resizeImage(image, 64, 64);
                 blockImages.add(image);
             } catch (Exception e) {
-                log.error("Failed loading block image: {}, message: {}", b, e.getMessage(), e);
+                log.error("Failed loading block image: " + b + ", message: " + e.getMessage(), e);
             }
         }
 
