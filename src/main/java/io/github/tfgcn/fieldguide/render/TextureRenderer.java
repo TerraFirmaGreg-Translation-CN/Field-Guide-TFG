@@ -278,9 +278,12 @@ public class TextureRenderer {
         if (model.getLoader() != null) {
             String loader = model.getLoader();
             if ("tfc:contained_fluid".equals(loader)) {
-                // Assume it's empty, and use a single layer item
                 String layer = model.getTextures().get("base");
                 return this.loader.loadTexture(layer);
+            } else if ("tfc:trim".equals(loader)) {
+                return getTfcItemTrimLoader(model, itemId);
+            } else if ("forge:separate_transforms".equals(loader)) {
+                return getForgeSeparateTransformsLoader(model, itemId);
             } else {
                 log.error("Unknown loader: {} @ {}", loader, itemId);
             }
@@ -312,14 +315,7 @@ public class TextureRenderer {
         // FIXME 甚至干脆修改渲染方法，实现真正的继承层次 3D 渲染。
         if ("item".equals(type)) {
             // single-layer item model
-            String layer0 = model.getTextures().get("layer0");
-            if (layer0 != null) {
-                return loader.loadTexture(layer0);
-            } else {
-                log.warn("Item model no layer0: {}", itemId);
-                missingImages.add(itemId);
-                throw new InternalException("Item model no layer0: " + itemId);
-            }
+            return defaultItemLoader(model, itemId);
         } else if ("block".equals(type)) {
             // Block model
             // TODO remove the try-catch
@@ -339,6 +335,38 @@ public class TextureRenderer {
             missingImages.add(itemId);
             log.error("Unknown Parent {} @ {}, model: {}", parent, itemId, model);
             throw new InternalException("Unknown Parent " + parent + " @ " + itemId);
+        }
+    }
+
+    private BufferedImage getForgeSeparateTransformsLoader(BlockModel model, String itemId) {
+        BlockModel guiModel = model.getPerspectives().get("gui");
+        BlockModel realModel = loader.loadModel(guiModel.getParent());
+        return loader.loadTexture(realModel.getTextures().get("layer0"));
+    }
+
+    private BufferedImage getTfcItemTrimLoader(BlockModel model, String itemId) {
+        String base = model.getTextures().get("armor");
+        String overlay = model.getTextures().get("overlay");
+        String trim = model.getTextures().get("trim");
+        log.info("TFC Trim: {} {} {}", base, overlay, trim);
+        if (base != null) {
+            return overlayImage(base, overlay);
+        } else {
+            log.warn("Item model no base: {}", itemId);
+            missingImages.add(itemId);
+            throw new InternalException("Item model no base: " + itemId);
+        }
+    }
+
+    private BufferedImage defaultItemLoader(BlockModel model, String itemId) {
+        // single-layer item model
+        String layer0 = model.getTextures().get("layer0");
+        if (layer0 != null) {
+            return loader.loadTexture(layer0);
+        } else {
+            log.warn("Item model no layer0: {}", itemId);
+            missingImages.add(itemId);
+            throw new InternalException("Item model no layer0: " + itemId);
         }
     }
 
@@ -998,24 +1026,10 @@ public class TextureRenderer {
             BufferedImage textureAll = loader.loadTexture(textures.get("texture"));
             return createBlockModelProjection(textureAll, textureAll, textureAll, false);
         } else if (model.instanceOf("tfc:block/ore")) {
-            BufferedImage oreAll = loader.loadTexture(textures.get("all"));
-            BufferedImage overlay = loader.loadTexture(textures.get("overlay"));
-            // 在Java中实现图像叠加
-            BufferedImage combined = new BufferedImage(oreAll.getWidth(), oreAll.getHeight(), BufferedImage.TYPE_INT_ARGB);
-            Graphics2D g = combined.createGraphics();
-            g.drawImage(oreAll, 0, 0, null);
-            g.drawImage(overlay, 0, 0, null);
-            g.dispose();
+            BufferedImage combined = overlayImage(textures.get("all"), textures.get("overlay"));
             return createBlockModelProjection(combined, combined, combined, false);
         } else if (model.instanceOf("tfc:block/ore_column")) {
-            BufferedImage side = loader.loadTexture(textures.get("side"));
-            BufferedImage overlay = loader.loadTexture(textures.get("overlay"));
-            // 在Java中实现图像叠加
-            BufferedImage combined = new BufferedImage(side.getWidth(), side.getHeight(), BufferedImage.TYPE_INT_ARGB);
-            Graphics2D g = combined.createGraphics();
-            g.drawImage(side, 0, 0, null);
-            g.drawImage(overlay, 0, 0, null);
-            g.dispose();
+            BufferedImage combined = overlayImage(textures.get("side"), textures.get("overlay"));
             return createBlockModelProjection(combined, combined, combined, false);
         } else if (model.instanceOf("minecraft:air")) {
             BufferedImage img = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
@@ -1031,6 +1045,21 @@ public class TextureRenderer {
                 throw new RuntimeException("Block Model : Unknown Parent '" + parent + "' : at '" + block + "'");
             }
         }
+    }
+
+    public BufferedImage overlayImage(String baseId, String overlayId) {
+        BufferedImage baseImage = loader.loadTexture(baseId);
+        BufferedImage combined = new BufferedImage(baseImage.getWidth(), baseImage.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = combined.createGraphics();
+        g.drawImage(baseImage, 0, 0, null);
+
+        if (overlayId != null) {
+            BufferedImage overlay = loader.loadTexture(overlayId);
+            g.drawImage(overlay, 0, 0, null);
+        }
+
+        g.dispose();
+        return combined;
     }
 
     public BufferedImage createBlockModelProjection(BufferedImage left, BufferedImage right, BufferedImage top, boolean rotate) {

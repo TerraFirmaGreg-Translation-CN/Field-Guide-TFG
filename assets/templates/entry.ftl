@@ -121,7 +121,7 @@
                 <a href="../"><i class="bi bi-house-fill"></i></a>
               </li>
               <li class="breadcrumb-item">
-                <a href="./">${current_category.name}</a>
+                <a href="../${current_category.id}.html">${current_category.name}</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
                 ${current_entry.name}

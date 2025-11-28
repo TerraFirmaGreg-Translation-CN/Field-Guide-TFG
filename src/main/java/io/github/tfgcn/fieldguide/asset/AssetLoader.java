@@ -354,7 +354,7 @@ public class AssetLoader {
             entry.setAssetSource(entryDir, asset);
 
             if (Constants.EXCLUDES_ENTRIES.contains(entry.getId())) {
-                log.info("Excluding entry: {}", entry.getId());
+                log.debug("Excluding entry: {}", entry.getId());
                 continue;
             }
             book.addEntry(entry);
