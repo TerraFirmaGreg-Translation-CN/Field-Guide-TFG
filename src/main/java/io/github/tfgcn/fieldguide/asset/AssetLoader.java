@@ -179,7 +179,7 @@ public class AssetLoader {
         addModsJars(sources);// 1- Mod JARs
         //addResourcePacks(sources);// 2- Resource Packs
         addKubejs(sources);// 3- KubeJS
-
+        addCustomFolder(sources);// 4- Custom
         // Reverse the list
         int size = sources.size();
         for (int i = 0; i < size; i++) {
@@ -193,6 +193,14 @@ public class AssetLoader {
         if (Files.exists(cachePath)) {
             sources.add(new FsAssetSource(Paths.get(CACHE), "file:cache"));
             log.info("Found Cache directory");
+        }
+    }
+
+    private void addCustomFolder(List<AssetSource> sources) {
+        Path customPath = Paths.get("custom");
+        if (Files.exists(customPath)) {
+            sources.add(new FsAssetSource(customPath, "file:custom"));
+            log.info("Found Custom directory");
         }
     }
 

@@ -1,0 +1,1 @@
+{"type":"tfc:knapping","knapping_type":"tfc:rock","outside_slot_required":false,"pattern":["XXX","XXX","XXX","XXX"," X "],"ingredient":{"tag":"tfc:rock_knapping"},"result":{"item":"gtceu:stone_shovel_head"}}

@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 
 import static io.github.tfgcn.fieldguide.Constants.FIELD_GUIDE;
 
@@ -36,5 +37,11 @@ public class AssetLoaderTest {
             Book localizedBook = loader.loadBook(FIELD_GUIDE, lang, book);
             Assertions.assertNotNull(localizedBook);
         }
+    }
+
+    @Test
+    void testLoadRecipe() {
+        Map<String, Object> recipe = loader.loadRecipe("tfg:rock_knapping/stone_shovel_head");
+        Assertions.assertNotNull(recipe);
     }
 }

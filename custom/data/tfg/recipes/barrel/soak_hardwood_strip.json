@@ -1,0 +1,1 @@
+{"type":"tfc:barrel_sealed","input_item":{"ingredient":{"item":"tfg:hardwood_strip"}},"input_fluid":{"ingredient":"tfc:water","amount":100},"output_item":{"item":"tfg:soaked_hardwood_strip"},"duration":12000}
